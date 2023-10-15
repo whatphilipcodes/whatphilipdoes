@@ -4,6 +4,7 @@
 		<p>
 			This is the projects page. When the page is opened this view is shown.
 		</p>
+		<ProjectCard />
 	</div>
 </template>
 
