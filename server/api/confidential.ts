@@ -1,7 +1,6 @@
 export default defineEventHandler(async (event) => {
 	// handle query params
 	const { test } = getQuery(event)
-
 	// handle post data
 	const { testnumber } = await readBody(event)
 
