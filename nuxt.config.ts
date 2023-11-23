@@ -5,5 +5,7 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 	modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
-	devtools: { enabled: true },
+	devtools: {
+		enabled: true,
+	},
 })

@@ -12,7 +12,7 @@
 	"devDependencies": {
 		"@nuxt/devtools": "latest",
 		"@nuxt/image": "npm:@nuxt/image-edge@latest",
-		"@nuxtjs/tailwindcss": "^6.8.0",
+		"@nuxtjs/tailwindcss": "^6.10.1",
 		"nuxt": "^3.7.4",
 		"typescript": "^5.2.2",
 		"vue": "^3.3.4",
