@@ -7,5 +7,6 @@ $sayHello(',Philip')
 </script>
 <template>
 	<p>Custom layout should be displayed here</p>
-	<img src="@/assets/becher-output.jpg" alt="" />
+	<nuxt-img src="img/becher-output.jpg" alt="" />
+	<ContentDoc />
 </template>

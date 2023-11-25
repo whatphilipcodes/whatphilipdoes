@@ -4,6 +4,7 @@ export default defineNuxtConfig({
 		assets: '/<root-dir>/assets',
 	},
 	app: {
+		rootId: 'whatphilipdoes',
 		head: {
 			meta: [
 				{
@@ -23,7 +24,7 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: true,
 	},
-	modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+	modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxt/content'],
 	devtools: {
 		enabled: true,
 	},
