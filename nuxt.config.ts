@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	alias: {
+		assets: '/<root-dir>/assets',
+	},
 	app: {
 		head: {
 			meta: [
@@ -11,7 +14,7 @@ export default defineNuxtConfig({
 				},
 			],
 			bodyAttrs: {
-				// global background color
+				// global background color (issue see app.vue)
 				class: 'bg-mono-950',
 			},
 		},
