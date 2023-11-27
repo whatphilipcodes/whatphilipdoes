@@ -2,5 +2,5 @@
 	<div>
 		<p>This is the index page</p>
 	</div>
-	<DynamicHeading />
+	<DynamicHeading active-page="does" />
 </template>
