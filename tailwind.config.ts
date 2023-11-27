@@ -46,6 +46,11 @@ export default {
 			lg: '2rem',
 			xl: '3rem',
 		},
+		screens: {
+			sm: '640px',
+			md: '768px',
+			lg: '1024px',
+		},
 	},
 	plugins: [],
 } satisfies Config
