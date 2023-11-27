@@ -32,15 +32,19 @@ export default {
 			},
 		},
 		fontSize: {
-			sm: '0.75rem',
-			base: '1rem',
-			lg: '1.5rem',
-			xl: '2.5rem',
+			sm: '0.75rem', // 12px
+			base: '1rem', // 16px
+			lg: '1.5rem', // 24px
+			xl: '2.5rem', // 40px
 		},
 		fontFamily: {
 			sans: 'Jost',
-			serif: '',
-			mono: '',
+		},
+		lineHeight: {
+			sm: '1rem',
+			base: '1.5rem',
+			lg: '2rem',
+			xl: '3rem',
 		},
 	},
 	plugins: [],
