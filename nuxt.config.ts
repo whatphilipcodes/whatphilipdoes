@@ -1,5 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/google-fonts'],
+	googleFonts: {
+		families: {
+			preload: true,
+			Jost: {
+				wght: [400, 600],
+				ital: [500],
+			},
+		},
+	},
 	alias: {
 		assets: '/<root-dir>/assets',
 	},
@@ -24,7 +34,6 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: true,
 	},
-	modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxt/content'],
 	devtools: {
 		enabled: true,
 	},
