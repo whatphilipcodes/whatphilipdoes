@@ -37,4 +37,7 @@ export default defineNuxtConfig({
 	devtools: {
 		enabled: true,
 	},
+	devServer: {
+		host: '0',
+	},
 })
