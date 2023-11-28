@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+// thanks to -> https://www.youtube.com/watch?v=0-h16HmNmVY
+
 const props = defineProps({
 	as: {
 		type: [String, Object],

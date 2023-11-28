@@ -7,5 +7,5 @@
 		class="w-20 h-20"
 		>get in touch</Button
 	>
-	<!-- <Menu /> -->
+	<Menu />
 </template>
