@@ -1,6 +1,11 @@
 <template>
-	<div>
-		<p>This is the index page</p>
-	</div>
-	<DynamicHeading active-page="does" />
+	<!-- <TestImageFill /> -->
+	<Button
+		variant="accent"
+		as="a"
+		href="mailto:gerdes.philip%40gmail.com?subject=hi"
+		class="w-20 h-20"
+		>get in touch</Button
+	>
+	<!-- <Menu /> -->
 </template>
