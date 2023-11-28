@@ -1,6 +1,4 @@
 <template>
-	<div class="DefaultLayout">
-		<div class="text-cinnabar-500">This is the default layout</div>
-		<slot />
-	</div>
+	<div class="text-cinnabar-500 fixed top-0">This is the default layout</div>
+	<slot />
 </template>
