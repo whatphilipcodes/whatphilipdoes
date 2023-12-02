@@ -1,7 +1,8 @@
 <template>
-	<div id="menu" class="h-[144px] w-screen fixed bottom-0 lg:top-0">
+	<div id="menu" class="fixed left-0 bottom-0 lg:top-0 h-[144px] w-full p-4">
 		<NavDissolver />
 		<NavDynamicHeading active-page="does" />
+		<NavControlTouch />
 	</div>
 </template>
 

@@ -52,5 +52,8 @@ export default {
 			lg: '1024px',
 		},
 	},
+	container: {
+		center: true,
+	},
 	plugins: [],
 } satisfies Config

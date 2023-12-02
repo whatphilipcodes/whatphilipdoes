@@ -9,11 +9,12 @@
 <script setup lang="ts">
 // inspired by -> https://www.youtube.com/watch?v=0-h16HmNmVY
 // when using standard nuxt 3 components they need to imported into the parent component and then passed through the 'as' prop
+import { NuxtLink } from '#components'
 
 const props = defineProps({
 	as: {
 		type: [String, Object],
-		default: 'button',
+		default: NuxtLink,
 	},
 	variant: {
 		type: String,

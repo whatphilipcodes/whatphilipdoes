@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="dynamic-heading"
-		class="flex flex-col w-screen font-semibold text-xl leading-xl absolute bottom-0 lg:top-0"
+		class="flex flex-col w-full font-semibold text-xl leading-xl absolute bottom-4 lg:top-4"
 	>
 		<div id="container-logo-static" class="flex flex-row gap-4 text-mono-500">
 			<div id="what">what</div>
