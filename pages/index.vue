@@ -1,13 +1,12 @@
 <template>
-	<!-- <div class="z-20 col-start-11 col-span-2">
+	<div class="z-20 max-lg:hidden lg:col-start-11 w-44 h-8">
 		<Button class="w-full" variant="accent">get in touch</Button>
-	</div> -->
-	<div class="col-span-full h-24"></div>
+	</div>
 	<TextBlock
 		:tags="tags"
 		:text="text"
 		:callToAction="callToAction"
-		class="row-start-2 col-span-4 lg:col-span-8"
+		class="lg:mt-44 col-span-4 lg:col-span-8"
 	/>
 </template>
 

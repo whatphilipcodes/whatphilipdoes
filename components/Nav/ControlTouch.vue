@@ -6,7 +6,7 @@
 			variant="accent"
 			>get in touch</Button
 		>
-		<Button class="w-20 h-20" to="/linkTest">about philip</Button>
+		<Button class="w-20 h-20" to="/about">about philip</Button>
 	</div>
 </template>
 
