@@ -45,6 +45,8 @@ export default {
 			base: '1.5rem',
 			lg: '2rem',
 			xl: '3rem',
+			xlbaseline: '.7',
+			xlxheight: '.28',
 		},
 		screens: {
 			sm: '640px',
