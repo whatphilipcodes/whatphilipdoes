@@ -1,5 +1,5 @@
 <template>
-	<div class="z-20 max-lg:hidden lg:col-start-11 w-44 h-8">
+	<div class="z-20 max-lg:hidden w-44 h-8 justify-self-end col-start-12">
 		<Button class="w-full" variant="accent">get in touch</Button>
 	</div>
 	<TextBlock
@@ -8,6 +8,7 @@
 		:callToAction="callToAction"
 		class="lg:mt-44 col-span-4 lg:col-span-8"
 	/>
+	<Rotor class="mt-44 row-start-2 col-span-full h-screen lg:h-auto" />
 </template>
 
 <script setup lang="ts">
