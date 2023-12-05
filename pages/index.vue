@@ -8,7 +8,7 @@
 		:callToAction="callToAction"
 		class="lg:mt-44 col-span-4 lg:col-span-8"
 	/>
-	<Rotor class="mt-44 row-start-2 col-span-full h-screen lg:h-auto" />
+	<Rotor class="mt-44 row-start-2 col-span-full lg:h-auto" />
 </template>
 
 <script setup lang="ts">
