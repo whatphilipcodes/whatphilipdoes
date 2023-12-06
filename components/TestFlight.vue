@@ -1,42 +1,78 @@
 <template>
-	<div
-		ref="scroller"
-		class="absolute top-0 left-0 h-screen w-screen overflow-y-scroll"
-	>
-		<div id="scroll-01" ref="01" class="w-full h-[50vh] bg-mono-700"></div>
-		<div ref="test" class="w-full bg-cinnabar-500"></div>
-		<div id="scroll-02" ref="02" class="w-full h-[50vh] bg-mono-600"></div>
-		<div id="scroll-03" ref="03" class="w-full h-[50vh] bg-mono-500"></div>
-		<div id="scroll-04" ref="04" class="w-full h-[50vh] bg-mono-400"></div>
+	<div id="top" class="w-screen h-[80vh] bg-mono-700">landing</div>
+	<div ref="trigger" class="w-full relative" />
+	<div id="slider" ref="container" class="w-screen h-screen bg-cinnabar-500">
+		slider
 	</div>
+	<div id="bottom" class="w-screen h-screen bg-mono-900">bottom</div>
 </template>
 
 <script setup lang="ts">
-import { useIntersectionObserver } from '@vueuse/core'
-import { useScrollLock } from '@vueuse/core'
+import { useIntersectionObserver } from '#imports'
+import Lenis from '@studio-freight/lenis'
 
-const test = ref<HTMLElement | null>(null)
-const scroller = ref<HTMLElement | null>(null)
+const container = ref<HTMLElement | null>(null) // the element supposed to be scrolled to
+const trigger = ref<HTMLElement | null>(null)
 
-const targetIsVisible = ref(false)
-const isLocked = useScrollLock(scroller)
-isLocked.value = false
-
-const { stop } = useIntersectionObserver(
-	test,
-	([{ isIntersecting }], observerElement) => {
-		targetIsVisible.value = isIntersecting
+onMounted(() => {
+	const lenis = new Lenis({
+		smoothTouch: true,
+	})
+	function raf(time: any) {
+		lenis.raf(time)
+		requestAnimationFrame(raf)
 	}
-)
+	requestAnimationFrame(raf)
 
-watch(targetIsVisible, (value) => {
-	if (value) {
-		console.log('target is visible')
-	} else {
-		console.log('target is not visible')
-		isLocked.value = true
-		console.log(test.value?.offsetTop)
-	}
+	const isVisible = ref(true)
+	useIntersectionObserver(
+		trigger,
+		([{ isIntersecting }]) => {
+			isVisible.value = isIntersecting
+		},
+		{
+			rootMargin: '-200px 0px 0px 0px',
+		}
+	)
+
+	watch(isVisible, (newValue) => {
+		console.log('isVisible changed:', newValue)
+		if (lenis.direction < 0) return
+		lenis.scrollTo(container.value?.offsetTop, {
+			lock: true,
+			onComplete: () => {
+				console.log('scroll complete stopping instance')
+				lenis.stop()
+			},
+		})
+	})
+
+	// resume lenis on click (for testing only)
+	document.addEventListener('click', (event) => {
+		console.log('lenis running')
+		lenis.start()
+	})
 })
 </script>
-<style scoped></style>
+
+<!-- <style lang="css">
+html.lenis {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+</style> -->
