@@ -23,10 +23,6 @@ const stop = watch(
 		stop()
 	}
 )
-
-onMounted(() => {
-	console.log('test:', test.value)
-})
 </script>
 
 <style scoped></style>
