@@ -4,7 +4,6 @@
 			<NuxtPage />
 		</NuxtLayout> -->
 		<TestFlight />
-		<!-- <TestBreakpoints /> -->
 	</div>
 </template>
 

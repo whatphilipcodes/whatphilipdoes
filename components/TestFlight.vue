@@ -1,14 +1,7 @@
 <template>
 	<div id="top" class="w-screen h-[80vh] bg-mono-700">landing</div>
 	<div ref="trigger" class="w-full relative">{{ msg }}</div>
-	<div
-		id="slider"
-		ref="container"
-		@touchmove="console.log('touchmove')"
-		class="w-screen h-screen bg-cinnabar-500"
-	>
-		slider
-	</div>
+	<Rotor id="container" />
 	<div id="bottom" class="sticky top-0 w-screen h-screen bg-mono-900">
 		bottom
 	</div>
@@ -25,6 +18,7 @@ const msg = ref('booting')
 
 onMounted(() => {
 	msg.value = 'mounted'
+	container.value = document.getElementById('container')
 
 	const lenis = new Lenis({
 		touchMultiplier: 1,
