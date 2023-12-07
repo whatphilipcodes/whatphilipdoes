@@ -7,12 +7,6 @@
 		<RotorSlide />
 		<RotorSlide :translate="test" />
 		<RotorSlide />
-		<!-- <div class="absolute top-full w-full h-full bg-cinnabar-500"></div>
-		<div
-			ref="test"
-			class="absolute top-full transition-transform duration-1000 ease-in-out w-full h-full bg-cinnabar-400"
-		></div>
-		<div class="absolute top-full w-full h-full bg-cinnabar-300"></div> -->
 	</div>
 </template>
 
