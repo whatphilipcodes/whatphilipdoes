@@ -30,7 +30,7 @@ export default {
 				'900': '#300d03',
 				'950': '#180602',
 			},
-			error: '#FF3333',
+			error: '#CD0000',
 		},
 		fontSize: {
 			sm: '0.75rem', // 12px
