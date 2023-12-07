@@ -4,14 +4,8 @@
 			<NuxtPage />
 		</NuxtLayout> -->
 		<TestFlight />
+		<!-- <TestBreakpoints /> -->
 	</div>
 </template>
 
-<script setup lang="ts">
-// const mainScroll = ref<HTMLElement | null>(null)
-// const { y } = useScroll(mainScroll)
-
-// watch(y, (newValue) => {
-// 	console.log('Scroll position changed:', newValue)
-// })
-</script>
+<script setup lang="ts"></script>
