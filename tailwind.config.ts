@@ -54,6 +54,11 @@ export default {
 			md: '768px',
 			lg: '1200px',
 		},
+		zIndex: {
+			bottom: '-1000',
+			default: '0',
+			front: '1000',
+		},
 	},
 	container: {
 		center: true,
