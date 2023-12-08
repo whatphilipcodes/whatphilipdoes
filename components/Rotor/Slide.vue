@@ -39,5 +39,3 @@ const classList = computed(() => {
 	}
 })
 </script>
-
-<style scoped></style>

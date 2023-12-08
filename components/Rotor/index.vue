@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-// decalre type
+// demo content
 declare type Slide = {
 	id: number
 	title: string
@@ -61,6 +61,7 @@ const computeTranslate = (index: number) => {
 		return ''
 	}
 }
+///
 
 const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
 const stop = watch(
@@ -76,5 +77,3 @@ const stop = watch(
 	}
 )
 </script>
-
-<style scoped></style>
