@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	modules: [
+		'@pinia/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxt/image',
 		'@nuxtjs/google-fonts',
@@ -17,6 +18,7 @@ export default defineNuxtConfig({
 	},
 	alias: {
 		assets: '/<root-dir>/assets',
+		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
 	},
 	app: {
 		rootId: 'whatphilipdoes',
