@@ -24,29 +24,35 @@ export const useComplexScroll = () => {
 					lock: true,
 					onComplete: () => {
 						console.log('scroll complete stopping instance')
-						lenis.stop()
-						freezeTouchScrolling()
+						stopTouchScroll()
 					},
 				})
+				setTimeout(() => {
+					console.log('starting touch Scrolling')
+					startTouchScroll()
+				}, 3000)
 			},
 			{
 				rootMargin: '-200px 0px 0px 0px',
 			}
 		)
-	})
-	function freezeTouchScrolling() {
-		window.addEventListener(
-			'touchstart',
-			(event) => {
+		function stopTouchScroll() {
+			window.addEventListener(
+				'touchstart',
+				(event) => {
+					event.preventDefault()
+				},
+				{
+					passive: false,
+				}
+			)
+			lenis.stop()
+		}
+		function startTouchScroll() {
+			lenis.start()
+			window.removeEventListener('touchstart', (event) => {
 				event.preventDefault()
-				// scroll back to current?
-				// window.scrollTo({
-				// 	top: container.value?.offsetTop,
-				// })
-			},
-			{
-				passive: false,
-			}
-		)
-	}
+			})
+		}
+	})
 }

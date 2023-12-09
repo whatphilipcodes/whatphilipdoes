@@ -3,6 +3,5 @@ export const useGlobalStore = defineStore('global', () => {
 	function addScrollStop(target: Ref<HTMLElement | null>) {
 		scrollStopperCollection.push(target)
 	}
-
 	return { scrollStopperCollection, addScrollStop }
 })
