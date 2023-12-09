@@ -9,6 +9,7 @@
 	<div id="bottom" class="sticky top-0 w-screen h-screen bg-mono-900">
 		bottom
 	</div>
+	<ScrollStop />
 </template>
 
 <script setup lang="ts">
