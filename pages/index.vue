@@ -8,7 +8,9 @@
 		:callToAction="callToAction"
 		class="lg:mt-44 col-span-full lg:col-span-8"
 	/>
-	<div id="spacer" class="mt-44 col-span-full" />
+	<div id="problem" class="h-screen col-span-2 bg-cinnabar-600"></div>
+	<div class="mt-44 col-span-full" />
+	<div class="mt-44 col-span-full" />
 	<ScrollStop>
 		<Rotor class="lg:h-auto" />
 	</ScrollStop>
@@ -25,5 +27,4 @@ const tags = ['frontend dev', 'machine learning', 'digital design']
 const text =
 	'Former design student turned creative developer. Focusing on ui design and implementation as well as machine learning in generative realms.'
 const callToAction = { label: 'about philip', to: '/about' }
-useComplexScroll()
 </script>
