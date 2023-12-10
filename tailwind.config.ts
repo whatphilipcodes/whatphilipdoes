@@ -57,6 +57,7 @@ export default {
 		zIndex: {
 			bottom: '-1000',
 			default: '0',
+			nav: '10',
 			front: '1000',
 		},
 	},

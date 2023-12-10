@@ -1,12 +1,9 @@
 <template>
-	<div id="app" class="absolute left-0 top-0 text-mono-50 bg-mono-950">
-		<!-- <NuxtLayout>
+	<div id="app" class="text-mono-50 bg-mono-950">
+		<NuxtLayout>
 			<NuxtPage />
-		</NuxtLayout> -->
-		<TestFlight />
+		</NuxtLayout>
 	</div>
 </template>
 
-<script setup lang="ts">
-useComplexScroll()
-</script>
+<script setup lang="ts"></script>

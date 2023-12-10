@@ -1,5 +1,5 @@
 <template>
-	<div id="menu" class="fixed left-0 bottom-0 lg:top-0 h-36 w-full">
+	<div id="menu" class="fixed left-0 bottom-0 lg:top-0 h-36 w-full z-nav">
 		<NavDissolver />
 		<NavDynamicHeading prefix="what" highlight="does" />
 		<NavControlTouch class="lg:hidden" />

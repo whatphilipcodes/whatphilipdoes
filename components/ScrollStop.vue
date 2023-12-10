@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full z-front" ref="triggerElement"></div>
+	<div class="z-front col-span-full" ref="triggerElement" />
 	<slot />
 </template>
 

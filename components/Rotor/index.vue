@@ -4,7 +4,6 @@
 		ref="projectDisplay"
 		class="justify-self-center w-screen h-screen overflow-hidden relative"
 	>
-		<!-- <RotorSlide :id="slides[0].id" :bg-image="slides[0].bgImage" /> -->
 		<RotorSlide
 			v-for="(slide, index) in slides"
 			:translate="computeTranslate(index)"
@@ -14,9 +13,6 @@
 			:tags="slide.tags"
 			:bg-image="slide.bgImage"
 		/>
-		<!-- <div v-for="(slide, index) in slides" :class="computeTranslate(index)">
-			{{ slide.title }}
-		</div> -->
 	</div>
 </template>
 
