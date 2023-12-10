@@ -3,8 +3,8 @@ export const useComplexScroll = () => {
 	const store = useGlobalStore()
 	onMounted(() => {
 		const lenis = new Lenis({
-			touchMultiplier: 1,
-			smoothTouch: true,
+			// touchMultiplier: 1,
+			// smoothTouch: true,
 			orientation: 'vertical',
 		})
 		function raf(time: any) {

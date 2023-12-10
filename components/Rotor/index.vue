@@ -2,7 +2,7 @@
 	<div
 		id="projectDisplay"
 		ref="projectDisplay"
-		class="w-screen h-screen overflow-hidden relative"
+		class="w-screen h-screen col-span-full justify-self-center overflow-clip relative"
 	>
 		<RotorSlide
 			v-for="(slide, index) in slides"
