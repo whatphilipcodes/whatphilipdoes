@@ -3,7 +3,7 @@
 		<NuxtPicture
 			format="webp"
 			:src="props.bgImage"
-			:imgAttrs="{ class: 'h-screen object-cover' }"
+			:imgAttrs="{ class: 'h-full w-full object-cover' }"
 		/>
 	</div>
 </template>
