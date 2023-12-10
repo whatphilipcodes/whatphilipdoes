@@ -1,6 +1,8 @@
 <template>
-	<div class="z-front col-span-full" ref="triggerElement" />
-	<slot />
+	<div class="col-span-full">
+		<div class="z-front" ref="triggerElement" />
+		<slot />
+	</div>
 </template>
 
 <script setup lang="ts">

@@ -10,7 +10,7 @@
 	/>
 	<div id="spacer" class="mt-44 col-span-full" />
 	<ScrollStop>
-		<Rotor class="col-span-full lg:h-auto" />
+		<Rotor class="lg:h-auto" />
 	</ScrollStop>
 	<TextBlock
 		:tags="tags"
