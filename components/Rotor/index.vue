@@ -46,7 +46,7 @@ const slides: Slide[] = [
 ]
 
 const activeSlide = ref(0)
-const projectDisplay = ref<HTMLElement | null>(null)
+const projectDisplay = ref()
 
 const computeTranslate = (index: number) => {
 	if (index === activeSlide.value) {
@@ -57,19 +57,18 @@ const computeTranslate = (index: number) => {
 		return ''
 	}
 }
-///
 
 const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
-const stop = watch(
-	() => isSwiping.value,
-	(value) => {
-		console.log(direction.value, isSwiping.value, lengthY.value)
-		if (!value) return
-		if (direction.value === 'up') {
-			activeSlide.value += 1
-		} else if (direction.value === 'down') {
-			activeSlide.value -= 1
-		}
-	}
-)
+// const stop = watch(
+// 	() => isSwiping.value,
+// 	(value) => {
+// 		console.log(direction.value, isSwiping.value, lengthY.value)
+// 		if (!value) return
+// 		if (direction.value === 'up') {
+// 			activeSlide.value += 1
+// 		} else if (direction.value === 'down') {
+// 			activeSlide.value -= 1
+// 		}
+// 	}
+// )
 </script>

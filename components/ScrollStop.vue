@@ -6,12 +6,9 @@
 </template>
 
 <script setup lang="ts">
-const { scrollStopperCollection, addScrollStop } = useGlobalStore()
-const triggerElement = ref<HTMLElement | null>(null)
+const { addScrollStop } = useGlobalStore()
+const triggerElement = ref()
 onMounted(() => {
-	if (triggerElement.value) {
-		addScrollStop(triggerElement)
-		console.log(scrollStopperCollection)
-	}
+	addScrollStop(triggerElement)
 })
 </script>
