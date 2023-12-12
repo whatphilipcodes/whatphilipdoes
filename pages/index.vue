@@ -10,50 +10,49 @@
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
 		<div class="mt-44 col-span-full" />
-		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
 	<ScrollSegment segmentTitle="test 02">
+		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
 			:text="text"
 			:callToAction="callToAction"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
-		<div class="mt-44 col-span-full" />
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
 	<ScrollSegment segmentTitle="test 03">
+		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
 			:text="text"
 			:callToAction="callToAction"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
-		<div class="mt-44 col-span-full" />
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
 	<ScrollSegment segmentTitle="test 04">
+		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
 			:text="text"
 			:callToAction="callToAction"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
-		<div class="mt-44 col-span-full" />
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
 	<ScrollSegment segmentTitle="test 05">
+		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
 			:text="text"
 			:callToAction="callToAction"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
-		<div class="mt-44 col-span-full" />
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>

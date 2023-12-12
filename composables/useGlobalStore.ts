@@ -10,5 +10,15 @@ export const useGlobalStore = defineStore('global', () => {
 		scrollSegmentTriggers[index].toggle.value =
 			!scrollSegmentTriggers[index].toggle.value
 	}
-	return { scrollSegmentTriggers, addScrollTrigger, toggleScrollTrigger }
+	function getScrollTriggerIndex(target: Element) {
+		return scrollSegmentTriggers.findIndex(
+			(item) => item.target.value === target
+		)
+	}
+	return {
+		scrollSegmentTriggers,
+		addScrollTrigger,
+		toggleScrollTrigger,
+		getScrollTriggerIndex,
+	}
 })
