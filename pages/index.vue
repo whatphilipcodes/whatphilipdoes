@@ -2,7 +2,7 @@
 	<div class="z-front max-lg:hidden w-44 h-8 justify-self-end col-start-12">
 		<Button class="w-full" variant="accent">get in touch</Button>
 	</div>
-	<ScrollSegment segmentTitle="test 01">
+	<ScrollSegment>
 		<TextBlock
 			:tags="tags"
 			:text="text"
@@ -12,18 +12,7 @@
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
-	<ScrollSegment segmentTitle="test 02">
-		<div class="mt-44 col-span-full" />
-		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
-			class="lg:mt-44 col-span-full lg:col-span-8"
-		/>
-		<div class="mt-44 col-span-full" />
-		<Rotor />
-	</ScrollSegment>
-	<ScrollSegment segmentTitle="test 03">
+	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
@@ -34,7 +23,7 @@
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
-	<ScrollSegment segmentTitle="test 04">
+	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"
@@ -45,7 +34,18 @@
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
-	<ScrollSegment segmentTitle="test 05">
+	<ScrollSegment>
+		<div class="mt-44 col-span-full" />
+		<TextBlock
+			:tags="tags"
+			:text="text"
+			:callToAction="callToAction"
+			class="lg:mt-44 col-span-full lg:col-span-8"
+		/>
+		<div class="mt-44 col-span-full" />
+		<Rotor />
+	</ScrollSegment>
+	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:tags="tags"

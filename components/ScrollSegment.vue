@@ -4,13 +4,6 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-	segmentTitle: {
-		type: String,
-		required: true,
-	},
-})
-
 const { addScrollTrigger } = useGlobalStore()
 
 const isRendering = ref(false)
