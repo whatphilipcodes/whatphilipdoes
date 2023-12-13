@@ -4,9 +4,9 @@ tags:
   - machine learning
   - digital design
 
-cta:
-  to: /about
+callToAction:
   label: about philip
+  to: /about
 ---
 
-Ehemaliger Designstudent, jetzt kreativer Entwickler. Konzentriert sich auf UI/UX-Design und -Implementierung, sowie maschinelles Lernen im generativen Kontext.
+Ehemaliger Designstudent, jetzt kreativer Entwickler. Konzentriert sich auf UI/UX-Design und Implementierung, sowie maschinelles Lernen im generativen Kontext.

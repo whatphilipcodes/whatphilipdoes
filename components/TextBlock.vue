@@ -7,7 +7,9 @@
 		>
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
 		</div>
-		<div id="text" class="text-lg leading-lg italic mt-3">{{ text }}</div>
+		<div id="text" class="text-lg leading-lg italic mt-3">
+			{{ description }}
+		</div>
 		<Button
 			v-if="callToAction"
 			:to="callToAction.to"
@@ -18,8 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
-defineProps({
+const props = defineProps({
 	tags: {
 		type: Array as PropType<string[]>,
 		default: undefined,
@@ -33,5 +34,10 @@ defineProps({
 		type: Object as PropType<{ label: string; to: string }>,
 		default: undefined,
 	},
+	contentPlug: {
+		type: Object as PropType<contentTextBlock>,
+		default: undefined,
+	},
 })
+const { tags, text: description, callToAction } = props.contentPlug ?? props
 </script>

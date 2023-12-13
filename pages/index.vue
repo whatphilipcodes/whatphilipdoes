@@ -4,9 +4,7 @@
 	</div>
 	<ScrollSegment>
 		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
+			:contentPlug="landingContent"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
 		<div class="mt-44 col-span-full" />
@@ -59,11 +57,13 @@
 </template>
 
 <script setup lang="ts">
-const landingContent = await queryContent('landing/hero').findOne()
+const landingContent = await queryContent<contentTextBlock>(
+	'landing/hero'
+).findOne()
 const text = landingContent.description
 const tags = landingContent.tags
-const callToAction = landingContent.cta
-console.log(landingContent.cta)
+const callToAction = landingContent.callToAction
+console.log(landingContent.callToAction)
 
 onMounted(() => {
 	useScrollSegments()
