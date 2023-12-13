@@ -59,12 +59,13 @@
 </template>
 
 <script setup lang="ts">
+const landingContent = await queryContent('landing/hero').findOne()
+const text = landingContent.description
+const tags = landingContent.tags
+const callToAction = landingContent.cta
+console.log(landingContent.cta)
+
 onMounted(() => {
 	useScrollSegments()
 })
-
-const tags = ['frontend dev', 'machine learning', 'digital design']
-const text =
-	'Former design student turned creative developer. Focusing on ui design and implementation as well as machine learning in generative realms.'
-const callToAction = { label: 'about philip', to: '/about' }
 </script>
