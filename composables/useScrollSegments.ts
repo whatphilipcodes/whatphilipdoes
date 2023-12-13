@@ -1,20 +1,20 @@
 export const useScrollSegments = () => {
+	const isDebug = false // #rm
+
 	// dependencies
+	const { isScrolling } = useScroll(document)
+	const { debounce } = useDebounce()
 	const { scrollSegmentTriggers, toggleScrollTrigger, getScrollTriggerIndex } =
 		useGlobalStore()
-	const { debounce } = useDebounce()
 
 	// initialization
 	const activeIndex = ref(0)
-	toggleScrollTrigger(activeIndex.value) // show first segment
-
-	// computed
 	const activeSegement = computed(() => {
 		return scrollSegmentTriggers[activeIndex.value]
 	})
-	const activeScrollTop = computed(() => {
-		return activeSegement.value.target.offsetTop
-	})
+	let stopScrollWatch: () => void
+	let activeScrollTop: number
+	toggleScrollTrigger(activeIndex.value) // show first segment
 
 	// loop
 	startLoop()
@@ -22,28 +22,27 @@ export const useScrollSegments = () => {
 		const { stop } = useIntersectionObserver(
 			activeSegement.value.target,
 			([{ isIntersecting, target }]) => {
-				console.log(
-					'isIntersecting:',
-					isIntersecting,
-					'at segment:',
-					getScrollTriggerIndex(target)
-				) // #rm
-				if (!isIntersecting) return
-				if (
-					activeIndex.value >= scrollSegmentTriggers.length - 1 || // stop if last segment
-					scrollSegmentTriggers[activeIndex.value + 1].toggle // only trigger if next segment is hidden
-				)
+				if (isDebug)
+					console.log(
+						'isIntersecting:',
+						isIntersecting,
+						'at segment:',
+						getScrollTriggerIndex(target)
+					) // #rm
+				if (!isIntersecting) return // only trigger on enter
+				if (activeIndex.value >= scrollSegmentTriggers.length - 1) {
+					if (isDebug) console.log('last segment reached') // #rm
+					stop()
 					return
+				} // stop loop entirely if last segment
+				if (scrollSegmentTriggers[activeIndex.value + 1].toggle) return // only trigger if next segment is not already active
+				activeScrollTop = activeSegement.value.target.offsetTop
 				stop() // stop current observer
 				blockScrolling()
 				nextSegment()
 			}
 		)
 	}
-
-	watch(activeSegement, (newValue) => {
-		console.log('activeSegement:', newValue) // #rm
-	})
 
 	// main
 	function nextSegment() {
@@ -56,36 +55,36 @@ export const useScrollSegments = () => {
 	}
 
 	function blockScrolling() {
-		window.addEventListener('touchmove', blockEvent, {
+		window.addEventListener('touchstart', blockEvent, {
 			passive: false,
 		})
-		window.addEventListener('touchend', scrollToActiveSegment)
-		window.addEventListener('wheel', dbScrollToActiveSegment)
 		window.addEventListener('wheel', blockEvent, {
 			passive: false,
+		})
+		stopScrollWatch = watch(isScrolling, (bool) => {
+			if (bool) return
+			dbScrollToActiveSegment()
 		})
 	}
 
 	function enableScrolling() {
-		window.removeEventListener('touchmove', blockEvent)
-		window.removeEventListener('touchend', scrollToActiveSegment)
-		window.removeEventListener('wheel', dbScrollToActiveSegment)
+		stopScrollWatch?.()
+		window.removeEventListener('touchstart', blockEvent)
 		window.removeEventListener('wheel', blockEvent)
 	}
 
 	// secondary
 	function blockEvent(event: Event) {
-		console.log('blocking event') // #rm
+		if (isDebug) console.log('blocking event') // #rm
 		event.preventDefault()
 	}
 
+	const dbScrollToActiveSegment = debounce(scrollToActiveSegment)
 	function scrollToActiveSegment() {
-		console.log('scrolling to active segment') // #rm
+		if (isDebug) console.log('scrolling to active segment...') // #rm
 		window.scrollTo({
-			top: activeScrollTop.value,
+			top: activeScrollTop,
 			behavior: 'smooth',
 		})
 	}
-
-	const dbScrollToActiveSegment = debounce(scrollToActiveSegment, 300)
 }
