@@ -8,7 +8,7 @@
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
 		</div>
 		<div id="text" class="text-lg leading-lg italic mt-3">
-			{{ description }}
+			{{ text }}
 		</div>
 		<Button
 			v-if="callToAction"
@@ -27,8 +27,7 @@ const props = defineProps({
 	},
 	text: {
 		type: String,
-		default:
-			'Aute ex aute tempor enim id voluptate adipisicing pariatur. Minim magna ex proident aute veniam commodo adipisicing non reprehenderit consequat. Id anim aute ea ipsum dolore minim laboris consectetur ad irure sunt non minim.',
+		default: 'Text block did not receive any text. Please provide a text prop.',
 	},
 	callToAction: {
 		type: Object as PropType<{ label: string; to: string }>,
@@ -39,5 +38,5 @@ const props = defineProps({
 		default: undefined,
 	},
 })
-const { tags, text: description, callToAction } = props.contentPlug ?? props
+const { tags, text, callToAction } = props.contentPlug ?? props
 </script>

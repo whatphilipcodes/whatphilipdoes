@@ -13,44 +13,12 @@
 	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
 		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
+			:tags="['this', 'is', 'a', 'test']"
+			text="This is a test text. lol wuhu. power off."
+			:callToAction="{ label: 'get in touch', to: '/contact' }"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
-		<div class="mt-44 col-span-full" />
-		<Rotor />
-	</ScrollSegment>
-	<ScrollSegment>
-		<div class="mt-44 col-span-full" />
-		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
-			class="lg:mt-44 col-span-full lg:col-span-8"
-		/>
-		<div class="mt-44 col-span-full" />
-		<Rotor />
-	</ScrollSegment>
-	<ScrollSegment>
-		<div class="mt-44 col-span-full" />
-		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
-			class="lg:mt-44 col-span-full lg:col-span-8"
-		/>
-		<div class="mt-44 col-span-full" />
-		<Rotor />
-	</ScrollSegment>
-	<ScrollSegment>
-		<div class="mt-44 col-span-full" />
-		<TextBlock
-			:tags="tags"
-			:text="text"
-			:callToAction="callToAction"
-			class="lg:mt-44 col-span-full lg:col-span-8"
-		/>
+		<TextBlock class="col-span-full" />
 		<div class="mt-44 col-span-full" />
 		<Rotor />
 	</ScrollSegment>
