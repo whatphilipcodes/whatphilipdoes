@@ -17,6 +17,47 @@
 </template>
 
 <script setup lang="ts">
+// props
+const props = defineProps({
+	isLocked: {
+		type: Boolean,
+		default: true,
+	},
+})
+
+const activeSlide = ref(0)
+const projectDisplay = ref()
+
+const computeTranslate = (index: number) => {
+	if (index === activeSlide.value) {
+		return '-translate-y-[100%]'
+	} else if (index < activeSlide.value) {
+		return '-translate-y-[200%]'
+	} else {
+		return ''
+	}
+}
+
+// watch(props.isLocked, (value) => {
+// 	if (value) {
+// 		activeSlide.value = 0
+// 	}
+// })
+
+const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
+const stop = watch(
+	() => isSwiping.value,
+	(value) => {
+		console.log(direction.value, isSwiping.value, lengthY.value)
+		if (!value) return
+		if (direction.value === 'up') {
+			activeSlide.value += 1
+		} else if (direction.value === 'down') {
+			activeSlide.value -= 1
+		}
+	}
+)
+
 // demo content
 declare type Slide = {
 	id: number
@@ -44,31 +85,4 @@ const slides: Slide[] = [
 		bgImage: 'https://picsum.photos/seed/3/1920/1080',
 	},
 ]
-
-const activeSlide = ref(0)
-const projectDisplay = ref()
-
-const computeTranslate = (index: number) => {
-	if (index === activeSlide.value) {
-		return '-translate-y-[100%]'
-	} else if (index < activeSlide.value) {
-		return '-translate-y-[200%]'
-	} else {
-		return ''
-	}
-}
-
-const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
-// const stop = watch(
-// 	() => isSwiping.value,
-// 	(value) => {
-// 		console.log(direction.value, isSwiping.value, lengthY.value)
-// 		if (!value) return
-// 		if (direction.value === 'up') {
-// 			activeSlide.value += 1
-// 		} else if (direction.value === 'down') {
-// 			activeSlide.value -= 1
-// 		}
-// 	}
-// )
 </script>
