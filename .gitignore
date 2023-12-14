@@ -25,3 +25,7 @@ logs
 
 # exclude assets from repo
 assets/
+
+# legal files
+content/legal/*
+!content/legal/info.txt
