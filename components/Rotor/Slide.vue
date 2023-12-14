@@ -33,7 +33,7 @@ const props = defineProps({
 })
 const classList = computed(() => {
 	return {
-		'absolute top-full transition-transform duration-1000 ease-in-out h-full w-full bg-cinnabar-100':
+		'absolute top-full transition-transform duration-1000 ease-in-out h-full w-full bg-cinnabar-800':
 			true,
 		[props.translate]: true,
 	}
