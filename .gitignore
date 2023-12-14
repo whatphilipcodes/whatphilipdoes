@@ -28,4 +28,4 @@ assets/
 
 # legal files
 content/legal/*
-!content/legal/info.txt
+!content/legal/about.txt
