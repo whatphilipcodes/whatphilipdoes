@@ -28,10 +28,6 @@
 const landingContent = await queryContent<contentTextBlock>(
 	'landing/hero'
 ).findOne()
-const text = landingContent.description
-const tags = landingContent.tags
-const callToAction = landingContent.callToAction
-console.log(landingContent.callToAction)
 
 onMounted(() => {
 	useScrollSegments()
