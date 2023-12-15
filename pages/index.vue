@@ -9,7 +9,7 @@
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
 		<div class="mt-44 col-span-full" />
-		<Rotor />
+		<Rotor ref="projectRotor" />
 	</ScrollSegment>
 	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
@@ -26,7 +26,12 @@ const landingContent = await queryContent<contentTextBlock>(
 	'landing/hero'
 ).findOne()
 
+const projectRotor = ref()
+
 onMounted(() => {
-	useScrollSegments()
+	const { scrollingBlocked } = useScrollSegments()
+	watch(scrollingBlocked, (value) => {
+		projectRotor.value.toggleLock()
+	})
 })
 </script>

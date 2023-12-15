@@ -8,6 +8,7 @@ export const useScrollSegments = () => {
 		useGlobalStore()
 
 	// initialization
+	const scrollingBlocked = ref(false)
 	const activeIndex = ref(0)
 	const activeSegement = computed(() => {
 		return scrollSegmentTriggers[activeIndex.value]
@@ -65,12 +66,14 @@ export const useScrollSegments = () => {
 			if (bool) return
 			dbScrollToActiveSegment()
 		})
+		scrollingBlocked.value = true
 	}
 
 	function enableScrolling() {
 		stopScrollWatch?.()
 		window.removeEventListener('touchstart', blockEvent)
 		window.removeEventListener('wheel', blockEvent)
+		scrollingBlocked.value = false
 	}
 
 	// secondary
@@ -87,4 +90,6 @@ export const useScrollSegments = () => {
 			behavior: 'smooth',
 		})
 	}
+
+	return { activeSegement, scrollingBlocked }
 }

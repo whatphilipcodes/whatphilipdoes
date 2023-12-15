@@ -17,13 +17,14 @@
 </template>
 
 <script setup lang="ts">
-// props
-const props = defineProps({
-	isLocked: {
-		type: Boolean,
-		default: true,
-	},
-})
+import type { WatchStopHandle } from 'vue'
+
+// lock state
+const isLocked = ref(true)
+const toggleLock = () => {
+	isLocked.value = !isLocked.value
+}
+defineExpose({ toggleLock, isLocked })
 
 const activeSlide = ref(0)
 const projectDisplay = ref()
@@ -38,25 +39,30 @@ const computeTranslate = (index: number) => {
 	}
 }
 
-// watch(props.isLocked, (value) => {
-// 	if (value) {
-// 		activeSlide.value = 0
-// 	}
-// })
+watch(isLocked, (value) => {
+	if (value) {
+		stop?.()
+	} else {
+		start()
+	}
+})
 
 const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
-const stop = watch(
-	() => isSwiping.value,
-	(value) => {
-		console.log(direction.value, isSwiping.value, lengthY.value)
-		if (!value) return
-		if (direction.value === 'up') {
-			activeSlide.value += 1
-		} else if (direction.value === 'down') {
-			activeSlide.value -= 1
+let stop: WatchStopHandle = () => {}
+const start = () => {
+	stop = watch(
+		() => isSwiping.value,
+		(value) => {
+			console.log(direction.value, isSwiping.value, lengthY.value)
+			if (!value) return
+			if (direction.value === 'up') {
+				activeSlide.value += 1
+			} else if (direction.value === 'down') {
+				activeSlide.value -= 1
+			}
 		}
-	}
-)
+	)
+}
 
 // demo content
 declare type Slide = {
