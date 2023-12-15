@@ -5,6 +5,25 @@
 			:src="props.bgImage"
 			:imgAttrs="{ class: 'h-full w-full object-cover' }"
 		/>
+		<div
+			id="gradient"
+			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
+		></div>
+		<div
+			id="metaContainer"
+			class="absolute top-0 left-0 my-5 mx-4 flex flex-col gap-y-4"
+		>
+			<div id="title" class="text-cinnabar-500">{{ title.toLowerCase() }}</div>
+			<div class="flex flex-row flex-wrap gap-x-6 gap-y-4">
+				<div
+					v-for="(tag, index) in tags"
+					:key="index"
+					class="text-mono-500 text-sm"
+				>
+					{{ tag }}
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -33,7 +52,7 @@ const props = defineProps({
 	},
 	tags: {
 		type: Array,
-		default: () => [],
+		default: ['did', 'not', 'receive', 'tags'],
 	},
 	bgImage: {
 		type: String,

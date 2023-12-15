@@ -1,9 +1,5 @@
 <template>
-	<div
-		id="projectDisplay"
-		ref="projectDisplay"
-		class="w-screen h-screen col-span-full justify-self-center overflow-clip relative"
-	>
+	<div id="projectDisplay" ref="projectDisplay" :class="classList">
 		<RotorSlide
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
@@ -30,21 +26,22 @@ declare type Slide = {
 const slides: Slide[] = [
 	{
 		id: 0,
-		title: 'Project 1',
-		tags: ['tag1', 'tag2', 'tag3'],
+		title: 'Inter',
+		tags: [
+			'machine learning',
+			'artificial intelligence',
+			'electron.js',
+			'vue.js',
+			'tailwindcss',
+			'typescript',
+		],
 		bgImage: 'https://picsum.photos/seed/1/1920/1080',
 	},
 	{
 		id: 1,
-		title: 'Project 2',
+		title: 'Entity',
 		tags: ['tag1', 'tag2', 'tag3'],
 		bgImage: 'https://picsum.photos/seed/2/1920/1080',
-	},
-	{
-		id: 2,
-		title: 'Project 3',
-		tags: ['tag1', 'tag2', 'tag3'],
-		bgImage: 'https://picsum.photos/seed/3/1920/1080',
 	},
 ]
 
@@ -53,6 +50,14 @@ const props = defineProps({
 		type: Function,
 		required: false,
 	},
+})
+
+const classList = computed(() => {
+	return {
+		'w-screen h-screen col-span-full justify-self-center overflow-clip relative':
+			true,
+		'absolute top-0': isLocked.value,
+	}
 })
 
 // is animating state
