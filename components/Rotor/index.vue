@@ -19,11 +19,18 @@
 <script setup lang="ts">
 import type { WatchStopHandle } from 'vue'
 
-// lock state
+// exposed lock state
 const isLocked = ref(true)
 const toggleLock = () => {
 	isLocked.value = !isLocked.value
 }
+watch(isLocked, (value) => {
+	if (value) {
+		stop?.()
+	} else {
+		start()
+	}
+})
 defineExpose({ toggleLock, isLocked })
 
 const activeSlide = ref(0)
@@ -39,14 +46,6 @@ const computeTranslate = (index: number) => {
 	}
 }
 
-watch(isLocked, (value) => {
-	if (value) {
-		stop?.()
-	} else {
-		start()
-	}
-})
-
 const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
 let stop: WatchStopHandle = () => {}
 const start = () => {
@@ -56,8 +55,10 @@ const start = () => {
 			console.log(direction.value, isSwiping.value, lengthY.value)
 			if (!value) return
 			if (direction.value === 'up') {
+				if (activeSlide.value === slides.length - 1) return
 				activeSlide.value += 1
 			} else if (direction.value === 'down') {
+				if (activeSlide.value === 0) return
 				activeSlide.value -= 1
 			}
 		}

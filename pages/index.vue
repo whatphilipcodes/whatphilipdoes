@@ -22,12 +22,13 @@
 </template>
 
 <script setup lang="ts">
+// content
 const landingContent = await queryContent<contentTextBlock>(
 	'landing/hero'
 ).findOne()
 
+// rotor
 const projectRotor = ref()
-
 onMounted(() => {
 	const { scrollingBlocked } = useScrollSegments()
 	watch(scrollingBlocked, (value) => {
