@@ -40,7 +40,7 @@ export const useScrollSegments = () => {
 				activeScrollTop = activeSegement.value.target.offsetTop
 				stop() // stop current observer
 				blockScrolling()
-				nextSegment()
+				// nextSegment()
 			}
 		)
 	}
@@ -53,6 +53,14 @@ export const useScrollSegments = () => {
 			enableScrolling()
 			startLoop() // start new observer
 		}, 5000)
+	}
+
+	function stopCompleted() {
+		if (!scrollingBlocked.value) return
+		activeIndex.value++
+		toggleScrollTrigger(activeIndex.value)
+		enableScrolling()
+		startLoop() // start new observer
 	}
 
 	function blockScrolling() {
@@ -91,5 +99,5 @@ export const useScrollSegments = () => {
 		})
 	}
 
-	return { activeSegement, scrollingBlocked }
+	return { activeSegement, scrollingBlocked, stopCompleted }
 }

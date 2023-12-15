@@ -6,6 +6,7 @@
 	>
 		<RotorSlide
 			v-for="(slide, index) in slides"
+			ref="slideInstances"
 			:translate="computeTranslate(index)"
 			:key="slide.id"
 			:id="slide.id"
@@ -18,52 +19,6 @@
 
 <script setup lang="ts">
 import type { WatchStopHandle } from 'vue'
-
-// exposed lock state
-const isLocked = ref(true)
-const toggleLock = () => {
-	isLocked.value = !isLocked.value
-}
-watch(isLocked, (value) => {
-	if (value) {
-		stop?.()
-	} else {
-		start()
-	}
-})
-defineExpose({ toggleLock, isLocked })
-
-const activeSlide = ref(0)
-const projectDisplay = ref()
-
-const computeTranslate = (index: number) => {
-	if (index === activeSlide.value) {
-		return '-translate-y-[100%]'
-	} else if (index < activeSlide.value) {
-		return '-translate-y-[200%]'
-	} else {
-		return ''
-	}
-}
-
-const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
-let stop: WatchStopHandle = () => {}
-const start = () => {
-	stop = watch(
-		() => isSwiping.value,
-		(value) => {
-			console.log(direction.value, isSwiping.value, lengthY.value)
-			if (!value) return
-			if (direction.value === 'up') {
-				if (activeSlide.value === slides.length - 1) return
-				activeSlide.value += 1
-			} else if (direction.value === 'down') {
-				if (activeSlide.value === 0) return
-				activeSlide.value -= 1
-			}
-		}
-	)
-}
 
 // demo content
 declare type Slide = {
@@ -92,4 +47,81 @@ const slides: Slide[] = [
 		bgImage: 'https://picsum.photos/seed/3/1920/1080',
 	},
 ]
+
+const props = defineProps({
+	completionCallback: {
+		type: Function,
+		required: false,
+	},
+})
+
+// is animating state
+import { RotorSlide } from '#components'
+const slideInstances = ref<(typeof RotorSlide)[]>([])
+const isAnimating = computed(() => {
+	return slideInstances.value.some((slide) => {
+		return slide.isAnimating
+	})
+})
+
+// exposed lock state
+const isLocked = ref(true)
+const toggleLock = () => {
+	isLocked.value = !isLocked.value
+}
+watch(isLocked, (value) => {
+	if (value) {
+		stopLockWatch?.()
+	} else {
+		start()
+	}
+})
+defineExpose({ toggleLock, isLocked })
+
+const activeSlide = ref(0)
+const projectDisplay = ref()
+const completed = computed(() => activeSlide.value === slides.length - 1)
+
+// exit rotor
+const stopCompleteWatch = watch(completed, (value) => {
+	if (value) {
+		toggleLock()
+		stopCompleteWatch()
+		const stopAnimationWatch = watch(isAnimating, (value) => {
+			if (!value) {
+				props.completionCallback?.()
+				stopAnimationWatch()
+			}
+		})
+	}
+})
+
+const computeTranslate = (index: number) => {
+	if (index === activeSlide.value) {
+		return '-translate-y-[100%]'
+	} else if (index < activeSlide.value) {
+		return '-translate-y-[200%]'
+	} else {
+		return ''
+	}
+}
+
+// swipe
+const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
+let stopLockWatch: WatchStopHandle = () => {}
+const start = () => {
+	stopLockWatch = watch(
+		() => isSwiping.value,
+		(value) => {
+			if (!value || isAnimating.value) return
+			if (direction.value === 'up') {
+				if (activeSlide.value === slides.length - 1) return
+				activeSlide.value += 1
+			} else if (direction.value === 'down') {
+				if (activeSlide.value === 0) return
+				activeSlide.value -= 1
+			}
+		}
+	)
+}
 </script>

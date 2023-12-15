@@ -9,7 +9,7 @@
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
 		<div class="mt-44 col-span-full" />
-		<Rotor ref="projectRotor" />
+		<Rotor ref="projectRotor" :completionCallback="completeCb" />
 	</ScrollSegment>
 	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
@@ -22,6 +22,9 @@
 </template>
 
 <script setup lang="ts">
+// props
+let completeCb: () => void
+
 // content
 const landingContent = await queryContent<contentTextBlock>(
 	'landing/hero'
@@ -30,9 +33,10 @@ const landingContent = await queryContent<contentTextBlock>(
 // rotor
 const projectRotor = ref()
 onMounted(() => {
-	const { scrollingBlocked } = useScrollSegments()
+	const { scrollingBlocked, stopCompleted } = useScrollSegments()
+	completeCb = stopCompleted
 	watch(scrollingBlocked, (value) => {
-		projectRotor.value.toggleLock()
+		if (value) projectRotor.value.toggleLock()
 	})
 })
 </script>
