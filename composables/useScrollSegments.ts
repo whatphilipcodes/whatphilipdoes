@@ -3,7 +3,6 @@ export const useScrollSegments = () => {
 
 	// dependencies
 	const { isScrolling } = useScroll(document)
-	const { debounce } = useDebounce()
 	const { scrollSegmentTriggers, toggleScrollTrigger, getScrollTriggerIndex } =
 		useGlobalStore()
 
@@ -46,14 +45,14 @@ export const useScrollSegments = () => {
 	}
 
 	// main
-	function nextSegment() {
-		setTimeout(() => {
-			activeIndex.value++
-			toggleScrollTrigger(activeIndex.value)
-			enableScrolling()
-			startLoop() // start new observer
-		}, 5000)
-	}
+	// function nextSegment() {
+	// 	setTimeout(() => {
+	// 		activeIndex.value++
+	// 		toggleScrollTrigger(activeIndex.value)
+	// 		enableScrolling()
+	// 		startLoop() // start new observer
+	// 	}, 5000)
+	// }
 
 	function stopCompleted() {
 		if (!scrollingBlocked.value) return
@@ -90,7 +89,7 @@ export const useScrollSegments = () => {
 		event.preventDefault()
 	}
 
-	const dbScrollToActiveSegment = debounce(scrollToActiveSegment)
+	const dbScrollToActiveSegment = useDebounceFn(scrollToActiveSegment, 300)
 	function scrollToActiveSegment() {
 		if (isDebug) console.log('scrolling to active segment...') // #rm
 		window.scrollTo({

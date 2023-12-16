@@ -1,32 +1,121 @@
 export const useWheelSwipe = (
-	wheelUpCb: () => void,
-	wheelDownCb: () => void
+	eventHost: Window,
+	cbSwipeUp: () => void,
+	cdSwipeDown: () => void,
+	msAvarageFrequency: number = 100
 ) => {
-	const { cooldown } = useCooldown()
+	// intialize
+	let avarageDelta: number
+	let deltaBuffer: number
+	let deltaDivider: number
+	initValues()
 
-	let swipeDeltaY = 0
-	function wheelCallback(event: WheelEvent) {
-		event.preventDefault()
-		if (event.deltaY === 0) swipeDeltaY = 0
-		console.log('event.deltaY', event.deltaY, 'swipeDeltaY', swipeDeltaY)
-		if (Math.abs(event.deltaY) > swipeDeltaY) {
-			if (event.deltaY > 0) {
-				cdWheelDownSwipe()
-			} else if (event.deltaY < 0) {
-				cdWheelUpSwipe()
-			}
-		}
-		swipeDeltaY = Math.abs(event.deltaY)
+	// debug shit
+	let iterationCounter = 0
+	function debugPrint(event: WheelEvent) {
+		console.log(
+			'deltaY',
+			event.deltaY.toFixed(2),
+			'avarageDelta',
+			avarageDelta.toFixed(2),
+			'iteration',
+			iterationCounter
+		)
+		iterationCounter++
 	}
-	const cdWheelUpSwipe = cooldown(wheelUpCb, 1000)
-	const cdWheelDownSwipe = cooldown(wheelDownCb, 1000)
 
-	// // remove default block
-	// function removeDefaultBlock(event: WheelEvent, rmCallback: () => void) {
-	// 	if (Math.abs(event.deltaY) < swipeDeltaY && event.deltaY !== 0) return
-	// 	// rmCallback()
-	// 	console.log('swipe over')
-	// }
+	// controller
+	function start() {
+		eventHost.addEventListener('wheel', debugPrint as EventListener, {
+			passive: false,
+		})
+		eventHost.addEventListener('wheel', swipeCallback as EventListener, {
+			passive: false,
+		})
+		// eventHost.addEventListener('wheel', defaultBlock as EventListener, {
+		// 	passive: false,
+		// })
+	}
 
-	return { wheelCallback }
+	function stop() {
+		// eventHost.removeEventListener('wheel', wheelCallback as EventListener)
+		// eventHost.addEventListener('wheel', removeDefaultBlock as EventListener, {
+		// 	passive: false,
+		// })
+	}
+
+	function swipeCallback(event: WheelEvent) {
+		deltaBuffer += event.deltaY
+		deltaDivider += 1
+		modSetAvarageDelta()
+		modInitValues()
+	}
+
+	// helpers
+	const modSetAvarageDelta = useThrottleFn(setAvarageDelta, msAvarageFrequency)
+	function setAvarageDelta() {
+		avarageDelta = deltaBuffer / deltaDivider
+		deltaDivider = 0
+		deltaBuffer = 0
+	}
+
+	const modInitValues = useDebounceFn(initValues, 600)
+	function initValues() {
+		avarageDelta = 0
+		deltaBuffer = 0
+		deltaDivider = 0
+	}
+
+	/**
+	// callbacks
+	function wheelCallback(event: WheelEvent) {
+		if (event.deltaY > lastDelta) {
+			console.log('swipe down') // #rm
+			cdWheelDownSwipe()
+		} else if (event.deltaY < lastDelta) {
+			console.log('swipe up') // #rm
+			cdWheelUpSwipe()
+		}
+		updateDelta(event.deltaY)
+		// dbResetDelta()
+	}
+
+	function defaultBlock(event: WheelEvent) {
+		event.preventDefault()
+	}
+
+	function removeDefaultBlock(event: WheelEvent) {
+		if (Math.abs(event.deltaY) > Math.abs(lastDelta)) {
+			eventHost.removeEventListener('wheel', defaultBlock as EventListener)
+			eventHost.removeEventListener(
+				'wheel',
+				removeDefaultBlock as EventListener
+			)
+			console.log('stopped blocking deltaY') // #rm
+		} else {
+			console.log('still blocking') // #rm
+		}
+		updateDelta(event.deltaY)
+	}
+
+	// helpers
+	function resetDelta() {
+		console.log('reset delta') // #rm
+		lastDelta = 0
+	}
+
+	function updateDelta(delta: number) {
+		console.log('update delta') // #rm
+		lastDelta = delta
+	}
+
+	
+
+	const cdWheelUpSwipe = cooldown(cbSwipeUp, 1000)
+	const cdWheelDownSwipe = cooldown(cdSwipeDown, 1000)
+	const cdUpdateDelta = cooldown(updateDelta, 100)
+	const dbResetDelta = debounce(resetDelta, 400)
+	*/
+
+	return { start, stop }
 }

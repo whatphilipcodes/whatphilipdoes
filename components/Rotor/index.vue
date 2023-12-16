@@ -91,7 +91,7 @@ const toggleLock = () => {
 }
 watch(isLocked, (value) => {
 	if (value) {
-		window.removeEventListener('wheel', wheelCallback)
+		stopWheelSwipe()
 		stopLockWatch?.()
 	} else {
 		start()
@@ -144,9 +144,13 @@ const start = () => {
 			}
 		}
 	)
-	window.addEventListener('wheel', wheelCallback, { passive: false })
+	startWheelSwipe()
 }
-const { wheelCallback } = useWheelSwipe(up, down)
+const { start: startWheelSwipe, stop: stopWheelSwipe } = useWheelSwipe(
+	window,
+	up,
+	down
+)
 
 function down() {
 	if (isAnimating.value) return
