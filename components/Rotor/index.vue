@@ -4,11 +4,10 @@
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
 			:translate="computeTranslate(index)"
-			:key="slide.id"
-			:id="slide.id"
 			:title="slide.title"
 			:tags="slide.tags"
 			:bg-image="slide.bgImage"
+			:ms-duration="1000"
 		/>
 	</div>
 </template>
@@ -18,14 +17,12 @@ import type { WatchStopHandle } from 'vue'
 
 // demo content
 declare type Slide = {
-	id: number
 	title: string
 	tags: string[]
 	bgImage: string
 }
 const slides: Slide[] = [
 	{
-		id: 0,
 		title: 'Inter',
 		tags: [
 			'machine learning',
@@ -38,10 +35,28 @@ const slides: Slide[] = [
 		bgImage: 'https://picsum.photos/seed/1/1920/1080',
 	},
 	{
-		id: 1,
 		title: 'Entity',
-		tags: ['tag1', 'tag2', 'tag3'],
+		tags: [
+			'machine learning',
+			'artificial intelligence',
+			'electron.js',
+			'vue.js',
+			'tailwindcss',
+			'typescript',
+		],
 		bgImage: 'https://picsum.photos/seed/2/1920/1080',
+	},
+	{
+		title: 'Frentitity',
+		tags: [
+			'machine learning',
+			'artificial intelligence',
+			'electron.js',
+			'vue.js',
+			'tailwindcss',
+			'typescript',
+		],
+		bgImage: 'https://picsum.photos/seed/3/1920/1080',
 	},
 ]
 
@@ -76,6 +91,7 @@ const toggleLock = () => {
 }
 watch(isLocked, (value) => {
 	if (value) {
+		window.removeEventListener('wheel', wheelCallback)
 		stopLockWatch?.()
 	} else {
 		start()
@@ -128,5 +144,37 @@ const start = () => {
 			}
 		}
 	)
+	window.addEventListener('wheel', wheelCallback, { passive: false })
 }
+const { wheelCallback } = useWheelSwipe(up, down)
+
+function down() {
+	if (isAnimating.value) return
+	if (activeSlide.value === slides.length - 1) return
+	activeSlide.value += 1
+}
+
+function up() {
+	if (isAnimating.value) return
+	if (activeSlide.value === 0) return
+	activeSlide.value -= 1
+}
+
+// onMounted(() => {
+// 	window.addEventListener('wheel', (event) => {
+// 		console.log(event)
+// 	})
+// })
+
+// function wheelCallback(event: WheelEvent) {
+// 	event.preventDefault()
+// 	if (isAnimating.value) return
+// 	if (event.deltaY > 5) {
+// 		if (activeSlide.value === slides.length - 1) return
+// 		activeSlide.value += 1
+// 	} else if (event.deltaY < -5) {
+// 		if (activeSlide.value === 0) return
+// 		activeSlide.value -= 1
+// 	}
+// }
 </script>

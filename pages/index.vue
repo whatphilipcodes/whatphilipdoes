@@ -1,9 +1,9 @@
 <template>
 	<ScrollSegment>
+		<div class="z-front max-lg:hidden w-44 h-8 justify-self-end col-start-12">
+			<Button class="w-full" variant="accent">get in touch</Button>
+		</div>
 		<div class="col-span-full h-[60vh]">
-			<div class="z-front max-lg:hidden w-44 h-8 justify-self-end col-start-12">
-				<Button class="w-full" variant="accent">get in touch</Button>
-			</div>
 			<TextBlock
 				:contentPlug="landingContent"
 				class="lg:mt-44 col-span-full lg:col-span-8"

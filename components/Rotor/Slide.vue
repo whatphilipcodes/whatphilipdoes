@@ -42,10 +42,6 @@ const props = defineProps({
 		type: Number,
 		default: 1000,
 	},
-	id: {
-		type: Number,
-		default: 0,
-	},
 	title: {
 		type: String,
 		default: '',
