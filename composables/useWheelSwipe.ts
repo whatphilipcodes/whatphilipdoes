@@ -2,94 +2,98 @@ export const useWheelSwipe = (
 	eventHost: Window,
 	cbSwipeUp: () => void,
 	cbSwipeDown: () => void,
-	msAvarageFrequency: number = 80,
-	msInitOnRelease: number = 250,
-	msThresholdDelay: number = 200,
-	msCBCooldown: number = 100
+	msDelayClear: number = 250,
+	msAvarageFrequency: number = 80
 ) => {
 	// intialize
 	let fired: boolean
+	let peaked: boolean
+	let threshed: boolean
+	let clearAll: boolean
+
 	let avarageDelta: number
 	let deltaBuffer: number
 	let deltaDivider: number
-	init()
-
-	// debug shit
-	function debugPrint(event: WheelEvent) {
-		console.log(
-			'deltaY',
-			event.deltaY.toFixed(2),
-			'avarageDelta',
-			avarageDelta.toFixed(2)
-		)
-		// console.log('avarageDelta', avarageDelta.toFixed(2))
-	}
-
-	// callback throttling
-	const modCBSwipeUp = useThrottleFn(cbSwipeUp, msCBCooldown)
-	const modCBSwipeDown = useThrottleFn(cbSwipeDown, msCBCooldown)
 
 	// controller
 	function enter() {
-		eventHost.addEventListener('wheel', debugPrint as EventListener, {
-			passive: false,
-		})
-		eventHost.addEventListener('wheel', avarageDeltaCallback as EventListener, {
-			passive: false,
-		})
-		eventHost.addEventListener('wheel', swipeCallback as EventListener, {
-			passive: false,
-		})
-		// eventHost.addEventListener('wheel', swipeThreshold as EventListener, {
-		// 	passive: false,
-		// })
-		// eventHost.addEventListener('wheel', switchDirection as EventListener, {
-		// 	passive: false,
-		// })
-		eventHost.addEventListener('wheel', modInit as EventListener, {
-			passive: false,
-		})
+		clearAll = false
+		clear()
+		addListener(blockDefault)
+		addListener(cbDataLoop)
+		addListener(cbSwipeLoop)
+		addListener(modClear)
 	}
 
-	function exit() {}
+	function exit() {
+		clearAll = true
+	}
 
-	// main callbacks
-	function avarageDeltaCallback(event: WheelEvent) {
-		deltaBuffer += event.deltaY
+	const modClear = useDebounceFn(clear, msDelayClear)
+	function clear() {
+		if (clearAll) {
+			dispose()
+			return
+		}
+
+		// event listeners
+		removeListener(cbSwipeThresholdDetection)
+		removeListener(cbDirectionSwitchDetection)
+
+		// avarage delta
+		avarageDelta = 0
+		deltaBuffer = 0
+		deltaDivider = 0
+
+		// state
+		fired = false
+		peaked = false
+		threshed = false
+	}
+
+	function dispose() {
+		allListeners.forEach((cb) => removeListener(cb))
+	}
+
+	// primary callbacks
+	function cbDataLoop(wheel: WheelEvent) {
+		deltaBuffer += wheel.deltaY
 		deltaDivider += 1
 		modSetAvarageDelta()
 	}
 
-	function swipeCallback() {
+	function cbSwipeLoop(wheel: WheelEvent) {
 		if (fired) return
-		if (avarageDelta > 0) modCBSwipeDown()
-		else if (avarageDelta < 0) modCBSwipeUp()
+		if (wheel.deltaY > 0) cbSwipeDown()
+		else if (wheel.deltaY < 0) cbSwipeUp()
 		fired = true
-		engageThreshold()
+		addListener(cbPeakDetection)
+		addListener(cbDirectionSwitchDetection)
 	}
 
-	// function switchDirection(event: WheelEvent) {
-	// 	if (signsMatch(event.deltaY, avarageDelta)) return
-	// 	console.log('switched direction', event.deltaY, avarageDelta)
-	// 	init()
-	// }
+	// secondary callbacks
+	function cbPeakDetection(wheel: WheelEvent) {
+		if (peaked || Math.abs(wheel.deltaY) >= Math.abs(avarageDelta)) return
+		peaked = true
+		removeListener(cbPeakDetection)
+		setTimeout(
+			() => addListener(cbSwipeThresholdDetection),
+			2 * msAvarageFrequency
+		)
+	}
+
+	function cbDirectionSwitchDetection(wheel: WheelEvent) {
+		if (signsMatch(wheel.deltaY, avarageDelta)) return
+		clear()
+	}
+
+	function cbSwipeThresholdDetection(wheel: WheelEvent) {
+		if (Math.abs(wheel.deltaY) <= Math.abs(avarageDelta)) return
+		threshed = true
+		clear()
+	}
 
 	// helpers
-	function engageThreshold() {
-		setTimeout(() => {
-			eventHost.addEventListener('wheel', swipeThreshold as EventListener, {
-				passive: false,
-			})
-		}, msThresholdDelay)
-	}
-
-	function swipeThreshold(event: WheelEvent) {
-		if (Math.abs(event.deltaY) < Math.abs(avarageDelta)) return
-		console.log('swipe threshold', event.deltaY, avarageDelta)
-		eventHost.removeEventListener('wheel', swipeThreshold as EventListener)
-		init()
-	}
-
 	const modSetAvarageDelta = useThrottleFn(setAvarageDelta, msAvarageFrequency)
 	function setAvarageDelta() {
 		avarageDelta = deltaBuffer / deltaDivider
@@ -97,18 +101,22 @@ export const useWheelSwipe = (
 		deltaBuffer = 0
 	}
 
-	const modInit = useDebounceFn(init, msInitOnRelease)
-	function init() {
-		console.log('init')
-		avarageDelta = 0
-		deltaBuffer = 0
-		deltaDivider = 0
-		fired = false
+	function blockDefault(wheel: WheelEvent) {
+		wheel.preventDefault()
 	}
 
-	// function signsMatch(current: number, previous: number): boolean {
-	// 	return current * previous >= 0
-	// }
+	const allListeners: ((wheel: WheelEvent) => void)[] = []
+	function addListener(cb: (wheel: WheelEvent) => void) {
+		allListeners.push(cb)
+		eventHost.addEventListener('wheel', cb as EventListener, { passive: false })
+	}
+	function removeListener(cb: (wheel: WheelEvent) => void) {
+		eventHost.removeEventListener('wheel', cb as EventListener)
+	}
 
-	return { start: enter, stop: exit }
+	function signsMatch(a: number, b: number): boolean {
+		return a * b >= 0
+	}
+
+	return { enter, exit }
 }
