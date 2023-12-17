@@ -91,7 +91,7 @@ const toggleLock = () => {
 }
 watch(isLocked, (value) => {
 	if (value) {
-		stopWheelSwipe()
+		exitWheelSwipe()
 		stopLockWatch?.()
 	} else {
 		start()
@@ -144,9 +144,9 @@ const start = () => {
 			}
 		}
 	)
-	startWheelSwipe()
+	enterWheelSwipe()
 }
-const { start: startWheelSwipe, stop: stopWheelSwipe } = useWheelSwipe(
+const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
 	window,
 	up,
 	down
