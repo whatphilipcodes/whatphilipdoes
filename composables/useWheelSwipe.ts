@@ -1,57 +1,95 @@
 export const useWheelSwipe = (
 	eventHost: Window,
 	cbSwipeUp: () => void,
-	cdSwipeDown: () => void,
-	msAvarageFrequency: number = 100
+	cbSwipeDown: () => void,
+	msAvarageFrequency: number = 80,
+	msInitOnRelease: number = 250,
+	msThresholdDelay: number = 200,
+	msCBCooldown: number = 100
 ) => {
 	// intialize
+	let fired: boolean
 	let avarageDelta: number
 	let deltaBuffer: number
 	let deltaDivider: number
-	initValues()
+	init()
 
 	// debug shit
-	let iterationCounter = 0
 	function debugPrint(event: WheelEvent) {
 		console.log(
 			'deltaY',
 			event.deltaY.toFixed(2),
 			'avarageDelta',
-			avarageDelta.toFixed(2),
-			'iteration',
-			iterationCounter
+			avarageDelta.toFixed(2)
 		)
-		iterationCounter++
+		// console.log('avarageDelta', avarageDelta.toFixed(2))
 	}
 
+	// callback throttling
+	const modCBSwipeUp = useThrottleFn(cbSwipeUp, msCBCooldown)
+	const modCBSwipeDown = useThrottleFn(cbSwipeDown, msCBCooldown)
+
 	// controller
-	function start() {
+	function enter() {
 		eventHost.addEventListener('wheel', debugPrint as EventListener, {
+			passive: false,
+		})
+		eventHost.addEventListener('wheel', avarageDeltaCallback as EventListener, {
 			passive: false,
 		})
 		eventHost.addEventListener('wheel', swipeCallback as EventListener, {
 			passive: false,
 		})
-		// eventHost.addEventListener('wheel', defaultBlock as EventListener, {
+		// eventHost.addEventListener('wheel', swipeThreshold as EventListener, {
 		// 	passive: false,
 		// })
-	}
-
-	function stop() {
-		// eventHost.removeEventListener('wheel', wheelCallback as EventListener)
-		// eventHost.addEventListener('wheel', removeDefaultBlock as EventListener, {
+		// eventHost.addEventListener('wheel', switchDirection as EventListener, {
 		// 	passive: false,
 		// })
+		eventHost.addEventListener('wheel', modInit as EventListener, {
+			passive: false,
+		})
 	}
 
-	function swipeCallback(event: WheelEvent) {
+	function exit() {}
+
+	// main callbacks
+	function avarageDeltaCallback(event: WheelEvent) {
 		deltaBuffer += event.deltaY
 		deltaDivider += 1
 		modSetAvarageDelta()
-		modInitValues()
 	}
 
+	function swipeCallback() {
+		if (fired) return
+		if (avarageDelta > 0) modCBSwipeDown()
+		else if (avarageDelta < 0) modCBSwipeUp()
+		fired = true
+		engageThreshold()
+	}
+
+	// function switchDirection(event: WheelEvent) {
+	// 	if (signsMatch(event.deltaY, avarageDelta)) return
+	// 	console.log('switched direction', event.deltaY, avarageDelta)
+	// 	init()
+	// }
+
 	// helpers
+	function engageThreshold() {
+		setTimeout(() => {
+			eventHost.addEventListener('wheel', swipeThreshold as EventListener, {
+				passive: false,
+			})
+		}, msThresholdDelay)
+	}
+
+	function swipeThreshold(event: WheelEvent) {
+		if (Math.abs(event.deltaY) < Math.abs(avarageDelta)) return
+		console.log('swipe threshold', event.deltaY, avarageDelta)
+		eventHost.removeEventListener('wheel', swipeThreshold as EventListener)
+		init()
+	}
+
 	const modSetAvarageDelta = useThrottleFn(setAvarageDelta, msAvarageFrequency)
 	function setAvarageDelta() {
 		avarageDelta = deltaBuffer / deltaDivider
@@ -59,63 +97,18 @@ export const useWheelSwipe = (
 		deltaBuffer = 0
 	}
 
-	const modInitValues = useDebounceFn(initValues, 600)
-	function initValues() {
+	const modInit = useDebounceFn(init, msInitOnRelease)
+	function init() {
+		console.log('init')
 		avarageDelta = 0
 		deltaBuffer = 0
 		deltaDivider = 0
+		fired = false
 	}
 
-	/**
-	// callbacks
-	function wheelCallback(event: WheelEvent) {
-		if (event.deltaY > lastDelta) {
-			console.log('swipe down') // #rm
-			cdWheelDownSwipe()
-		} else if (event.deltaY < lastDelta) {
-			console.log('swipe up') // #rm
-			cdWheelUpSwipe()
-		}
-		updateDelta(event.deltaY)
-		// dbResetDelta()
-	}
+	// function signsMatch(current: number, previous: number): boolean {
+	// 	return current * previous >= 0
+	// }
 
-	function defaultBlock(event: WheelEvent) {
-		event.preventDefault()
-	}
-
-	function removeDefaultBlock(event: WheelEvent) {
-		if (Math.abs(event.deltaY) > Math.abs(lastDelta)) {
-			eventHost.removeEventListener('wheel', defaultBlock as EventListener)
-			eventHost.removeEventListener(
-				'wheel',
-				removeDefaultBlock as EventListener
-			)
-			console.log('stopped blocking deltaY') // #rm
-		} else {
-			console.log('still blocking') // #rm
-		}
-		updateDelta(event.deltaY)
-	}
-
-	// helpers
-	function resetDelta() {
-		console.log('reset delta') // #rm
-		lastDelta = 0
-	}
-
-	function updateDelta(delta: number) {
-		console.log('update delta') // #rm
-		lastDelta = delta
-	}
-
-	
-
-	const cdWheelUpSwipe = cooldown(cbSwipeUp, 1000)
-	const cdWheelDownSwipe = cooldown(cdSwipeDown, 1000)
-	const cdUpdateDelta = cooldown(updateDelta, 100)
-	const dbResetDelta = debounce(resetDelta, 400)
-	*/
-
-	return { start, stop }
+	return { start: enter, stop: exit }
 }
