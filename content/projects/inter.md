@@ -1,5 +1,5 @@
 ---
-header: /public/img/projects/inter/header-inter.jpg
+header: /img/projects/inter/header-inter.jpg
 tags:
   - interactive machine learning
   - hf transformers
