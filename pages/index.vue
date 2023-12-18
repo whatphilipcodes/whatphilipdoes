@@ -1,6 +1,6 @@
 <template>
 	<ScrollSegment>
-		<div class="z-front max-lg:hidden w-44 h-8 justify-self-end col-start-12">
+		<div class="z-front max-lg:hidden w-44 h-10 justify-self-end col-start-12">
 			<Button class="w-full" variant="accent">get in touch</Button>
 		</div>
 		<div class="col-span-full h-[60vh]">

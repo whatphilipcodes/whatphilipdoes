@@ -13,7 +13,7 @@
 		<Button
 			v-if="callToAction"
 			:to="callToAction.to"
-			class="mt-8 w-44 h-8 max-sm:hidden"
+			class="mt-8 w-44 h-10 max-sm:hidden"
 			>{{ callToAction.label }}</Button
 		>
 	</div>
