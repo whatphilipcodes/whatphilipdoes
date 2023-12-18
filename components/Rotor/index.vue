@@ -163,22 +163,4 @@ function up() {
 	if (activeSlide.value === 0) return
 	activeSlide.value -= 1
 }
-
-// onMounted(() => {
-// 	window.addEventListener('wheel', (event) => {
-// 		console.log(event)
-// 	})
-// })
-
-// function wheelCallback(event: WheelEvent) {
-// 	event.preventDefault()
-// 	if (isAnimating.value) return
-// 	if (event.deltaY > 5) {
-// 		if (activeSlide.value === slides.length - 1) return
-// 		activeSlide.value += 1
-// 	} else if (event.deltaY < -5) {
-// 		if (activeSlide.value === 0) return
-// 		activeSlide.value -= 1
-// 	}
-// }
 </script>
