@@ -2,6 +2,7 @@ export const useWheelSwipe = (
 	eventHost: Window,
 	cbSwipeUp: () => void,
 	cbSwipeDown: () => void,
+	cbAfterScroll: () => void = () => {},
 	msDelayClear: number = 250,
 	msAvarageFrequency: number = 80
 ) => {
@@ -9,6 +10,7 @@ export const useWheelSwipe = (
 	let fired: boolean
 	let peaked: boolean
 	let threshed: boolean
+	let disposed: boolean
 	let clearAll: boolean
 
 	let avarageDelta: number
@@ -18,6 +20,7 @@ export const useWheelSwipe = (
 	// controller
 	function enter() {
 		clearAll = false
+		disposed = false
 		clear()
 		addListener(blockDefault)
 		addListener(cbDataLoop)
@@ -31,7 +34,7 @@ export const useWheelSwipe = (
 
 	const modClear = useDebounceFn(clear, msDelayClear)
 	function clear() {
-		if (clearAll) {
+		if (clearAll && !disposed) {
 			dispose()
 			return
 		}
@@ -52,6 +55,8 @@ export const useWheelSwipe = (
 	}
 
 	function dispose() {
+		disposed = true
+		cbAfterScroll?.()
 		allListeners.forEach((cb) => removeListener(cb))
 	}
 

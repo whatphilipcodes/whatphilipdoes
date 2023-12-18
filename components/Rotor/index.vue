@@ -9,6 +9,15 @@
 			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
+		<div v-if="restartUI" :class="restartClasses">
+			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
+			<Button
+				class="absolute w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+				as="button"
+				@click="restart"
+				>restart</Button
+			>
+		</div>
 	</div>
 </template>
 
@@ -34,6 +43,36 @@ const classList = computed(() => {
 	}
 })
 
+// restartable state
+const transitionDuration = 1000
+const restartUI = ref(false)
+const restartable = ref(false)
+const restartClasses = computed(() => {
+	return {
+		[`duration-${transitionDuration}`]: true,
+		'opacity-0': !restartable.value,
+	}
+})
+async function enableRestartable() {
+	console.log('enableRestartable') // #rm
+	restartUI.value = true
+	setTimeout(() => {
+		restartable.value = true
+	}, 1)
+	window.removeEventListener('wheel', enableRestartable)
+	window.removeEventListener('touchstart', enableRestartable)
+}
+function disableRestartable() {
+	restartable.value = false
+	setTimeout(() => {
+		restartUI.value = restartable.value
+	}, transitionDuration)
+}
+function restart() {
+	if (!restartable.value) return
+	disableRestartable()
+}
+
 // is animating state
 import { RotorSlide } from '#components'
 const slideInstances = ref<(typeof RotorSlide)[]>([])
@@ -52,6 +91,7 @@ watch(isLocked, (value) => {
 	if (value) {
 		exitWheelSwipe()
 		stopLockWatch?.()
+		window.addEventListener('touchstart', enableRestartable)
 	} else {
 		start()
 	}
@@ -87,7 +127,7 @@ const computeTranslate = (index: number) => {
 }
 
 // swipe
-const { direction, isSwiping, lengthY } = useSwipe(projectDisplay)
+const { direction, isSwiping } = useSwipe(projectDisplay)
 let stopLockWatch: WatchStopHandle = () => {}
 const start = () => {
 	stopLockWatch = watch(
@@ -95,11 +135,9 @@ const start = () => {
 		(value) => {
 			if (!value || isAnimating.value) return
 			if (direction.value === 'up') {
-				if (activeSlide.value === props.slides.length - 1) return
-				activeSlide.value += 1
+				down()
 			} else if (direction.value === 'down') {
-				if (activeSlide.value === 0) return
-				activeSlide.value -= 1
+				up()
 			}
 		}
 	)
@@ -108,7 +146,11 @@ const start = () => {
 const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
 	window,
 	up,
-	down
+	down,
+	() => {
+		window.addEventListener('wheel', enableRestartable)
+		console.log('added event listener') // #rm
+	}
 )
 
 function down() {
