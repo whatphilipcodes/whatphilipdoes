@@ -11,7 +11,7 @@
 		</div>
 		<Rotor
 			ref="projectRotor"
-			:completionCallback="completeCb"
+			:completionCallback="cbRotorComplete"
 			:slides="projectsContent"
 		/>
 	</ScrollSegment>
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 // props
-let completeCb: () => void
+let cbRotorComplete: () => void
 
 // content
 const landingContent = await queryContent<contentTextBlock>(
@@ -38,10 +38,10 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 // rotor
 const projectRotor = ref()
 onMounted(() => {
-	const { scrollingBlocked, stopCompleted } = useScrollSegments()
-	completeCb = stopCompleted
+	const { scrollingBlocked, completeStop } = useScrollSegments()
+	cbRotorComplete = completeStop
 	watch(scrollingBlocked, (value) => {
-		if (value) projectRotor.value.toggleLock()
+		if (value) projectRotor.value?.enter()
 	})
 })
 </script>

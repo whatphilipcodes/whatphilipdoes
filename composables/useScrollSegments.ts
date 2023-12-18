@@ -44,17 +44,7 @@ export const useScrollSegments = () => {
 		)
 	}
 
-	// main
-	// function nextSegment() {
-	// 	setTimeout(() => {
-	// 		activeIndex.value++
-	// 		toggleScrollTrigger(activeIndex.value)
-	// 		enableScrolling()
-	// 		startLoop() // start new observer
-	// 	}, 5000)
-	// }
-
-	function stopCompleted() {
+	function completeStop() {
 		if (!scrollingBlocked.value) return
 		activeIndex.value++
 		toggleScrollTrigger(activeIndex.value)
@@ -98,5 +88,5 @@ export const useScrollSegments = () => {
 		})
 	}
 
-	return { activeSegement, scrollingBlocked, stopCompleted }
+	return { activeSegement, scrollingBlocked, completeStop }
 }
