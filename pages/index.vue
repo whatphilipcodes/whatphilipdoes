@@ -5,12 +5,15 @@
 		</div>
 		<div class="col-span-full h-[60vh]">
 			<TextBlock
-				:contentPlug="landingContent"
+				:content="landingContent"
 				class="lg:mt-44 col-span-full lg:col-span-8"
 			/>
 		</div>
-		<!-- <div class="mt-32 col-span-full" /> -->
-		<Rotor ref="projectRotor" :completionCallback="completeCb" />
+		<Rotor
+			ref="projectRotor"
+			:completionCallback="completeCb"
+			:slides="projectsContent"
+		/>
 	</ScrollSegment>
 	<ScrollSegment>
 		<div class="mt-44 col-span-full" />
@@ -30,6 +33,7 @@ let completeCb: () => void
 const landingContent = await queryContent<contentTextBlock>(
 	'landing/hero'
 ).findOne()
+const projectsContent = await queryContent<contentProject>('projects').find()
 
 // rotor
 const projectRotor = ref()

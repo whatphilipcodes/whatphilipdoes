@@ -1,5 +1,5 @@
 ---
-header: /assets/img/projects/entity/hero.png
+header: /public/img/projects/entity/header-entity.jpg
 tags:
   - realtime differential-line-growth
   - external hardware communication

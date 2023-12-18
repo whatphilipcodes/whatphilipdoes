@@ -6,7 +6,7 @@
 			:translate="computeTranslate(index)"
 			:title="slide.title"
 			:tags="slide.tags"
-			:bg-image="slide.bgImage"
+			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
 	</div>
@@ -15,52 +15,11 @@
 <script setup lang="ts">
 import type { WatchStopHandle } from 'vue'
 
-// demo content
-declare type Slide = {
-	title: string
-	tags: string[]
-	bgImage: string
-}
-const slides: Slide[] = [
-	{
-		title: 'Inter',
-		tags: [
-			'machine learning',
-			'artificial intelligence',
-			'electron.js',
-			'vue.js',
-			'tailwindcss',
-			'typescript',
-		],
-		bgImage: 'https://picsum.photos/seed/1/1920/1080',
-	},
-	{
-		title: 'Entity',
-		tags: [
-			'machine learning',
-			'artificial intelligence',
-			'electron.js',
-			'vue.js',
-			'tailwindcss',
-			'typescript',
-		],
-		bgImage: 'https://picsum.photos/seed/2/1920/1080',
-	},
-	{
-		title: 'Frentitity',
-		tags: [
-			'machine learning',
-			'artificial intelligence',
-			'electron.js',
-			'vue.js',
-			'tailwindcss',
-			'typescript',
-		],
-		bgImage: 'https://picsum.photos/seed/3/1920/1080',
-	},
-]
-
 const props = defineProps({
+	slides: {
+		type: Array as PropType<contentProject[]>,
+		required: true,
+	},
 	completionCallback: {
 		type: Function,
 		required: false,
@@ -101,7 +60,7 @@ defineExpose({ toggleLock, isLocked })
 
 const activeSlide = ref(0)
 const projectDisplay = ref()
-const completed = computed(() => activeSlide.value === slides.length - 1)
+const completed = computed(() => activeSlide.value === props.slides.length - 1)
 
 // exit rotor
 const stopCompleteWatch = watch(completed, (value) => {
@@ -136,7 +95,7 @@ const start = () => {
 		(value) => {
 			if (!value || isAnimating.value) return
 			if (direction.value === 'up') {
-				if (activeSlide.value === slides.length - 1) return
+				if (activeSlide.value === props.slides.length - 1) return
 				activeSlide.value += 1
 			} else if (direction.value === 'down') {
 				if (activeSlide.value === 0) return
@@ -154,7 +113,7 @@ const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
 
 function down() {
 	if (isAnimating.value) return
-	if (activeSlide.value === slides.length - 1) return
+	if (activeSlide.value === props.slides.length - 1) return
 	activeSlide.value += 1
 }
 

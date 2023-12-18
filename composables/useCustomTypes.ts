@@ -4,3 +4,8 @@ export interface contentTextBlock extends ParsedContent {
 	text: string
 	callToAction: { label: string; to: string }
 }
+export interface contentProject extends ParsedContent {
+	header: string
+	tags: string[]
+	landing: boolean
+}

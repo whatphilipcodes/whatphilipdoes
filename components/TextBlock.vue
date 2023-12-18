@@ -33,10 +33,10 @@ const props = defineProps({
 		type: Object as PropType<{ label: string; to: string }>,
 		default: undefined,
 	},
-	contentPlug: {
+	content: {
 		type: Object as PropType<contentTextBlock>,
 		default: undefined,
 	},
 })
-const { tags, text, callToAction } = props.contentPlug ?? props
+const { tags, text, callToAction } = props.content ?? props
 </script>
