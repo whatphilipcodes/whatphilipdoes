@@ -5,3 +5,6 @@
 		<slot />
 	</div>
 </template>
+<script>
+// #info: mb will lead to alignment issues with the scroll segments (mt only here)
+</script>

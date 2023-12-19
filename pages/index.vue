@@ -9,6 +9,7 @@
 				class="lg:mt-44 col-span-full lg:col-span-8"
 			/>
 		</div>
+		<div ref="test" />
 		<Rotor
 			ref="projectRotor"
 			:completionCallback="cbRotorComplete"
@@ -37,6 +38,7 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 
 // rotor
 const projectRotor = ref()
+const test = ref()
 onMounted(() => {
 	const { scrollingBlocked, completeStop } = useScrollSegments()
 	cbRotorComplete = completeStop
@@ -47,5 +49,14 @@ onMounted(() => {
 			}, 400)
 		}
 	})
+
+	// test
+	setTimeout(() => {
+		console.log(test.value.offsetTop)
+		window.scrollTo({
+			top: document.body.scrollHeight,
+			behavior: 'smooth',
+		})
+	}, 2000)
 })
 </script>

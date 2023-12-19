@@ -9,14 +9,12 @@
 			id="gradient"
 			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 		></div>
-		<Grid id="metaContainer" class="absolute top-0 left-0">
-			<div id="title" class="text-cinnabar-500">{{ title.toLowerCase() }}</div>
-			<div class="flex flex-row flex-wrap gap-x-6 gap-y-4">
-				<div
-					v-for="(tag, index) in tags"
-					:key="index"
-					class="text-mono-500 text-sm"
-				>
+		<Grid id="metaContainer" class="absolute top-0 left-0 gap-x-6 gap-y-4">
+			<div id="title" class="text-cinnabar-500 col-span-full">
+				{{ title.toLowerCase() }}
+			</div>
+			<div class="flex flex-row flex-wrap col-span-3 gap-x-6">
+				<div v-for="(tag, index) in tags" :key="index" class="text-mono-500">
 					{{ tag }}
 				</div>
 			</div>

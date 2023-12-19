@@ -13,7 +13,6 @@ export const useScrollSegments = () => {
 		return scrollSegmentTriggers[activeIndex.value]
 	})
 	let stopScrollWatch: () => void
-	let activeScrollTop: number
 	toggleScrollTrigger(activeIndex.value) // show first segment
 
 	// loop
@@ -36,7 +35,6 @@ export const useScrollSegments = () => {
 					return
 				} // stop loop entirely if last segment
 				if (scrollSegmentTriggers[activeIndex.value + 1].toggle) return // only trigger if next segment is not already active
-				activeScrollTop = activeSegement.value.target.offsetTop
 				stop() // stop current observer
 				blockScrolling()
 			},
@@ -83,9 +81,8 @@ export const useScrollSegments = () => {
 
 	const dbScrollToActiveSegment = useDebounceFn(scrollToActiveSegment, 300)
 	function scrollToActiveSegment() {
-		if (isDebug) console.log('scrolling to active segment...') // #rm
 		window.scrollTo({
-			top: activeScrollTop,
+			top: document.body.scrollHeight, // #info: margin bottom would lead to alignment issues
 			behavior: 'smooth',
 		})
 	}
