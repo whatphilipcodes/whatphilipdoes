@@ -1,5 +1,5 @@
 export const useScrollSegments = () => {
-	const isDebug = true // #rm
+	const isDebug = false // #rm
 
 	// dependencies
 	const { isScrolling } = useScroll(document)

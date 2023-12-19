@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="dynamic-heading"
-		class="absolute bottom-4 lg:top-4 left-4 lg:left-32 flex flex-col w-full font-semibold text-xl leading-xl"
+		class="absolute bottom-0 lg:top-0 left-0 flex flex-col font-semibold text-xl leading-xl pointer-events-auto"
 	>
 		<div id="container-logo-top" class="flex flex-row gap-4 text-mono-500">
 			<div id="prefix" class="inline align-text-top">{{ prefix }}</div>
@@ -15,4 +15,6 @@
 
 <script setup lang="ts">
 defineProps(['highlight', 'prefix'])
+// rm
+// class="absolute bottom-4 lg:top-4 left-4 lg:left-32 flex flex-col w-full font-semibold text-xl leading-xl"
 </script>

@@ -49,14 +49,5 @@ onMounted(() => {
 			}, 400)
 		}
 	})
-
-	// test
-	setTimeout(() => {
-		console.log(test.value.offsetTop)
-		window.scrollTo({
-			top: document.body.scrollHeight,
-			behavior: 'smooth',
-		})
-	}, 2000)
 })
 </script>
