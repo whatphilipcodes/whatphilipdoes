@@ -41,7 +41,11 @@ onMounted(() => {
 	const { scrollingBlocked, completeStop } = useScrollSegments()
 	cbRotorComplete = completeStop
 	watch(scrollingBlocked, (value) => {
-		if (value) projectRotor.value?.enter()
+		if (value) {
+			setTimeout(() => {
+				projectRotor.value?.enter()
+			}, 400)
+		}
 	})
 })
 </script>

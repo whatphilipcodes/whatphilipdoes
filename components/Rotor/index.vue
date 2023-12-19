@@ -66,11 +66,13 @@ function enter() {
 }
 function exit() {
 	isActive.value = false
-	window.removeEventListener('wheel', blockDefault)
-	window.removeEventListener('touchstart', blockDefault)
-	window.addEventListener('touchstart', enableRestartable)
-	exitWheelSwipe()
-	stopSwipeWatch?.()
+	setTimeout(() => {
+		window.removeEventListener('wheel', blockDefault)
+		window.removeEventListener('touchstart', blockDefault)
+		window.addEventListener('touchstart', enableRestartable)
+		exitWheelSwipe()
+		stopSwipeWatch?.()
+	}, 400)
 }
 defineExpose({ enter, exit })
 
