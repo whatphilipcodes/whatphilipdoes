@@ -1,5 +1,5 @@
 export const useScrollSegments = () => {
-	const isDebug = false // #rm
+	const isDebug = true // #rm
 
 	// dependencies
 	const { isScrolling } = useScroll(document)
@@ -39,7 +39,9 @@ export const useScrollSegments = () => {
 				activeScrollTop = activeSegement.value.target.offsetTop
 				stop() // stop current observer
 				blockScrolling()
-				// nextSegment()
+			},
+			{
+				rootMargin: '1px', // fx: chrome bug
 			}
 		)
 	}
