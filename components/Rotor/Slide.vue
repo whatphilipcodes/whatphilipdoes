@@ -58,7 +58,7 @@ const durationClassToken = computed(() => {
 })
 const classList = computed(() => {
 	return {
-		[`absolute top-full transition-transform dynamic-duration ease-in-out h-full w-full`]:
+		[`absolute top-full transition-transform dynamic-duration ease-in-out h-full w-full will-change-transform`]:
 			true,
 		[props.translate]: true,
 	}
