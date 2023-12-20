@@ -6,9 +6,16 @@
 		<NavDissolver />
 		<Grid class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
-				<NavDynamicHeading class="" prefix="what" highlight="does" />
-				<NavControlTouch class="lg:hidden" />
+				<NavDynamicHeading
+					:prefix="activeSegment.dynamicHeader.prefix"
+					:highlight="activeSegment.dynamicHeader.highlight"
+				/>
+				<NavControlTouch class="lg:hidden" :buttons="activeSegment.buttons" />
 			</div>
 		</Grid>
 	</div>
 </template>
+
+<script setup lang="ts">
+const { activeSegment } = useGlobalStore()
+</script>

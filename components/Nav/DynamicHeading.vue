@@ -15,6 +15,4 @@
 
 <script setup lang="ts">
 defineProps(['highlight', 'prefix'])
-// rm
-// class="absolute bottom-4 lg:top-4 left-4 lg:left-32 flex flex-col w-full font-semibold text-xl leading-xl"
 </script>

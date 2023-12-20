@@ -9,3 +9,14 @@ export interface contentProject extends ParsedContent {
 	tags: string[]
 	landing: boolean
 }
+export interface pageSegment {
+	dynamicHeader: {
+		prefix: string
+		highlight: string
+	}
+	buttons?: {
+		label: string
+		to: string
+		accent?: boolean
+	}[]
+}
