@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
 const trigger = ref()
-const { addSegmentTrigger, updateActiveSegment, activeSegment } =
-	useGlobalStore()
+const { addSegmentTrigger } = useGlobalStore()
 const props = defineProps({
 	dynHeadPrefix: {
 		type: String,

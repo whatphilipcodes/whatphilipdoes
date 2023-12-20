@@ -18,10 +18,12 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 
 	// segment triggers
-	const segmentTriggers: {
-		target: Ref<HTMLElement>
-		segment: Ref<Partial<pageSegment>>
-	}[] = []
+	const segmentTriggers: Ref<
+		{
+			target: Ref<HTMLElement>
+			segment: Ref<Partial<pageSegment>>
+		}[]
+	> = ref([])
 	const activeSegment = ref<pageSegment>({
 		dynHeadPrefix: 'what',
 		dynHeadHighlight: 'does',
@@ -31,12 +33,12 @@ export const useGlobalStore = defineStore('global', () => {
 		target: Ref<HTMLElement>,
 		segment: Ref<Partial<pageSegment>>
 	) {
-		segmentTriggers.push({ target, segment })
+		segmentTriggers.value.push({ target, segment })
 	}
-	function getSegmentTriggerIndex(target: Element) {
-		return segmentTriggers.findIndex((item) => item.target.value === target)
+	function getSegment(target: Ref<HTMLElement>) {
+		return segmentTriggers.value.find((item) => item.target === target)
 	}
-	function updateActiveSegment(segment: Partial<pageSegment>) {
+	function updateActiveSegment(segment: Ref<Partial<pageSegment>>) {
 		Object.assign(activeSegment.value, segment)
 	}
 
@@ -49,6 +51,6 @@ export const useGlobalStore = defineStore('global', () => {
 		getStopTriggerIndex,
 		segmentTriggers,
 		addSegmentTrigger,
-		getSegmentTriggerIndex,
+		getSegment,
 	}
 })

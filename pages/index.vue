@@ -28,6 +28,7 @@
 <script setup lang="ts">
 // props
 let cbRotorComplete: () => void
+const { enter: enterSegments, exit: exitSegments } = useScrollSegments()
 
 // content
 const landingContent = await queryContent<contentTextBlock>(
@@ -38,7 +39,7 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 // rotor
 const projectRotor = ref()
 onMounted(() => {
-	// console.log('mounted index')
+	// scroll stops
 	const { scrollingBlocked, completeStop } = useScrollStops()
 	cbRotorComplete = completeStop
 	watch(scrollingBlocked, (value) => {
@@ -48,8 +49,15 @@ onMounted(() => {
 			}, 400)
 		}
 	})
+
+	// segments
+	enterSegments()
 })
 onUnmounted(() => {
-	// console.log('unmounted index')
+	// scroll stops
+	// #todo
+
+	// segments
+	exitSegments()
 })
 </script>
