@@ -10,13 +10,11 @@ export interface contentProject extends ParsedContent {
 	landing: boolean
 }
 export interface pageSegment {
-	dynamicHeader: {
-		prefix: string
-		highlight: string
-	}
-	buttons?: {
+	dynHeadPrefix: string
+	dynHeadHighlight: string
+	buttons: {
 		label: string
 		to: string
-		accent?: boolean
+		accent: boolean
 	}[]
 }

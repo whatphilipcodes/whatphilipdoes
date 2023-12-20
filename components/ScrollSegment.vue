@@ -3,43 +3,50 @@
 </template>
 
 <script setup lang="ts">
+const trigger = ref()
+const { addSegmentTrigger, updateActiveSegment, activeSegment } =
+	useGlobalStore()
 const props = defineProps({
-	headerPrefix: {
+	dynHeadPrefix: {
 		type: String,
-		default: 'error: no prefix',
+		default: undefined,
 	},
-	headerHighlight: {
+	dynHeadHighlight: {
 		type: String,
-		default: 'error: no highlight',
+		default: undefined,
 	},
-	buttonArray: {
+	buttons: {
 		type: Array<{ label: string; to: string }>,
-		default: () => [{ label: 'error: no buttons', to: '' }],
+		default: undefined,
 	},
 	pageSegment: {
-		type: Object as PropType<pageSegment>,
-		default: () => ({} as pageSegment),
+		type: Object as PropType<Partial<pageSegment>>,
+		default: undefined,
 	},
-})
-const { addSegmentTrigger } = useGlobalStore()
-const trigger = ref()
-const computedSegment = computed(() => {
-	return {
-		dynamicHeader: {
-			prefix: props.headerPrefix,
-			highlight: props.headerHighlight,
-		},
-		buttons: props.buttonArray,
-	} as pageSegment
 })
 
 const segment = computed(() => {
-	return props.pageSegment.dynamicHeader
-		? props.pageSegment
-		: computedSegment.value
+	if (props.pageSegment) {
+		return props.pageSegment
+	} else {
+		return {
+			...(props.dynHeadPrefix && {
+				dynHeadPrefix: props.dynHeadPrefix,
+			}),
+			...(props.dynHeadHighlight && {
+				dynHeadHighlight: props.dynHeadHighlight,
+			}),
+			...(props.buttons && {
+				buttons: props.buttons,
+			}),
+		} as Partial<pageSegment>
+	}
 })
 
 onMounted(() => {
+	console.log(segment.value)
 	addSegmentTrigger(trigger, segment)
+	updateActiveSegment(segment.value)
+	console.log(activeSegment)
 })
 </script>

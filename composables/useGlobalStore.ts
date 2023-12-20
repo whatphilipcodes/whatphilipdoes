@@ -1,14 +1,6 @@
 import type { pageSegment } from './useCustomTypes'
 
 export const useGlobalStore = defineStore('global', () => {
-	// state
-	const activeSegment = ref<pageSegment>({
-		dynamicHeader: {
-			prefix: 'what',
-			highlight: 'does',
-		},
-	})
-
 	// stop triggers
 	const scrollStopTriggers: {
 		target: Ref<HTMLElement>
@@ -28,20 +20,29 @@ export const useGlobalStore = defineStore('global', () => {
 	// segment triggers
 	const segmentTriggers: {
 		target: Ref<HTMLElement>
-		segment: Ref<pageSegment>
+		segment: Ref<Partial<pageSegment>>
 	}[] = []
+	const activeSegment = ref<pageSegment>({
+		dynHeadPrefix: 'what',
+		dynHeadHighlight: 'does',
+		buttons: [],
+	})
 	function addSegmentTrigger(
 		target: Ref<HTMLElement>,
-		segment: Ref<pageSegment>
+		segment: Ref<Partial<pageSegment>>
 	) {
 		segmentTriggers.push({ target, segment })
 	}
 	function getSegmentTriggerIndex(target: Element) {
 		return segmentTriggers.findIndex((item) => item.target.value === target)
 	}
+	function updateActiveSegment(segment: Partial<pageSegment>) {
+		Object.assign(activeSegment.value, segment)
+	}
 
 	return {
 		activeSegment,
+		updateActiveSegment,
 		scrollStopTriggers,
 		addStopTrigger,
 		toggleStopTrigger,
