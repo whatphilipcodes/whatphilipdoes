@@ -108,6 +108,7 @@ function restart() {
 	if (!restartable.value) return
 	disableRestartable()
 	enter()
+	scrollToTop()
 }
 
 // is animating state

@@ -11,7 +11,7 @@
 		></div>
 		<Grid
 			id="metaContainer"
-			class="absolute max-md:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4"
+			class="absolute max-lg:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4"
 		>
 			<div id="title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
