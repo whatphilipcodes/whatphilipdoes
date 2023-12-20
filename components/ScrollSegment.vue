@@ -44,9 +44,6 @@ const segment = computed(() => {
 })
 
 onMounted(() => {
-	console.log(segment.value)
 	addSegmentTrigger(trigger, segment)
-	updateActiveSegment(segment.value)
-	console.log(activeSegment)
 })
 </script>
