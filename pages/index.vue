@@ -1,5 +1,5 @@
 <template>
-	<ScrollSegment>
+	<ScrollStop>
 		<div class="z-front max-lg:hidden w-44 h-10 justify-self-end col-start-12">
 			<Button class="w-full" variant="accent">get in touch</Button>
 		</div>
@@ -11,15 +11,15 @@
 			:completionCallback="cbRotorComplete"
 			:slides="projectsContent"
 		/>
-	</ScrollSegment>
-	<ScrollSegment>
+	</ScrollStop>
+	<ScrollStop>
 		<div class="mt-44 col-span-full" />
 		<TextBlock
 			:contentPlug="landingContent"
 			class="lg:mt-44 col-span-full lg:col-span-8"
 		/>
 		<div class="mt-44 col-span-full" />
-	</ScrollSegment>
+	</ScrollStop>
 </template>
 
 <script setup lang="ts">
@@ -35,8 +35,8 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 // rotor
 const projectRotor = ref()
 onMounted(() => {
-	console.log('mounted index')
-	const { scrollingBlocked, completeStop } = useScrollSegments()
+	// console.log('mounted index')
+	const { scrollingBlocked, completeStop } = useScrollStop()
 	cbRotorComplete = completeStop
 	watch(scrollingBlocked, (value) => {
 		if (value) {
@@ -47,6 +47,6 @@ onMounted(() => {
 	})
 })
 onUnmounted(() => {
-	console.log('unmounted index')
+	// console.log('unmounted index')
 })
 </script>

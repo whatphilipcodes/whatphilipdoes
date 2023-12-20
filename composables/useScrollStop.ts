@@ -1,4 +1,4 @@
-export const useScrollSegments = () => {
+export const useScrollStop = () => {
 	const isDebug = false // #rm
 
 	// dependencies
