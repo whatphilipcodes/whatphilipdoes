@@ -36,7 +36,7 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 const projectRotor = ref()
 onMounted(() => {
 	// console.log('mounted index')
-	const { scrollingBlocked, completeStop } = useScrollStop()
+	const { scrollingBlocked, completeStop } = useScrollStops()
 	cbRotorComplete = completeStop
 	watch(scrollingBlocked, (value) => {
 		if (value) {

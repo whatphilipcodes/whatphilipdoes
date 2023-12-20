@@ -1,38 +1,38 @@
-export const useScrollStop = () => {
+export const useScrollStops = () => {
 	const isDebug = false // #rm
 
 	// dependencies
-	const { scrollSegmentTriggers, toggleScrollTrigger, getScrollTriggerIndex } =
+	const { scrollStopTriggers, toggleStopTrigger, getStopTriggerIndex } =
 		useGlobalStore()
 
 	// initialization
 	const scrollingBlocked = ref(false)
 	const activeIndex = ref(0)
-	const activeSegement = computed(() => {
-		return scrollSegmentTriggers[activeIndex.value]
+	const activeStop = computed(() => {
+		return scrollStopTriggers[activeIndex.value]
 	})
-	toggleScrollTrigger(activeIndex.value) // show first segment
+	toggleStopTrigger(activeIndex.value) // show first segment
 
 	// loop
 	startLoop()
 	function startLoop() {
 		const { stop } = useIntersectionObserver(
-			activeSegement.value.target,
+			activeStop.value.target,
 			([{ isIntersecting, target }]) => {
 				if (isDebug)
 					console.log(
 						'isIntersecting:',
 						isIntersecting,
 						'at segment:',
-						getScrollTriggerIndex(target)
+						getStopTriggerIndex(target)
 					) // #rm
 				if (!isIntersecting) return // only trigger on enter
-				if (activeIndex.value >= scrollSegmentTriggers.length - 1) {
+				if (activeIndex.value >= scrollStopTriggers.length - 1) {
 					if (isDebug) console.log('last segment reached') // #rm
 					stop()
 					return
 				} // stop loop entirely if last segment
-				if (scrollSegmentTriggers[activeIndex.value + 1].toggle) return // only trigger if next segment is not already active
+				if (scrollStopTriggers[activeIndex.value + 1].toggle) return // only trigger if next segment is not already active
 				stop() // stop current observer
 				blockScrolling()
 			},
@@ -45,7 +45,7 @@ export const useScrollStop = () => {
 	function completeStop() {
 		if (!scrollingBlocked.value) return
 		activeIndex.value++
-		toggleScrollTrigger(activeIndex.value)
+		toggleStopTrigger(activeIndex.value)
 		enableScrolling()
 		startLoop() // start new observer
 	}
@@ -72,5 +72,5 @@ export const useScrollStop = () => {
 		event.preventDefault()
 	}
 
-	return { activeSegement, scrollingBlocked, completeStop }
+	return { activeStop, scrollingBlocked, completeStop }
 }

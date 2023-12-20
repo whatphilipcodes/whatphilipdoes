@@ -1,24 +1,22 @@
 export const useGlobalStore = defineStore('global', () => {
-	const scrollSegmentTriggers: {
+	const scrollStopTriggers: {
 		target: Ref<HTMLElement>
 		toggle: Ref<boolean>
 	}[] = []
-	function addScrollTrigger(target: Ref<HTMLElement>, toggle: Ref<boolean>) {
-		scrollSegmentTriggers.push({ target, toggle })
+	function addStopTrigger(target: Ref<HTMLElement>, toggle: Ref<boolean>) {
+		scrollStopTriggers.push({ target, toggle })
 	}
-	function toggleScrollTrigger(index: number) {
-		scrollSegmentTriggers[index].toggle.value =
-			!scrollSegmentTriggers[index].toggle.value
+	function toggleStopTrigger(index: number) {
+		scrollStopTriggers[index].toggle.value =
+			!scrollStopTriggers[index].toggle.value
 	}
-	function getScrollTriggerIndex(target: Element) {
-		return scrollSegmentTriggers.findIndex(
-			(item) => item.target.value === target
-		)
+	function getStopTriggerIndex(target: Element) {
+		return scrollStopTriggers.findIndex((item) => item.target.value === target)
 	}
 	return {
-		scrollSegmentTriggers,
-		addScrollTrigger,
-		toggleScrollTrigger,
-		getScrollTriggerIndex,
+		scrollStopTriggers,
+		addStopTrigger,
+		toggleStopTrigger,
+		getStopTriggerIndex,
 	}
 })

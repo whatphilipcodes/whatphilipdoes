@@ -1,5 +1,4 @@
 <template>
-	<slot v-if="isRendering" />
 	<div class="z-front" ref="triggerNext" />
 </template>
 
