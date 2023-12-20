@@ -7,17 +7,6 @@ export const useGlobalStore = defineStore('global', () => {
 			prefix: 'what',
 			highlight: 'does',
 		},
-		// buttons: [
-		// 	{
-		// 		label: 'learn more',
-		// 		to: '/about',
-		// 	},
-		// 	{
-		// 		label: 'get in touch',
-		// 		to: '/about',
-		// 		accent: true,
-		// 	},
-		// ],
 	})
 
 	// stop triggers

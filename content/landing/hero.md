@@ -4,7 +4,7 @@ tags:
   - machine learning
   - digital design
 
-text: Ehemaliger Designstudent, jetzt kreativer Entwickler. Konzentriert sich auf UI/UX-Design und Implementierung, sowie maschinelles Lernen im generativen Kontext.
+text: Vom Designstudent zum kreativen Entwickler. Ich konzentriere mich auf UI/UX vom Design bis hin zur Implementierung, sowie maschinelles Lernen im generativen Kontext.
 
 callToAction:
   label: about philip
