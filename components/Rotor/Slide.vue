@@ -9,7 +9,10 @@
 			id="gradient"
 			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 		></div>
-		<Grid id="metaContainer" class="absolute top-0 left-0 gap-x-6 gap-y-4">
+		<Grid
+			id="metaContainer"
+			class="absolute max-md:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4"
+		>
 			<div id="title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
 			</div>

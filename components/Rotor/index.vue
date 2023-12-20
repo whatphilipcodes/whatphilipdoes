@@ -36,7 +36,6 @@ const props = defineProps({
 })
 
 const isActive = ref(false)
-
 const classList = computed(() => {
 	return {
 		'w-screen h-screen col-span-full justify-self-center overflow-clip relative':
@@ -58,17 +57,23 @@ const computeTranslate = (index: number) => {
 // main controller
 function enter() {
 	isActive.value = true
+	activeSlide.value = 0
+
 	window.addEventListener('wheel', blockDefault, { passive: false })
 	window.addEventListener('touchstart', blockDefault, { passive: false })
+	window.addEventListener('touchend', scrollToTop, { passive: false })
+
 	enterWheelSwipe()
 	startSwipeWatch()
 	startExitWatch()
 }
 function exit() {
 	isActive.value = false
+	window.removeEventListener('touchend', scrollToTop)
 	setTimeout(() => {
 		window.removeEventListener('wheel', blockDefault)
 		window.removeEventListener('touchstart', blockDefault)
+
 		window.addEventListener('touchstart', enableRestartable)
 		exitWheelSwipe()
 		stopSwipeWatch?.()
@@ -102,11 +107,6 @@ function disableRestartable() {
 function restart() {
 	if (!restartable.value) return
 	disableRestartable()
-	activeSlide.value = 0
-	window.scrollTo({
-		top: projectDisplay.value.offsetTop,
-		behavior: 'smooth',
-	})
 	enter()
 }
 
@@ -179,5 +179,11 @@ function up() {
 // helpers
 function blockDefault(event: any) {
 	event.preventDefault()
+}
+function scrollToTop() {
+	window.scrollTo({
+		top: projectDisplay.value.offsetTop,
+		behavior: 'smooth',
+	})
 }
 </script>

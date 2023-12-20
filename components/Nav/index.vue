@@ -6,8 +6,8 @@
 		<NavDissolver />
 		<Grid class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
-				<NavDynamicHeading class="mb-[6px]" prefix="what" highlight="does" />
-				<NavControlTouch class="mb-4 lg:hidden" />
+				<NavDynamicHeading class="" prefix="what" highlight="does" />
+				<NavControlTouch class="lg:hidden" />
 			</div>
 		</Grid>
 	</div>

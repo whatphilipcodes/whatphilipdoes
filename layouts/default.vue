@@ -1,6 +1,6 @@
 <template>
 	<Nav />
-	<Grid id="gridContainer">
+	<Grid id="gridContainer" :bottomPadding="false">
 		<slot />
 	</Grid>
 </template>

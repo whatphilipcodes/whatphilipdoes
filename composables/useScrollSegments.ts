@@ -2,7 +2,6 @@ export const useScrollSegments = () => {
 	const isDebug = false // #rm
 
 	// dependencies
-	const { isScrolling } = useScroll(document)
 	const { scrollSegmentTriggers, toggleScrollTrigger, getScrollTriggerIndex } =
 		useGlobalStore()
 
@@ -12,7 +11,6 @@ export const useScrollSegments = () => {
 	const activeSegement = computed(() => {
 		return scrollSegmentTriggers[activeIndex.value]
 	})
-	let stopScrollWatch: () => void
 	toggleScrollTrigger(activeIndex.value) // show first segment
 
 	// loop
@@ -59,15 +57,10 @@ export const useScrollSegments = () => {
 		window.addEventListener('wheel', blockEvent, {
 			passive: false,
 		})
-		stopScrollWatch = watch(isScrolling, (bool) => {
-			if (bool) return
-			dbScrollToActiveSegment()
-		})
 		scrollingBlocked.value = true
 	}
 
 	function enableScrolling() {
-		stopScrollWatch?.()
 		window.removeEventListener('touchstart', blockEvent)
 		window.removeEventListener('wheel', blockEvent)
 		scrollingBlocked.value = false
@@ -77,14 +70,6 @@ export const useScrollSegments = () => {
 	function blockEvent(event: Event) {
 		if (isDebug) console.log('blocking event') // #rm
 		event.preventDefault()
-	}
-
-	const dbScrollToActiveSegment = useDebounceFn(scrollToActiveSegment, 300)
-	function scrollToActiveSegment() {
-		window.scrollTo({
-			top: document.body.scrollHeight, // #info: margin bottom would lead to alignment issues
-			behavior: 'smooth',
-		})
 	}
 
 	return { activeSegement, scrollingBlocked, completeStop }
