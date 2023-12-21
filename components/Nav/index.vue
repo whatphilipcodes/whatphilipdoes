@@ -7,8 +7,8 @@
 		<Grid class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NavDynamicHeading
-					:prefix="activeSegment.dynHeadPrefix"
-					:highlight="activeSegment.dynHeadHighlight"
+					:prefix="activePage.prefix"
+					:highlight="activeSegment.title"
 				/>
 				<NavControlTouch class="lg:hidden" :buttons="activeSegment.buttons" />
 			</div>
@@ -17,5 +17,5 @@
 </template>
 
 <script setup lang="ts">
-const { activeSegment } = useGlobalStore()
+const { activeSegment, activePage } = useGlobalStore()
 </script>

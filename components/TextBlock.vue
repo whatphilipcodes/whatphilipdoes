@@ -13,6 +13,7 @@
 		<Button
 			v-if="callToAction"
 			:to="callToAction.to"
+			:variant="callToAction.accent ? 'accent' : 'basic'"
 			class="mt-8 w-44 h-10 max-lg:hidden"
 			>{{ callToAction.label }}</Button
 		>
@@ -30,7 +31,7 @@ const props = defineProps({
 		default: 'Text block did not receive any text. Please provide a text prop.',
 	},
 	callToAction: {
-		type: Object as PropType<{ label: string; to: string }>,
+		type: Object as PropType<{ label: string; to: string; accent: boolean }>,
 		default: undefined,
 	},
 	content: {

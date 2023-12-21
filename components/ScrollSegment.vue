@@ -11,11 +11,7 @@ const exit = ref()
 const { addSegment } = useGlobalStore()
 
 const props = defineProps({
-	dynHeadPrefix: {
-		type: String,
-		default: undefined,
-	},
-	dynHeadHighlight: {
+	title: {
 		type: String,
 		default: undefined,
 	},
@@ -34,11 +30,8 @@ const segment = computed(() => {
 		return props.pageSegment
 	} else {
 		return {
-			...(props.dynHeadPrefix && {
-				dynHeadPrefix: props.dynHeadPrefix,
-			}),
-			...(props.dynHeadHighlight && {
-				dynHeadHighlight: props.dynHeadHighlight,
+			...(props.title && {
+				title: props.title,
 			}),
 			...(props.buttons && {
 				buttons: props.buttons,

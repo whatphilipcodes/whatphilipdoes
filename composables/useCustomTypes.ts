@@ -2,7 +2,7 @@ import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 export interface contentTextBlock extends ParsedContent {
 	tags: string[]
 	text: string
-	callToAction: { label: string; to: string }
+	callToAction: { label: string; to: string; accent?: boolean }
 }
 export interface contentProject extends ParsedContent {
 	header: string
@@ -10,11 +10,14 @@ export interface contentProject extends ParsedContent {
 	landing: boolean
 }
 export interface pageSegment {
-	dynHeadPrefix: string
-	dynHeadHighlight: string
+	title: string
 	buttons: {
 		label: string
 		to: string
-		accent: boolean
+		accent?: boolean
 	}[]
+}
+export interface contentSegment extends ParsedContent {
+	segment: Partial<pageSegment>
+	contents: any
 }

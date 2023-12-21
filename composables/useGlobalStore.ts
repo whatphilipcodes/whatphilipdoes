@@ -1,5 +1,33 @@
 export const useGlobalStore = defineStore('global', () => {
-	// stop triggers
+	// pages
+	const activePage = ref({
+		title: 'index',
+		prefix: 'what',
+	})
+	function updateActivePage(page: { title: string; prefix: string }) {
+		activePage.value = page
+	}
+
+	// segments
+	const scrollSegments = ref<
+		{ enter: number; exit: number; segment: Partial<pageSegment> }[]
+	>([])
+	const activeSegment = ref<pageSegment>({
+		title: 'does',
+		buttons: [],
+	})
+	function addSegment(
+		enter: number,
+		exit: number,
+		segment: Partial<pageSegment>
+	) {
+		scrollSegments.value.push({ enter, exit, segment })
+	}
+	function updateActiveSegment(segment: Partial<pageSegment>) {
+		Object.assign(activeSegment.value, segment)
+	}
+
+	// stops
 	const scrollStopTriggers: {
 		target: Ref<HTMLElement>
 		toggle: Ref<boolean>
@@ -15,39 +43,18 @@ export const useGlobalStore = defineStore('global', () => {
 		return scrollStopTriggers.findIndex((item) => item.target.value === target)
 	}
 
-	// segment triggers
-	const scrollSegments = ref<
-		{ enter: number; exit: number; segment: Partial<pageSegment> }[]
-	>([])
-
-	const activeSegment = ref<pageSegment>({
-		dynHeadPrefix: 'what',
-		dynHeadHighlight: 'does',
-		buttons: [],
-	})
-	function addSegment(
-		enter: number,
-		exit: number,
-		segment: Partial<pageSegment>
-	) {
-		scrollSegments.value.push({ enter, exit, segment })
-	}
-	// function getSegment(target: number) {
-	// 	return scrollSegments.value.find((item) => item.enter === target)?.segment
-	// }
-	function updateActiveSegment(segment: Partial<pageSegment>) {
-		Object.assign(activeSegment.value, segment)
-	}
-
 	return {
+		activePage,
+		updateActivePage,
+		//
 		activeSegment,
+		scrollSegments,
+		addSegment,
 		updateActiveSegment,
+		//
 		scrollStopTriggers,
 		addStopTrigger,
 		toggleStopTrigger,
 		getStopTriggerIndex,
-		scrollSegments,
-		addSegment,
-		// getSegment,
 	}
 })
