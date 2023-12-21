@@ -1,10 +1,15 @@
 <template>
-	<div class="z-front" ref="trigger" />
+	<div class="z-front col-span-full" ref="enter" />
+	<slot />
+	<div class="z-front col-span-full" ref="exit" />
 </template>
 
 <script setup lang="ts">
-const trigger = ref()
-const { addSegmentTrigger } = useGlobalStore()
+const enter = ref()
+const exit = ref()
+
+const { addSegment } = useGlobalStore()
+
 const props = defineProps({
 	dynHeadPrefix: {
 		type: String,
@@ -43,6 +48,6 @@ const segment = computed(() => {
 })
 
 onMounted(() => {
-	addSegmentTrigger(trigger.value, segment.value)
+	addSegment(enter.value, exit.value, segment.value)
 })
 </script>

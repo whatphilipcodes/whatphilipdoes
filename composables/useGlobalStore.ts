@@ -1,5 +1,3 @@
-import type { pageSegment } from './useCustomTypes'
-
 export const useGlobalStore = defineStore('global', () => {
 	// stop triggers
 	const scrollStopTriggers: {
@@ -19,7 +17,7 @@ export const useGlobalStore = defineStore('global', () => {
 
 	// segment triggers
 	const segmentTriggers = ref<
-		{ target: HTMLElement; segment: Partial<pageSegment> }[]
+		{ enter: HTMLElement; exit: HTMLElement; segment: Partial<pageSegment> }[]
 	>([])
 
 	const activeSegment = ref<pageSegment>({
@@ -27,14 +25,15 @@ export const useGlobalStore = defineStore('global', () => {
 		dynHeadHighlight: 'does',
 		buttons: [],
 	})
-	function addSegmentTrigger(
-		target: HTMLElement,
+	function addSegment(
+		enter: HTMLElement,
+		exit: HTMLElement,
 		segment: Partial<pageSegment>
 	) {
-		segmentTriggers.value.push({ target, segment })
+		segmentTriggers.value.push({ enter, exit, segment })
 	}
 	function getSegment(target: HTMLElement) {
-		return segmentTriggers.value.find((item) => item.target === target)?.segment
+		return segmentTriggers.value.find((item) => item.enter === target)?.segment
 	}
 	function updateActiveSegment(segment: Partial<pageSegment>) {
 		Object.assign(activeSegment.value, segment)
@@ -48,7 +47,7 @@ export const useGlobalStore = defineStore('global', () => {
 		toggleStopTrigger,
 		getStopTriggerIndex,
 		segmentTriggers,
-		addSegmentTrigger,
+		addSegment,
 		getSegment,
 	}
 })

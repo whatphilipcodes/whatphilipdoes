@@ -1,6 +1,6 @@
 <template>
 	<slot v-if="isRendering" />
-	<div class="z-front" ref="triggerNext" />
+	<div class="z-front col-span-full" ref="triggerNext" />
 </template>
 
 <script setup lang="ts">

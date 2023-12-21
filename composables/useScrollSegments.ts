@@ -8,7 +8,8 @@ export const useScrollSegments = () => {
 
 	// computed
 	const targets = computed(() => {
-		return segmentTriggers.map((item) => item.target)
+		// return segmentTriggers.map((item) => item.target)
+		return undefined
 	})
 
 	// watcher
