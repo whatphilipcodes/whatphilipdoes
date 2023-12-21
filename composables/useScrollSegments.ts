@@ -1,9 +1,21 @@
+import type { pageSegment } from './useCustomTypes'
+
 export const useScrollSegments = () => {
 	// props
 	let stopObserver: () => void
 	const { segmentTriggers, updateActiveSegment, getSegment } = useGlobalStore()
+	const intersectingSegments = ref<Partial<pageSegment>[]>([])
+
+	// computed
 	const targets = computed(() => {
 		return segmentTriggers.map((item) => item.target)
+	})
+
+	// watcher
+	watch(intersectingSegments.value, (val) => {
+		const segment = val[0]
+		if (segment) updateActiveSegment(segment)
+		if (intersectingSegments.value.length > 3) intersectingSegments.value.pop()
 	})
 
 	// controller
@@ -17,11 +29,27 @@ export const useScrollSegments = () => {
 
 	// internal callbacks
 	const onIntersection = ([{ target, isIntersecting }]: any[]) => {
-		if (!isIntersecting) return
-		const el = target as Ref<HTMLElement>
-		const segment = getSegment(el)
-		if (segment) updateActiveSegment(segment.segment)
+		const segment = getSegment(target)
+		if (!segment) return
+		if (isIntersecting) {
+			addIntersecting(segment)
+		} else {
+			removeIntersecting(segment)
+		}
 	}
+
+	// helpers
+	function addIntersecting(segment: Partial<pageSegment>) {
+		intersectingSegments.value.unshift(segment)
+	}
+	function removeIntersecting(segment: Partial<pageSegment>) {
+		const index = intersectingSegments.value.findIndex(
+			(item) => item === segment
+		)
+		if (index < 0 || intersectingSegments.value.length === 1) return
+		intersectingSegments.value.splice(index, 1)
+	}
+
 	return {
 		enter,
 		exit,

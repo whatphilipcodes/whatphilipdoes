@@ -43,6 +43,6 @@ const segment = computed(() => {
 })
 
 onMounted(() => {
-	addSegmentTrigger(trigger, segment)
+	addSegmentTrigger(trigger.value, segment.value)
 })
 </script>
