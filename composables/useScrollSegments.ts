@@ -15,7 +15,7 @@ export const useScrollSegments = () => {
 	watch(intersectingSegments.value, (val) => {
 		const segment = val[0]
 		if (segment) updateActiveSegment(segment)
-		if (intersectingSegments.value.length > 3) intersectingSegments.value.pop()
+		intersectingSegments.value.splice(3)
 	})
 
 	// controller
@@ -31,24 +31,20 @@ export const useScrollSegments = () => {
 	const onIntersection = ([{ target, isIntersecting }]: any[]) => {
 		const segment = getSegment(target)
 		if (!segment) return
-		if (isIntersecting) {
-			addIntersecting(segment)
-		} else {
-			removeIntersecting(segment)
-		}
+		if (isIntersecting) addIntersecting(segment)
 	}
 
 	// helpers
 	function addIntersecting(segment: Partial<pageSegment>) {
 		intersectingSegments.value.unshift(segment)
 	}
-	function removeIntersecting(segment: Partial<pageSegment>) {
-		const index = intersectingSegments.value.findIndex(
-			(item) => item === segment
-		)
-		if (index < 0 || intersectingSegments.value.length === 1) return
-		intersectingSegments.value.splice(index, 1)
-	}
+	// function removeIntersecting(segment: Partial<pageSegment>) {
+	// 	const index = intersectingSegments.value.findIndex(
+	// 		(item) => item === segment
+	// 	)
+	// 	if (index < 0 || intersectingSegments.value.length === 1) return
+	// 	intersectingSegments.value.splice(index, 1)
+	// }
 
 	return {
 		enter,
