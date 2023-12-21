@@ -16,8 +16,8 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 
 	// segment triggers
-	const segmentTriggers = ref<
-		{ enter: HTMLElement; exit: HTMLElement; segment: Partial<pageSegment> }[]
+	const scrollSegments = ref<
+		{ enter: number; exit: number; segment: Partial<pageSegment> }[]
 	>([])
 
 	const activeSegment = ref<pageSegment>({
@@ -26,15 +26,15 @@ export const useGlobalStore = defineStore('global', () => {
 		buttons: [],
 	})
 	function addSegment(
-		enter: HTMLElement,
-		exit: HTMLElement,
+		enter: number,
+		exit: number,
 		segment: Partial<pageSegment>
 	) {
-		segmentTriggers.value.push({ enter, exit, segment })
+		scrollSegments.value.push({ enter, exit, segment })
 	}
-	function getSegment(target: HTMLElement) {
-		return segmentTriggers.value.find((item) => item.enter === target)?.segment
-	}
+	// function getSegment(target: number) {
+	// 	return scrollSegments.value.find((item) => item.enter === target)?.segment
+	// }
 	function updateActiveSegment(segment: Partial<pageSegment>) {
 		Object.assign(activeSegment.value, segment)
 	}
@@ -46,8 +46,8 @@ export const useGlobalStore = defineStore('global', () => {
 		addStopTrigger,
 		toggleStopTrigger,
 		getStopTriggerIndex,
-		segmentTriggers,
+		scrollSegments,
 		addSegment,
-		getSegment,
+		// getSegment,
 	}
 })

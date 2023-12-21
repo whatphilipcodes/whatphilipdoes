@@ -48,6 +48,6 @@ const segment = computed(() => {
 })
 
 onMounted(() => {
-	addSegment(enter.value, exit.value, segment.value)
+	addSegment(enter.value.offsetTop, exit.value.offsetTop, segment.value)
 })
 </script>
