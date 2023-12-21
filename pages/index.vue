@@ -34,7 +34,7 @@
 <script setup lang="ts">
 // props
 let cbRotorComplete: () => void
-const { enter: enterSegments, exit: exitSegments } = useScrollSegments()
+useScrollSegments()
 
 // content
 const landingContent = await queryContent<contentTextBlock>(
@@ -55,15 +55,9 @@ onMounted(() => {
 			}, 400)
 		}
 	})
-
-	// segments
-	enterSegments()
 })
 onUnmounted(() => {
 	// scroll stops
 	// #todo
-
-	// segments
-	exitSegments()
 })
 </script>
