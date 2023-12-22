@@ -1,20 +1,36 @@
 export const useScrollStops = () => {
-	const isDebug = false // #rm
+	const isDebug = true // #rm
 
 	// dependencies
-	const { scrollStopTriggers, toggleStopTrigger, getStopTriggerIndex } =
-		useGlobalStore()
+	const {
+		scrollStopTriggers,
+		toggleStopTrigger,
+		getStopTriggerIndex,
+		clearScrollStopTriggers,
+	} = useGlobalStore()
 
-	// initialization
-	const scrollingBlocked = ref(false)
+	// props
 	const activeIndex = ref(0)
+	const scrollingBlocked = ref(false)
 	const activeStop = computed(() => {
 		return scrollStopTriggers[activeIndex.value]
 	})
-	toggleStopTrigger(activeIndex.value) // show first segment
+
+	// controller
+	function enter() {
+		console.log('entering scroll stops', scrollStopTriggers) // #rm
+		// initialization
+		activeIndex.value = 0
+		scrollingBlocked.value = false
+		toggleStopTrigger(activeIndex.value) // show first segment
+		startLoop()
+	}
+	function exit() {
+		console.log('exiting scroll stops') // #rm
+		clearScrollStopTriggers()
+	}
 
 	// loop
-	startLoop()
 	function startLoop() {
 		const { stop } = useIntersectionObserver(
 			activeStop.value.target,
@@ -42,7 +58,7 @@ export const useScrollStops = () => {
 		)
 	}
 
-	function completeStop() {
+	function next() {
 		if (!scrollingBlocked.value) return
 		activeIndex.value++
 		toggleStopTrigger(activeIndex.value)
@@ -72,5 +88,5 @@ export const useScrollStops = () => {
 		event.preventDefault()
 	}
 
-	return { activeStop, scrollingBlocked, completeStop }
+	return { scrollingBlocked, enter, exit, next }
 }

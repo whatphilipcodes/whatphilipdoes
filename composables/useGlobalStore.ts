@@ -42,6 +42,9 @@ export const useGlobalStore = defineStore('global', () => {
 	function getStopTriggerIndex(target: Element) {
 		return scrollStopTriggers.findIndex((item) => item.target.value === target)
 	}
+	function clearScrollStopTriggers() {
+		scrollStopTriggers.splice(0, scrollStopTriggers.length)
+	}
 
 	return {
 		activePage,
@@ -56,5 +59,6 @@ export const useGlobalStore = defineStore('global', () => {
 		addStopTrigger,
 		toggleStopTrigger,
 		getStopTriggerIndex,
+		clearScrollStopTriggers,
 	}
 })

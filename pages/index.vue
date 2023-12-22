@@ -1,16 +1,19 @@
 <template>
 	<ScrollStop>
-		<ScrollSegment :pageSegment="content[0].segment">
+		<ScrollSegment :pageSegment="segmentsContent[0].segment">
 			<div
 				class="z-front max-lg:hidden w-44 h-10 justify-self-end col-start-12"
 			>
 				<Button class="w-full" variant="accent">get in touch</Button>
 			</div>
 			<div class="col-span-full md:col-span-6 h-[50vh] lg:h-[60vh]">
-				<TextBlock class="lg:mt-44" :content="content[0].contents.hero" />
+				<TextBlock
+					class="lg:mt-44"
+					:content="segmentsContent[0].contents.hero"
+				/>
 			</div>
 		</ScrollSegment>
-		<ScrollSegment :pageSegment="content[1].segment">
+		<ScrollSegment :pageSegment="segmentsContent[1].segment">
 			<Rotor
 				ref="projectRotor"
 				:completionCallback="cbRotorComplete"
@@ -19,10 +22,10 @@
 		</ScrollSegment>
 	</ScrollStop>
 	<ScrollStop>
-		<ScrollSegment :pageSegment="content[2].segment">
+		<ScrollSegment :pageSegment="segmentsContent[2].segment">
 			<div class="mt-80 col-span-full" />
 			<TextBlock
-				:content="content[2].contents.closer"
+				:content="segmentsContent[2].contents.closer"
 				class="lg:mt-44 col-span-full lg:col-span-8"
 			/>
 			<div class="mt-44 col-span-full" />
@@ -33,11 +36,12 @@
 <script setup lang="ts">
 // props
 let cbRotorComplete: () => void
+let exitScrollStops: () => void
 
 const projectRotor = ref()
 const { updateActivePage } = useGlobalStore()
 
-const content = await queryContent<contentSegment>('landing').find()
+const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
 
 onMounted(() => {
@@ -51,8 +55,17 @@ onMounted(() => {
 	useScrollSegments()
 
 	// enter scroll stops
-	const { scrollingBlocked, completeStop } = useScrollStops()
-	cbRotorComplete = completeStop
+	const {
+		enter: enterScrollstops,
+		next,
+		exit,
+		scrollingBlocked,
+	} = useScrollStops()
+	enterScrollstops()
+
+	cbRotorComplete = next
+	exitScrollStops = exit
+
 	watch(scrollingBlocked, (value) => {
 		if (value) {
 			setTimeout(() => {
@@ -62,6 +75,6 @@ onMounted(() => {
 	})
 })
 onUnmounted(() => {
-	// exit scroll stops
+	exitScrollStops()
 })
 </script>
