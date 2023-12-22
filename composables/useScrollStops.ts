@@ -1,5 +1,5 @@
 export const useScrollStops = () => {
-	const isDebug = true // #rm
+	const isDebug = false // #rm
 
 	// dependencies
 	const {
@@ -18,7 +18,6 @@ export const useScrollStops = () => {
 
 	// controller
 	function enter() {
-		console.log('entering scroll stops', scrollStopTriggers) // #rm
 		// initialization
 		activeIndex.value = 0
 		scrollingBlocked.value = false
@@ -26,7 +25,6 @@ export const useScrollStops = () => {
 		startLoop()
 	}
 	function exit() {
-		console.log('exiting scroll stops') // #rm
 		clearScrollStopTriggers()
 	}
 

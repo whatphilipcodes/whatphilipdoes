@@ -10,7 +10,6 @@ const isRendering = ref(false)
 const triggerNext = ref()
 
 onMounted(() => {
-	console.log('mounted scrollStop') // #rm
 	addStopTrigger(triggerNext, isRendering)
 })
 </script>
