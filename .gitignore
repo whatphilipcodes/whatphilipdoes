@@ -24,7 +24,8 @@ logs
 !.env.example
 
 # exclude assets from repo
-assets/
+assets/icons/*
+!assets/icons/info.txt
 
 # legal files
 content/legal/*

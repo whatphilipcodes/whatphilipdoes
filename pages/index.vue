@@ -28,6 +28,9 @@
 				:content="segmentsContent[2].contents.closer"
 				class="lg:mt-44 col-span-full lg:col-span-8"
 			/>
+			<div class="col-span-full">
+				<SvgoGithub />
+			</div>
 			<div class="mt-44 col-span-full" />
 			<div
 				id="legal"

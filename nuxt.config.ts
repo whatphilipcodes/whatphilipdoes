@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 		'@nuxt/content',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/google-fonts',
+		'nuxt-svgo',
 		'@vueuse/nuxt',
 	],
 	googleFonts: {
@@ -18,7 +19,7 @@ export default defineNuxtConfig({
 		},
 	},
 	alias: {
-		assets: '/<root-dir>/assets',
+		// assets: '/<root-dir>/assets', // #info: breaks svgo
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
 	},
 	app: {
