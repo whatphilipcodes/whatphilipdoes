@@ -27,10 +27,29 @@
 			<TextBlock
 				:content="segmentsContent[2].contents.closer"
 				class="lg:mt-44 col-span-full lg:col-span-8"
-			/>
-			<div class="col-span-full">
-				<SvgoGithub />
-			</div>
+			>
+				<Button
+					class="aspect-square"
+					to="https://www.linkedin.com/in/gerdes-philip/"
+					variant="dark"
+				>
+					<SvgoLinkedin class="text-mono-500 group-hover:text-mono-50" />
+				</Button>
+				<Button
+					class="aspect-square"
+					to="https://github.com/whatphilipcodes"
+					variant="dark"
+				>
+					<SvgoGithub class="text-mono-500 group-hover:text-mono-50" />
+				</Button>
+				<Button
+					class="aspect-square"
+					to="https://www.instagram.com/whatphilipdoes/"
+					variant="dark"
+				>
+					<SvgoInstagram class="text-mono-500 group-hover:text-mono-50" />
+				</Button>
+			</TextBlock>
 			<div class="mt-44 col-span-full" />
 			<div
 				id="legal"

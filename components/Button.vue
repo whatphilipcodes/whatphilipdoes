@@ -18,19 +18,21 @@ const props = defineProps({
 	},
 	variant: {
 		type: String,
-		validator: (value: string) => ['basic', 'accent'].includes(value),
+		validator: (value: string) => ['basic', 'accent', 'dark'].includes(value),
 		default: 'basic',
 	},
 })
 
 const buttonClasses = computed(() => {
 	return {
-		'touchable-btn flex items-center justify-center select-none py-1 px-2 border w-full h-full':
+		'touchable-btn flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
 			true,
 		'border-mono-800 bg-mono-800 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
 			props.variant === 'basic',
 		'text-cinnabar-500 border-cinnabar-500 active:bg-cinnabar-500 lg:hover:bg-cinnabar-500/20 lg:active:bg-cinnabar-500':
 			props.variant === 'accent',
+		'border-mono-900 bg-mono-900 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-800 lg:hover:border-mono-800 lg:active:bg-mono-50 lg:active:border-mono-50':
+			props.variant === 'dark',
 	}
 })
 </script>

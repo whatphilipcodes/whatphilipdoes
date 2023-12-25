@@ -10,13 +10,16 @@
 		<div id="text" class="text-lg leading-lg italic mt-3">
 			{{ text }}
 		</div>
-		<Button
-			v-if="callToAction"
-			:to="callToAction.to"
-			:variant="callToAction.accent ? 'accent' : 'basic'"
-			class="mt-8 w-44 h-10 max-lg:hidden"
-			>{{ callToAction.label }}</Button
-		>
+		<div class="flex flex-row gap-4 mt-8">
+			<Button
+				v-if="callToAction"
+				:to="callToAction.to"
+				:variant="callToAction.accent ? 'accent' : 'basic'"
+				class="w-44 h-10 max-lg:hidden"
+				>{{ callToAction.label }}</Button
+			>
+			<slot />
+		</div>
 	</div>
 </template>
 
