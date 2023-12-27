@@ -4,7 +4,20 @@
 			<div
 				class="z-front max-lg:hidden w-44 h-10 justify-self-end col-start-12"
 			>
-				<Button class="w-full" variant="accent">get in touch</Button>
+				<Button
+					class="w-full"
+					:to="
+						segmentsContent[0].segment.buttons
+							? segmentsContent[0].segment.buttons[0].to
+							: '/error'
+					"
+					variant="accent"
+					>{{
+						segmentsContent[0].segment.buttons
+							? segmentsContent[0].segment.buttons[0].label
+							: 'error'
+					}}</Button
+				>
 			</div>
 			<div class="col-span-full md:col-span-6 h-[50vh] lg:h-[60vh]">
 				<TextBlock
