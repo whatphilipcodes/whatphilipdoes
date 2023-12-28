@@ -17,6 +17,9 @@ export interface pageSegment {
 		accent?: boolean
 	}[]
 }
+export interface pageInfo {
+	page: string
+}
 export interface contentSegment extends ParsedContent {
 	segment: Partial<pageSegment>
 	contents: any

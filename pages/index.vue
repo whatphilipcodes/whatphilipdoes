@@ -90,8 +90,7 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 onMounted(() => {
 	// set page title
 	updateActivePage({
-		title: 'index',
-		prefix: 'what',
+		page: 'what philip',
 	})
 
 	// segments

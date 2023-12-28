@@ -3,3 +3,15 @@
 		<ContentDoc />
 	</main>
 </template>
+
+<script setup lang="ts">
+// const { updateActivePage, updateActiveSegment } = useGlobalStore()
+// onMounted(() => {
+// 	updateActivePage({
+// 		page: 'what you',
+// 	})
+// 	updateActiveSegment({
+// 		title: 'should know',
+// 	})
+// })
+</script>

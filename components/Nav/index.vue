@@ -1,21 +1,25 @@
 <template>
-	<div
+	<NuxtLink
 		id="menu"
 		class="fixed left-0 bottom-0 lg:top-0 h-36 w-full pointer-events-none z-nav"
+		to="/"
 	>
 		<NavDissolver />
 		<Grid class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NavDynamicHeading
-					:prefix="activePage.prefix"
-					:highlight="activeSegment.title"
+					:page="store.$state.activePage.page"
+					:highlight="store.$state.activeSegment.title"
 				/>
-				<NavControlTouch class="lg:hidden" :buttons="activeSegment.buttons" />
+				<NavControlTouch
+					class="lg:hidden"
+					:buttons="store.$state.activeSegment.buttons"
+				/>
 			</div>
 		</Grid>
-	</div>
+	</NuxtLink>
 </template>
 
 <script setup lang="ts">
-const { activeSegment, activePage } = useGlobalStore()
+const store = useGlobalStore()
 </script>

@@ -1,10 +1,11 @@
+import type { pageInfo } from './useCustomTypes'
+
 export const useGlobalStore = defineStore('global', () => {
 	// pages
-	const activePage = ref({
-		title: 'index',
-		prefix: 'what',
+	const activePage = ref<pageInfo>({
+		page: 'what philip',
 	})
-	function updateActivePage(page: { title: string; prefix: string }) {
+	function updateActivePage(page: pageInfo) {
 		activePage.value = page
 	}
 
