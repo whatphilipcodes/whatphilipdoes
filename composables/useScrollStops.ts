@@ -1,6 +1,4 @@
 export const useScrollStops = () => {
-	const isDebug = false // #rm
-
 	// dependencies
 	const {
 		scrollStopTriggers,
@@ -33,16 +31,8 @@ export const useScrollStops = () => {
 		const { stop } = useIntersectionObserver(
 			activeStop.value.target,
 			([{ isIntersecting, target }]) => {
-				if (isDebug)
-					console.log(
-						'isIntersecting:',
-						isIntersecting,
-						'at segment:',
-						getStopTriggerIndex(target)
-					) // #rm
 				if (!isIntersecting) return // only trigger on enter
 				if (activeIndex.value >= scrollStopTriggers.length - 1) {
-					if (isDebug) console.log('last segment reached') // #rm
 					stop()
 					return
 				} // stop loop entirely if last segment
@@ -82,7 +72,6 @@ export const useScrollStops = () => {
 
 	// secondary
 	function blockEvent(event: Event) {
-		if (isDebug) console.log('blocking event') // #rm
 		event.preventDefault()
 	}
 
