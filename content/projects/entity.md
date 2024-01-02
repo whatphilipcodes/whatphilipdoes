@@ -1,4 +1,8 @@
 ---
+title: entity
+meta:
+  page: what entity
+  segment: is
 header: /img/projects/entity/header-entity.jpg
 tags:
   - realtime differential-line-growth
