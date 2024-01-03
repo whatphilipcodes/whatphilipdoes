@@ -86,6 +86,7 @@ const { updateActivePage } = useGlobalStore()
 
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
+console.log(segmentsContent)
 
 onMounted(() => {
 	// set page title

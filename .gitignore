@@ -30,3 +30,6 @@ assets/icons/*
 # legal files
 content/legal/*
 !content/legal/about.txt
+
+# downloads
+public/download

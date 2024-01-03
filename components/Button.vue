@@ -1,5 +1,5 @@
 <template>
-	<component :is="props.as">
+	<component :is="props.as" :target="target" :download="download">
 		<button :class="buttonClasses">
 			<slot />
 		</button>
@@ -21,6 +21,10 @@ const props = defineProps({
 		validator: (value: string) => ['basic', 'accent', 'dark'].includes(value),
 		default: 'basic',
 	},
+	download: {
+		type: String,
+		default: null,
+	},
 })
 
 const buttonClasses = computed(() => {
@@ -34,5 +38,10 @@ const buttonClasses = computed(() => {
 		'border-mono-900 bg-mono-900 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-800 lg:hover:border-mono-800 lg:active:bg-mono-50 lg:active:border-mono-50':
 			props.variant === 'dark',
 	}
+})
+
+const target = computed(() => {
+	if (props.download) return '_blank'
+	return ''
 })
 </script>

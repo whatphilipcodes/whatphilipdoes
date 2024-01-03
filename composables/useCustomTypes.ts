@@ -2,7 +2,12 @@ import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 export interface contentTextBlock extends ParsedContent {
 	tags: string[]
 	text: string
-	callToAction: { label: string; to: string; accent?: boolean }
+	callToAction: {
+		label: string
+		to: string
+		accent?: boolean
+		download?: string
+	}
 }
 export interface contentProject extends ParsedContent {
 	header: string
@@ -15,6 +20,7 @@ export interface pageSegment {
 		label: string
 		to: string
 		accent?: boolean
+		download?: string
 	}[]
 }
 export interface pageInfo {
