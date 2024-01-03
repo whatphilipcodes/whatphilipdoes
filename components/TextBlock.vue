@@ -49,5 +49,4 @@ const props = defineProps({
 	},
 })
 const { tags, text, callToAction } = props.content ?? props
-console.log(props.content)
 </script>
