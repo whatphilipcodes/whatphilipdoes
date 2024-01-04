@@ -1,5 +1,5 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
-export interface contentTextBlock extends ParsedContent {
+export interface contentBlockTextCTA extends ParsedContent {
 	tags: string[]
 	text: string
 	callToAction: {

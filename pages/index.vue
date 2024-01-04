@@ -20,7 +20,7 @@
 				>
 			</div>
 			<div class="col-span-full md:col-span-6 h-[50vh] lg:h-[60vh]">
-				<TextBlock
+				<BlockTextCTA
 					class="lg:mt-44"
 					:content="segmentsContent[0].contents.hero"
 				/>
@@ -37,7 +37,7 @@
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[2].segment">
 			<div class="mt-80 col-span-full" />
-			<TextBlock
+			<BlockTextCTA
 				:content="segmentsContent[2].contents.closer"
 				class="lg:mt-44 col-span-full lg:col-span-8"
 			>
@@ -52,7 +52,7 @@
 						class="text-mono-500 group-hover:text-mono-50"
 					/>
 				</Button>
-			</TextBlock>
+			</BlockTextCTA>
 			<div class="mt-44 col-span-full" />
 			<div
 				id="legal"

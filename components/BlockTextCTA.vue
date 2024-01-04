@@ -44,7 +44,7 @@ const props = defineProps({
 		default: undefined,
 	},
 	content: {
-		type: Object as PropType<contentTextBlock>,
+		type: Object as PropType<contentBlockTextCTA>,
 		default: undefined,
 	},
 })
