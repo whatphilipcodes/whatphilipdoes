@@ -5,7 +5,7 @@
 		to="/"
 	>
 		<NavDissolver />
-		<Grid class="absolute top-0 w-full h-full">
+		<LayoutPadding class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NavDynamicHeading
 					:page="store.$state.activePage.page"
@@ -16,7 +16,7 @@
 					:buttons="store.$state.activeSegment.buttons"
 				/>
 			</div>
-		</Grid>
+		</LayoutPadding>
 	</NuxtLink>
 </template>
 

@@ -58,7 +58,7 @@
 				id="legal"
 				class="col-span-full w-screen justify-self-center bg-mono-900"
 			>
-				<Grid class="">
+				<LayoutPadding>
 					<a
 						class="text-mono-500 hover:text-mono-300 active:text-mono-50"
 						href="/legal/imprint"
@@ -70,7 +70,7 @@
 						>privacy</a
 					>
 					<div class="h-44 md:h-56 lg:h-0"></div>
-				</Grid>
+				</LayoutPadding>
 			</div>
 		</ScrollSegment>
 	</ScrollStop>

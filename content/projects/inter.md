@@ -11,3 +11,7 @@ projectTags:
   - electron.js
 landing: true
 ---
+
+::grid
+:::project-header{:bgImage=header :title=title :projectTags=projectTags}
+::

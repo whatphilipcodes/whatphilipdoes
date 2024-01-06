@@ -9,9 +9,9 @@
 			id="gradient"
 			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 		></div>
-		<Grid
+		<LayoutColumns
 			id="metaContainer"
-			class="absolute max-lg:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4"
+			class="absolute max-lg:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4 py-4 md:py-6 lg:py-8"
 		>
 			<div id="title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
@@ -25,7 +25,7 @@
 					{{ tag }}
 				</div>
 			</div>
-		</Grid>
+		</LayoutColumns>
 	</div>
 </template>
 
