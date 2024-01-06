@@ -1,8 +1,9 @@
 <template>
-	<div>{{ route }}</div>
+	<ContentDoc />
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-const route = useRoute().fullPath
+definePageMeta({
+	layout: 'project',
+})
 </script>

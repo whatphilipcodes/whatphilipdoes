@@ -4,7 +4,7 @@ meta:
   page: what inter
   segment: is
 header: /img/projects/inter/header-inter.jpg
-tags:
+projectTags:
   - interactive machine learning
   - hf transformers
   - ars electronica

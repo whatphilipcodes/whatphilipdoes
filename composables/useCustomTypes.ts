@@ -11,7 +11,7 @@ export interface contentBlockTextCTA extends ParsedContent {
 }
 export interface contentProject extends ParsedContent {
 	header: string
-	tags: string[]
+	projectTags: string[]
 	landing: boolean
 }
 export interface pageSegment {

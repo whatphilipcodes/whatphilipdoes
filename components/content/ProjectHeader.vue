@@ -1,5 +1,5 @@
 <template>
-	<div :class="classList">
+	<div class="absolute top-0 left-0 w-screen h-screen">
 		<NuxtPicture
 			format="webp"
 			:src="props.bgImage"
@@ -30,20 +30,7 @@
 </template>
 
 <script setup lang="ts">
-// exposed
-const isAnimating = ref(false)
-defineExpose({ isAnimating })
-
-// props
 const props = defineProps({
-	translate: {
-		type: String,
-		default: '',
-	},
-	msDuration: {
-		type: Number,
-		default: 1000,
-	},
 	title: {
 		type: String,
 		default: '',
@@ -57,27 +44,4 @@ const props = defineProps({
 		default: '',
 	},
 })
-const durationClassToken = computed(() => {
-	return `${props.msDuration}ms`
-})
-const classList = computed(() => {
-	return {
-		[`absolute top-full transition-transform dynamic-duration ease-in-out h-full w-full will-change-transform`]:
-			true,
-		[props.translate]: true,
-	}
-})
-
-watch(classList, () => {
-	isAnimating.value = true
-	setTimeout(() => {
-		isAnimating.value = false
-	}, props.msDuration)
-})
 </script>
-
-<style scoped>
-.dynamic-duration {
-	transition-duration: v-bind('durationClassToken');
-}
-</style>

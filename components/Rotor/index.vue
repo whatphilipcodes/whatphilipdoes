@@ -5,7 +5,7 @@
 			ref="slideInstances"
 			:translate="computeTranslate(index)"
 			:title="slide.title"
-			:tags="slide.tags"
+			:project-tags="slide.projectTags"
 			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
