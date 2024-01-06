@@ -14,7 +14,7 @@
 		"@nuxt/image": "npm:@nuxt/image-edge@latest",
 		"@nuxtjs/google-fonts": "^3.1.0",
 		"@nuxtjs/tailwindcss": "^6.10.1",
-		"nuxt": "^3.7.4",
+		"nuxt": "^3.9.1",
 		"nuxt-svgo": "^3.7.0",
 		"typescript": "^5.2.2",
 		"vue": "^3.3.4",
