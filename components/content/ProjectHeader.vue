@@ -9,7 +9,7 @@
 			id="gradient"
 			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 		></div>
-		<LayoutColumns class="gap-x-6 gap-y-4">
+		<LayoutColumns class="pt-32 gap-x-6 gap-y-4">
 			<div id="title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
 			</div>

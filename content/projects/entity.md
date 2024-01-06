@@ -12,6 +12,6 @@ projectTags:
 landing: true
 ---
 
-::grid
+::layout-padding
 :::project-header{:bgImage=header :title=title :projectTags=projectTags}
 ::
