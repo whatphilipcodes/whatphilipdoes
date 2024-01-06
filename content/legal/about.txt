@@ -1,3 +1,0 @@
-this folder must contain the following files:
-- imprint.md
-- privacy.md
