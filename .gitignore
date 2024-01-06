@@ -27,9 +27,5 @@ logs
 assets/icons/*
 !assets/icons/info.txt
 
-# legal files
-content/legal/*
-!content/legal/about.txt
-
 # downloads
 public/download
