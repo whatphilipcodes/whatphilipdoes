@@ -1,8 +1,8 @@
 ---
 title: inter
 meta:
-  page: what inter
-  segment: is
+  page: what philip
+  segment: did
 header: /img/projects/inter/header-inter.jpg
 projectTags:
   - interactive machine learning
@@ -12,6 +12,5 @@ projectTags:
 landing: true
 ---
 
-::grid
-:::project-header{:bgImage=header :title=title :projectTags=projectTags}
+::project-header{:bgImage=header :title=title :projectTags=projectTags abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
 ::
