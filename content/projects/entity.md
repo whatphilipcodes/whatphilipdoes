@@ -20,5 +20,6 @@ landing: true
 
 ::project-header{:bgImage=header :title=title :projectTags=projectTags abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
 ::
-::text-image{description="Cras sapien diam imperdiet massa scelerisque. Sodales vulputate fermentum eget massa. Mi pellentesque est interdum consequat habitant elit lectus. Fringilla gravida lectus rutrum scelerisque imperdiet elementum eu morbi. Tincidunt amet est quam cursus diam ipsum ultrices nulla. Nec tortor sed sed lectus aliquam ut. Sit ac eu id nunc pretium donec ultrices vel nisi." :imageArray="imgs01"}
-::
+
+<!-- ::text-image{description="Cras sapien diam imperdiet massa scelerisque. Sodales vulputate fermentum eget massa. Mi pellentesque est interdum consequat habitant elit lectus. Fringilla gravida lectus rutrum scelerisque imperdiet elementum eu morbi. Tincidunt amet est quam cursus diam ipsum ultrices nulla. Nec tortor sed sed lectus aliquam ut. Sit ac eu id nunc pretium donec ultrices vel nisi." :imageArray="imgs01"}
+:: -->

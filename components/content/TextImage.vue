@@ -8,12 +8,13 @@
 			<NuxtPicture
 				format="webp"
 				:src="image.src"
+				:alt="image.alt"
 				:imgAttrs="{ class: 'w-full h-full object-cover' }"
 			/>
 		</div>
-	</div>
-	<div v-if="description" class="pt-4 text-mono-300 col-span-full">
-		{{ props.description }}
+		<div v-if="description" class="text-mono-300">
+			{{ props.description }}
+		</div>
 	</div>
 </template>
 
