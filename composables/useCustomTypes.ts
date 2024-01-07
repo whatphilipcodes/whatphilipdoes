@@ -13,6 +13,7 @@ export interface contentProject extends ParsedContent {
 	header: string
 	projectTags: string[]
 	landing: boolean
+	abstract: string
 }
 export interface pageSegment {
 	title: string

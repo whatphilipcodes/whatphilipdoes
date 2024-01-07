@@ -16,7 +16,7 @@
 			<div id="title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
 			</div>
-			<div class="flex flex-row flex-wrap col-span-3 gap-x-6">
+			<div class="flex flex-row flex-wrap col-span-4 gap-x-6 h-fit">
 				<div
 					v-for="(tag, index) in projectTags"
 					:key="index"
