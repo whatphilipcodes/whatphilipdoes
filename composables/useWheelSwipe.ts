@@ -59,6 +59,7 @@ export const useWheelSwipe = (
 		cbAfterScroll?.()
 		allListeners.forEach((cb) => removeListener(cb))
 	}
+	onUnmounted(dispose)
 
 	// primary callbacks
 	function cbDataLoop(wheel: WheelEvent) {
@@ -107,6 +108,7 @@ export const useWheelSwipe = (
 	}
 
 	function blockDefault(wheel: WheelEvent) {
+		console.log('blocked in wheel swipe')
 		wheel.preventDefault()
 	}
 

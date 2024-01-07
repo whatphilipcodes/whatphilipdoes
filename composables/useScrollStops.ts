@@ -69,9 +69,11 @@ export const useScrollStops = () => {
 		window.removeEventListener('wheel', blockEvent)
 		scrollingBlocked.value = false
 	}
+	onUnmounted(enableScrolling)
 
 	// secondary
 	function blockEvent(event: Event) {
+		console.log('blocked from scrollstops')
 		event.preventDefault()
 	}
 

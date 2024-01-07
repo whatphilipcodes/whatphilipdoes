@@ -9,10 +9,11 @@
 			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
+		<RotorOpenCase :active-case="slides[activeSlide]" :is-active="isActive" />
 		<div v-if="restartUI" :class="restartClasses">
 			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
 			<Button
-				class="absolute w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+				class="absolute w-20 h-20 lg:w-44 lg:h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 				as="button"
 				@click="restart"
 				>restart</Button
@@ -73,13 +74,17 @@ function exit() {
 	setTimeout(() => {
 		window.removeEventListener('wheel', blockDefault)
 		window.removeEventListener('touchstart', blockDefault)
-
 		window.addEventListener('touchstart', enableRestartable)
 		exitWheelSwipe()
 		stopSwipeWatch?.()
 	}, 400)
 }
 defineExpose({ enter, exit })
+
+// mount behavior
+onUnmounted(() => {
+	exit()
+})
 
 // restart
 const restartUI = ref(false)
@@ -179,6 +184,7 @@ function up() {
 
 // helpers
 function blockDefault(event: any) {
+	console.log('blocked on rotor')
 	event.preventDefault()
 }
 function scrollToTop() {
