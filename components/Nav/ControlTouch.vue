@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="absolute bottom-0 right-0 flex flex-col-reverse gap-4 pointer-events-auto"
-	>
+	<div class="absolute bottom-0 right-0 flex flex-col-reverse gap-4">
 		<Button
 			v-for="button in buttons.slice().reverse()"
 			class="w-20 h-20"

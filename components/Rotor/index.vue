@@ -9,7 +9,7 @@
 			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
-		<RotorOpenCase :active-case="slides[activeSlide]" :is-active="isActive" />
+		<RotorOpenCase :active-case="slides[activeSlide]" :is-active="linkActive" />
 		<div v-if="restartUI" :class="restartClasses">
 			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
 			<Button
@@ -37,6 +37,7 @@ const props = defineProps({
 })
 
 const isActive = ref(false)
+const linkActive = ref(false)
 const classList = computed(() => {
 	return {
 		'w-screen h-screen col-span-full justify-self-center overflow-clip relative':
@@ -58,6 +59,7 @@ const computeTranslate = (index: number) => {
 // main controller
 function enter() {
 	isActive.value = true
+	linkActive.value = true
 	activeSlide.value = 0
 
 	window.addEventListener('wheel', blockDefault, { passive: false })
@@ -83,6 +85,7 @@ defineExpose({ enter, exit })
 
 // mount behavior
 onUnmounted(() => {
+	linkActive.value = false
 	exit()
 })
 
@@ -96,6 +99,7 @@ const restartClasses = computed(() => {
 	}
 })
 function enableRestartable() {
+	linkActive.value = false
 	restartUI.value = true
 	setTimeout(() => {
 		restartable.value = true

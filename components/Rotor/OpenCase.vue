@@ -1,7 +1,6 @@
 <template>
-	<div class="group">
+	<div v-if="isActive && device === 'mouse'" class="group">
 		<div
-			v-if="sourceType === 'mouse'"
 			ref="floatingItem"
 			class="fixed invisible group-hover:visible"
 			:style="{
@@ -19,7 +18,6 @@
 			</div>
 		</div>
 		<NuxtLink
-			v-if="sourceType === 'mouse'"
 			ref="clickable"
 			class="absolute w-full h-full"
 			:to="props.activeCase._path"
@@ -67,5 +65,5 @@ const extractor: UseMouseEventExtractor = (event) => {
 	else return null
 }
 const { x, y } = useMouse({ target: clickable, type: extractor })
-const { sourceType } = useMouse()
+const device = useInputType()
 </script>

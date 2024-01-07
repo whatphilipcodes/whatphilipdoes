@@ -1,11 +1,7 @@
 export const useScrollStops = () => {
 	// dependencies
-	const {
-		scrollStopTriggers,
-		toggleStopTrigger,
-		getStopTriggerIndex,
-		clearScrollStopTriggers,
-	} = useGlobalStore()
+	const { scrollStopTriggers, toggleStopTrigger, clearScrollStopTriggers } =
+		useGlobalStore()
 
 	// props
 	const activeIndex = ref(0)
