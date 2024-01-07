@@ -184,7 +184,6 @@ function up() {
 
 // helpers
 function blockDefault(event: any) {
-	console.log('blocked on rotor')
 	event.preventDefault()
 }
 function scrollToTop() {

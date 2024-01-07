@@ -73,7 +73,6 @@ export const useScrollStops = () => {
 
 	// secondary
 	function blockEvent(event: Event) {
-		console.log('blocked from scrollstops')
 		event.preventDefault()
 	}
 

@@ -108,7 +108,6 @@ export const useWheelSwipe = (
 	}
 
 	function blockDefault(wheel: WheelEvent) {
-		console.log('blocked in wheel swipe')
 		wheel.preventDefault()
 	}
 
