@@ -10,7 +10,7 @@
 			class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 		></div>
 	</div>
-	<div class="pt-12 col-span-full"></div>
+	<div class="pt-20 col-span-full"></div>
 	<div class="flex flex-col gap-y-2 col-span-4">
 		<div id="title" class="text-cinnabar-500">
 			{{ title.toLowerCase() }}
@@ -24,6 +24,7 @@
 				{{ tag }}
 			</div>
 		</div>
+		<div class="pt-20 col-span-full"></div>
 	</div>
 
 	<div class="col-start-7 col-span-6 text-lg leading-lg italic">
