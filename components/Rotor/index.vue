@@ -9,7 +9,11 @@
 			:bg-image="slide.header"
 			:ms-duration="1000"
 		/>
-		<RotorOpenCase :active-case="slides[activeSlide]" :is-active="linkActive" />
+		<RotorOpenCase
+			:active-case="slides[activeSlide]"
+			:is-active="linkActive"
+			:is-animating="isAnimating"
+		/>
 		<div v-if="restartUI" :class="restartClasses">
 			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
 			<Button
