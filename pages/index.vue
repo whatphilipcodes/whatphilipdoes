@@ -53,7 +53,7 @@
 					/>
 				</Button>
 			</BlockTextCTA>
-			<div class="mt-44 col-span-full" />
+			<div class="mt-4 col-span-full" />
 			<div
 				id="legal"
 				class="col-span-full w-screen justify-self-center bg-mono-900"

@@ -10,13 +10,13 @@
 		<div id="text" class="text-lg leading-lg italic mt-3">
 			{{ text }}
 		</div>
-		<div class="flex flex-row gap-4 mt-8">
+		<div class="flex flex-col self-end w-12 gap-4 mt-8">
 			<Button
 				v-if="callToAction"
 				:to="callToAction.to"
 				:variant="callToAction.accent ? 'accent' : 'basic'"
 				:download="callToAction.download ?? undefined"
-				class="w-44 h-10 max-lg:hidden"
+				class="w-44 h-full max-lg:hidden"
 				>{{ callToAction.label }}</Button
 			>
 			<slot />

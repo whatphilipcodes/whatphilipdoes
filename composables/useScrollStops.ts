@@ -1,3 +1,5 @@
+import { useBlockException } from './useBlockException'
+
 export const useScrollStops = () => {
 	// dependencies
 	const { scrollStopTriggers, toggleStopTrigger, clearScrollStopTriggers } =
@@ -51,26 +53,21 @@ export const useScrollStops = () => {
 	}
 
 	function blockScrolling() {
-		window.addEventListener('touchstart', blockEvent, {
+		window.addEventListener('touchstart', useBlockException, {
 			passive: false,
 		})
-		window.addEventListener('wheel', blockEvent, {
+		window.addEventListener('wheel', useBlockException, {
 			passive: false,
 		})
 		scrollingBlocked.value = true
 	}
 
 	function enableScrolling() {
-		window.removeEventListener('touchstart', blockEvent)
-		window.removeEventListener('wheel', blockEvent)
+		window.removeEventListener('touchstart', useBlockException)
+		window.removeEventListener('wheel', useBlockException)
 		scrollingBlocked.value = false
 	}
 	onUnmounted(enableScrolling)
-
-	// secondary
-	function blockEvent(event: Event) {
-		event.preventDefault()
-	}
 
 	return { scrollingBlocked, enter, exit, next }
 }

@@ -68,8 +68,8 @@ function enter() {
 	linkActive.value = true
 	activeSlide.value = 0
 
-	window.addEventListener('wheel', blockDefault, { passive: false })
-	window.addEventListener('touchstart', blockDefault, { passive: false })
+	window.addEventListener('wheel', useBlockException, { passive: false })
+	window.addEventListener('touchstart', useBlockException, { passive: false })
 	window.addEventListener('touchend', scrollToTop, { passive: false })
 
 	enterWheelSwipe()
@@ -80,8 +80,8 @@ function exit() {
 	isActive.value = false
 	window.removeEventListener('touchend', scrollToTop)
 	setTimeout(() => {
-		window.removeEventListener('wheel', blockDefault)
-		window.removeEventListener('touchstart', blockDefault)
+		window.removeEventListener('wheel', useBlockException)
+		window.removeEventListener('touchstart', useBlockException)
 		window.addEventListener('touchstart', enableRestartable)
 		exitWheelSwipe()
 		stopSwipeWatch?.()
@@ -193,9 +193,6 @@ function up() {
 }
 
 // helpers
-function blockDefault(event: any) {
-	event.preventDefault()
-}
 function scrollToTop() {
 	window.scrollTo({
 		top: projectDisplay.value.offsetTop,
