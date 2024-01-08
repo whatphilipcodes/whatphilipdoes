@@ -1,20 +1,21 @@
 <template>
-	<div v-if="isActive && device === 'mouse'" class="group">
+	<div v-if="device === 'mouse'" id="open-case-overlay" class="group">
 		<div
+			v-if="x + y > 0"
 			ref="floatingItem"
-			class="fixed invisible group-hover:visible"
+			class="fixed will-change-transform transition ease-in-out opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100"
 			:style="{
-				left: `${x + 24}px`,
-				top: `${y - displace.y}px`,
+				left: `${x + 20}px`,
+				top: `${y - displace.y + 20}px`,
 			}"
 		>
-			<div class="flex flex-row w-44 h-4 items-center justify-start gap-4">
+			<div class="flex flex-row w-fit h-4 items-center gap-4">
 				<div class="w-fit text-cinnabar-500">click to open</div>
-				<SvgoArrow
+				<!-- <SvgoArrow
 					class="w-fit h-full stroke-1 fill-none stroke-cinnabar-500"
 					:fontControlled="false"
 					:filled="true"
-				/>
+				/> -->
 			</div>
 		</div>
 		<NuxtLink
