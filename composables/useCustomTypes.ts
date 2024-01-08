@@ -17,12 +17,14 @@ export interface contentProject extends ParsedContent {
 }
 export interface pageSegment {
 	title: string
-	buttons: {
-		label: string
-		to: string
-		accent?: boolean
-		download?: string
-	}[]
+	buttons: buttonData[]
+	callback?: string
+}
+export interface buttonData {
+	label: string
+	to: string | (() => any)
+	accent?: boolean
+	download?: string
 }
 export interface pageInfo {
 	page: string

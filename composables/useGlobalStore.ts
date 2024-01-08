@@ -27,6 +27,13 @@ export const useGlobalStore = defineStore('global', () => {
 	function updateActiveSegment(segment: Partial<pageSegment>) {
 		Object.assign(activeSegment.value, segment)
 	}
+	const segmentCallbacks: { [key: string]: () => any } = {}
+	function addSegmentCallback(name: string, callback: () => any) {
+		segmentCallbacks[name] = callback
+	}
+	function executeSegmentCallback(name: string) {
+		segmentCallbacks[name]?.()
+	}
 
 	// stops
 	const scrollStopTriggers: {
@@ -55,6 +62,9 @@ export const useGlobalStore = defineStore('global', () => {
 		scrollSegments,
 		addSegment,
 		updateActiveSegment,
+		segmentCallbacks,
+		addSegmentCallback,
+		executeSegmentCallback,
 		//
 		scrollStopTriggers,
 		addStopTrigger,

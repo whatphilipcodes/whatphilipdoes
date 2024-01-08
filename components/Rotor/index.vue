@@ -13,14 +13,16 @@
 			:active-case="slides[activeSlide]"
 			:is-active="linkActive"
 			:is-animating="isAnimating"
+			:show-restart-u-i="restartUI"
+			:cb-restart="restart"
 		/>
 		<div v-if="restartUI" :class="restartClasses">
 			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
 			<Button
-				class="absolute w-20 h-20 lg:w-44 lg:h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+				class="absolute invisible lg:visible w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 				as="button"
 				@click="restart"
-				>restart</Button
+				>show again</Button
 			>
 		</div>
 	</div>

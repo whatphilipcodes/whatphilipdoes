@@ -1,6 +1,6 @@
 <template>
 	<component :is="props.as" :target="target" :download="download">
-		<button :class="buttonClasses">
+		<button :class="buttonClasses" @click="callback?.()">
 			<slot />
 		</button>
 	</component>
@@ -15,6 +15,11 @@ const props = defineProps({
 	as: {
 		type: [String, Object],
 		default: NuxtLink,
+	},
+	callback: {
+		type: Function as PropType<() => any>,
+		default: null,
+		required: false,
 	},
 	variant: {
 		type: String,

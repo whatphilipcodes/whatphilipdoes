@@ -43,6 +43,14 @@ const props = defineProps({
 		type: Boolean,
 		required: true,
 	},
+	showRestartUI: {
+		type: Boolean,
+		required: true,
+	},
+	cbRestart: {
+		type: Function as PropType<() => void>,
+		required: true,
+	},
 })
 
 // pos props
@@ -72,8 +80,17 @@ const { x, y } = useMouse({ target: clickable, type: extractor })
 const device = useInputType()
 
 // update touchbuttons in store
-const { updateActiveSegment } = useGlobalStore()
-const touchbutton = computed(() => {
+const { updateActiveSegment, addSegmentCallback } = useGlobalStore()
+const touchbuttons = computed(() => {
+	if (props.showRestartUI)
+		return {
+			buttons: [
+				{
+					label: 'show again',
+					to: props.cbRestart,
+				},
+			],
+		}
 	return {
 		buttons: [
 			{
@@ -84,7 +101,15 @@ const touchbutton = computed(() => {
 		],
 	}
 })
-watch(touchbutton, () => {
-	updateActiveSegment(touchbutton.value)
+const stop = watch(touchbuttons, () => {
+	updateActiveSegment(touchbuttons.value)
+})
+addSegmentCallback('getRotorButtons', () => {
+	updateActiveSegment(touchbuttons.value)
+})
+
+// cleanup
+onUnmounted(() => {
+	stop()
 })
 </script>

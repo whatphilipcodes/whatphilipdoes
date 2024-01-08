@@ -3,7 +3,8 @@
 		<Button
 			v-for="button in buttons.slice().reverse()"
 			class="w-20 h-20"
-			:to="button.to"
+			:to="typeof button.to === 'string' ? button.to : undefined"
+			:callback="typeof button.to === 'function' ? button.to : undefined"
 			:variant="button.accent ? 'accent' : 'basic'"
 			:download="button.download ?? undefined"
 			>{{ button.label }}</Button
@@ -14,9 +15,7 @@
 <script setup lang="ts">
 defineProps({
 	buttons: {
-		type: Array as PropType<
-			{ label: string; to: string; accent?: boolean; download?: string }[]
-		>,
+		type: Array as PropType<buttonData[]>,
 		default: () => [],
 	},
 })
