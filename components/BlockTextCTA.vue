@@ -1,5 +1,5 @@
 <template>
-	<div id="container-text-block" class="flex flex-col">
+	<div id="container-text-block" class="flex flex-col w-full">
 		<div
 			v-if="tags"
 			id="tags"
@@ -7,19 +7,25 @@
 		>
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
 		</div>
-		<div id="text" class="text-lg leading-lg italic mt-3">
-			{{ text }}
-		</div>
-		<div class="flex flex-col self-end w-12 gap-4 mt-8">
-			<Button
-				v-if="callToAction"
-				:to="callToAction.to"
-				:variant="callToAction.accent ? 'accent' : 'basic'"
-				:download="callToAction.download ?? undefined"
-				class="w-44 h-full max-lg:hidden"
-				>{{ callToAction.label }}</Button
+		<div
+			class="flex flex-row lg:flex-col w-full justify-between lg:justify-normal mt-3"
+		>
+			<div id="text" class="text-lg leading-lg italic">
+				{{ text }}
+			</div>
+			<div
+				class="flex flex-col lg:flex-row self-end lg:self-start w-12 lg:w-fit lg:mt-3 gap-4"
 			>
-			<slot />
+				<Button
+					v-if="callToAction"
+					:to="callToAction.to"
+					:variant="callToAction.accent ? 'accent' : 'basic'"
+					:download="callToAction.download ?? undefined"
+					class="w-44 h-10 max-lg:hidden"
+					>{{ callToAction.label }}</Button
+				>
+				<slot />
+			</div>
 		</div>
 	</div>
 </template>

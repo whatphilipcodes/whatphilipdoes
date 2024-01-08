@@ -9,7 +9,7 @@
 					:to="
 						segmentsContent[0].segment.buttons
 							? segmentsContent[0].segment.buttons[0].to
-							: '/error'
+							: 'error'
 					"
 					variant="accent"
 					>{{
@@ -36,42 +36,27 @@
 	</ScrollStop>
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[2].segment">
-			<div class="mt-80 col-span-full" />
-			<BlockTextCTA
-				:content="segmentsContent[2].contents.closer"
-				class="lg:mt-44 col-span-full lg:col-span-8"
-			>
-				<Button
-					v-for="link in segmentsContent[2].contents.social"
-					class="aspect-square"
-					:to="link.to"
-					variant="dark"
-				>
-					<component
-						:is="link.icon"
-						class="text-mono-500 group-hover:text-mono-50"
-					/>
-				</Button>
-			</BlockTextCTA>
-			<div class="mt-4 col-span-full" />
 			<div
-				id="legal"
-				class="col-span-full w-screen justify-self-center bg-mono-900"
+				class="flex h-[50vh] lg:h-[60vh] col-span-full items-end lg:items-center mb-4"
 			>
-				<LayoutPadding>
-					<a
-						class="text-mono-500 hover:text-mono-300 active:text-mono-50"
-						href="/legal/imprint"
-						>imprint</a
+				<BlockTextCTA
+					:content="segmentsContent[2].contents.closer"
+					class="lg:col-span-8"
+				>
+					<Button
+						v-for="link in segmentsContent[2].contents.social"
+						class="aspect-square lg:w-10"
+						:to="link.to"
+						variant="dark"
 					>
-					<a
-						class="text-mono-500 hover:text-mono-300 active:text-mono-50"
-						href="/legal/privacy"
-						>privacy</a
-					>
-					<div class="h-44 md:h-56 lg:h-0"></div>
-				</LayoutPadding>
+						<component
+							:is="link.icon"
+							class="text-mono-500 group-hover:text-mono-50"
+						/>
+					</Button>
+				</BlockTextCTA>
 			</div>
+			<Footer />
 		</ScrollSegment>
 	</ScrollStop>
 </template>
