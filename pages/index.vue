@@ -84,6 +84,8 @@ let exitScrollStops: () => void
 const projectRotor = ref()
 const { updateActivePage } = useGlobalStore()
 
+const { enterScrollSegments, exitScrollSegments } = useScrollSegments()
+
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
 
@@ -94,7 +96,7 @@ onMounted(() => {
 	})
 
 	// segments
-	useScrollSegments()
+	enterScrollSegments()
 
 	// enter scroll stops
 	const {
@@ -118,5 +120,6 @@ onMounted(() => {
 })
 onUnmounted(() => {
 	exitScrollStops()
+	exitScrollSegments()
 })
 </script>

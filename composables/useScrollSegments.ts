@@ -1,19 +1,32 @@
+import type { WatchStopHandle } from 'vue'
 export const useScrollSegments = () => {
 	// props
 	const { scrollSegments, updateActiveSegment } = useGlobalStore()
 	const { y } = useWindowScroll()
+	let cbUnwatch: WatchStopHandle
 
-	// watcher
-	watch(y, (val) => {
-		const center = val + window.innerHeight / 2
-		updateActiveSegment(getCurrentSegments(center)[0]?.segment)
-	})
+	//controller
+	function enterScrollSegments() {
+		watchOnce(currentSegments, (value: any) => {
+			updateActiveSegment(value[0]?.segment)
+		})
+		cbUnwatch = watch(y, () => {
+			updateActiveSegment(currentSegments.value[0]?.segment)
+		})
+	}
+	function exitScrollSegments() {
+		cbUnwatch()
+	}
 
 	// helpers
-	function getCurrentSegments(scrollY: number) {
+	const currentSegments = computed(() => {
+		const center = y.value + window.innerHeight / 2
 		const activeSegments = scrollSegments.filter(
-			(segment) => segment.enter <= scrollY && segment.exit >= scrollY
+			(segment) => segment.enter <= center && segment.exit >= center
 		)
 		return activeSegments
-	}
+	})
+
+	// return
+	return { enterScrollSegments, exitScrollSegments }
 }

@@ -70,4 +70,21 @@ const extractor: UseMouseEventExtractor = (event) => {
 }
 const { x, y } = useMouse({ target: clickable, type: extractor })
 const device = useInputType()
+
+// update touchbuttons in store
+const { updateActiveSegment } = useGlobalStore()
+const touchbutton = computed(() => {
+	return {
+		buttons: [
+			{
+				label: 'open case',
+				accent: true,
+				to: props.activeCase._path ?? '',
+			},
+		],
+	}
+})
+watch(touchbutton, () => {
+	updateActiveSegment(touchbutton.value)
+})
 </script>
