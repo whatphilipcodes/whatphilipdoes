@@ -104,7 +104,9 @@ const restartClasses = computed(() => {
 		'opacity-0': !restartable.value,
 	}
 })
-function enableRestartable() {
+function enableRestartable(event: Event) {
+	const target = event.target as HTMLElement
+	if (target.classList.contains('persistent-default')) return
 	linkActive.value = false
 	restartUI.value = true
 	setTimeout(() => {
