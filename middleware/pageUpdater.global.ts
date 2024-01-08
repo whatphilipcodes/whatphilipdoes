@@ -3,5 +3,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
 	const { data } = await useAsyncData(() => queryContent(to.path).findOne()) // #todo: prevent the useRoute() call nuxt-content uses internally
 	if (!data.value) return
 	updateActivePage({ page: data.value?.meta.page })
-	updateActiveSegment({ title: data.value?.meta.segment })
+	updateActiveSegment({
+		title: data.value?.meta.segment,
+		buttons: data.value?.meta.buttons ?? [],
+	})
 })
