@@ -29,7 +29,7 @@ const props = defineProps({
 
 const buttonClasses = computed(() => {
 	return {
-		'touchable-btn flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
+		'flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
 			true,
 		'border-mono-800 bg-mono-800 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
 			props.variant === 'basic',

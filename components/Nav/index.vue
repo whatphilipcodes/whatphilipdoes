@@ -1,23 +1,21 @@
 <template>
-	<NuxtLink
-		id="menu"
-		class="fixed left-0 bottom-0 lg:top-0 h-36 w-full pointer-events-none z-nav"
-		to="/"
-	>
+	<div id="menu" class="fixed left-0 bottom-0 lg:top-0 h-36 w-full z-nav">
 		<NavDissolver />
 		<LayoutPadding class="absolute top-0 w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
-				<NavDynamicHeading
-					:page="store.$state.activePage.page"
-					:highlight="store.$state.activeSegment.title"
-				/>
+				<NuxtLink to="/"
+					><NavDynamicHeading
+						:page="store.$state.activePage.page"
+						:highlight="store.$state.activeSegment.title"
+				/></NuxtLink>
+
 				<NavControlTouch
 					class="lg:hidden"
 					:buttons="store.$state.activeSegment.buttons"
 				/>
 			</div>
 		</LayoutPadding>
-	</NuxtLink>
+	</div>
 </template>
 
 <script setup lang="ts">
