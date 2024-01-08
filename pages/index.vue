@@ -44,6 +44,13 @@
 					class="lg:col-span-8"
 				>
 					<Button
+						class="w-44 h-10 max-sm:hidden"
+						variant="dark"
+						:to="segmentsContent[2].contents.download.to"
+						:download="segmentsContent[2].contents.download.download"
+						>{{ segmentsContent[2].contents.download.label }}</Button
+					>
+					<Button
 						v-for="link in segmentsContent[2].contents.social"
 						class="aspect-square lg:w-10"
 						:to="link.to"
