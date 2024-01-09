@@ -1,6 +1,6 @@
 <template>
 	<div
-		name="legal"
+		data-info="legal"
 		class="col-span-full w-screen justify-self-center bg-mono-900"
 	>
 		<LayoutPadding>

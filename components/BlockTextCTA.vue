@@ -1,8 +1,8 @@
 <template>
-	<div name="container-text-block" class="flex flex-col w-full">
+	<div data-info="container-text-block" class="flex flex-col w-full">
 		<div
 			v-if="tags"
-			name="tags"
+			data-info="tags"
 			class="flex flex-col lg:flex-row lg:flex-wrap text-mono-500 gap-x-8"
 		>
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
@@ -10,7 +10,7 @@
 		<div
 			class="flex flex-row lg:flex-col w-full justify-between lg:justify-normal mt-3"
 		>
-			<div name="text" class="text-lg leading-lg italic">
+			<div data-info="text" class="text-lg leading-lg italic">
 				{{ text }}
 			</div>
 			<div

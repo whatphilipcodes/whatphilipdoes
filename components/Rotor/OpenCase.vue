@@ -1,5 +1,5 @@
 <template>
-	<div v-if="device === 'mouse'" name="open-case-overlay" class="group">
+	<div v-if="device === 'mouse'" data-info="open-case-overlay" class="group">
 		<div
 			ref="floatingItem"
 			class="fixed will-change-transform transition ease-in-out delay-75"

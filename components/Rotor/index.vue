@@ -1,5 +1,5 @@
 <template>
-	<div name="project-display" ref="projectDisplay" :class="classList">
+	<div data-info="project-display" ref="projectDisplay" :class="classList">
 		<RotorSlide
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
