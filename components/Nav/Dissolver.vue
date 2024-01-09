@@ -1,6 +1,6 @@
 <template>
 	<div
-		id="dissolver"
+		name="dissolver"
 		class="w-full h-full bg-gradient-to-t lg:bg-gradient-to-b from-mono-950"
 	></div>
 </template>

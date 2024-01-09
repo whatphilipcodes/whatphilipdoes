@@ -1,24 +1,24 @@
 <template>
-	<div class="h-full">
-		<div class="relative h-full">
+	<div name="card-project" class="flex h-full w-full">
+		<div name="background" class="relative h-full">
 			<NuxtPicture
 				format="webp"
 				:src="props.bgImage"
 				:imgAttrs="{ class: 'w-full h-full object-cover' }"
 			/>
 			<div
-				id="gradient"
+				name="gradient-overlay"
 				class="absolute top-0 w-full h-full bg-gradient-to-b lg:bg-gradient-to-t from-mono-900"
 			></div>
 		</div>
-		<LayoutColumns
-			id="metaContainer"
-			class="absolute max-lg:top-0 lg:bottom-0 left-0 gap-x-6 gap-y-4 py-4 md:py-6 lg:py-8"
-		>
-			<div id="title" class="text-cinnabar-500 col-span-full">
+		<LayoutPadding name="project-meta" class="absolute top-0 h-[100%]">
+			<div name="project-title" class="text-cinnabar-500 col-span-full">
 				{{ title.toLowerCase() }}
 			</div>
-			<div class="flex flex-row flex-wrap col-span-4 gap-x-6 h-fit">
+			<div
+				name="project-tags"
+				class="flex flex-row flex-wrap col-span-4 gap-x-6 h-fit"
+			>
 				<div
 					v-for="(tag, index) in projectTags"
 					:key="index"
@@ -28,12 +28,13 @@
 				</div>
 			</div>
 			<div
+				name="project-abstract"
 				class="col-span-full md:col-span-4 lg:col-span-6 md:col-start-5 lg:col-start-7"
 				v-if="props.abstract"
 			>
 				{{ props.abstract }}
 			</div>
-		</LayoutColumns>
+		</LayoutPadding>
 	</div>
 </template>
 
