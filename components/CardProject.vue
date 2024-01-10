@@ -7,7 +7,11 @@
 			data-info="container-bg"
 			class="absolute z-[20] top-0 flex flex-col w-full h-full"
 		>
-			<div data-info="bg" class="relative w-full h-[60vh] bg-[#834bf3]">
+			<div
+				data-info="bg"
+				class="relative w-full bg-[#834bf3]"
+				:class="{ 'h-[60vh]': props.opened, 'h-[100vh]': !props.opened }"
+			>
 				<div data-info="image" class="w-full h-full bg-cinnabar-800">
 					<Image :src="props.bgImage" :alt="props.title" />
 				</div>
@@ -72,6 +76,10 @@ const props = defineProps({
 	bgImage: {
 		type: String,
 		default: '',
+	},
+	opened: {
+		type: Boolean,
+		default: false,
 	},
 })
 </script>
