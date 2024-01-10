@@ -4,6 +4,7 @@
 			:projectTags="props.projectTags"
 			:title="props.title"
 			:bgImage="props.bgImage"
+			class="col-span-full w-screen h-screen"
 		/>
 	</div>
 </template>

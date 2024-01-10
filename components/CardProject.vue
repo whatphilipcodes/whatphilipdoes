@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="project"
-		class="relative flex flex-col w-full h-full bg-[#376a82]"
+		class="relative flex flex-col w-full h-fit justify-self-center"
 	>
 		<div
 			data-info="container-bg"
@@ -9,7 +9,7 @@
 		>
 			<div
 				data-info="bg"
-				class="relative w-full bg-[#834bf3]"
+				class="relative w-full"
 				:class="{ 'h-[60vh]': props.opened, 'h-[100vh]': !props.opened }"
 			>
 				<div data-info="image" class="w-full h-full bg-cinnabar-800">
@@ -21,8 +21,8 @@
 				></div>
 			</div>
 		</div>
-		<div data-info="meta" class="absolute top-0 flex flex-col w-full h-full">
-			<LayoutColumns data-info="text" class="w-full h-full auto-rows-min">
+		<div data-info="meta" class="flex flex-col w-full h-fit">
+			<LayoutColumns data-info="text" class="w-full h-fit auto-rows-min">
 				<div class="h-[60vh] lg:col-span-full" />
 				<div
 					data-info="overlay"
@@ -49,7 +49,7 @@
 				</div>
 				<div
 					data-info="abstract"
-					class="col-span-full lg:col-start-7 lg:col-span- mt-4 md:mt-6 lg:mt-8 text-lg italic"
+					class="col-span-full lg:col-start-7 lg:col-span- my-4 md:my-6 lg:my-8 text-lg italic"
 				>
 					{{ props.abstract }}
 				</div>
