@@ -21,12 +21,13 @@
 				></div>
 			</div>
 		</div>
-		<div data-info="meta" class="flex flex-col w-full h-fit">
-			<LayoutColumns data-info="text" class="w-full h-fit auto-rows-min">
-				<div class="h-[60vh] lg:col-span-full" />
+		<div data-info="meta" class="flex flex-col w-full h-full">
+			<LayoutColumns data-info="text" class="w-full h-full">
+				<div data-info="spacer-top" class="h-[60vh] lg:col-span-full" />
 				<div
 					data-info="overlay"
-					class="relative z-[20] row-start-1 lg:row-start-auto col-span-3 lg:col-span-5 mt-4 md:mt-6 lg:mt-8"
+					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-5 py-4 md:py-6 lg:py-8 lg:self-end"
+					:class="{ 'lg:justify-end': !props.opened }"
 				>
 					<div
 						data-info="project-title"
@@ -49,7 +50,7 @@
 				</div>
 				<div
 					data-info="abstract"
-					class="col-span-full lg:col-start-7 lg:col-span- my-4 md:my-6 lg:my-8 text-lg italic"
+					class="flex col-span-full h-full lg:col-start-7 lg:col-span- py-4 md:py-6 lg:py-8 text-lg italic"
 				>
 					{{ props.abstract }}
 				</div>
@@ -83,3 +84,9 @@ const props = defineProps({
 	},
 })
 </script>
+
+<style lang="css" scoped>
+.custom-transform-meta {
+	transform: translateY(calc(40vh - 100%));
+}
+</style>
