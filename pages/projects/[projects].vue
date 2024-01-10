@@ -1,6 +1,6 @@
 <template>
 	<ContentDoc v-slot="{ doc }">
-		<ContentRenderer :value="doc" tag="layout-columns" />
+		<ContentRenderer :value="doc" tag="layout-columns" class="gap-y-8" />
 	</ContentDoc>
 </template>
 

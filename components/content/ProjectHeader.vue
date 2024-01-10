@@ -7,7 +7,6 @@
 		:bgImage="props.bgImage"
 		class="col-span-full w-screen"
 	/>
-	<div class="col-span-full h-44 bg-cinnabar-700"></div>
 </template>
 
 <script setup lang="ts">

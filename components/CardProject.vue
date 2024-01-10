@@ -50,7 +50,7 @@
 				</div>
 				<div
 					data-info="abstract"
-					class="flex col-span-full h-full lg:col-start-7 lg:col-span- py-4 md:py-6 lg:py-8 text-lg italic"
+					class="flex col-span-full h-full lg:col-start-7 lg:col-span- pt-4 md:pt-6 lg:pt-8 text-lg italic"
 				>
 					{{ props.abstract }}
 				</div>
