@@ -23,14 +23,27 @@
 				/>
 			</div>
 			<div data-info="meta" class="absolute top-0 flex flex-col w-full h-full">
-				<div data-info="in-front" class="relative z-[20]">
-					<div data-info="title" class="bg-cinnabar-800">title</div>
-					<div data-info="tags" class="bg-cinnabar-600">tags</div>
-				</div>
-				<div data-info="behind" class="mt-auto">
-					<div data-info="abstract" class="bg-cinnabar-400">abstract</div>
-				</div>
-				<div data-info="spacer-navbar" class="w-full h-36 flex flex-shrink-0" />
+				<LayoutPadding data-info="text" class="w-full h-full">
+					<div
+						data-info="overlay"
+						class="relative z-[20] col-span-full lg:col-span-6 lg:mt-auto"
+					>
+						<div data-info="title" class="bg-cinnabar-800">title</div>
+						<div data-info="tags" class="bg-cinnabar-600">tags</div>
+					</div>
+					<div
+						data-info="abstract"
+						class="col-span-full lg:col-span-6 mt-auto bg-cinnabar-400"
+					>
+						Amet tellus eu sit tellus donec. Facilisi enim viverra amet
+						placerat. Ipsum molestie morbi dictum pharetra. Magnis pretium at
+						massa quam purus a laoreet.
+					</div>
+				</LayoutPadding>
+				<div
+					data-info="spacer-navbar"
+					class="w-full h-36 lg:hidden flex flex-shrink-0"
+				/>
 			</div>
 		</div>
 	</div>
