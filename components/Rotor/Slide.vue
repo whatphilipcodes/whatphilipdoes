@@ -4,7 +4,7 @@
 			:projectTags="props.projectTags"
 			:title="props.title"
 			:bgImage="props.bgImage"
-			class="col-span-full w-screen h-screen"
+			class="col-span-full w-screen h-dvh"
 		/>
 	</div>
 </template>
