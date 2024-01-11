@@ -19,7 +19,7 @@
 					}}</Button
 				>
 			</div>
-			<div class="col-span-full md:col-span-6 h-[50vh] lg:h-[60vh]">
+			<div class="col-span-full md:col-span-6 h-[48vh] lg:h-[64vh]">
 				<BlockTextCTA
 					class="lg:mt-44"
 					:content="segmentsContent[0].contents.hero"
@@ -37,7 +37,7 @@
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[2].segment">
 			<div
-				class="flex h-[50vh] lg:h-[60vh] col-span-full items-end lg:items-center mb-4"
+				class="flex h-[48vh] lg:h-[64vh] col-span-full items-end lg:items-center mb-4"
 			>
 				<BlockTextCTA
 					:content="segmentsContent[2].contents.closer"

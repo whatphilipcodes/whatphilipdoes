@@ -10,7 +10,7 @@
 			<div
 				data-info="bg"
 				class="relative w-full"
-				:class="{ 'h-[60vh]': props.opened, 'h-[100vh]': !props.opened }"
+				:class="{ 'h-[64vh]': props.opened, 'h-[100vh]': !props.opened }"
 			>
 				<div data-info="image" class="w-full h-full bg-cinnabar-800">
 					<Image :src="props.bgImage.src" :alt="props.bgImage.alt" />
@@ -27,7 +27,7 @@
 				class="w-full h-full"
 				:class="{ 'auto-rows-min': props.opened }"
 			>
-				<div data-info="spacer-top" class="h-[60vh] lg:col-span-full" />
+				<div data-info="spacer-top" class="h-[64vh] lg:col-span-full" />
 				<div
 					data-info="overlay"
 					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-5 py-4 md:py-6 lg:py-8 lg:self-end"
