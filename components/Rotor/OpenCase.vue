@@ -16,13 +16,13 @@
 				<div class="w-fit text-cinnabar-500">click to open</div>
 			</div>
 		</div>
-		<NuxtLink
-			v-if="isActive"
-			ref="clickable"
-			class="absolute w-full h-full"
-			:to="props.activeCase._path"
-		/>
 	</div>
+	<NuxtLink
+		v-if="isActive"
+		ref="clickable"
+		class="persistent-default absolute w-full h-full"
+		:to="props.activeCase._path"
+	/>
 </template>
 
 <script setup lang="ts">
