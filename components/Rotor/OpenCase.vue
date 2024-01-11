@@ -16,13 +16,27 @@
 				<div class="w-fit text-cinnabar-500">click to open</div>
 			</div>
 		</div>
+		<NuxtLink
+			v-if="isActive"
+			ref="clickable"
+			class="absolute w-full h-full"
+			:to="props.activeCase._path"
+		/>
 	</div>
-	<NuxtLink
-		v-if="isActive"
-		ref="clickable"
-		class="persistent-default absolute w-full h-full"
-		:to="props.activeCase._path"
-	/>
+	<LayoutColumns
+		v-else-if="isActive"
+		class="fixed transition ease-in-out delay-75 bottom-0 w-screen py-8"
+		:class="{
+			'opacity-0': isAnimating || !isActive,
+			'opacity-100': !isAnimating && isActive,
+		}"
+	>
+		<div class="flex flex-row col-span-full h-10 justify-end">
+			<Button variant="accent" :to="props.activeCase._path" class="w-44"
+				>open case</Button
+			>
+		</div>
+	</LayoutColumns>
 </template>
 
 <script setup lang="ts">
