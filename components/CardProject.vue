@@ -22,7 +22,11 @@
 			</div>
 		</div>
 		<div data-info="meta" class="flex flex-col w-full h-full">
-			<LayoutColumns data-info="text" class="w-full h-full">
+			<LayoutColumns
+				data-info="text"
+				class="w-full h-full"
+				:class="{ 'auto-rows-min': props.opened }"
+			>
 				<div data-info="spacer-top" class="h-[60vh] lg:col-span-full" />
 				<div
 					data-info="overlay"
