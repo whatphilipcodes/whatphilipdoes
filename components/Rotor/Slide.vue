@@ -33,8 +33,8 @@ const props = defineProps({
 		default: ['did', 'not', 'receive', 'projectTags'],
 	},
 	bgImage: {
-		type: String,
-		default: '',
+		type: Object as PropType<imageData>,
+		required: true,
 	},
 })
 const durationClassToken = computed(() => {

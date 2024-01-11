@@ -16,8 +16,8 @@ const props = defineProps({
 		default: '',
 	},
 	bgImage: {
-		type: String,
-		default: '',
+		type: Object as PropType<imageData>,
+		required: true,
 	},
 	projectTags: {
 		type: Array,

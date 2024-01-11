@@ -3,7 +3,9 @@ title: inter
 meta:
   page: what philip
   segment: did
-header: /img/projects/inter/header-inter.jpg
+header:
+  src: /img/projects/inter/header-inter.jpg
+  alt: 'header'
 projectTags:
   - interactive machine learning
   - hf transformers

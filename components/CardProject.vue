@@ -13,7 +13,7 @@
 				:class="{ 'h-[60vh]': props.opened, 'h-[100vh]': !props.opened }"
 			>
 				<div data-info="image" class="w-full h-full bg-cinnabar-800">
-					<Image :src="props.bgImage" :alt="props.title" />
+					<Image :src="props.bgImage.src" :alt="props.bgImage.alt" />
 				</div>
 				<div
 					data-info="gradient-overlay"
@@ -79,8 +79,8 @@ const props = defineProps({
 		default: ['did', 'not', 'receive', 'projectTags'],
 	},
 	bgImage: {
-		type: String,
-		default: '',
+		type: Object as PropType<imageData>,
+		required: true,
 	},
 	opened: {
 		type: Boolean,

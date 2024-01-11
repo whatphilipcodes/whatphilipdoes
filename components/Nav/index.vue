@@ -8,7 +8,7 @@
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NuxtLink to="/"
 					><NavDynamicHeading
-						:page="store.$state.activePage.page"
+						:page="store.$state.activePage"
 						:highlight="store.$state.activeSegment.title"
 				/></NuxtLink>
 

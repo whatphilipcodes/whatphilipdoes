@@ -1,35 +1,38 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
+// content
 export interface contentBlockTextCTA extends ParsedContent {
 	tags: string[]
 	text: string
-	callToAction: {
-		label: string
-		to: string
-		accent?: boolean
-		download?: string
-	}
+	callToAction: buttonData
 }
 export interface contentProject extends ParsedContent {
-	header: string
+	header: imageData
 	projectTags: string[]
 	landing: boolean
 	abstract: string
 }
+export interface contentSegment extends ParsedContent {
+	segment: Partial<pageSegment>
+	contents: any
+}
+
+// molecules
 export interface pageSegment {
 	title: string
 	buttons: buttonData[]
 	callback?: string
 }
+
+// atoms
 export interface buttonData {
 	label: string
 	to: string | (() => any)
 	accent?: boolean
 	download?: string
 }
-export interface pageInfo {
-	page: string
-}
-export interface contentSegment extends ParsedContent {
-	segment: Partial<pageSegment>
-	contents: any
+
+export interface imageData {
+	src: string
+	alt?: string
+	format?: string
 }
