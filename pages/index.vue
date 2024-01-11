@@ -44,7 +44,7 @@
 					class="lg:col-span-8"
 				>
 					<Button
-						class="w-44 h-10 max-sm:hidden"
+						class="w-44 h-10 hidden lg:block"
 						variant="dark"
 						:to="segmentsContent[2].contents.download.to"
 						:download="segmentsContent[2].contents.download.download"
