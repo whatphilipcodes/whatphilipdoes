@@ -11,13 +11,14 @@
 			<div
 				v-for="(image, index) in props.imageArray"
 				:key="index"
-				:class="`h-[60vh]` + (image.wide ? ` aspect-[4/3]` : ` aspect-[3/4]`)"
+				class="h-[64vh]"
+				:class="getAspectClassesSM(image)"
 			>
 				<Image :src="image.src" :alt="image.alt" />
 			</div>
 		</div>
 		<div data-info="sm-single" class="flex h-fit overflow-hidden px-4" v-else>
-			<div class="h-[60vh] w-full">
+			<div class="h-[64vh] w-full">
 				<Image :src="props.imageArray[0].src" :alt="props.imageArray[0].alt" />
 			</div>
 		</div>
@@ -28,25 +29,20 @@
 		</LayoutColumns>
 	</div>
 	<div
-		data-info="lg-grid"
+		data-info="md-grid"
 		class="hidden md:flex flex-row flex-wrap col-span-full h-fit gap-4"
 	>
 		<div
 			v-for="(image, index) in props.imageArray"
 			:key="index"
-			:class="
-				`flex w-fit h-[40vh]` + (image.wide ? ` aspect-[4/3]` : ` aspect-[3/4]`)
-			"
+			class="h-[32vh] lg:h-[40vh]"
+			:class="getAspectClassesLG(image)"
 		>
-			<Image
-				:src="image.src"
-				:alt="image.alt"
-				class="w-full h-full object-cover"
-			/>
+			<Image :src="image.src" :alt="image.alt" />
 		</div>
 		<div
 			v-if="description"
-			class="flex flex-1 min-w-[30vw] h-[40vh] items-start text-mono-300"
+			class="flex flex-1 min-w-[32vw] max-w-[64vw] text-mono-300"
 		>
 			{{ props.description }}
 		</div>
@@ -57,7 +53,7 @@
 // props
 const props = defineProps({
 	imageArray: {
-		type: Array as PropType<{ src: string; alt?: string; wide?: boolean }[]>,
+		type: Array as PropType<imageData[]>,
 		default: [],
 		required: true,
 	},
@@ -67,4 +63,20 @@ const props = defineProps({
 		required: false,
 	},
 })
+
+// helpers (#info: in-template operations did not work)
+function getAspectClassesLG(image: imageData) {
+	if (image.format) {
+		return 'aspect-[' + image.format + ']'
+	} else {
+		return 'min-w-[30vh]'
+	}
+}
+function getAspectClassesSM(image: imageData) {
+	if (image.format) {
+		return 'aspect-[' + image.format + ']'
+	} else {
+		return 'min-w-[100vw]'
+	}
+}
 </script>
