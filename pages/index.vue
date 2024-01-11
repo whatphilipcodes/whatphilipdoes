@@ -83,9 +83,7 @@ const projectsContent = await queryContent<contentProject>('projects').find()
 
 onMounted(() => {
 	// set page title
-	updateActivePage({
-		page: 'what philip',
-	})
+	updateActivePage('what philip')
 
 	// segments
 	enterScrollSegments()
