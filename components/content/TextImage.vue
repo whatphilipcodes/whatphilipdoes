@@ -69,7 +69,7 @@ function getAspectClassesLG(image: imageData) {
 	if (image.format) {
 		return 'aspect-[' + image.format + ']'
 	} else {
-		return 'min-w-[30vh]'
+		return 'min-w-[32vw] max-w-[48vw]'
 	}
 }
 function getAspectClassesSM(image: imageData) {

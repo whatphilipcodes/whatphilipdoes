@@ -1,10 +1,10 @@
 <template>
 	<div
 		data-info="menu"
-		class="fixed left-0 bottom-0 lg:top-0 h-36 w-full z-nav"
+		class="fixed bottom-0 lg:top-0 h-36 w-full z-nav mx-auto"
 	>
 		<NavDissolver />
-		<LayoutPadding class="absolute top-0 w-full h-full">
+		<LayoutPadding class="w-full h-full">
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NuxtLink to="/"
 					><NavDynamicHeading
