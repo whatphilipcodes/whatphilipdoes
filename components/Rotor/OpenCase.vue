@@ -25,7 +25,7 @@
 	</div>
 	<LayoutColumns
 		v-else-if="isActive"
-		class="fixed transition ease-in-out delay-75 bottom-0 w-screen py-8"
+		class="hidden lg:block fixed transition ease-in-out delay-75 bottom-0 w-screen py-8"
 		:class="{
 			'opacity-0': isAnimating || !isActive,
 			'opacity-100': !isAnimating && isActive,
