@@ -1,7 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	ssr: false,
-	spaLoadingTemplate: 'loading/suspense.html',
 	modules: [
 		'@pinia/nuxt',
 		'@nuxt/image',
