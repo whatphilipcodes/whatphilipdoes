@@ -27,5 +27,5 @@ logs
 assets/icons/*
 !assets/icons/info.txt
 
-# downloads
-public/download
+# exclude uncompressed
+.public-uncompressed
