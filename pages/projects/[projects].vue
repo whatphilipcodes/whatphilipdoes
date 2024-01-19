@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
 definePageMeta({
-	layout: 'project',
+	layout: 'minimal',
 })
 </script>
