@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	ssr: false,
+	nitro: {
+		preset: 'static',
+	},
 	modules: [
 		'@pinia/nuxt',
 		'@nuxt/image',
@@ -17,6 +20,11 @@ export default defineNuxtConfig({
 				wght: [400, 600],
 				ital: [500],
 			},
+		},
+	},
+	content: {
+		experimental: {
+			clientDB: true,
 		},
 	},
 	alias: {
