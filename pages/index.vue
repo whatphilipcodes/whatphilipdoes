@@ -102,9 +102,7 @@ onMounted(() => {
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
-			setTimeout(() => {
-				projectRotor.value?.enter()
-			}, 400)
+			projectRotor.value?.enterFromScroll()
 		}
 	})
 })
