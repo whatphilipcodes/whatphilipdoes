@@ -81,10 +81,15 @@ const { enterScrollSegments, exitScrollSegments } = useScrollSegments()
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
 
-const dbTrigger = useDebounceFn(() => {
+const dbWheelTrigger = useDebounceFn(() => {
 	projectRotor.value?.enter()
-	window.removeEventListener('wheel', dbTrigger)
+	window.removeEventListener('wheel', dbWheelTrigger)
 }, 400)
+
+function touchTrigger() {
+	projectRotor.value?.enter()
+	window.removeEventListener('touchstart', touchTrigger)
+}
 
 onMounted(() => {
 	// set page title
@@ -107,7 +112,8 @@ onMounted(() => {
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
-			window.addEventListener('wheel', dbTrigger)
+			window.addEventListener('wheel', dbWheelTrigger)
+			window.addEventListener('touchstart', touchTrigger)
 		}
 	})
 })
