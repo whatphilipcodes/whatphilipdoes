@@ -4,14 +4,21 @@
 			ref="floatingItem"
 			class="fixed will-change-transform transition ease-in-out delay-75"
 			:class="{
-				'opacity-0 scale-50': isAnimating || !isActive,
-				'opacity-100 scale-100': !isAnimating && isActive,
+				'opacity-0 scale-50':
+					isAnimating || !isActive || !mouseAtZero || !mouseMoving,
+				'opacity-100 scale-100':
+					!isAnimating && isActive && mouseAtZero && mouseMoving,
 			}"
 			:style="{
-				left: `${x + 20}px`,
-				top: `${y - displace.y + 20}px`,
+				left: `${x + 24}px`,
+				top: `${y - displace.y + 24}px`,
 			}"
 		>
+			<!-- <div
+				class="flex w-44 h-10 items-center gap-4 border border-cinnabar-500 justify-center"
+			>
+				<div class="text-cinnabar-500">click to open</div>
+			</div> -->
 			<div class="flex flex-row w-fit h-4 items-center gap-4">
 				<div class="w-fit text-cinnabar-500">click to open</div>
 			</div>
@@ -90,8 +97,13 @@ const extractor: UseMouseEventExtractor = (event) => {
 	if (event instanceof MouseEvent) return [event.offsetX, event.offsetY]
 	else return null
 }
-const { x, y } = useMouse({ target: clickable, type: extractor })
+const { x, y } = useMouse({ target: clickable, type: extractor, touch: false })
 const device = useInputType()
+
+const mouseAtZero = computed(() => {
+	return x.value !== 0 && y.value !== 0
+})
+const { mouseMoving, stop: stopMouseMoving } = useMouseMoving(window, 400)
 
 // update touchbuttons in store
 const { updateActiveSegment, addSegmentCallback } = useGlobalStore()
@@ -125,5 +137,6 @@ addSegmentCallback('getRotorButtons', () => {
 // cleanup
 onUnmounted(() => {
 	stop()
+	stopMouseMoving()
 })
 </script>
