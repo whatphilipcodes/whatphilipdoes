@@ -62,15 +62,8 @@ const computeTranslate = (index: number) => {
 	}
 }
 
-function enterFromScroll() {
-	window.addEventListener('scrollend', enter)
-}
-
 // main controller
 function enter() {
-	// handle scrollend listener
-	window.removeEventListener('scrollend', enter)
-
 	isActive.value = true
 	linkActive.value = true
 	activeSlide.value = 0
@@ -94,7 +87,7 @@ function exit() {
 		stopSwipeWatch?.()
 	}, 400)
 }
-defineExpose({ enter, enterFromScroll, exit })
+defineExpose({ enter, exit })
 
 // mount behavior
 onUnmounted(() => {

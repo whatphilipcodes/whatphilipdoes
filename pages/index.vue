@@ -81,6 +81,11 @@ const { enterScrollSegments, exitScrollSegments } = useScrollSegments()
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
 
+const dbTrigger = useDebounceFn(() => {
+	projectRotor.value?.enter()
+	window.removeEventListener('wheel', dbTrigger)
+}, 400)
+
 onMounted(() => {
 	// set page title
 	updateActivePage('what philip')
@@ -102,7 +107,7 @@ onMounted(() => {
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
-			projectRotor.value?.enterFromScroll()
+			window.addEventListener('wheel', dbTrigger)
 		}
 	})
 })
