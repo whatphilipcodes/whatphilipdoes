@@ -1,7 +1,9 @@
 <template>
-	<ContentDoc v-slot="{ doc }">
-		<ContentRenderer :value="doc" tag="div" class="col-span-full lg:mt-24" />
-	</ContentDoc>
+	<LayoutColumns>
+		<ContentDoc v-slot="{ doc }">
+			<ContentRenderer :value="doc" tag="div" class="col-span-full lg:mt-24" />
+		</ContentDoc>
+	</LayoutColumns>
 	<div class="h-8"></div>
 	<Footer />
 </template>
