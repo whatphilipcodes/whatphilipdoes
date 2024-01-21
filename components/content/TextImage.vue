@@ -12,7 +12,7 @@
 				v-for="(image, index) in props.imageArray"
 				:key="index"
 				class="h-[64vh]"
-				:class="getAspectClassesSM(image)"
+				:style="'aspect-ratio: ' + image.format ?? 'min-w-[100vw]'"
 			>
 				<Image :src="image.src" :alt="image.alt" />
 			</div>
@@ -35,8 +35,8 @@
 		<div
 			v-for="(image, index) in props.imageArray"
 			:key="index"
-			class="h-[32vh] lg:h-[40vh]"
-			:class="getAspectClassesLG(image)"
+			class="h-[40vh]"
+			:style="'aspect-ratio: ' + image.format ?? 'min-w-[32vw] max-w-[48vw]'"
 		>
 			<Image :src="image.src" :alt="image.alt" />
 		</div>
@@ -65,18 +65,18 @@ const props = defineProps({
 })
 
 // helpers (#info: in-template operations did not work)
-function getAspectClassesLG(image: imageData) {
-	if (image.format) {
-		return 'aspect-[' + image.format + ']'
-	} else {
-		return 'min-w-[32vw] max-w-[48vw]'
-	}
-}
-function getAspectClassesSM(image: imageData) {
-	if (image.format) {
-		return 'aspect-[' + image.format + ']'
-	} else {
-		return 'min-w-[100vw]'
-	}
-}
+// function getAspectClassesLG(image: imageData) {
+// 	if (image.format) {
+// 		return 'aspect-[' + image.format + ']'
+// 	} else {
+// 		return 'min-w-[32vw] max-w-[48vw]'
+// 	}
+// }
+// function getAspectClassesSM(image: imageData) {
+// 	if (image.format) {
+// 		return 'aspect-[' + image.format + ']'
+// 	} else {
+// 		return 'min-w-[100vw]'
+// 	}
+// }
 </script>

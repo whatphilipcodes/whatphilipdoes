@@ -1,7 +1,7 @@
 <template>
 	<div
-		data-info="legal"
-		class="col-span-full w-screen justify-self-center bg-mono-900"
+		data-info="footer"
+		class="justify-self-center self-center place-self-center col-span-full w-screen bg-mono-900"
 	>
 		<LayoutPadding>
 			<a
@@ -14,7 +14,7 @@
 				href="/legal/privacy"
 				>privacy</a
 			>
-			<div class="h-44 md:h-56 lg:h-0"></div>
+			<div class="h-44 lg:h-0"></div>
 		</LayoutPadding>
 	</div>
 </template>

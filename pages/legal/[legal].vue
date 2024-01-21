@@ -1,7 +1,13 @@
 <template>
-	<main class="col-span-full mb-56 lg:mb-32 lg:mt-24">
-		<ContentDoc />
-	</main>
+	<ContentDoc v-slot="{ doc }">
+		<ContentRenderer :value="doc" tag="div" class="col-span-full lg:mt-24" />
+	</ContentDoc>
+	<div class="h-8"></div>
+	<Footer />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+	layout: 'minimal',
+})
+</script>
