@@ -1,0 +1,23 @@
+name: Deploy to FTPS
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - deploy
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.server }}
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
+        protocol: ftps
+        port: ${{ secrets.port }}
+        server-dir: public_html/
