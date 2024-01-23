@@ -1,17 +1,33 @@
 name: Deploy to FTPS
 on:
+  workflow_dispatch:
   push:
     branches:
-      - deploy
+      - main
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - run: corepack enable
+      - uses: actions/setup-node
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact
+        with:
+          path: ./.output/public
   web-deploy:
     name: Deploy
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
-        uses: actions/checkout@v3
+        uses: actions/download-artifact
         with:
-          ref: deploy
+          path: ./.output/public
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
