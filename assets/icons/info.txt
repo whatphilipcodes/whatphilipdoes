@@ -1,5 +1,0 @@
-this folder must contain:
-github.svg
-linkedin.svg
-instagram.svg
-arrow.svg

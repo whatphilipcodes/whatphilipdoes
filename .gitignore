@@ -22,10 +22,3 @@ logs
 .env
 .env.*
 !.env.example
-
-# exclude assets from repo
-assets/icons/*
-!assets/icons/info.txt
-
-# exclude uncompressed
-.temp-stash
