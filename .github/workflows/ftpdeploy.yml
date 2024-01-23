@@ -26,8 +26,6 @@ jobs:
     steps:
       - name: Get latest code
         uses: actions/download-artifact@v4.1.1
-        with:
-          path: ./.output/public
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
