@@ -26,7 +26,6 @@ jobs:
     steps:
       - name: Get latest code
         uses: actions/download-artifact@v4.1.1
-
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -35,4 +34,5 @@ jobs:
           password: ${{ secrets.FTPPASSWORD }}
           protocol: ftps
           port: ${{ secrets.FTPPORT }}
+          local-dir: ./artifact/
           server-dir: public_html/
