@@ -8,15 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v4.1.1
       - run: corepack enable
-      - uses: actions/setup-node
+      - uses: actions/setup-node@v4.0.1
         with:
           node-version: '20'
       - run: npm install
       - run: npm run build
       - name: Upload artifact
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v4.2.0
         with:
           path: ./.output/public
   web-deploy:
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
-        uses: actions/download-artifact
+        uses: actions/download-artifact@v4.1.1
         with:
           path: ./.output/public
 
