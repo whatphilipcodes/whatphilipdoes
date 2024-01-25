@@ -112,6 +112,7 @@ onMounted(() => {
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
+			projectRotor.value?.showUI()
 			window.addEventListener('wheel', dbWheelTrigger)
 			window.addEventListener('touchstart', touchTrigger)
 		}

@@ -14,11 +14,6 @@
 				top: `${y - displace.y + 24}px`,
 			}"
 		>
-			<!-- <div
-				class="flex w-44 h-10 items-center gap-4 border border-cinnabar-500 justify-center"
-			>
-				<div class="text-cinnabar-500">click to open</div>
-			</div> -->
 			<div class="flex flex-row w-fit h-4 items-center gap-4">
 				<div class="w-fit text-cinnabar-500">click to open</div>
 			</div>
@@ -31,11 +26,11 @@
 		/>
 	</div>
 	<LayoutColumns
-		v-else-if="isActive"
+		v-else-if="showUI"
 		class="hidden lg:block fixed transition ease-in-out delay-75 bottom-0 w-screen py-8"
 		:class="{
-			'opacity-0': isAnimating || !isActive,
-			'opacity-100': !isAnimating && isActive,
+			'opacity-0': isAnimating,
+			'opacity-100': !isAnimating,
 		}"
 	>
 		<div class="flex flex-row col-span-full h-10 justify-end">
@@ -65,6 +60,10 @@ const props = defineProps({
 		required: true,
 	},
 	showRestartUI: {
+		type: Boolean,
+		required: true,
+	},
+	showUI: {
 		type: Boolean,
 		required: true,
 	},
@@ -98,7 +97,7 @@ const extractor: UseMouseEventExtractor = (event) => {
 	else return null
 }
 const { x, y } = useMouse({ target: clickable, type: extractor, touch: false })
-const device = useInputType()
+const device = useDeviceType()
 
 const mouseAtZero = computed(() => {
 	return x.value !== 0 && y.value !== 0

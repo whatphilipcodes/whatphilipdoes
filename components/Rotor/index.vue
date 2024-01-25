@@ -15,6 +15,7 @@
 			:is-animating="isAnimating"
 			:show-restart-u-i="restartUI"
 			:cb-restart="restart"
+			:show-u-i="visibleUI"
 		/>
 		<div v-if="restartUI" :class="restartClasses">
 			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
@@ -41,7 +42,7 @@ const props = defineProps({
 		required: false,
 	},
 })
-
+const visibleUI = ref(false)
 const isActive = ref(false)
 const linkActive = ref(false)
 const classList = computed(() => {
@@ -87,7 +88,10 @@ function exit() {
 		stopSwipeWatch?.()
 	}, 400)
 }
-defineExpose({ enter, exit })
+function showUI() {
+	visibleUI.value = true
+}
+defineExpose({ enter, exit, showUI })
 
 // mount behavior
 onUnmounted(() => {
@@ -108,6 +112,7 @@ function enableRestartable(event: Event) {
 	const target = event.target as HTMLElement
 	if (target.classList.contains('persistent-default')) return
 	linkActive.value = false
+	visibleUI.value = false
 	restartUI.value = true
 	setTimeout(() => {
 		restartable.value = true
