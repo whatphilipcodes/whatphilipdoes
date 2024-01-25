@@ -1,6 +1,12 @@
 <template>
 	<component :is="props.as" :target="target" :download="download">
-		<button :class="buttonClasses" @click="callback?.()">
+		<button
+			ref="buttonElement"
+			:class="buttonBaseClasses"
+			@click="callback?.()"
+			@touchstart="setActive"
+			@touchend="resetActive"
+		>
 			<slot />
 		</button>
 	</component>
@@ -32,21 +38,52 @@ const props = defineProps({
 	},
 })
 
-const buttonClasses = computed(() => {
-	return {
-		'persistent-default flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
-			true,
-		'border-mono-800 bg-mono-800 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
-			props.variant === 'basic',
-		'text-cinnabar-500 border-cinnabar-500 active:bg-cinnabar-500 lg:hover:bg-cinnabar-500/20 lg:active:bg-cinnabar-500':
-			props.variant === 'accent',
-		'text-mono-500 border-mono-900 bg-mono-900 active:bg-mono-50 active:border-mono-50 lg:hover:bg-mono-800 lg:hover:border-mono-800 lg:active:bg-mono-50 lg:active:border-mono-50':
-			props.variant === 'dark',
-	}
-})
-
 const target = computed(() => {
 	if (props.download) return '_blank'
 	return ''
 })
+
+const buttonBaseClasses = computed(() => {
+	return {
+		'persistent-default flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
+			true,
+		'bg-mono-800 border-mono-800 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
+			props.variant === 'basic',
+		'text-cinnabar-500 border-cinnabar-500 lg:hover:bg-cinnabar-500/20 lg:active:bg-cinnabar-500':
+			props.variant === 'accent',
+		'text-mono-500 bg-mono-900 border-mono-900 lg:hover:text-mono-50 lg:hover:bg-mono-800 lg:hover:border-mono-800 lg:active:bg-mono-50 lg:active:border-mono-50':
+			props.variant === 'dark',
+	}
+})
+
+// custom active state (default not working on ios safari)
+const buttonActiveClasses = computed(() => {
+	const classesMap = new Map()
+	classesMap.set('basic', {
+		inactive: ['bg-mono-800', 'border-mono-800'],
+		active: ['bg-mono-50', 'border-mono-50'],
+	})
+	classesMap.set('accent', {
+		inactive: [],
+		active: ['bg-cinnabar-500'],
+	})
+	classesMap.set('dark', {
+		inactive: ['bg-mono-900', 'border-mono-900'],
+		active: ['bg-mono-50', 'border-mono-50'],
+	})
+	return classesMap.get(props.variant)
+})
+
+const buttonElement = ref<HTMLButtonElement | null>(null)
+let clearAutoReset: NodeJS.Timeout | null = null
+function setActive() {
+	buttonElement.value?.classList.remove(...buttonActiveClasses.value.inactive)
+	buttonElement.value?.classList.add(...buttonActiveClasses.value.active)
+	clearAutoReset = setTimeout(resetActive, 500)
+}
+function resetActive() {
+	clearTimeout(clearAutoReset!)
+	buttonElement.value?.classList.remove(...buttonActiveClasses.value.active)
+	buttonElement.value?.classList.add(...buttonActiveClasses.value.inactive)
+}
 </script>

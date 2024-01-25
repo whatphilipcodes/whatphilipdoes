@@ -4,16 +4,8 @@
 		class="justify-self-center self-center place-self-center col-span-full w-screen bg-mono-900"
 	>
 		<LayoutPadding>
-			<NuxtLink
-				class="text-mono-500 hover:text-mono-300 active:text-mono-50"
-				href="/legal/imprint"
-				>imprint</NuxtLink
-			>
-			<NuxtLink
-				class="text-mono-500 hover:text-mono-300 active:text-mono-50"
-				href="/legal/privacy"
-				>privacy</NuxtLink
-			>
+			<TouchableLink href="/legal/imprint">imprint</TouchableLink>
+			<TouchableLink href="/legal/privacy">privacy</TouchableLink>
 			<div class="h-44 lg:h-0"></div>
 		</LayoutPadding>
 	</div>

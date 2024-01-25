@@ -1,11 +1,14 @@
-export const useInputType = () => {
-	const result = ref('touch')
+export const useDeviceType = () => {
+	const result = ref('')
 	onMounted(() => {
 		window.addEventListener('wheel', cbMouse)
+		window.addEventListener('touchstart', cbTouch)
 	})
 	function cbMouse() {
 		result.value = 'mouse'
-		window.removeEventListener('wheel', cbMouse)
+	}
+	function cbTouch() {
+		result.value = 'touch'
 	}
 	return result
 }
