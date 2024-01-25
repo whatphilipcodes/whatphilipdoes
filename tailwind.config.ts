@@ -65,5 +65,8 @@ export default {
 	container: {
 		center: true,
 	},
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	plugins: [],
 } satisfies Config
