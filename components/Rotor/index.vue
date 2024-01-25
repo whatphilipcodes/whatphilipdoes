@@ -100,7 +100,7 @@ const restartUI = ref(false)
 const restartable = ref(false)
 const restartClasses = computed(() => {
 	return {
-		[`duration-1000`]: true,
+		'duration-1000': true,
 		'opacity-0': !restartable.value,
 	}
 })
@@ -111,7 +111,7 @@ function enableRestartable(event: Event) {
 	restartUI.value = true
 	setTimeout(() => {
 		restartable.value = true
-	}, 1)
+	}, 1000)
 	window.removeEventListener('wheel', enableRestartable)
 	window.removeEventListener('touchstart', enableRestartable)
 }
