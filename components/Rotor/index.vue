@@ -131,6 +131,7 @@ function restart() {
 	disableRestartable()
 	enter()
 	scrollToTop()
+	visibleUI.value = true
 }
 
 // is animating state
