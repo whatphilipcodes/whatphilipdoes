@@ -12,7 +12,7 @@
 				v-for="(image, index) in props.imageArray"
 				:key="index"
 				class="h-[64vh]"
-				:style="'aspect-ratio: ' + image.format ?? 'min-w-[100vw]'"
+				:style="'aspect-ratio: ' + (image.format ?? 'min-w-[100vw]')"
 			>
 				<Image :src="image.src" :alt="image.alt" />
 			</div>
@@ -36,7 +36,7 @@
 			v-for="(image, index) in props.imageArray"
 			:key="index"
 			class="h-[40vh]"
-			:style="'aspect-ratio: ' + image.format ?? 'min-w-[32vw] max-w-[48vw]'"
+			:style="'aspect-ratio: ' + (image.format ?? 'min-w-[32vw] max-w-[48vw]')"
 		>
 			<Image :src="image.src" :alt="image.alt" />
 		</div>
