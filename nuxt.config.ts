@@ -6,7 +6,6 @@ export default defineNuxtConfig({
 	},
 	modules: [
 		'@pinia/nuxt',
-		'@nuxt/image',
 		'@nuxt/content',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/google-fonts',

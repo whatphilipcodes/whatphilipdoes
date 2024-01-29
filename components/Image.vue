@@ -1,11 +1,4 @@
 <template>
-	<!-- <NuxtPicture
-		format="webp"
-		fit="cover"
-		:src="props.src"
-		:alt="props.alt"
-		:imgAttrs="{ class: 'w-full h-full object-cover' }"
-	/> -->
 	<img :src="props.src" :alt="props.alt" class="w-full h-full object-cover" />
 </template>
 
