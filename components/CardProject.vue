@@ -30,7 +30,7 @@
 				<div data-info="spacer-top" class="h-[64vh] lg:col-span-full" />
 				<div
 					data-info="overlay"
-					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-5 py-4 md:py-6 lg:py-8 lg:self-end"
+					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-4 py-4 md:py-6 lg:py-8 lg:self-end"
 					:class="{ 'lg:justify-end': !props.opened }"
 				>
 					<div
