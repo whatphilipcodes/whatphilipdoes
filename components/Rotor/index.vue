@@ -4,10 +4,8 @@
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
 			:translate="computeTranslate(index)"
-			:title="slide.title"
-			:project-tags="slide.projectTags"
-			:bg-image="slide.header"
 			:ms-duration="1000"
+			:projectData="slide"
 		/>
 		<RotorOpenCase
 			:active-case="slides[activeSlide]"

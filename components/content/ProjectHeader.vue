@@ -1,10 +1,7 @@
 <template>
 	<CardProject
+		:projectData="projectData"
 		:opened="true"
-		:projectTags="props.projectTags"
-		:title="props.title"
-		:abstract="props.abstract"
-		:bgImage="props.bgImage"
 		class="col-span-full w-screen"
 	/>
 </template>
@@ -15,7 +12,7 @@ const props = defineProps({
 		type: String,
 		default: '',
 	},
-	bgImage: {
+	header: {
 		type: Object as PropType<imageData>,
 		required: true,
 	},
@@ -27,5 +24,19 @@ const props = defineProps({
 		type: String,
 		default: '',
 	},
+	badge: {
+		type: Object as PropType<badgeData>,
+		default: null,
+	},
+})
+const projectData = computed(() => {
+	return {
+		title: props.title,
+		header: props.header,
+		projectTags: props.projectTags,
+		abstract: props.abstract,
+		badge: props.badge,
+		landing: false,
+	} as contentProject
 })
 </script>

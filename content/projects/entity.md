@@ -6,6 +6,10 @@ meta:
 header:
   src: /img/projects/entity/header-entity.jpg
   alt: header
+badge:
+  icon: SvgoArselectro
+  info: ars electronica campus exhibition 2023
+  link: https://ars.electronica.art/who-owns-the-truth/de/inter/
 imgs01:
   - src: /img/projects/entity/side-closed.jpg
     alt: image 01
@@ -31,7 +35,7 @@ projectTags:
 landing: true
 ---
 
-::project-header{:bgImage=header :title=title :projectTags=projectTags abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
+::project-header{:header=header :title=title :projectTags=projectTags :badge=badge abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
 ::
 
 ::image-display{:imageArray="imgs01"}

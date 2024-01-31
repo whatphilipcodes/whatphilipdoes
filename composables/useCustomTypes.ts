@@ -18,11 +18,6 @@ export interface contentBlockTextCTA extends ParsedContent {
 	 */
 	callToAction: buttonData
 }
-export interface contentBlockTextCTA extends ParsedContent {
-	tags: string[]
-	text: string
-	callToAction: buttonData
-}
 
 /**
  * Represents a content project.
@@ -32,6 +27,11 @@ export interface contentProject extends ParsedContent {
 	 * The header image data.
 	 */
 	header: imageData
+
+	/**
+	 * Optional. The badge that is displayed on the project.
+	 */
+	badge?: badgeData
 
 	/**
 	 * The tags associated with the project.
@@ -46,12 +46,6 @@ export interface contentProject extends ParsedContent {
 	/**
 	 * The abstract of the project.
 	 */
-	abstract: string
-}
-export interface contentProject extends ParsedContent {
-	header: imageData
-	projectTags: string[]
-	landing: boolean
 	abstract: string
 }
 
@@ -82,11 +76,6 @@ export interface pageSegment {
 	 */
 	callback?: string
 }
-export interface pageSegment {
-	title: string
-	buttons: buttonData[]
-	callback?: string
-}
 
 // atoms
 
@@ -114,11 +103,23 @@ export interface buttonData {
 	 */
 	download?: string
 }
-export interface buttonData {
-	label: string
-	to: string | (() => any)
-	accent?: boolean
-	download?: string
+
+/**
+ * Represents the data structure for a badge.
+ */
+export interface badgeData {
+	/**
+	 * The icon that is displayed as badge.
+	 */
+	icon: string
+	/**
+	 * Text that is shown when hovering over the badge.
+	 */
+	info: string
+	/**
+	 * Optional. Specifies a link to open when clicking on the badge.
+	 */
+	link?: string
 }
 
 /**
@@ -148,12 +149,5 @@ export interface imageData {
 	/**
 	 * Indicates if the image should be displayed in a narrow layout (only sm breakpoint).
 	 */
-	smnarrow?: boolean
-}
-export interface imageData {
-	src: string
-	alt?: string
-	rows?: string
-	cols?: string
 	smnarrow?: boolean
 }
