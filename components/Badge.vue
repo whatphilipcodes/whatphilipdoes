@@ -1,7 +1,7 @@
 <template>
 	<NuxtLink
 		:to="props.link"
-		class="transition delay-100 duration-500 group select-none flex flex-row-reverse items-center border-2 gap-4 pl-4 border-mono-50 text-mono-500 border-opacity-0 hover:border-opacity-100 hover:text-mono-50"
+		class="transition delay-100 duration-500 group select-none flex flex-row-reverse items-center border gap-4 pl-4 border-mono-50 text-mono-500 border-opacity-0 hover:border-opacity-100 hover:text-mono-50"
 		:class="props.link ? 'cursor-pointer' : 'cursor-default'"
 	>
 		<div
