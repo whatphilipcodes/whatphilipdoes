@@ -61,8 +61,16 @@ export default {
 			nav: '100',
 			front: '1000',
 		},
+		aspectRatio: {
+			landscape: '4 / 3',
+			portrait: '3 / 4',
+		},
 	},
 	safelist: [
+		{
+			pattern: /aspect-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
 		{
 			pattern: /col-span-*/,
 			variants: ['lg', 'md', 'sm'],

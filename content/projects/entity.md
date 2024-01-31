@@ -10,6 +10,7 @@ imgs01:
   - src: /img/projects/entity/side-closed.jpg
     alt: image 01
     cols: 3 / 5
+    smnarrow: true
   - src: /img/projects/entity/04-display-situation.jpg
     alt: image 03
     cols: 5 / 7
@@ -21,6 +22,7 @@ imgs02:
     alt: image 04
     cols: full / full
     rows: 2 / 2
+    smnarrow: true
 projectTags:
   - realtime differential-line-growth
   - external hardware communication
