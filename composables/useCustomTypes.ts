@@ -34,5 +34,6 @@ export interface buttonData {
 export interface imageData {
 	src: string
 	alt?: string
-	format?: string
+	rows?: string
+	cols?: string
 }

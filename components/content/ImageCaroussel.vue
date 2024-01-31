@@ -12,9 +12,7 @@
 				v-for="(image, index) in props.imageArray"
 				:key="index"
 				class="h-[56vh]"
-				:style="
-					image.format ? 'aspect-ratio: ' + image.format : 'min-width: 100vw'
-				"
+				:style="'min-width: 100vw'"
 			>
 				<Image :src="image.src" :alt="image.alt" />
 			</div>

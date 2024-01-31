@@ -62,6 +62,16 @@ export default {
 			front: '1000',
 		},
 	},
+	safelist: [
+		{
+			pattern: /col-span-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /row-span-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+	],
 	container: {
 		center: true,
 	},
