@@ -32,7 +32,7 @@
 			>
 				<div
 					data-info="spacer-top"
-					class="flex flex-row justify-end h-[64vh] lg:col-span-full"
+					class="flex flex-row justify-end h-[64vh] md:col-span-5 lg:col-span-full"
 				>
 					<div
 						class="relative z-[20] flex flex-row gap-4 py-4 self-end"
