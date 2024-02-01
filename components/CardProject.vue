@@ -35,7 +35,7 @@
 					class="flex flex-row justify-end h-[64vh] md:col-span-5 lg:col-span-full"
 				>
 					<div
-						class="relative z-[20] flex flex-row gap-4 py-4 self-end"
+						class="relative z-[20] flex flex-row gap-4 py-4 md:py-6 lg:py-8 self-end"
 						v-if="props.opened"
 					>
 						<Badge
@@ -66,7 +66,7 @@
 							:key="index"
 							class="text-mono-500"
 						>
-							{{ tag }}
+							{{ tag.toLowerCase() }}
 						</div>
 					</div>
 				</div>
