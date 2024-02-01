@@ -6,7 +6,7 @@
 		<div
 			v-if="props.segment"
 			data-info="segment-trigger"
-			class="absolute bottom-0 h-[56vh] w-full"
+			class="absolute z-bottom bottom-0 h-[56vh] w-full"
 		>
 			<ScrollSegment :page-segment="props.segment">
 				<div class="relative w-full h-full"></div>
