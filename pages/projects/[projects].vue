@@ -2,9 +2,8 @@
 	<ContentRenderer
 		:value="(data as ParsedContent)"
 		tag="layout-columns"
-		class="gap-y-8"
+		class="gap-y-8 pb-20"
 	/>
-	<Team />
 	<Footer :segment="data?.footer" />
 </template>
 

@@ -10,6 +10,15 @@ badge:
   icon: SvgoArselectro
   info: ars electronica campus exhibition 2023
   link: https://ars.electronica.art/who-owns-the-truth/de/inter/
+team:
+  - name: [Moritz Schell]
+    role: Betreuung
+  - name: [Lara Ketzenberg, Philip Gerdes]
+    role: Konzept
+  - name: [Lara Ketzenberg]
+    role: Konstruktion
+  - name: [Philip Gerdes]
+    role: Software
 imgs01:
   - src: /img/projects/entity/side-closed.jpg
     alt: image 01
@@ -58,4 +67,7 @@ Cillum et eu Lorem elit excepteur velit enim. Duis consequat id magna anim Lorem
 ::
 
 ::image-display{:imageArray="imgs02"}
+::
+
+::team{:team=team}
 ::
