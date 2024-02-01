@@ -2,6 +2,7 @@
 	<component :is="props.as" :target="target" :download="download">
 		<button
 			ref="buttonElement"
+			class="persistent-default flex items-center justify-center select-none border w-full h-full group'"
 			:class="buttonBaseClasses"
 			@click="callback?.()"
 			@touchstart="setActive"
@@ -36,6 +37,10 @@ const props = defineProps({
 		type: String,
 		default: null,
 	},
+	paddingOverride: {
+		type: String,
+		default: undefined,
+	},
 })
 
 const target = computed(() => {
@@ -45,8 +50,7 @@ const target = computed(() => {
 
 const buttonBaseClasses = computed(() => {
 	return {
-		'persistent-default flex items-center justify-center select-none p-4 border w-full h-full group':
-			true,
+		[props.paddingOverride ?? 'p-1']: true,
 		'bg-mono-800 border-mono-800 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
 			props.variant === 'basic',
 		'text-cinnabar-500 border-cinnabar-500 lg:hover:bg-cinnabar-500/20 lg:active:bg-cinnabar-500':

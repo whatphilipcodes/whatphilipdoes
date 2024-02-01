@@ -3,6 +3,7 @@
 		<Button
 			v-for="button in buttons.slice().reverse()"
 			class="w-20 h-20"
+			padding-override="p-3"
 			:to="typeof button.to === 'string' ? button.to : undefined"
 			:callback="typeof button.to === 'function' ? button.to : undefined"
 			:variant="button.accent ? 'accent' : 'basic'"
