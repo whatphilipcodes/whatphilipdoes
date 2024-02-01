@@ -47,6 +47,11 @@ export interface contentProject extends ParsedContent {
 	 * The abstract of the project.
 	 */
 	abstract: string
+
+	/**
+	 * Data for the footer segment of the project page.
+	 */
+	footer: pageSegment
 }
 
 /**
@@ -66,7 +71,7 @@ export interface pageSegment {
 	/**
 	 * The title of the page segment.
 	 */
-	title: string
+	title?: string
 	/**
 	 * An array of button data.
 	 */

@@ -1,13 +1,20 @@
 <template>
-	<ContentDoc v-slot="{ doc }">
-		<ContentRenderer :value="doc" tag="layout-columns" class="gap-y-8" />
-	</ContentDoc>
-	<div class="h-8"></div>
-	<Footer />
+	<ContentRenderer
+		:value="(data as ParsedContent)"
+		tag="layout-columns"
+		class="gap-y-8"
+	/>
+	<Team />
+	<Footer :segment="data?.footer" />
 </template>
 
 <script setup lang="ts">
+import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 definePageMeta({
 	layout: 'minimal',
 })
+const { data } = await useAsyncData(() =>
+	queryContent<contentProject>(useRoute().fullPath).findOne()
+)
+useScrollSegments()
 </script>

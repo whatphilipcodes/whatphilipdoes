@@ -33,6 +33,13 @@ projectTags:
   - unity
   - c#
 landing: true
+footer:
+  buttons:
+    - label: open repo
+      to: https://github.com/whatphilipcodes/entity
+    - label: next case
+      to: /projects/inter
+      accent: true
 ---
 
 ::project-header{:header=header :title=title :projectTags=projectTags :badge=badge abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
@@ -51,5 +58,4 @@ Cillum et eu Lorem elit excepteur velit enim. Duis consequat id magna anim Lorem
 ::
 
 ::image-display{:imageArray="imgs02"}
-Fugiat esse exercitation non cupidatat sint eiusmod aliquip aliquip velit ullamco voluptate sint aute sunt.
 ::

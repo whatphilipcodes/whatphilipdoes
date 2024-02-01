@@ -76,7 +76,7 @@ let exitScrollStops: () => void
 const projectRotor = ref()
 const { updateActivePage } = useGlobalStore()
 
-const { enterScrollSegments, exitScrollSegments } = useScrollSegments()
+useScrollSegments()
 
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
@@ -94,9 +94,6 @@ function touchTrigger() {
 onMounted(() => {
 	// set page title
 	updateActivePage('what philip')
-
-	// segments
-	enterScrollSegments()
 
 	// enter scroll stops
 	const {
@@ -120,6 +117,5 @@ onMounted(() => {
 })
 onUnmounted(() => {
 	exitScrollStops()
-	exitScrollSegments()
 })
 </script>
