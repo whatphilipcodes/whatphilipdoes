@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-const enter = ref()
-const exit = ref()
+const enter = ref<HTMLElement>()
+const exit = ref<HTMLElement>()
 
 const { addSegment } = useGlobalStore()
 
@@ -41,6 +41,18 @@ const segment = computed(() => {
 })
 
 onMounted(() => {
-	addSegment(enter.value.offsetTop, exit.value.offsetTop, segment.value)
+	const enterRect = enter.value?.getBoundingClientRect()
+	const exitRect = exit.value?.getBoundingClientRect()
+	if (enterRect && exitRect) {
+		addSegment(
+			Math.round(enterRect.top + window.scrollY),
+			Math.round(exitRect.top + window.scrollY),
+			segment.value
+		)
+	} else {
+		throw new Error(
+			`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.` // does this make sense?
+		)
+	}
 })
 </script>
