@@ -45,7 +45,7 @@ const target = computed(() => {
 
 const buttonBaseClasses = computed(() => {
 	return {
-		'persistent-default flex items-center justify-center select-none py-1 px-2 border w-full h-full group':
+		'persistent-default flex items-center justify-center select-none p-4 border w-full h-full group':
 			true,
 		'bg-mono-800 border-mono-800 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
 			props.variant === 'basic',
