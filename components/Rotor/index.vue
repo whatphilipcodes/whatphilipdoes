@@ -45,10 +45,14 @@ const isActive = ref(false)
 const linkActive = ref(false)
 const classList = computed(() => {
 	return {
-		'w-screen h-screen md:h-dvh col-span-full justify-self-center overflow-clip relative':
+		'w-screen h-screen col-span-full justify-self-center overflow-clip relative':
 			true,
-		'absolute top-0': isActive.value,
+		'absolute top-0 md:bottom-0': isActive.value,
 	}
+})
+
+watch(isActive, (val) => {
+	console.log('isActive', val)
 })
 
 const computeTranslate = (index: number) => {
