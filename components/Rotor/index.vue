@@ -45,7 +45,7 @@ const isActive = ref(false)
 const linkActive = ref(false)
 const classList = computed(() => {
 	return {
-		'w-screen h-screen col-span-full justify-self-center overflow-clip relative':
+		'w-screen h-dvh md:h-screen col-span-full justify-self-center overflow-clip relative':
 			true,
 		'absolute top-0 md:bottom-0': isActive.value,
 	}
