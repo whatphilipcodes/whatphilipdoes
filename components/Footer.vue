@@ -12,7 +12,7 @@
 				<div class="relative w-full h-full"></div>
 			</ScrollSegment>
 		</div>
-		<div data-info="footer" class="bg-mono-900">
+		<div data-info="footer" class="bg-mono-900 max-sm:translate-y-[1px]">
 			<LayoutPadding>
 				<TouchableLink href="/legal/imprint">imprint</TouchableLink>
 				<TouchableLink href="/legal/privacy">privacy</TouchableLink>
