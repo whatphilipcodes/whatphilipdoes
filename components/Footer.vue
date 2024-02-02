@@ -12,13 +12,15 @@
 				<div class="relative w-full h-full"></div>
 			</ScrollSegment>
 		</div>
-		<LayoutPadding
-			data-info="footer"
-			class="bg-mono-900 max-sm:translate-y-[1px] h-52 md:h-60 lg:h-[88px]"
-		>
-			<TouchableLink href="/legal/imprint">imprint</TouchableLink>
-			<TouchableLink href="/legal/privacy">privacy</TouchableLink>
-		</LayoutPadding>
+		<div class="bg-mono-900 w-screen h-full justify-self-center">
+			<LayoutPadding
+				data-info="footer"
+				class="bg-mono-900 max-sm:translate-y-[1px] h-52 md:h-60 lg:h-[88px]"
+			>
+				<TouchableLink href="/legal/imprint">imprint</TouchableLink>
+				<TouchableLink href="/legal/privacy">privacy</TouchableLink>
+			</LayoutPadding>
+		</div>
 	</div>
 </template>
 
