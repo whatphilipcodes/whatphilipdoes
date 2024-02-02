@@ -51,10 +51,6 @@ const classList = computed(() => {
 	}
 })
 
-watch(isActive, (val) => {
-	console.log('isActive', val)
-})
-
 const computeTranslate = (index: number) => {
 	if (index === activeSlide.value) {
 		return '-translate-y-[100%]'
