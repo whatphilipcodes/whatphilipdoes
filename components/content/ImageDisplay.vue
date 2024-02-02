@@ -4,7 +4,7 @@
 		<ImageGrid :imageArray="props.imageArray" />
 		<div
 			data-info="description"
-			class="col-start-1 col-span-full md:col-span-5 lg:col-span-7 text-mono-300"
+			class="col-start-1 col-span-full md:col-span-5 lg:col-span-7 text-mono-300 hyphens-auto"
 		>
 			<ContentSlot unwrap="p" />
 		</div>

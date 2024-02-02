@@ -10,7 +10,10 @@
 		<div
 			class="flex flex-row lg:flex-col w-full justify-between lg:justify-normal mt-3"
 		>
-			<div data-info="text" class="text-lg leading-lg italic">
+			<div
+				data-info="text"
+				class="text-lg leading-lg italic hyphens-auto line-clamp-6"
+			>
 				{{ text }}
 			</div>
 			<div

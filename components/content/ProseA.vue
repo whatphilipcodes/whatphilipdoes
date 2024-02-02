@@ -3,7 +3,6 @@
 		:href="href"
 		:target="target"
 		class="hyphens-auto text-cinnabar-500 underline"
-		lang="de"
 	>
 		<slot />
 	</NuxtLink>

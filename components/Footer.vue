@@ -29,6 +29,18 @@ const props = defineProps({
 		default: undefined,
 	},
 })
+
+const { arrivedState } = useScroll(window)
+const dynamicFixed = computed(() => {
+	return {
+		['absolute']: !arrivedState.bottom,
+		['fixed']: arrivedState.bottom,
+	}
+})
 </script>
 
-<style scoped></style>
+<style lang="css" scoped>
+.target {
+	clip-path: rect(80% 100% 100% 0%); /* T R B L */
+}
+</style>
