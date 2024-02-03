@@ -1,5 +1,11 @@
 <template>
-	<NuxtLink :custom="false" :href="props.href"
+	<NuxtLink
+		:custom="false"
+		:href="props.href"
+		@touchstart="setActive"
+		@touchend="resetActive"
+		@mousedown="setActive"
+		@mouseup="setActive"
 		><span
 			ref="linkElement"
 			:class="`transition-colors ease-in-out duration-300 underline underline-offset-[3px] ${parseForTailwind(
@@ -8,8 +14,6 @@
 				colors.active,
 				'active:'
 			)}`"
-			@touchstart="setActive"
-			@touchend="resetActive"
 		>
 			<slot /></span
 	></NuxtLink>
