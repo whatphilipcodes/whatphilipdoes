@@ -10,9 +10,7 @@
 			@mousedown="setActive"
 			@mouseup="resetActive"
 		>
-			<slot
-				class="text-mono-500 group-hover:text-mono-50 group-active:text-mono-50"
-			/>
+			<slot class="group-hover:text-mono-50" />
 		</button>
 	</component>
 </template>
@@ -55,11 +53,11 @@ const target = computed(() => {
 const buttonBaseClasses = computed(() => {
 	return {
 		[props.paddingOverride ?? 'p-1']: true,
-		'bg-mono-800 border-mono-800 lg:hover:bg-mono-600 lg:hover:border-mono-600 lg:active:bg-mono-50 lg:active:border-mono-50':
+		'bg-mono-800 border-mono-800 hover:bg-mono-600 hover:border-mono-600 active:bg-mono-50 active:border-mono-50':
 			props.variant === 'basic',
-		'text-cinnabar-500 border-cinnabar-500 lg:hover:bg-cinnabar-500/20 lg:active:bg-cinnabar-500':
+		'text-cinnabar-500 border-cinnabar-500 hover:bg-cinnabar-500/20 active:bg-cinnabar-500':
 			props.variant === 'accent',
-		'text-mono-500 bg-mono-900 border-mono-900 lg:hover:text-mono-50 lg:hover:bg-mono-800 lg:hover:border-mono-800 lg:active:bg-mono-50 lg:active:border-mono-50':
+		'text-mono-500 bg-mono-900 border-mono-900 hover:text-mono-50 hover:bg-mono-800 hover:border-mono-800 active:bg-mono-50 active:border-mono-50':
 			props.variant === 'dark',
 	}
 })
@@ -68,16 +66,16 @@ const buttonBaseClasses = computed(() => {
 const buttonActiveClasses = computed(() => {
 	const classesMap = new Map()
 	classesMap.set('basic', {
-		inactive: ['bg-mono-800', 'border-mono-800'],
-		active: ['bg-mono-50', 'border-mono-50'],
+		inactive: ['bg-mono-800', 'border-mono-800', 'text-mono-500'],
+		active: ['bg-mono-50', 'border-mono-50', 'text-mono-50'],
 	})
 	classesMap.set('accent', {
 		inactive: [],
 		active: ['bg-cinnabar-500'],
 	})
 	classesMap.set('dark', {
-		inactive: ['bg-mono-900', 'border-mono-900'],
-		active: ['bg-mono-50', 'border-mono-50'],
+		inactive: ['bg-mono-900', 'border-mono-900', 'text-mono-500'],
+		active: ['bg-mono-50', 'border-mono-50', 'text-mono-50'],
 	})
 	return classesMap.get(props.variant)
 })
