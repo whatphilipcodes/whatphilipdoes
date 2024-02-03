@@ -7,8 +7,12 @@
 			@click="callback?.()"
 			@touchstart="setActive"
 			@touchend="resetActive"
+			@mousedown="setActive"
+			@mouseup="resetActive"
 		>
-			<slot />
+			<slot
+				class="text-mono-500 group-hover:text-mono-50 group-active:text-mono-50"
+			/>
 		</button>
 	</component>
 </template>

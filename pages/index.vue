@@ -56,10 +56,7 @@
 						:to="link.to"
 						variant="dark"
 					>
-						<component
-							:is="link.icon"
-							class="text-mono-500 group-hover:text-mono-50"
-						/>
+						<component :is="link.icon" />
 					</Button>
 				</BlockTextCTA>
 			</div>
