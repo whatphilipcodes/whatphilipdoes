@@ -69,6 +69,18 @@ export default {
 	},
 	safelist: [
 		{
+			pattern: /text-cinnabar-*/,
+			variants: ['hover', 'active'],
+		},
+		{
+			pattern: /text-mono-*/,
+			variants: ['hover', 'active'],
+		},
+		{
+			pattern: /underline/,
+			variants: ['hover', 'active'],
+		},
+		{
 			pattern: /aspect-*/,
 			variants: ['lg', 'md', 'sm'],
 		},
