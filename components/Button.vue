@@ -2,7 +2,7 @@
 	<component :is="props.as" :target="target" :download="download">
 		<button
 			ref="buttonElement"
-			class="persistent-default flex items-center justify-center select-none border w-full h-full group'"
+			class="persistent-default transition-colors ease-in-out duration-300 flex items-center justify-center select-none border w-full h-full group'"
 			:class="buttonBaseClasses"
 			@click="callback?.()"
 			@touchstart="setActive"
@@ -81,13 +81,23 @@ const buttonActiveClasses = computed(() => {
 const buttonElement = ref<HTMLButtonElement | null>(null)
 let clearAutoReset: NodeJS.Timeout | null = null
 function setActive() {
-	buttonElement.value?.classList.remove(...buttonActiveClasses.value.inactive)
+	buttonElement.value?.classList.remove(
+		...buttonActiveClasses.value.inactive,
+		'transition-colors',
+		'ease-in-out',
+		'duration-300'
+	)
 	buttonElement.value?.classList.add(...buttonActiveClasses.value.active)
 	clearAutoReset = setTimeout(resetActive, 500)
 }
 function resetActive() {
 	clearTimeout(clearAutoReset!)
 	buttonElement.value?.classList.remove(...buttonActiveClasses.value.active)
-	buttonElement.value?.classList.add(...buttonActiveClasses.value.inactive)
+	buttonElement.value?.classList.add(
+		...buttonActiveClasses.value.inactive,
+		'transition-colors',
+		'ease-in-out',
+		'duration-300'
+	)
 }
 </script>

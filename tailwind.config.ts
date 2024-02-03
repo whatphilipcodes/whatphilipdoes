@@ -32,6 +32,7 @@ export default {
 			},
 			black: '#000000',
 			white: '#ffffff',
+			transparent: 'transparent',
 		},
 		fontSize: {
 			sm: '0.75rem', // 12px
@@ -69,15 +70,15 @@ export default {
 	},
 	safelist: [
 		{
+			pattern: /decoration-*/,
+			variants: ['hover', 'active'],
+		},
+		{
 			pattern: /text-cinnabar-*/,
 			variants: ['hover', 'active'],
 		},
 		{
 			pattern: /text-mono-*/,
-			variants: ['hover', 'active'],
-		},
-		{
-			pattern: /underline/,
 			variants: ['hover', 'active'],
 		},
 		{

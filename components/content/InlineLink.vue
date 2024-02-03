@@ -16,8 +16,9 @@ defineProps({
 	},
 	variant: {
 		type: String,
-		validator: (value: string) => ['dark', 'accent'].includes(value),
-		default: 'dark',
+		validator: (value: string) =>
+			['dark', 'inline-dark', 'accent', 'inline-accent'].includes(value),
+		default: 'inline-dark',
 	},
 	target: {
 		type: String,

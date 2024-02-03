@@ -1,5 +1,5 @@
 <template>
-	<TouchableLink :href="href" :target="target" variant="accent">
+	<TouchableLink :href="href" :target="target" variant="inline-accent">
 		<slot />
 	</TouchableLink>
 </template>
