@@ -88,7 +88,8 @@ content:
   - title: Ausgestellt
     rows: 
       - cols: 
-        - Ars Electronica Campus Exhibition 2023
+        - [Ars Electronica, Campus Exhibition]
+        - ['2023', 'Linz, Austria']
 ---
 ::
 

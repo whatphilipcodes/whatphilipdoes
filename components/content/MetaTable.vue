@@ -41,11 +41,27 @@ const props = defineProps({
 			{
 				title: string
 				rows: {
-					cols: string[]
+					cols: string | string[]
 				}[]
 			}[]
 		>,
 		required: true,
+		validator: (value: any) => {
+			if (Array.isArray(value)) {
+				for (const section of value) {
+					for (const row of section.rows) {
+						if (Array.isArray(row.cols)) {
+							if (row.cols.length > 2)
+								throw new Error(
+									'The current layout can only display 2 columns: ' +
+										JSON.stringify(row.cols)
+								)
+						}
+					}
+				}
+			}
+			return true
+		},
 	},
 })
 </script>
