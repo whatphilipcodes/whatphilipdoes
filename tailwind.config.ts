@@ -93,6 +93,14 @@ export default {
 			pattern: /row-span-*/,
 			variants: ['lg', 'md', 'sm'],
 		},
+		{
+			pattern: /col-start-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /row-start-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
 	],
 	container: {
 		center: true,

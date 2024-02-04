@@ -1,6 +1,6 @@
 ---
 title: inter
-meta:
+nav:
   page: what philip
   segment: did
 header:
