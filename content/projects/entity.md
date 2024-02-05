@@ -21,11 +21,10 @@ badge:
   link: https://ars.electronica.art/who-owns-the-truth/de/inter/
 footer:
   buttons:
-    - label: open repo
+    - label: repo
       to: https://github.com/whatphilipcodes/entity
-    - label: next case
-      to: /projects/inter
-      accent: true
+    - label: campus exhibit
+      to: https://ars.electronica.art/who-owns-the-truth/de/inter/
 ---
 
 ::project-header{:header=header :title=title :projectTags=projectTags :badge=badge abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
@@ -67,7 +66,6 @@ imageArray:
 ---
 ::
 
-
 ::meta-table
 ---
 content:
@@ -93,8 +91,7 @@ content:
 ---
 ::
 
-
-::action-call{:segment=footer}
+::external-resources{:segment=footer}
 ::
 
 ::next-work{}

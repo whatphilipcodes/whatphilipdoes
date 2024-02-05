@@ -2,7 +2,7 @@
 	<div class="absolute bottom-0 right-0 flex flex-col-reverse gap-4">
 		<Button
 			v-for="button in buttons.slice().reverse()"
-			class="w-20 h-20"
+			class="w-20 h-20 hyphens-manual"
 			padding-override="p-3"
 			:to="typeof button.to === 'string' ? button.to : undefined"
 			:callback="typeof button.to === 'function' ? button.to : undefined"

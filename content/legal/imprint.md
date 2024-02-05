@@ -1,6 +1,6 @@
 ---
 title: imprint
-meta:
+nav:
   page: what you
   segment: should know
 ---

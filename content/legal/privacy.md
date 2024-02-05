@@ -1,6 +1,6 @@
 ---
 title: privacy
-meta:
+nav:
   page: what you
   segment: should know
 ---

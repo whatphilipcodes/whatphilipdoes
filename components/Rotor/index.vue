@@ -20,6 +20,7 @@
 			<Button
 				class="absolute invisible lg:visible w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 				as="button"
+				:variant="'dark'"
 				@click="restart"
 				>show again</Button
 			>

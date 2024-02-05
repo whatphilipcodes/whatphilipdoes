@@ -2,7 +2,7 @@
 	<ContentRenderer
 		:value="(data as ParsedContent)"
 		tag="layout-columns"
-		class="gap-y-8 pb-20"
+		class="gap-y-8 pb-4 md:pb-8"
 	/>
 	<Footer :segment="data?.footer" />
 </template>
