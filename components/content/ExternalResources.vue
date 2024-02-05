@@ -6,6 +6,7 @@
 				v-for="button in props.segment?.buttons"
 				class="w-44 h-10 text-base"
 				:variant="button.accent ? 'accent' : 'dark'"
+				:to="button.to"
 				>{{ button.label }}</Button
 			>
 		</div>
