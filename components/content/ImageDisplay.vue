@@ -3,6 +3,7 @@
 		<ImageCaroussel :imageArray="props.imageArray" />
 		<ImageGrid :imageArray="props.imageArray" />
 		<div
+			v-if="slots.default"
 			data-info="description"
 			class="col-start-1 col-span-full md:col-span-5 lg:col-span-7 text-mono-300 hyphens-auto"
 		>
@@ -18,4 +19,5 @@ const props = defineProps({
 		required: true,
 	},
 })
+const slots = useSlots()
 </script>
