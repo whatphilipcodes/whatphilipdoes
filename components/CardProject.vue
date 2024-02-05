@@ -12,7 +12,7 @@
 				class="relative w-full"
 				:class="{ 'h-[64vh]': props.opened, 'h-[100vh]': !props.opened }"
 			>
-				<div data-info="image" class="w-full h-full bg-cinnabar-800">
+				<div data-info="image" class="w-full h-full">
 					<Image
 						:src="props.projectData.header.src"
 						:alt="props.projectData.header.alt"
@@ -48,7 +48,7 @@
 				</div>
 				<div
 					data-info="overlay"
-					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-4 py-4 md:py-6 lg:py-8 lg:self-end"
+					class="flex flex-col relative z-[20] h-full row-start-1 lg:row-start-auto col-span-3 lg:col-span-4 pt-4 md:pt-6 lg:pt-8 lg:self-end"
 					:class="{ 'lg:justify-end': !props.opened }"
 				>
 					<div

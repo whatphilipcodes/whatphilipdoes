@@ -87,12 +87,15 @@ content:
     rows: 
       - cols: 
         - [Ars Electronica, Campus Exhibition]
-        - ['2023', 'Linz, Austria']
+        - ['2023']
 ---
 ::
 
 ::external-resources{:segment=footer}
 ::
 
-::next-work{}
+::next-work
+---
+to: /projects/inter
+---
 ::

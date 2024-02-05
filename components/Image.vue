@@ -1,5 +1,9 @@
 <template>
-	<img :src="props.src" :alt="props.alt" class="w-full h-full object-cover" />
+	<img
+		:src="props.src"
+		:alt="props.alt"
+		class="w-full h-full object-cover bg-mono-900"
+	/>
 </template>
 
 <script setup lang="ts">
