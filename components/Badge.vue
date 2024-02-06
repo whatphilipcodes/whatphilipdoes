@@ -1,16 +1,16 @@
 <template>
 	<NuxtLink
 		:to="props.link"
-		class="transition delay-100 duration-500 group select-none flex flex-row-reverse items-center border gap-4 pl-4 border-mono-50 text-mono-500 border-opacity-0 hover:border-opacity-100 hover:text-mono-50"
+		class="group flex select-none flex-row-reverse items-center gap-4 border border-mono-50 border-opacity-0 pl-4 text-mono-500 transition delay-100 duration-500 hover:border-opacity-100 hover:text-mono-50"
 		:class="props.link ? 'cursor-pointer' : 'cursor-default'"
 	>
 		<div
-			class="flex flex-shrink-0 self-end items-center justify-center text-lg w-10 h-10"
+			class="flex h-10 w-10 flex-shrink-0 items-center justify-center self-end text-lg"
 		>
 			<slot />
 		</div>
 		<p
-			class="transition delay-100 duration-150 flex w-30 text-mono-50 opacity-0 group-hover:opacity-100"
+			class="w-30 flex text-mono-50 opacity-0 transition delay-100 duration-150 group-hover:opacity-100"
 		>
 			{{ props.info }}
 		</p>
