@@ -37,7 +37,7 @@
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[2].segment">
 			<div
-				class="flex h-[56vh] lg:h-[64vh] col-span-full items-end lg:items-center mb-4"
+				class="flex h-[56vh] lg:h-[64vh] col-span-full items-end lg:items-center mb-4 md:mb-8"
 			>
 				<BlockTextCTA
 					:content="segmentsContent[2].contents.closer"
