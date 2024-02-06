@@ -1,4 +1,4 @@
-<img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fwhatphilipdoes.com%2F&style=flat-square">
+<img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fwhatphilipdoes.com%2F&up_message=live&down_message=offline&style=flat-square">
 
 # whatphilipdoes
 
