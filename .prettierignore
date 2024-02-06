@@ -1,2 +1,2 @@
 # markdown is formatted by MDC plugin instead
-*.md
+content/**/*.md
