@@ -8,11 +8,11 @@
 		@mouseup="setActive"
 		><span
 			ref="linkElement"
-			:class="`transition-colors ease-in-out duration-300 underline underline-offset-[3px] ${parseForTailwind(
-				colors.idle
+			:class="`underline underline-offset-[3px] transition-colors duration-300 ease-in-out ${parseForTailwind(
+				colors.idle,
 			)} ${parseForTailwind(colors.hover, 'hover:')} ${parseForTailwind(
 				colors.active,
-				'active:'
+				'active:',
 			)}`"
 		>
 			<slot /></span
@@ -63,7 +63,7 @@ function setActive() {
 		...colors.value.idle,
 		'transition-colors',
 		'ease-in-out',
-		'duration-300'
+		'duration-300',
 	)
 	linkElement.value?.classList.add(...colors.value.active)
 	clearAutoReset = setTimeout(resetActive, 500)
@@ -74,7 +74,7 @@ function resetActive() {
 		...colors.value.active,
 		'transition-colors',
 		'ease-in-out',
-		'duration-300'
+		'duration-300',
 	)
 	linkElement.value?.classList.add(...colors.value.idle)
 }

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.flash-enter:not(:active) {
+		transition-timing-function: ease-in-out;
+		transition-duration: 300ms;
+	}
+
+	.flash-enter:active {
+		transition-duration: 0ms;
+	}
+}
