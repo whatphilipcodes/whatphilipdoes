@@ -69,6 +69,11 @@
 							{{ tag.toLowerCase() }}
 						</div>
 					</div>
+					<div
+						data-info="spacer"
+						v-if="!props.opened"
+						class="hidden lg:block h-12"
+					/>
 				</div>
 				<div
 					data-info="abstract"
