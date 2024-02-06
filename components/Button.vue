@@ -49,12 +49,18 @@ const target = computed(() => {
 const buttonBaseClasses = computed(() => {
 	return {
 		[props.paddingOverride ?? 'p-1']: true,
-		'bg-mono-800 border-mono-800 hover:text-mono-50 hover:bg-mono-600 hover:border-mono-600  active:text-mono-50 active:bg-mono-50 active:border-mono-50 ':
-			props.variant === 'basic',
-		'text-cinnabar-500 border-cinnabar-500 hover:bg-cinnabar-500/20 active:bg-cinnabar-500':
-			props.variant === 'accent',
-		'text-mono-500 bg-mono-900 border-mono-900 hover:text-mono-50 hover:bg-mono-800 hover:border-mono-800 active:text-mono-50 active:bg-mono-50 active:border-mono-50':
-			props.variant === 'dark',
+		[variantClasses.value as string]: true,
+	}
+})
+
+const variantClasses = computed(() => {
+	switch (props.variant) {
+		case 'basic':
+			return tw`bg-mono-800 border-mono-800 hover:text-mono-50 hover:bg-mono-600 hover:border-mono-600  active:text-mono-50 active:bg-mono-50 active:border-mono-50 `
+		case 'accent':
+			return tw`text-cinnabar-500 border-cinnabar-500 hover:bg-cinnabar-500/20 active:bg-cinnabar-500`
+		case 'dark':
+			return tw`text-mono-500 bg-mono-900 border-mono-900 hover:text-mono-50 hover:bg-mono-800 hover:border-mono-800 active:text-mono-50 active:bg-mono-50 active:border-mono-50`
 	}
 })
 </script>
