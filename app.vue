@@ -1,12 +1,12 @@
 <template>
-	<div id="app" lang="de" class="text-mono-50 bg-mono-950 overflow-x-clip">
+	<div id="app" lang="de" class="overflow-x-clip bg-mono-950 text-mono-50">
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
 	</div>
 	<div
 		data-info="background"
-		class="static-background fixed z-bottom h-lvh bottom-0 left-0 right-0"
+		class="static-background fixed bottom-0 left-0 right-0 z-bottom h-lvh"
 	>
 		<!-- <div
 			class="absolute right-0 max-md:top-0 lg:bottom-0 text-cinnabar-500 px-4 md:px-8 lg:px-32 mx-auto max-w-[1440px] py-8"
