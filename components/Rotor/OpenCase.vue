@@ -25,9 +25,9 @@
 			:to="props.activeCase._path"
 		/>
 	</div>
-	<LayoutColumns
+	<div
 		v-else-if="showUI"
-		class="fixed bottom-0 hidden w-screen py-8 transition delay-75 ease-in-out lg:block"
+		class="fixed bottom-0 hidden w-screen px-32 pb-12 transition delay-75 ease-in-out lg:block"
 		:class="{
 			'opacity-0': isAnimating,
 			'opacity-100': !isAnimating,
@@ -38,7 +38,7 @@
 				>open case</Button
 			>
 		</div>
-	</LayoutColumns>
+	</div>
 </template>
 
 <script setup lang="ts">
