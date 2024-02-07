@@ -1,8 +1,9 @@
 ---
 title: inter
-nav:
-  page: what philip
-  segment: did
+description: Abstract installation engaging with the objectivity and subjectiveness of truth.
+segments:
+  - page: what philip
+    name: did
 header:
   src: /img/projects/inter/header-inter.jpg
   alt: 'header'

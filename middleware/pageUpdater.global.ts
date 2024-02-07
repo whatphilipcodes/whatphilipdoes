@@ -1,10 +1,10 @@
 export default defineNuxtRouteMiddleware(async (to) => {
 	const { updateActivePage, updateActiveSegment } = useGlobalStore()
-	const data = await queryContent(to.path).findOne() // #todo: prevent the useRoute() call nuxt-content uses internally
-	if (!data) return
-	updateActivePage(data.nav.page)
+	const content = await queryContent(to.path).findOne()
+	if (!content) return
+	updateActivePage(content.segments[0].page)
 	updateActiveSegment({
-		title: data.nav.segment,
-		buttons: data.nav.buttons ?? [],
+		name: content.segments[0].name,
+		buttons: content.segments[0].buttons ?? [],
 	})
 })

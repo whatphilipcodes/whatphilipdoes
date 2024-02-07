@@ -29,7 +29,7 @@
 const props = defineProps({
 	label: {
 		type: String,
-		default: 'nächste arbeit',
+		default: 'next work',
 	},
 	to: {
 		type: String,

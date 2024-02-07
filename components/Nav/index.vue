@@ -1,15 +1,15 @@
 <template>
 	<div
 		data-info="menu"
-		class="fixed bottom-0 lg:top-0 h-36 w-full z-nav mx-auto"
+		class="fixed bottom-0 z-nav mx-auto h-36 w-full lg:top-0"
 	>
 		<NavDissolver />
-		<LayoutPadding class="w-full h-full">
+		<LayoutPadding class="h-full w-full">
 			<div class="relative col-span-full h-full flex-grow-0">
 				<NuxtLink to="/"
 					><NavDynamicHeading
 						:page="store.$state.activePage"
-						:highlight="store.$state.activeSegment.title"
+						:highlight="store.$state.activeSegment.name"
 				/></NuxtLink>
 
 				<NavControlTouch

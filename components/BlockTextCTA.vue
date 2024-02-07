@@ -1,31 +1,31 @@
 <template>
-	<div data-info="container-text-block" class="flex flex-col w-full">
+	<div data-info="container-text-block" class="flex w-full flex-col">
 		<div
 			v-if="tags"
 			data-info="tags"
-			class="flex flex-col lg:flex-row lg:flex-wrap text-mono-500 gap-x-8"
+			class="flex flex-col gap-x-8 text-mono-500 lg:flex-row lg:flex-wrap"
 		>
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
 		</div>
 		<div
-			class="flex flex-row lg:flex-col w-full justify-between lg:justify-normal mt-3"
+			class="mt-3 flex w-full flex-row justify-between lg:flex-col lg:justify-normal"
 		>
 			<div
 				data-info="text"
-				class="text-lg leading-lg italic hyphens-auto line-clamp-6"
+				class="line-clamp-6 hyphens-auto text-lg italic leading-lg"
 			>
 				{{ text }}
 			</div>
 			<div
-				class="flex flex-col lg:flex-row self-end lg:self-start w-12 lg:w-fit lg:mt-3 gap-4"
+				class="flex w-12 flex-col gap-4 self-end lg:mt-3 lg:w-fit lg:flex-row lg:self-start"
 			>
 				<Button
-					v-if="callToAction"
-					:to="callToAction.to"
-					:variant="callToAction.accent ? 'accent' : 'basic'"
-					:download="callToAction.download ?? undefined"
-					class="w-44 h-10 max-lg:hidden"
-					>{{ callToAction.label }}</Button
+					v-for="button in buttons"
+					:to="button.to"
+					:variant="button.variant ?? 'basic'"
+					:download="button.download ?? undefined"
+					class="h-10 w-44 max-lg:hidden"
+					>{{ button.label }}</Button
 				>
 				<slot />
 			</div>
@@ -43,13 +43,8 @@ const props = defineProps({
 		type: String,
 		default: 'Text block did not receive any text. Please provide a text prop.',
 	},
-	callToAction: {
-		type: Object as PropType<{
-			label: string
-			to: string
-			accent: boolean
-			download: string
-		}>,
+	buttons: {
+		type: Array as PropType<buttonData[]>,
 		default: undefined,
 	},
 	content: {
@@ -57,5 +52,5 @@ const props = defineProps({
 		default: undefined,
 	},
 })
-const { tags, text, callToAction } = props.content ?? props
+const { tags, text, buttons } = props.content ?? props
 </script>

@@ -1,32 +1,21 @@
 <template>
 	<ScrollStop>
-		<ScrollSegment :pageSegment="segmentsContent[0].segment">
+		<ScrollSegment :pageSegment="content.segments[0]">
 			<div
 				class="z-front col-start-12 h-10 w-44 justify-self-end max-lg:hidden"
 			>
 				<Button
 					class="w-full"
-					:to="
-						segmentsContent[0].segment.buttons
-							? segmentsContent[0].segment.buttons[0].to
-							: 'error'
-					"
+					:to="content.segments[0].buttons?.[0].to || '/404'"
 					variant="accent"
-					>{{
-						segmentsContent[0].segment.buttons
-							? segmentsContent[0].segment.buttons[0].label
-							: 'error'
-					}}</Button
+					>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
 				>
 			</div>
 			<div class="col-span-full h-[56vh] md:col-span-6 lg:h-[64vh]">
-				<BlockTextCTA
-					class="lg:mt-44"
-					:content="segmentsContent[0].contents.hero"
-				/>
+				<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 			</div>
 		</ScrollSegment>
-		<ScrollSegment :pageSegment="segmentsContent[1].segment">
+		<ScrollSegment :pageSegment="content.segments[1]">
 			<Rotor
 				ref="projectRotor"
 				:completionCallback="cbRotorComplete"
@@ -35,23 +24,16 @@
 		</ScrollSegment>
 	</ScrollStop>
 	<ScrollStop>
-		<ScrollSegment :pageSegment="segmentsContent[2].segment">
+		<ScrollSegment :pageSegment="content.segments[2]">
 			<div
 				class="col-span-full mb-4 flex h-[56vh] items-end md:mb-8 lg:h-[64vh] lg:items-center"
 			>
 				<BlockTextCTA
-					:content="segmentsContent[2].contents.closer"
+					:content="content.bundle.closer.cta"
 					class="lg:col-span-8"
 				>
 					<Button
-						class="hidden h-10 w-44 lg:block"
-						variant="dark"
-						:to="segmentsContent[2].contents.download.to"
-						:download="segmentsContent[2].contents.download.download"
-						>{{ segmentsContent[2].contents.download.label }}</Button
-					>
-					<Button
-						v-for="link in segmentsContent[2].contents.social"
+						v-for="link in content.bundle.closer.social"
 						class="aspect-square lg:w-10"
 						:to="link.to"
 						variant="dark"
@@ -75,7 +57,13 @@ const { updateActivePage } = useGlobalStore()
 
 useScrollSegments()
 
-const segmentsContent = await queryContent<contentSegment>('landing').find()
+// content
+const { data } = await useAsyncData(() =>
+	queryContent<contentPassive>(useRoute().fullPath).findOne(),
+)
+const content = computed(() => data?.value as contentPassive)
+useContentHead(content)
+
 const projectsContent = await queryContent<contentProject>('projects').find()
 
 const dbWheelTrigger = useDebounceFn(() => {

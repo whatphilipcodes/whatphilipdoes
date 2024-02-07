@@ -1,8 +1,9 @@
 ---
 title: imprint
-nav:
-  page: what you
-  segment: should know
+description: Impressum und Haftungsausschluss
+segments:
+  - page: what you
+    name: should know
 ---
 
 # Impressum

@@ -15,5 +15,6 @@ const { data } = await useAsyncData(() =>
 	queryContent<contentProject>(useRoute().fullPath).findOne(),
 )
 const content = computed(() => data?.value as contentProject)
+useContentHead(content)
 useScrollSegments()
 </script>

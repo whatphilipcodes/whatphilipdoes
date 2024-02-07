@@ -2,11 +2,11 @@
 	<div v-if="device === 'mouse'" data-info="open-case-overlay" class="group">
 		<div
 			ref="floatingItem"
-			class="fixed will-change-transform transition ease-in-out delay-75"
+			class="fixed transition delay-75 ease-in-out will-change-transform"
 			:class="{
-				'opacity-0 scale-50':
+				'scale-50 opacity-0':
 					isAnimating || !isActive || !mouseAtZero || !mouseMoving,
-				'opacity-100 scale-100':
+				'scale-100 opacity-100':
 					!isAnimating && isActive && mouseAtZero && mouseMoving,
 			}"
 			:style="{
@@ -14,26 +14,26 @@
 				top: `${y - displace.y + 24}px`,
 			}"
 		>
-			<div class="flex flex-row w-fit h-4 items-center gap-4">
+			<div class="flex h-4 w-fit flex-row items-center gap-4">
 				<div class="w-fit text-cinnabar-500">click to open</div>
 			</div>
 		</div>
 		<NuxtLink
 			v-if="isActive"
 			ref="clickable"
-			class="absolute w-full h-full"
+			class="absolute h-full w-full"
 			:to="props.activeCase._path"
 		/>
 	</div>
 	<LayoutColumns
 		v-else-if="showUI"
-		class="hidden lg:block fixed transition ease-in-out delay-75 bottom-0 w-screen py-8"
+		class="fixed bottom-0 hidden w-screen py-8 transition delay-75 ease-in-out lg:block"
 		:class="{
 			'opacity-0': isAnimating,
 			'opacity-100': !isAnimating,
 		}"
 	>
-		<div class="flex flex-row col-span-full h-10 justify-end">
+		<div class="col-span-full flex h-10 flex-row justify-end">
 			<Button variant="accent" :to="props.activeCase._path" class="w-44"
 				>open case</Button
 			>
@@ -119,9 +119,9 @@ const touchbuttons = computed(() => {
 	return {
 		buttons: [
 			{
-				label: 'open case',
-				accent: true,
-				to: props.activeCase._path ?? '',
+				label: 'open work',
+				variant: 'accent',
+				to: props.activeCase._path ?? '/404',
 			},
 		],
 	}
