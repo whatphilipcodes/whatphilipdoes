@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<NuxtLink
-			class="flash-enter absolute top-0 h-full w-full border border-transparent transition-colors hover:bg-mono-800/20 active:bg-mono-50"
+			class="flash-enter absolute top-0 h-full w-full border border-transparent transition-colors hover:bg-mono-800/20 active:bg-cinnabar-500"
 			:to="props.to"
 		/>
 	</div>
