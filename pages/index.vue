@@ -2,7 +2,7 @@
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[0].segment">
 			<div
-				class="z-front max-lg:hidden w-44 h-10 justify-self-end col-start-12"
+				class="z-front col-start-12 h-10 w-44 justify-self-end max-lg:hidden"
 			>
 				<Button
 					class="w-full"
@@ -19,7 +19,7 @@
 					}}</Button
 				>
 			</div>
-			<div class="col-span-full md:col-span-6 h-[56vh] lg:h-[64vh]">
+			<div class="col-span-full h-[56vh] md:col-span-6 lg:h-[64vh]">
 				<BlockTextCTA
 					class="lg:mt-44"
 					:content="segmentsContent[0].contents.hero"
@@ -37,14 +37,14 @@
 	<ScrollStop>
 		<ScrollSegment :pageSegment="segmentsContent[2].segment">
 			<div
-				class="flex h-[56vh] lg:h-[64vh] col-span-full items-end lg:items-center mb-4"
+				class="col-span-full mb-4 flex h-[56vh] items-end md:mb-8 lg:h-[64vh] lg:items-center"
 			>
 				<BlockTextCTA
 					:content="segmentsContent[2].contents.closer"
 					class="lg:col-span-8"
 				>
 					<Button
-						class="w-44 h-10 hidden lg:block"
+						class="hidden h-10 w-44 lg:block"
 						variant="dark"
 						:to="segmentsContent[2].contents.download.to"
 						:download="segmentsContent[2].contents.download.download"
@@ -56,10 +56,7 @@
 						:to="link.to"
 						variant="dark"
 					>
-						<component
-							:is="link.icon"
-							class="text-mono-500 group-hover:text-mono-50"
-						/>
+						<component :is="link.icon" />
 					</Button>
 				</BlockTextCTA>
 			</div>
@@ -76,7 +73,7 @@ let exitScrollStops: () => void
 const projectRotor = ref()
 const { updateActivePage } = useGlobalStore()
 
-const { enterScrollSegments, exitScrollSegments } = useScrollSegments()
+useScrollSegments()
 
 const segmentsContent = await queryContent<contentSegment>('landing').find()
 const projectsContent = await queryContent<contentProject>('projects').find()
@@ -94,9 +91,6 @@ function touchTrigger() {
 onMounted(() => {
 	// set page title
 	updateActivePage('what philip')
-
-	// segments
-	enterScrollSegments()
 
 	// enter scroll stops
 	const {
@@ -120,6 +114,5 @@ onMounted(() => {
 })
 onUnmounted(() => {
 	exitScrollStops()
-	exitScrollSegments()
 })
 </script>

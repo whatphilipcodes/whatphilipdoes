@@ -1,6 +1,6 @@
 ---
 title: inter
-meta:
+nav:
   page: what philip
   segment: did
 header:
@@ -14,5 +14,5 @@ projectTags:
 landing: true
 ---
 
-::project-header{:bgImage=header :title=title :projectTags=projectTags abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
+::project-header{:header=header :title=title :projectTags=projectTags abstract="Experimentelle Untersuchung der omnipräsenten Vergänglichkeit als das gegenständlich abgeleitete Ausbreiten visueller Charakteristika."}
 ::

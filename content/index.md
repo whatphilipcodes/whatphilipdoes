@@ -1,6 +1,6 @@
 ---
 title: Root
-meta:
+nav:
   page: what philip
   segment: does
 ---

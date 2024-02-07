@@ -32,6 +32,7 @@ export default {
 			},
 			black: '#000000',
 			white: '#ffffff',
+			transparent: 'transparent',
 		},
 		fontSize: {
 			sm: '0.75rem', // 12px
@@ -61,7 +62,46 @@ export default {
 			nav: '100',
 			front: '1000',
 		},
+		aspectRatio: {
+			square: '1 / 1',
+			landscape: '4 / 3',
+			portrait: '3 / 4',
+		},
 	},
+	safelist: [
+		{
+			pattern: /decoration-*/,
+			variants: ['hover', 'active'],
+		},
+		{
+			pattern: /text-cinnabar-*/,
+			variants: ['hover', 'active'],
+		},
+		{
+			pattern: /text-mono-*/,
+			variants: ['hover', 'active'],
+		},
+		{
+			pattern: /aspect-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /col-span-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /row-span-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /col-start-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+		{
+			pattern: /row-start-*/,
+			variants: ['lg', 'md', 'sm'],
+		},
+	],
 	container: {
 		center: true,
 	},

@@ -4,10 +4,8 @@
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
 			:translate="computeTranslate(index)"
-			:title="slide.title"
-			:project-tags="slide.projectTags"
-			:bg-image="slide.header"
 			:ms-duration="1000"
+			:projectData="slide"
 		/>
 		<RotorOpenCase
 			:active-case="slides[activeSlide]"
@@ -22,6 +20,7 @@
 			<Button
 				class="absolute invisible lg:visible w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
 				as="button"
+				:variant="'dark'"
 				@click="restart"
 				>show again</Button
 			>
@@ -47,9 +46,9 @@ const isActive = ref(false)
 const linkActive = ref(false)
 const classList = computed(() => {
 	return {
-		'w-screen h-screen md:h-dvh col-span-full justify-self-center overflow-clip relative':
+		'w-screen h-lvh md:h-screen col-span-full justify-self-center overflow-clip relative':
 			true,
-		'absolute top-0': isActive.value,
+		'absolute top-0 md:bottom-0': isActive.value,
 	}
 })
 

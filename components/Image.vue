@@ -1,12 +1,9 @@
 <template>
-	<!-- <NuxtPicture
-		format="webp"
-		fit="cover"
+	<img
 		:src="props.src"
 		:alt="props.alt"
-		:imgAttrs="{ class: 'w-full h-full object-cover' }"
-	/> -->
-	<img :src="props.src" :alt="props.alt" class="w-full h-full object-cover" />
+		class="w-full h-full object-cover bg-mono-900"
+	/>
 </template>
 
 <script setup lang="ts">

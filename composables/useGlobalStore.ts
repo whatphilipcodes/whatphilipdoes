@@ -30,6 +30,9 @@ export const useGlobalStore = defineStore('global', () => {
 	function executeSegmentCallback(name: string) {
 		segmentCallbacks[name]?.()
 	}
+	function resetSegments() {
+		scrollSegments.value.splice(0, scrollSegments.value.length)
+	}
 
 	// stops
 	const scrollStopTriggers: {
@@ -61,6 +64,7 @@ export const useGlobalStore = defineStore('global', () => {
 		segmentCallbacks,
 		addSegmentCallback,
 		executeSegmentCallback,
+		resetSegments,
 		//
 		scrollStopTriggers,
 		addStopTrigger,

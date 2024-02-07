@@ -1,12 +1,7 @@
 <template>
-	<NuxtLink
-		:href="href"
-		:target="target"
-		class="hyphens-auto text-cinnabar-500 underline"
-		lang="de"
-	>
+	<TouchableLink :href="href" :target="target" variant="inline-accent">
 		<slot />
-	</NuxtLink>
+	</TouchableLink>
 </template>
 
 <script setup lang="ts">

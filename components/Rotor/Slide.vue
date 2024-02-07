@@ -1,9 +1,7 @@
 <template>
 	<div :class="classList">
 		<CardProject
-			:projectTags="props.projectTags"
-			:title="props.title"
-			:bgImage="props.bgImage"
+			:projectData="props.projectData"
 			class="col-span-full w-screen h-screen md:h-dvh"
 		/>
 	</div>
@@ -24,16 +22,8 @@ const props = defineProps({
 		type: Number,
 		default: 1000,
 	},
-	title: {
-		type: String,
-		default: '',
-	},
-	projectTags: {
-		type: Array,
-		default: ['did', 'not', 'receive', 'projectTags'],
-	},
-	bgImage: {
-		type: Object as PropType<imageData>,
+	projectData: {
+		type: Object as PropType<contentProject>,
 		required: true,
 	},
 })
