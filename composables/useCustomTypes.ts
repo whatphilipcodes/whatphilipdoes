@@ -16,7 +16,7 @@ export interface contentBlockTextCTA extends ParsedContent {
 	/**
 	 * The call-to-action button data.
 	 */
-	callToAction: buttonData
+	buttons: buttonData[]
 }
 
 /**
@@ -111,7 +111,7 @@ export interface buttonData {
 	/**
 	 * Optional. Specifies whether the button should have an accent style.
 	 */
-	accent?: boolean
+	variant?: string
 
 	/**
 	 * Optional. Specifies the file name when the button is used for server hosted direct downloads.

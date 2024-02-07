@@ -1,9 +1,9 @@
 ---
 title: privacy
 description: Datenschutzerklärung
-nav:
-  page: what you
-  segment: should know
+segments:
+  - page: what you
+    name: should know
 ---
 
 # Datenschutzerklärung

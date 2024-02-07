@@ -2,9 +2,9 @@
 # data
 title: entity
 description: Examination of an omnipresent decay as a form of derivative with an aesthetic aspect.
-nav:
-  page: what philip
-  segment: did
+segments:
+  - page: what philip
+    name: did
 landing: true
 
 # content
