@@ -1,5 +1,6 @@
 ---
 title: privacy
+description: Datenschutzerklärung
 nav:
   page: what you
   segment: should know

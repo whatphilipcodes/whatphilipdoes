@@ -55,11 +55,17 @@ export interface contentProject extends ParsedContent {
 }
 
 /**
- * Represents a content segment.
+ * Used to represent content that is not directly rendered using the ContentRenderer but rather used as a data source in the page template.
  */
-export interface contentSegment extends ParsedContent {
-	segment: Partial<pageSegment>
-	contents: any
+export interface contentPassive extends ParsedContent {
+	/**
+	 * pageSegments that are used to control the reactive nav element.
+	 */
+	segments: Partial<pageSegment>[]
+	/**
+	 * Any content that is hardcoded into the page tampate.
+	 */
+	bundle: any
 }
 
 // molecules
@@ -69,11 +75,15 @@ export interface contentSegment extends ParsedContent {
  */
 export interface pageSegment {
 	/**
-	 * The title of the page segment.
+	 * Title of the page the segment is associated to (what philip)
 	 */
-	title?: string
+	page: string
 	/**
-	 * An array of button data.
+	 * The name of the page segment (does)
+	 */
+	name: string
+	/**
+	 * An array of button data for the touch controls.
 	 */
 	buttons: buttonData[]
 	/**

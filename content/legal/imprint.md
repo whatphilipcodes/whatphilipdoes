@@ -1,5 +1,6 @@
 ---
 title: imprint
+description: Impressum und Haftungsausschluss
 nav:
   page: what you
   segment: should know

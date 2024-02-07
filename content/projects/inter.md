@@ -1,5 +1,6 @@
 ---
 title: inter
+description: Abstract installation engaging with the objectivity and subjectiveness of truth.
 nav:
   page: what philip
   segment: did

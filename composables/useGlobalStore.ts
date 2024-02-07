@@ -9,14 +9,14 @@ export const useGlobalStore = defineStore('global', () => {
 	const scrollSegments = ref<
 		{ enter: number; exit: number; segment: Partial<pageSegment> }[]
 	>([])
-	const activeSegment = ref<pageSegment>({
-		title: 'does',
+	const activeSegment = ref<Partial<pageSegment>>({
+		name: 'does',
 		buttons: [],
 	})
 	function addSegment(
 		enter: number,
 		exit: number,
-		segment: Partial<pageSegment>
+		segment: Partial<pageSegment>,
 	) {
 		scrollSegments.value.push({ enter, exit, segment })
 	}
