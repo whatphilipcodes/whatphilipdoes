@@ -20,10 +20,6 @@ const props = defineProps({
 		type: Array,
 		default: ['did', 'not', 'receive', 'projectTags'],
 	},
-	abstract: {
-		type: String,
-		default: '',
-	},
 	badge: {
 		type: Object as PropType<badgeData>,
 		default: null,
@@ -34,9 +30,10 @@ const projectData = computed(() => {
 		title: props.title,
 		header: props.header,
 		projectTags: props.projectTags,
-		abstract: props.abstract,
+		abstract: flatUnwrap(useSlots().default?.(), ['p'])[0],
 		badge: props.badge,
 		landing: false,
 	} as contentProject
 })
+const { flatUnwrap } = useUnwrap()
 </script>
