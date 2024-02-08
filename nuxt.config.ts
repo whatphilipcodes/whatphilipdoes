@@ -41,6 +41,32 @@ export default defineNuxtConfig({
 					content: '#0d0d0d',
 				},
 			],
+			link: [
+				{
+					rel: 'icon',
+					href: '/favicon.ico',
+					sizes: '48x48',
+				},
+				{
+					rel: 'icon',
+					href: '/favicon.svg',
+					sizes: 'any',
+					type: 'image/svg+xml',
+				},
+				{
+					rel: 'mas-icon',
+					href: '/mask-icon.svg',
+					color: '#000000',
+				},
+				{
+					rel: 'apple-touch-icon',
+					href: '/apple-touch-icon.png',
+				},
+				{
+					rel: 'manifest',
+					href: '/site.webmanifest',
+				},
+			],
 			bodyAttrs: {
 				// global background color (issue see app.vue)
 				class: 'bg-mono-950',
