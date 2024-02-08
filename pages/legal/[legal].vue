@@ -12,4 +12,7 @@
 definePageMeta({
 	layout: 'minimal',
 })
+useHead({
+	meta: [{ name: 'robots', content: 'none' }],
+})
 </script>
