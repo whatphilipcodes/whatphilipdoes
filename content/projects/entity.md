@@ -63,20 +63,18 @@ imageArray:
 A lightstrip illuminating the scanning bed indicates that the installation is ready for the next input. When a new object is placed on the surface, the lights fade out while the scanning process begins. Once the input has been analyzed, a new en- tity is projected onto the ceiling.
 ::
 
-::text-highlight
+::text-block
+::text-highlight{class=pb-4}
 Extracting color and contour from scanned images.
 ::
-
-::text-block
-Although a lighter built today might not be able to light a candle in a thousand years, it will not truly vanish either. It has been transformed from something and will eventually transform into something else. However, because our observation period is limited so drastically we do not perceive a process but rather a static object. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
+Duis duis elit esse quis mollit sit aliquip adipisicing aliquip quis sunt cillum culpa. Duis do velit duis incididunt pariatur minim tempor officia consequat consequat consequat esse incididunt incididunt. Duis deserunt enim eu id reprehenderit ipsum commodo eu exercitation. Amet adipisicing laboris ex ut ut nisi elit id. Occaecat ipsum adipisicing consequat eu in exercitation ullamco id. Quis ad non anim non Lorem nostrud nisi.
 ::
 
-::text-highlight
+::text-block
+::text-highlight{class=pb-4}
 Growing entities in realtime.
 ::
-
-::text-block
-Although a lighter built today might not be able to light a candle in a thousand years, it will not truly vanish either. It has been transformed from something and will eventually transform into something else. However, because our observation period is limited so drastically we do not perceive a process but rather a static object. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
+Magna cillum aute esse enim id do occaecat aliqua laborum fugiat nisi reprehenderit. Anim aliqua in anim id labore cupidatat cupidatat sit sit. Ullamco duis pariatur sunt ut nulla aliqua tempor nisi laboris dolore dolor. Nisi cupidatat pariatur consequat amet occaecat veniam pariatur nostrud sint aute sint do. Mollit laboris non exercitation aute consequat cillum esse. Adipisicing aliquip deserunt consectetur magna eiusmod in ullamco commodo in laborum aute duis. Et ullamco labore elit incididunt non officia ex aliqua. Eu irure Lorem eiusmod nisi nisi non reprehenderit commodo sunt. Esse deserunt proident culpa incididunt do et. Ipsum in sit labore qui cillum sit tempor laborum ex non. Cupidatat sit et qui deserunt mollit excepteur elit eu sunt incididunt qui proident. Adipisicing aute officia aliqua elit dolor deserunt enim enim commodo est laborum laborum est.
 ::
 
 ::meta-table
