@@ -24,7 +24,7 @@ bundle:
         - frontend development
         - machine learning
         - digital design
-      text: 'Designing and implementing interactive digital experiences. Focused on web technologies, real-time visualization and machine learning.'
+      text: 'Designing and implementing interactive experiences in the digital realm. Focused on web technologies, real-time visualization and machine learning.'
     closer:
       cta:
         text: '…might be up to you.'
