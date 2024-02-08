@@ -4,7 +4,7 @@
 			data-info="bg-container"
 			class="absolute top-0 h-full w-full bg-cinnabar-900"
 		>
-			<Image :src="data.header.src" :alt="data.header.alt" />
+			<Image v-if="data.header" :src="data.header.src" :alt="data.header.alt" />
 			<div
 				class="absolute top-0 h-full w-full bg-gradient-to-t from-mono-900"
 			/>
@@ -14,7 +14,7 @@
 			class="absolute bottom-4 right-4 flex flex-col place-content-end text-end"
 		>
 			<div class="text-mono-500">{{ props.label }}</div>
-			<div class="text-cinnabar-500">
+			<div class="text-cinnabar-500" v-if="data.header">
 				{{ data.title }}
 			</div>
 		</div>
