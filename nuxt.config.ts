@@ -1,8 +1,17 @@
+// nut content fix -> https://github.com/nuxt/content/issues/1551#issuecomment-1470246543
+import { globSync } from 'glob'
+const contentRoutes = globSync('./content/**/*.md', {
+	ignore: 'content/index.md',
+}).map((path) => path.slice(7, -3))
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	ssr: false,
+	// ssr: false,
 	nitro: {
 		preset: 'static',
+		prerender: {
+			routes: [...contentRoutes],
+		},
 	},
 	modules: [
 		'@pinia/nuxt',
@@ -21,11 +30,11 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	content: {
-		experimental: {
-			clientDB: true,
-		},
-	},
+	// content: {
+	// 	experimental: {
+	// 		clientDB: true,
+	// 	},
+	// },
 	alias: {
 		// assets: '/<root-dir>/assets', // #info: breaks svgo
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
@@ -54,7 +63,7 @@ export default defineNuxtConfig({
 					type: 'image/svg+xml',
 				},
 				{
-					rel: 'mas-icon',
+					rel: 'mask-icon',
 					href: '/mask-icon.svg',
 					color: '#000000',
 				},
