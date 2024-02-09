@@ -162,6 +162,16 @@ export interface imageData {
 	cols?: string
 
 	/**
+	 * The start row for the image when displayed in a grid (only md and lg breakpoints).
+	 */
+	startRow?: string
+
+	/**
+	 * The start column for the image when displayed in a grid (only md and lg breakpoints).
+	 */
+	startCol?: string
+
+	/**
 	 * Indicates if the image should be displayed in a narrow layout (only sm breakpoint).
 	 */
 	smnarrow?: boolean

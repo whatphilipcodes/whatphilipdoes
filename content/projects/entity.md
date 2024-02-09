@@ -54,14 +54,17 @@ imageArray:
     cols: 5 / 7
   - src: /projects/entity/story/02-lighter-scan.jpg
     alt: a scanned image of a lighter
+    startRow: 2 / 2
+    startCol: 3 / 3
     cols: 3 / 5
     smnarrow: true
   - src: /projects/entity/story/03-lighter-output.jpg
     alt: the decayed entity which was generated from the scanned image
+    startRow: 2 / 2
     cols:  3 / 5
     smnarrow: true
 ---
-A lightstrip illuminating the scanning bed indicates that the installation is ready for the next input. When a new object is placed on the surface, the lights fade out while the scanning process begins. Once the input has been analyzed, the new entity is projected onto the ceiling.
+A lightstrip illuminating the scanning bed indicates that the installation is ready for new input. When an object is placed on the surface, the lights fade out while the scanning process is starting. Once the input has been analyzed, a new entity is projected onto the ceiling.
 ::
 
 ::text-block
