@@ -6,7 +6,6 @@ const contentRoutes = globSync('./content/**/*.md', {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	// ssr: false,
 	nitro: {
 		preset: 'static',
 		prerender: {
@@ -35,7 +34,6 @@ export default defineNuxtConfig({
 		},
 	},
 	alias: {
-		// assets: '/<root-dir>/assets', // #info: breaks svgo
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
 	},
 	app: {
