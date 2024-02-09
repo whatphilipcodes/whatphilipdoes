@@ -53,12 +53,13 @@ imageArray:
     alt: a hand putting a lighter into the scanning bed
     cols: 5 / 7
   - src: /projects/entity/story/02-lighter-scan.jpg
-    alt: the scanned image of the lighter
+    alt: a scanned image of a lighter
     cols: 3 / 5
     smnarrow: true
   - src: /projects/entity/story/03-lighter-output.jpg
     alt: the decayed entity which was generated from the scanned image
-    cols:  full / full
+    cols:  3 / 5
+    smnarrow: true
 ---
 A lightstrip illuminating the scanning bed indicates that the installation is ready for the next input. When a new object is placed on the surface, the lights fade out while the scanning process begins. Once the input has been analyzed, the new entity is projected onto the ceiling.
 ::
@@ -80,24 +81,30 @@ Magna cillum aute esse enim id do occaecat aliqua laborum fugiat nisi reprehende
 ::image-display
 ---
 imageArray:
-  - src: /projects/entity/screens/pen-output.jpg
-    alt: a hand putting a lighter into the scanning bed
-    cols: 5 / 7
   - src: /projects/entity/screens/pen-scan.jpg
-    alt: a hand putting a lighter into the scanning bed
+    alt: the scanned image of a pen
     cols: 3 / 5
+    smnarrow: true
+  - src: /projects/entity/screens/pen-output.jpg
+    alt: the generated entity from the scanned image
+    cols: 3 / 5
+    smnarrow: true
   - src: /projects/entity/screens/banana-scan.jpg
-    alt: the scanned image of the lighter
+    alt: a scanned image of a banana
     cols: 3 / 5
+    smnarrow: true
   - src: /projects/entity/screens/banana-output.jpg
-    alt: a hand putting a lighter into the scanning bed
-    cols: 5 / 7
-  - src: /projects/entity/screens/becher-output.jpg
-    alt: the decayed entity which was generated from the scanned image
-    cols: 5 / 7
-  - src: /projects/entity/screens/becher-scan.png
-    alt: the scanned image of the lighter
+    alt: the generated entity from the scanned banana
     cols: 3 / 5
+    smnarrow: true
+  - src: /projects/entity/screens/becher-scan.jpg
+    alt: a scanned image of a cup
+    cols: 3 / 5
+    smnarrow: true
+  - src: /projects/entity/screens/becher-output.jpg
+    alt: the generated entity from the scanned cut
+    cols: 3 / 5
+    smnarrow: true
  
 ---
 ::
