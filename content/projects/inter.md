@@ -8,7 +8,7 @@ segments:
     name: did
 
 header:
-  src: /img/projects/inter/header-inter.jpg
+  src: /projects/inter/header-inter.jpg
   alt: 'header'
 projectTags:
   - interactive machine learning

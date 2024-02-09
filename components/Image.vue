@@ -1,8 +1,8 @@
 <template>
-	<img
+	<nuxt-img
 		:src="props.src"
 		:alt="props.alt"
-		class="w-full h-full object-cover bg-mono-900"
+		class="h-full w-full bg-mono-900 object-cover"
 	/>
 </template>
 

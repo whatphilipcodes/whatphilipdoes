@@ -20,7 +20,11 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'nuxt-svgo',
 		'@vueuse/nuxt',
+		'@nuxt/image',
 	],
+	image: {
+		dir: 'assets/img',
+	},
 	googleFonts: {
 		families: {
 			preload: true,
@@ -30,11 +34,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	// content: {
-	// 	experimental: {
-	// 		clientDB: true,
-	// 	},
-	// },
 	alias: {
 		// assets: '/<root-dir>/assets', // #info: breaks svgo
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue

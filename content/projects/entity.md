@@ -9,7 +9,7 @@ landing: true
 
 # content
 header:
-  src: /img/projects/entity/header-entity.jpg
+  src: /projects/entity/header-entity.jpg
   alt: header
 projectTags:
   - realtime differential-line-growth
@@ -29,14 +29,14 @@ Existence is a constant process of transformation and evolution. An attempt to v
 ::image-display
 ---
 imageArray:
-    - src: /img/projects/entity/side-closed.jpg
+    - src: /projects/entity/side-closed.jpg
       alt: sideview of the installation
       cols: 3 / 5
       smnarrow: true
-    - src: /img/projects/entity/04-display-situation.jpg
+    - src: /projects/entity/04-display-situation.jpg
       alt: the display situation of the installation
       cols: 5 / 7
-    - src: /img/projects/entity/side-open.jpg
+    - src: /projects/entity/side-open.jpg
       alt: sideview of the installation with an opened lid
       cols: 5 / 7
 ---
@@ -49,14 +49,14 @@ Although a lighter built today might not be able to light a candle in a thousand
 ::image-display
 ---
 imageArray:
-  - src: /img/projects/entity/01-lighter-input.jpg
+  - src: /projects/entity/01-lighter-input.jpg
     alt: a hand putting a lighter into the scanning bed
     cols: 5 / 7
-  - src: /img/projects/entity/02-lighter-scan.jpg
+  - src: /projects/entity/02-lighter-scan.jpg
     alt: the scanned image of the lighter
     cols: 3 / 5
     smnarrow: true
-  - src: /img/projects/entity/03-lighter-output.jpg
+  - src: /projects/entity/03-lighter-output.jpg
     alt: the decayed entity which was generated from the scanned image
     cols:  5 / 7
 ---
