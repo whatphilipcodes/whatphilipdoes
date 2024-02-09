@@ -43,7 +43,7 @@ imageArray:
 ::
 
 ::text-block
-Although most lighters built today will certainly not be able to light a candle in a thousand years, they will not truly vanish either. They have been transformed from something and will eventually transform into something else. However, because our observation period is so drastically limited we do not perceive a process but rather a static object. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
+Although most lighters built today will certainly not be able to light a candle in a thousand years, they will not truly vanish either. They have been transformed from something and will eventually transform into something else. However, because our observation period is so drastically limited we do not perceive a process but rather one static object. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
 ::
 
 ::image-display
@@ -58,7 +58,7 @@ imageArray:
     smnarrow: true
   - src: /projects/entity/story/03-lighter-output.jpg
     alt: the decayed entity which was generated from the scanned image
-    cols:  5 / 7
+    cols:  full / full
 ---
 A lightstrip illuminating the scanning bed indicates that the installation is ready for the next input. When a new object is placed on the surface, the lights fade out while the scanning process begins. Once the input has been analyzed, the new entity is projected onto the ceiling.
 ::
@@ -80,22 +80,38 @@ Magna cillum aute esse enim id do occaecat aliqua laborum fugiat nisi reprehende
 ::image-display
 ---
 imageArray:
-  - src: /projects/entity/story/01-lighter-input.jpg
-    alt: the scanned image of the lighter
-    cols: 3 / 5
-  - src: /projects/entity/story/01-lighter-input.jpg
+  - src: /projects/entity/screens/pen-output.jpg
     alt: a hand putting a lighter into the scanning bed
     cols: 5 / 7
-  - src: /projects/entity/story/01-lighter-input.jpg
-    alt: the decayed entity which was generated from the scanned image
-    cols:  5 / 7
-  - src: /projects/entity/story/01-lighter-input.jpg
+  - src: /projects/entity/screens/pen-scan.jpg
+    alt: a hand putting a lighter into the scanning bed
+    cols: 3 / 5
+  - src: /projects/entity/screens/banana-scan.jpg
     alt: the scanned image of the lighter
     cols: 3 / 5
-    smnarrow: true
-  
+  - src: /projects/entity/screens/banana-output.jpg
+    alt: a hand putting a lighter into the scanning bed
+    cols: 5 / 7
+  - src: /projects/entity/screens/becher-output.jpg
+    alt: the decayed entity which was generated from the scanned image
+    cols: 5 / 7
+  - src: /projects/entity/screens/becher-scan.png
+    alt: the scanned image of the lighter
+    cols: 3 / 5
+ 
 ---
 ::
+
+<!-- 
+::image-display
+---
+imageArray:
+  - src: /projects/entity/screens/becher-scan.png
+    alt: the decayed entity which was generated from the scanned image
+    cols:  full / full
+---
+:: 
+-->
 
 ::meta-table
 ---
