@@ -9,7 +9,7 @@ landing: true
 
 # content
 header:
-  src: /projects/entity/screens/becher-output.jpg
+  src: /projects/entity/header-entity.jpg
   alt: header
 projectTags:
   - realtime differential-line-growth
@@ -86,27 +86,31 @@ Magna cillum aute esse enim id do occaecat aliqua laborum fugiat nisi reprehende
 imageArray:
   - src: /projects/entity/screens/pen-scan.jpg
     alt: the scanned image of a pen
-    cols: 3 / 5
+    cols: 4 / 4
+    startRow: 1 / 2
     smnarrow: true
   - src: /projects/entity/screens/pen-output.jpg
     alt: the generated entity from the scanned image
-    cols: 3 / 5
+    cols: 4 / 4
+    startRow: 1 / 1
     smnarrow: true
   - src: /projects/entity/screens/banana-scan.jpg
     alt: a scanned image of a banana
-    cols: 3 / 5
+    cols: 4 / 4
+    startRow: 2 / 2
     smnarrow: true
   - src: /projects/entity/screens/banana-output.jpg
     alt: the generated entity from the scanned banana
-    cols: 3 / 5
+    cols: 4 / 4
     smnarrow: true
   - src: /projects/entity/screens/becher-scan.jpg
     alt: a scanned image of a cup
-    cols: 3 / 5
+    cols: 4 / 4
+    startRow: 3 / 2
     smnarrow: true
   - src: /projects/entity/screens/becher-output.jpg
     alt: the generated entity from the scanned cut
-    cols: 3 / 5
+    cols: 4 / 4
     smnarrow: true
  
 ---
