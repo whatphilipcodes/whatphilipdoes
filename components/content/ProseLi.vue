@@ -1,5 +1,3 @@
 <template>
-	<li class="ml-4 my-4 list-disc">
-		<slot />
-	</li>
+	<li class="my-4 ml-4 list-[square]"><slot /></li>
 </template>

@@ -21,9 +21,11 @@ footer:
     - label: repo
       to: https://github.com/whatphilipcodes/entity
 ---
+<!-- 
+Existence is a constant process of transformation and evolution. An attempt to visualize this metamorphosis on aesthetic derivatives of everyday objects. -->
 
 ::project-header{:header=header :title=title :projectTags=projectTags}
-Existence is a constant process of transformation and evolution. An attempt to visualize this metamorphosis on aesthetic derivatives of everyday objects.
+Existence as a constant process of transformation and evolution is reflected in the attempt to visually capture this metamorphosis through the aesthetic derivatives of everyday objects.
 ::
 
 ::image-display
@@ -33,9 +35,6 @@ imageArray:
       alt: sideview of the installation
       cols: 3 / 5
       smnarrow: true
-    - src: /projects/entity/story/04-display-situation.jpg
-      alt: the display situation of the installation
-      cols: 5 / 7
     - src: /projects/entity/exterior/side-open.jpg
       alt: sideview of the installation with an opened lid
       cols: 5 / 7
@@ -69,16 +68,23 @@ A lightstrip illuminating the scanning bed indicates that the installation is re
 
 ::text-block
 ::text-highlight{class=pb-4}
-Extracting color and contour from scanned images.
+Establishing recognition from color and contour.
 ::
-Duis duis elit esse quis mollit sit aliquip adipisicing aliquip quis sunt cillum culpa. Duis do velit duis incididunt pariatur minim tempor officia consequat consequat consequat esse incididunt incididunt. Duis deserunt enim eu id reprehenderit ipsum commodo eu exercitation. Amet adipisicing laboris ex ut ut nisi elit id. Occaecat ipsum adipisicing consequat eu in exercitation ullamco id. Quis ad non anim non Lorem nostrud nisi.
+One of the hardest but ultimately most important aspect of any work is to achieve some form of emotional response with observers. From an early stage forward we searched for ways to entangle personal items into the interaction to achieve a sense of familiarity that could be recognized in the visual output produced.
+- technical challenge to interpret input properties
+- settled on color and contour
+- contour from luminance thresholding
+- color from k means clustering :inline-link{href=https://michaeldavidson.me/2015/10/06/finding-dominant-colours-in-images/ label="by Michael Davidson"}
 ::
 
 ::text-block
 ::text-highlight{class=pb-4}
 Growing entities in realtime.
 ::
-Magna cillum aute esse enim id do occaecat aliqua laborum fugiat nisi reprehenderit. Anim aliqua in anim id labore cupidatat cupidatat sit sit. Ullamco duis pariatur sunt ut nulla aliqua tempor nisi laboris dolore dolor. Nisi cupidatat pariatur consequat amet occaecat veniam pariatur nostrud sint aute sint do. Mollit laboris non exercitation aute consequat cillum esse. Adipisicing aliquip deserunt consectetur magna eiusmod in ullamco commodo in laborum aute duis. Et ullamco labore elit incididunt non officia ex aliqua. Eu irure Lorem eiusmod nisi nisi non reprehenderit commodo sunt. Esse deserunt proident culpa incididunt do et. Ipsum in sit labore qui cillum sit tempor laborum ex non. Cupidatat sit et qui deserunt mollit excepteur elit eu sunt incididunt qui proident. Adipisicing aute officia aliqua elit dolor deserunt enim enim commodo est laborum laborum est.
+- research into growth algorithms -> cellular automata, 
+- settled on differential line growhth as described :inline-link{href=https://inconvergent.net/generative/differential-line/ label="by Anders Hoff"}
+- node based approach with iterative displacement vector calulation
+- drawing all nodes as pixels into a shader buffer for tracing 
 ::
 
 ::image-display
@@ -112,20 +118,20 @@ imageArray:
     alt: the generated entity from the scanned cut
     cols: 4 / 4
     smnarrow: true
- 
 ---
+The rough silhouette around the inputs gradually dissolves as the entity expands from its initial state. Along an evolving contour the colors slowly dissipate, suggesting the vague presence of a dynamic organism. 
 ::
 
-<!-- 
 ::image-display
 ---
 imageArray:
-  - src: /projects/entity/screens/becher-scan.png
-    alt: the decayed entity which was generated from the scanned image
-    cols:  full / full
+  - src: /projects/entity/story/04-display-situation.jpg
+    alt: the display situation of the installation
+    startCol: 1 / 5
+    cols: 8 / 8
 ---
 :: 
--->
+
 
 ::meta-table
 ---
