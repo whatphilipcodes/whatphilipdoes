@@ -12,20 +12,20 @@ header:
   src: /projects/entity/header-entity.jpg
   alt: header
 projectTags:
-  - realtime differential-line-growth
-  - external hardware communication
+  - real-time
+  - differential growth
+  - digital morphogenesis
   - unity
+  - csharp
 
 footer:
   buttons:
     - label: repo
       to: https://github.com/whatphilipcodes/entity
 ---
-<!-- 
-Existence is a constant process of transformation and evolution. An attempt to visualize this metamorphosis on aesthetic derivatives of everyday objects. -->
 
 ::project-header{:header=header :title=title :projectTags=projectTags}
-Existence as a constant process of transformation and evolution is reflected in the attempt to visually capture this metamorphosis through the aesthetic derivatives of everyday objects.
+Existence as a constant process of transformation and evolution is reflected in the attempt to visually capture this metamorphosis through aesthetic derivatives of everyday objects.
 ::
 
 ::image-display
@@ -42,7 +42,7 @@ imageArray:
 ::
 
 ::text-block
-Although most lighters built today will certainly not be able to light a candle in a thousand years, they will not truly vanish either. They have been transformed from something and will eventually transform into something else. However, because our observation period is so drastically limited we do not perceive a process but rather one static object. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
+Although most lighters built today will certainly not be able to light a candle in a thousand years, they will not truly vanish either. They have been transformed from something and will eventually transform into something else. However, because our observation period is so drastically limited instead of a process rather one static object is perceived. This work attempts to form an opposing perspective by generating abstract entities and imagining their visual decay.
 ::
 
 ::image-display
@@ -63,63 +63,56 @@ imageArray:
     cols:  3 / 5
     smnarrow: true
 ---
-A lightstrip illuminating the scanning bed indicates that the installation is ready for new input. When an object is placed on the surface, the lights fade out while the scanning process is starting. Once the input has been analyzed, a new entity is projected onto the ceiling.
+A light strip illuminating the scanning bed indicates that the installation is ready for new input. When an object is placed on the surface, the lights fade out while the scanning process is starting. Once the input has been analyzed, a new entity is projected onto the ceiling.
 ::
 
 ::text-block
 ::text-highlight{class=pb-4}
 Establishing recognition from color and contour.
 ::
-One of the hardest but ultimately most important aspect of any work is to achieve some form of emotional response with observers. From an early stage forward we searched for ways to entangle personal items into the interaction to achieve a sense of familiarity that could be recognized in the visual output produced.
-- technical challenge to interpret input properties
-- settled on color and contour
-- contour from luminance thresholding
-- color from k means clustering :inline-link{href=https://michaeldavidson.me/2015/10/06/finding-dominant-colours-in-images/ label="by Michael Davidson"}
+The primary goal is to achieve some form of emotional response with observers. From an early stage forward, research focused on discovering ways to entangle personal items into the interaction to mediate a sense of familiarity in the visual output produced. For this to work, the system has to be able to recognize certain properties of the input. Color and contour were chosen because both provide recognizability, even in isolation. For color determination, relying on the amount of pixels per color value can prove unpredictable, since most natural colors are made up of a number of adjacent hues and not just one singular value. While sampling the average of multiple pixels can decrease the severity of this issue, not all colors are perceived equally. To identify dominant colors, a :inline-link{href=https://michaeldavidson.me/2015/10/06/finding-dominant-colours-in-images/ label="k-means clustering algorithm"} is used. As a result, the chosen colors for the representations are more in line with expectations set by the actual visual impression. Because the projection relies on a dark environment, scanning with an open lid produces images with dark backgrounds. For a rough estimation of the contour, this aspect can be utilized: First, a luminance threshold is calculated from the average of all pixels. Then any pixel brighter than the threshold will most likely be part of the scanned object. These can eventually be used to set the positions for the initial shape of the entities.
 ::
 
 ::text-block
 ::text-highlight{class=pb-4}
-Growing entities in realtime.
+Growing entities in real-time.
 ::
-- research into growth algorithms -> cellular automata, 
-- settled on differential line growhth as described :inline-link{href=https://inconvergent.net/generative/differential-line/ label="by Anders Hoff"}
-- node based approach with iterative displacement vector calulation
-- drawing all nodes as pixels into a shader buffer for tracing 
+Stumbling across Conway's Game of Life sparked a strong interest into :inline-link{href=https://github.com/jasonwebb/morphogenesis-resources label="digital morphogenesis."} Using simple rules to enable complex behavior opens up a mesmerizing variety of opportunities for visual experimentation. Ultimately, differential growth proved to be the best fit due to its balanced responsiveness towards an initial shape. As research went deeper, the :inline-link{href=https://inconvergent.net/2016/shepherding-random-growth/ label="conceptual explanations"} by Anders Hoff became an indispensable resource. The implementation in Unity as the core of this installation relies on iterative displacement vector calculation for a collection of nodes. Each node is assigned a color value, which is drawn to a shader buffer in every frame. The shader then blurs the drawn pixels over time, resulting in a captivating and dynamic display of evolving patterns and shapes.
 ::
 
 ::image-display
 ---
 imageArray:
   - src: /projects/entity/screens/pen-scan.jpg
-    alt: the scanned image of a pen
+    alt: scanned image of an orange pen
     cols: 4 / 4
     startRow: 1 / 2
     smnarrow: true
   - src: /projects/entity/screens/pen-output.jpg
-    alt: the generated entity from the scanned image
+    alt: generated entity from the pen
     cols: 4 / 4
     startRow: 1 / 1
     smnarrow: true
   - src: /projects/entity/screens/banana-scan.jpg
-    alt: a scanned image of a banana
+    alt: scanned image of a yellow banana
     cols: 4 / 4
     startRow: 2 / 2
     smnarrow: true
   - src: /projects/entity/screens/banana-output.jpg
-    alt: the generated entity from the scanned banana
+    alt: entity generated from the banana
     cols: 4 / 4
     smnarrow: true
   - src: /projects/entity/screens/becher-scan.jpg
-    alt: a scanned image of a cup
+    alt: scanned image of a teal plastic cup
     cols: 4 / 4
     startRow: 3 / 2
     smnarrow: true
   - src: /projects/entity/screens/becher-output.jpg
-    alt: the generated entity from the scanned cut
+    alt: generated entity from the cup
     cols: 4 / 4
     smnarrow: true
 ---
-The rough silhouette around the inputs gradually dissolves as the entity expands from its initial state. Along an evolving contour the colors slowly dissipate, suggesting the vague presence of a dynamic organism. 
+The rough silhouette around inputs gradually dissolves as the entity expands from its initial state. Along an evolving contour, the colors slowly dissipate, suggesting the vague presence of a dynamic organism.
 ::
 
 ::image-display
