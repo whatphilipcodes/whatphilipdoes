@@ -118,12 +118,16 @@ The rough silhouette around inputs gradually dissolves as the entity expands fro
 ::image-display
 ---
 imageArray:
+  - src: /projects/entity/exterior/projection-square.jpg
+    alt: a view of the projection lens
+    cols: 3 / 5
+    smnarrow: true
   - src: /projects/entity/story/04-display-situation.jpg
     alt: the display situation of the installation
-    startCol: 4 / 5
-    cols: 5 / 8
+    startCol: 4 / 6
+    cols: 5 / 7
 ---
-:: 
+::
 
 
 ::meta-table
