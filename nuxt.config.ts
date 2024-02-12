@@ -23,6 +23,11 @@ export default defineNuxtConfig({
 	],
 	image: {
 		dir: 'assets/img',
+		screens: {
+			sm: 640,
+			md: 768,
+			lg: 1200,
+		},
 	},
 	googleFonts: {
 		families: {

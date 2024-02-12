@@ -5,7 +5,7 @@
 		loop
 		playsinline
 		preload="auto"
-		:poster="poster"
+		:poster="img(props.poster, { w: 1920, h: 1920, q: 90 })"
 		class="block h-full w-full object-cover"
 	>
 		<source
@@ -30,11 +30,4 @@ const props = defineProps({
 })
 
 const img = useImage()
-const poster = img(props.poster, {
-	sizes: '100vw lg:1440px',
-	densities: 'x1 x2',
-	quality: 80,
-})
 </script>
-
-<style scoped></style>
