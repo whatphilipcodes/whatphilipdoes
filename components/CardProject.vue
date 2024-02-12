@@ -12,15 +12,14 @@
 				class="relative w-full"
 				:class="{ 'h-[64vh]': props.opened, 'h-[100vh]': !props.opened }"
 			>
-				<div data-info="image" class="h-full w-full">
-					<Image
-						:src="props.projectData.header.src"
-						:alt="props.projectData.header.alt"
-					/>
-				</div>
+				<Video
+					class="h-full w-full"
+					:src="props.projectData.header.src"
+					:poster="props.projectData.header.poster"
+				/>
 				<div
 					data-info="gradient-overlay"
-					class="absolute top-0 h-full w-full bg-gradient-to-b from-mono-900 lg:bg-gradient-to-t"
+					class="absolute top-0 z-[20] h-full w-full bg-gradient-to-b from-mono-900 lg:bg-gradient-to-t"
 				></div>
 			</div>
 		</div>

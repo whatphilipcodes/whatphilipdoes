@@ -4,7 +4,11 @@
 			data-info="bg-container"
 			class="absolute top-0 h-full w-full bg-cinnabar-900"
 		>
-			<Image v-if="data.header" :src="data.header.src" :alt="data.header.alt" />
+			<Video
+				v-if="data.header"
+				:src="data.header.src"
+				:poster="data.header.poster"
+			/>
 			<div
 				class="absolute top-0 h-full w-full bg-gradient-to-t from-mono-900"
 			/>

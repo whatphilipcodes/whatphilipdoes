@@ -2,7 +2,7 @@
 	<div :class="classList">
 		<CardProject
 			:projectData="props.projectData"
-			class="col-span-full w-screen h-screen md:h-dvh"
+			class="col-span-full h-screen w-screen md:h-dvh"
 		/>
 	</div>
 </template>

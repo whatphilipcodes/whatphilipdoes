@@ -26,7 +26,7 @@ export interface contentProject extends ParsedContent {
 	/**
 	 * The header image data.
 	 */
-	header: imageData
+	header: videoData
 
 	/**
 	 * Optional. The badge that is displayed on the project.
@@ -135,6 +135,21 @@ export interface badgeData {
 	 * Optional. Specifies a link to open when clicking on the badge.
 	 */
 	link?: string
+}
+
+/**
+ * Represents the data structure for a video.
+ */
+export interface videoData {
+	/**
+	 * The source URL of the video.
+	 */
+	src: string
+
+	/**
+	 * The URL of the video's poster image.
+	 */
+	poster: string
 }
 
 /**

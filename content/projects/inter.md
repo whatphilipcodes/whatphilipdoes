@@ -8,8 +8,8 @@ segments:
     name: did
 
 header:
-  src: /projects/inter/header-inter.jpg
-  alt: 'header'
+  src: ''
+  poster: /projects/inter/header-inter.jpg
 projectTags:
   - interactive machine learning
   - hf transformers

@@ -9,8 +9,8 @@ landing: true
 
 # content
 header:
-  src: /projects/entity/header-entity.jpg
-  alt: header
+  src: /vid/header-entity.mp4
+  poster: /projects/entity/header-entity.jpg
 projectTags:
   - real-time
   - differential growth
@@ -120,8 +120,8 @@ The rough silhouette around inputs gradually dissolves as the entity expands fro
 imageArray:
   - src: /projects/entity/story/04-display-situation.jpg
     alt: the display situation of the installation
-    startCol: 1 / 5
-    cols: 8 / 8
+    startCol: 4 / 5
+    cols: 5 / 8
 ---
 :: 
 
