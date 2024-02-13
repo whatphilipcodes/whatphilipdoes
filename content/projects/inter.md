@@ -11,11 +11,12 @@ header:
   src: ''
   poster: /projects/inter/header-inter.jpg
 projectTags:
-  - interactive machine learning
-  - hf transformers
-  - ars electronica
-  - electron.js
   - ba thesis
+  - ars electronica
+  - python
+  - hf transformers
+  - electron.js
+  - interactive machine learning
   
 
 footer:
@@ -39,7 +40,7 @@ Truth often implies a sense of objectiveness despite its subjective aspects. Thi
 ::image-display
 ---
 imageArray:
-  - src: /projects/inter/keys/key-dark.png
+  - src: /projects/inter/keys/key-dark.jpg
     alt: an abstract key visual showing black and white geometric shapes
     cols: 3 / 5
     smnarrow: true
@@ -50,7 +51,7 @@ imageArray:
 ::
 
 ::text-block
-Lorem ullamco fugiat reprehenderit occaecat elit officia proident ex veniam fugiat proident ea sit velit. Eiusmod ex ut elit id culpa esse. Laborum ex elit aute cillum nostrud.Dolore laboris ipsum occaecat laborum in cupidatat sint id deserunt voluptate. Est id duis nulla qui anim veniam. Voluptate excepteur magna veniam Lorem amet aliqua aliqua amet incididunt tempor cupidatat. Eiusmod deserunt fugiat proident sint aute sint aliquip occaecat irure eiusmod. Ipsum ex dolore reprehenderit irure cillum sint ea nulla mollit laboris pariatur labore dolore non.
+With any information given, a decision has to be made whether to accept it as truth or to face it with doubt. This distinction takes place subconsciously in the conversations we have and towards the media we consume. These judgements are made individually based on societal context and personal experience or beliefs. Despite this intrinsic objectiveness, the word truth is predominantly used to describe information deemed as factual. This work engages visitors in a dialog driven by artificial decision-making that is transformed by its own bias. Ultimately simulating the idea of truth as an ongoing fluid process constantly reshaping itself.
 ::
 
 ::image-display
@@ -60,7 +61,7 @@ imageArray:
     alt: a front view of the installation showing a keyboard and a screen on a table
     startCol: 1 / 1
     cols: 5 / 7
-  - src: /projects/inter/keys/key-mid.png
+  - src: /projects/inter/keys/key-mid.jpg
     alt: an abstract key visual showing black and white geometric shapes
     startRow: 1 / 2
     startCol: 6 / 1
@@ -72,14 +73,42 @@ imageArray:
     startRow: 2 / 2
     startCol: 1 / 6
 ---
-Nulla nulla fugiat eu aute occaecat. Ex sunt ut reprehenderit est ipsum sunt ipsum sunt velit ea culpa. Mollit pariatur velit excepteur duis sunt ex excepteur irure adipisicing sint duis dolore.
+Inputs are created from a mechanical keyboard, adding acoustic character to the interaction. All necessary computation for both training and inference is executed locally on the machine present. Due to this limitation in performance, some outputs might seem nonsensical.
 ::
 
 ::text-block
 ::text-highlight{class=pb-4}
 Esse voluptate anim amet eu ad ullamco. Non ea est eu Lorem veniam exercitation tempor do duis ipsum.
 ::
-Lorem ullamco fugiat reprehenderit occaecat elit officia proident ex veniam fugiat proident ea sit velit. Eiusmod ex ut elit id culpa esse. Laborum ex elit aute cillum nostrud.Dolore laboris ipsum occaecat laborum in cupidatat sint id deserunt voluptate. Est id duis nulla qui anim veniam. Voluptate excepteur magna veniam Lorem amet aliqua aliqua amet incididunt tempor cupidatat. Eiusmod deserunt fugiat proident sint aute sint aliquip occaecat irure eiusmod. Ipsum ex dolore reprehenderit irure cillum sint ea nulla mollit laboris pariatur labore dolore non.
+Est et proident et est ad laborum sint id. Sunt tempor consectetur esse excepteur laboris et amet. Velit dolor est velit in sunt pariatur deserunt irure esse est cillum consequat. Officia elit dolore id exercitation aute sunt dolore qui. Duis velit amet aliquip culpa et. Elit commodo ipsum elit deserunt ad enim est voluptate dolor ut laborum dolore aliquip. Magna aliquip in non proident aliquip commodo culpa. Aliqua officia dolore enim laboris dolore adipisicing ea quis fugiat consequat. Nostrud proident sint labore veniam veniam labore nulla duis cillum excepteur sint exercitation nostrud amet. Ullamco pariatur veniam aute esse pariatur nisi reprehenderit. Commodo est non aliquip aliqua voluptate. Fugiat enim excepteur in Lorem nisi Lorem dolore consequat.
+::
+
+::image-display
+---
+imageArray:
+  - src: /projects/inter/screens/hello-world.jpg
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: 5 / 7
+    startCol: auto / 6
+  - src: /projects/inter/screens/photography.jpg
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: full / 7
+    startCol: 1 / auto
+  - src: /projects/inter/keys/key-light.jpg
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: 3 / 5
+    startRow: 1 / 1
+    startCol: 1 / auto
+    smnarrow: true
+---
+An excerpt of conversations with the installation. Trust is signaled by the response \[right\] approaching the input \[left\] doubt is expressed through increased distance.
+::
+
+::text-block
+::text-highlight{class=pb-4}
+A truth-shaping conversation
+::
+As users approach the installation, an endless conversation cascades down the screen. Upon pressing any key, the text vanishes and a generative model addresses the new participant. In the unfolding conversation between human and machine every input is analyzed by a classification algorithm that decides whether or not it is true. Besides as truth or lie inputs can also be classified as neutral or uninterpretable. Subsequently, a generative model is instructed to compose a reply. If the machine gains trust the answer will be placed closer to the user input. If a lie has been detected the distance between both is increased. When no more messages are received for a while the machine starts to scroll down through past conversations. During this idle state the classifier resumes finetuning its comprehension of truth by using all past classifications including the last conversation alongside the base dataset as training examples. With the next key press this process halts and a new exchange can take place.
 ::
 
 ::image-display
@@ -89,15 +118,7 @@ imageArray:
     alt: a front view of the installation showing a keyboard and a screen on a table
     cols: 5 / 7
     startCol: 4 / 6
-  - src: /projects/inter/ars/rosi.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
-    cols: 5 / 7
-  - src: /projects/inter/keys/key-light.png
-    alt: a front view of the installation showing a keyboard and a screen on a table
-    cols: 3 / 5
-    smnarrow: true
 ---
-An excerpt of conversations with the installation. Trust is signaled by the response \[right\] approaching the input \[left\] doubt is expressed through increased distance.
 ::
 
 ::text-block
