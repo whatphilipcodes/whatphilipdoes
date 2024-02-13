@@ -39,7 +39,7 @@ Truth often implies a sense of objectiveness despite its subjective aspects. Thi
 ::image-display
 ---
 imageArray:
-  - src: /projects/inter/keys/key-mid.png
+  - src: /projects/inter/keys/key-dark.png
     alt: an abstract key visual showing black and white geometric shapes
     cols: 3 / 5
     smnarrow: true
@@ -60,7 +60,7 @@ imageArray:
     alt: a front view of the installation showing a keyboard and a screen on a table
     startCol: 1 / 1
     cols: 5 / 7
-  - src: /projects/inter/keys/key-dark.png
+  - src: /projects/inter/keys/key-mid.png
     alt: an abstract key visual showing black and white geometric shapes
     startRow: 1 / 2
     startCol: 6 / 1
@@ -82,7 +82,27 @@ Esse voluptate anim amet eu ad ullamco. Non ea est eu Lorem veniam exercitation 
 Lorem ullamco fugiat reprehenderit occaecat elit officia proident ex veniam fugiat proident ea sit velit. Eiusmod ex ut elit id culpa esse. Laborum ex elit aute cillum nostrud.Dolore laboris ipsum occaecat laborum in cupidatat sint id deserunt voluptate. Est id duis nulla qui anim veniam. Voluptate excepteur magna veniam Lorem amet aliqua aliqua amet incididunt tempor cupidatat. Eiusmod deserunt fugiat proident sint aute sint aliquip occaecat irure eiusmod. Ipsum ex dolore reprehenderit irure cillum sint ea nulla mollit laboris pariatur labore dolore non.
 ::
 
-<!-- :inline-link{href="https://ars.electronica.art/who-owns-the-truth/de/inter/" label="ars electronica website"} -->
+::image-display
+---
+imageArray:
+  - src: /projects/inter/ars/rosi.jpg
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: 5 / 7
+    startCol: 4 / 6
+  - src: /projects/inter/ars/rosi.jpg
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: 5 / 7
+  - src: /projects/inter/keys/key-light.png
+    alt: a front view of the installation showing a keyboard and a screen on a table
+    cols: 3 / 5
+    smnarrow: true
+---
+An excerpt of conversations with the installation. Trust is signaled by the response \[right\] approaching the input \[left\] doubt is expressed through increased distance.
+::
+
+::text-block
+In 2023, this work was featured at the :inline-link{href=https://ars.electronica.art/who-owns-the-truth/de/inter/ label="Ars Electronica Campus Exhibition"}  in Linz. Photos by Rosi Pernthaller \[left\] and Andreas Ingerl \[right\].
+::
 
 ::image-display
 ---
@@ -95,7 +115,6 @@ imageArray:
     cols: 3 / 5
     smnarrow: true
 ---
-In 2023, this work was featured at the Ars Electronica Campus Exhibition in Linz.<br>Photos by Rosi Pernthaler \[left\] and Andreas Ingerl \[right\].
 ::
 
 
