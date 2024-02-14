@@ -1,5 +1,8 @@
 <template>
-	<div :class="classList">
+	<div
+		class="dynamic-duration absolute h-full w-full transition-transform ease-in-out will-change-transform"
+		:class="classList"
+	>
 		<CardProject
 			:projectData="props.projectData"
 			class="col-span-full h-screen w-screen md:h-dvh"
@@ -32,8 +35,6 @@ const durationClassToken = computed(() => {
 })
 const classList = computed(() => {
 	return {
-		[`absolute top-full transition-transform dynamic-duration ease-in-out h-full w-full will-change-transform`]:
-			true,
 		[props.translate]: true,
 	}
 })
