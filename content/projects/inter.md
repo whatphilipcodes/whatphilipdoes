@@ -13,7 +13,6 @@ header:
 projectTags:
   - ba thesis
   - ars electronica
-  - python
   - hf transformers
   - electron.js
   - interactive machine learning
@@ -30,7 +29,7 @@ footer:
 ::project-header{:header=header :title=title :projectTags=projectTags}
 ---
 badge:
-  icon: SvgoArselectro
+  icon: i-arselectro
   info: ars electronica campus exhibition 2023
   link: https://ars.electronica.art/who-owns-the-truth/de/inter/
 ---
@@ -114,8 +113,7 @@ As users approach the installation, an endless conversation cascades down the sc
 ::image-display
 ---
 imageArray:
-  - src: /projects/inter/ars/rosi.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+  - src: i-interflow.svg
     cols: 5 / 7
     startCol: 4 / 6
 ---

@@ -37,10 +37,10 @@ bundle:
             download: gerdes-philip-cv.pdf
             variant: dark
       social:
-        - icon: SvgoLinkedin
+        - icon: i-linkedin
           to: https://www.linkedin.com/in/gerdes-philip/
-        - icon: SvgoGithub
+        - icon: i-github
           to: https://github.com/whatphilipcodes
-        - icon: SvgoInstagram
+        - icon: i-instagram
           to: https://www.instagram.com/whatphilipdoes/
 ---

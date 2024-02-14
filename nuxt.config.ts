@@ -21,6 +21,9 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		'@nuxt/image',
 	],
+	svgo: {
+		componentPrefix: 'i',
+	},
 	image: {
 		dir: 'assets/img',
 		screens: {
