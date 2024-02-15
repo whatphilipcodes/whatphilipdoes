@@ -42,7 +42,6 @@ watchEffect(() => {
 		if (empty) return
 		opacity = 'opacity-0'
 		setTimeout(() => {
-			console.log('buffer reset')
 			empty = true
 			buffer = []
 		}, 300)
