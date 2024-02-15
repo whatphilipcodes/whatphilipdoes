@@ -9,9 +9,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: 'minimal',
-})
 useHead({
 	meta: [{ name: 'robots', content: 'none' }],
 })
