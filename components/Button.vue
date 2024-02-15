@@ -1,8 +1,7 @@
 <template>
 	<component :is="props.as" :target="target" :download="download">
-		<!-- <component> -->
 		<button
-			class="persistent-default flash-enter flex h-full w-full select-none items-center justify-center border transition-colors"
+			class="persistent-default flash-enter flex h-full w-full select-none items-center justify-center border transition-colors duration-150"
 			:class="buttonBaseClasses"
 			@click="callback?.()"
 		>
