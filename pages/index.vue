@@ -3,7 +3,7 @@
 		<ScrollStop>
 			<ScrollSegment :pageSegment="content.segments[0]">
 				<div
-					class="z-front col-start-12 h-10 w-44 justify-self-end max-lg:hidden"
+					class="z-[200] col-start-12 h-10 w-44 justify-self-end max-lg:hidden"
 				>
 					<Button
 						class="w-full"
