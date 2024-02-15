@@ -45,6 +45,10 @@ export default defineNuxtConfig({
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
 	},
 	app: {
+		pageTransition: {
+			name: 'fade',
+			mode: 'out-in',
+		},
 		rootId: 'whatphilipdoes',
 		head: {
 			meta: [
