@@ -18,7 +18,7 @@
 			:alt="props.alt"
 			class="h-full w-full bg-mono-900 object-cover"
 			:placeholder="img(props.src, { h: 20, q: 100 })"
-			:preload="true"
+			preload
 			format="webp"
 			sizes="480px md:720px lg:1024px"
 			@load="unblur"
