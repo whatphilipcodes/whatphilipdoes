@@ -77,9 +77,9 @@ Inputs are created from a mechanical keyboard, adding acoustic character to the 
 
 ::text-block
 ::text-highlight{class=pb-4}
-Esse voluptate anim amet eu ad ullamco. Non ea est eu Lorem veniam exercitation tempor do duis ipsum.
+Truth-shaping conversations
 ::
-As users approach the installation, an endless conversation cascades down the screen. Upon pressing any key, the text vanishes and a generative model addresses the new participant. In the unfolding conversation between human and machine every input is analyzed by a classification algorithm that decides whether or not it is true. Besides as truth or lie inputs can also be classified as neutral or uninterpretable. Subsequently, a generative model is instructed to compose a reply. If the machine gains trust the answer will be placed closer to the user input. If a lie has been detected the distance between both is increased. When no more messages are received for a while the machine starts to scroll down through past conversations. During this idle state the classifier resumes finetuning its comprehension of truth by using all past classifications including the last conversation alongside the base dataset as training examples. With the next key press this process halts and a new exchange can take place.
+As visitors approach the installation, an endless stream of previous conversations cascades down the screen. Upon pressing any key, the text vanishes and the installtion addresses the new participant. During the unfolding conversation between human and machine every input is analyzed to decide wether it is truthful or not. Depending on the outcome replies from the algorithm are placed closer or further away from the user input. After no more inputs are received for a while the machine starts scrolling down through the dialogue history again until the next participant presses another key.
 ::
 
 ::image-display
@@ -105,9 +105,9 @@ An excerpt of conversations with the installation. Trust is signaled by the resp
 
 ::text-block
 ::text-highlight{class=pb-4}
-A truth-shaping conversation
+Taking mechanical input into digital consideration
 ::
-As users approach the installation, an endless conversation cascades down the screen. Upon pressing any key, the text vanishes and a generative model addresses the new participant. In the unfolding conversation between human and machine every input is analyzed by a classification algorithm that decides whether or not it is true. Besides as truth or lie inputs can also be classified as neutral or uninterpretable. Subsequently, a generative model is instructed to compose a reply. If the machine gains trust the answer will be placed closer to the user input. If a lie has been detected the distance between both is increased. When no more messages are received for a while the machine starts to scroll down through past conversations. During this idle state the classifier resumes finetuning its comprehension of truth by using all past classifications including the last conversation alongside the base dataset as training examples. With the next key press this process halts and a new exchange can take place.
+All inputs are passed to a classification algorithm that is responsible for the decision-making process. It is based on deberta v3 by Microsoft which was further finetuned using the :inline-link{href=https://github.com/easonnie/combine-FEVER-NSMN/blob/master/other_resources/nli_fever.md#what-is-the-format label="NLI FEVER dataset"}. As users approach the installation, an endless conversation cascades down the screen. Upon pressing any key, the text vanishes and a generative model addresses the new participant. In the unfolding conversation between human and machine every input is analyzed by a classification algorithm that decides whether or not it is true. Besides as truth or lie inputs can also be classified as neutral or uninterpretable. Subsequently, a generative model is instructed to compose a reply. If the machine gains trust the answer will be placed closer to the user input. If a lie has been detected the distance between both is increased. When no more messages are received for a while the machine starts to scroll down through past conversations. During this idle state the classifier resumes finetuning its comprehension of truth by using all past classifications including the last conversation alongside the base dataset as training examples. With the next key press this process halts and a new exchange can take place.
 ::
 
 ::image-display
