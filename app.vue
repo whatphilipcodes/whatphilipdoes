@@ -5,7 +5,7 @@
 	/>
 	<div id="app" lang="en" class="overflow-x-clip bg-mono-950 text-mono-50">
 		<Nav />
-		<NuxtPage :class="{ hidden: isLoading }" />
+		<NuxtPage />
 	</div>
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 </template>
