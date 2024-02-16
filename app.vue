@@ -7,16 +7,19 @@
 		<Nav />
 		<NuxtPage />
 	</div>
-	<div
-		class="absolute top-0 z-[80] h-screen w-screen bg-mono-950 transition-opacity duration-500"
-		:class="{ 'opacity-0': !isLoading }"
-	/>
+	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 </template>
 
 <script lang="ts" setup>
 const isLoading = ref(true)
+const loaderMounted = ref(true)
 onMounted(() => {
-	isLoading.value = false
+	setTimeout(() => {
+		isLoading.value = false
+	}, 300)
+	setTimeout(() => {
+		loaderMounted.value = false
+	}, 1000)
 })
 </script>
 
@@ -28,7 +31,7 @@ onMounted(() => {
 .fade-enter-active,
 .fade-leave-active {
 	opacity: 1;
-	transition: all 0.5s;
+	transition: all 0.3s;
 }
 .fade-enter-from,
 .fade-leave-to {
