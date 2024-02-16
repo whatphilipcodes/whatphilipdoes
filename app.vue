@@ -1,5 +1,9 @@
 <template>
 	<div
+		data-info="transition-background "
+		class="absolute top-0 z-[-999] h-lvh bg-mono-950"
+	/>
+	<div
 		data-info="background"
 		class="static-background fixed bottom-0 left-0 right-0 z-bottom h-lvh"
 	/>
@@ -13,6 +17,7 @@
 <script lang="ts" setup>
 const isLoading = ref(true)
 const loaderMounted = ref(true)
+
 onMounted(() => {
 	setTimeout(() => {
 		isLoading.value = false
