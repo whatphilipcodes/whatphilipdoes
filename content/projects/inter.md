@@ -40,37 +40,37 @@ Truth often implies a sense of objectiveness despite its subjective aspects. Thi
 ---
 imageArray:
   - src: /projects/inter/keys/key-dark.jpg
-    alt: an abstract key visual showing black and white geometric shapes
+    alt: an abstract key visual displaying black and white geometric shapes in a very dark setting
     cols: 3 / 5
     smnarrow: true
   - src: /projects/inter/exterior/front.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+    alt: a front view of the installation showing a keyboard and a screen on a standing desk
     cols: 5 / 7
 ---
 ::
 
 ::text-block
-With any information given, a decision has to be made whether to accept it as truth or to face it with doubt. This distinction takes place subconsciously in the conversations we have and towards the media we consume. These judgements are made individually based on societal context and personal experience or beliefs. Despite this intrinsic objectiveness, the word truth is predominantly used to describe information deemed as factual. This work engages visitors in a dialog driven by artificial decision-making that is transformed by its own bias. Ultimately simulating the idea of truth as an ongoing fluid process constantly reshaping itself.
+With any information given, a decision has to be made whether to accept it as truth or to face it with doubt. This distinction takes place subconsciously in the conversations we have and towards the media we consume. These judgements are made individually based on societal context and personal experience or beliefs. Despite this intrinsic subjectiveness, the word truth is predominantly used to describe information deemed as factual. This work engages visitors in a dialog driven by artificial decision-making that is transformed by its own bias. Ultimately simulating the idea of truth as an ongoing fluid concept continously reshaping itself.
 ::
 
 ::image-display
 ---
 imageArray:
   - src: /projects/inter/exterior/keyboard-detail.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+    alt: detail shot of the keyboard used in the installation
     startCol: 1 / 1
     cols: 5 / 7
   - src: /projects/inter/keys/key-mid.jpg
-    alt: an abstract key visual showing black and white geometric shapes
-    startRow: 1 / 2
-    startCol: 6 / 1
+    alt: an abstract key visual displaying black and white geometric shapes in a medium light setting
+    startRow: 2 / 2
+    startCol: 1 / 1
     cols: 3 / 5
     smnarrow: true
   - src: /projects/inter/exterior/machine.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+    alt: a view of the computer beneath the standing desk
     cols: full / 7
     startRow: 2 / 2
-    startCol: 1 / 6
+    startCol: 4 / 6
 ---
 Inputs are created from a mechanical keyboard, adding acoustic character to the interaction. All necessary computation for both training and inference is executed locally on the machine present. Due to this limitation in performance, some outputs might seem nonsensical.
 ::
@@ -79,22 +79,22 @@ Inputs are created from a mechanical keyboard, adding acoustic character to the 
 ::text-highlight{class=pb-4}
 Esse voluptate anim amet eu ad ullamco. Non ea est eu Lorem veniam exercitation tempor do duis ipsum.
 ::
-Est et proident et est ad laborum sint id. Sunt tempor consectetur esse excepteur laboris et amet. Velit dolor est velit in sunt pariatur deserunt irure esse est cillum consequat. Officia elit dolore id exercitation aute sunt dolore qui. Duis velit amet aliquip culpa et. Elit commodo ipsum elit deserunt ad enim est voluptate dolor ut laborum dolore aliquip. Magna aliquip in non proident aliquip commodo culpa. Aliqua officia dolore enim laboris dolore adipisicing ea quis fugiat consequat. Nostrud proident sint labore veniam veniam labore nulla duis cillum excepteur sint exercitation nostrud amet. Ullamco pariatur veniam aute esse pariatur nisi reprehenderit. Commodo est non aliquip aliqua voluptate. Fugiat enim excepteur in Lorem nisi Lorem dolore consequat.
+As users approach the installation, an endless conversation cascades down the screen. Upon pressing any key, the text vanishes and a generative model addresses the new participant. In the unfolding conversation between human and machine every input is analyzed by a classification algorithm that decides whether or not it is true. Besides as truth or lie inputs can also be classified as neutral or uninterpretable. Subsequently, a generative model is instructed to compose a reply. If the machine gains trust the answer will be placed closer to the user input. If a lie has been detected the distance between both is increased. When no more messages are received for a while the machine starts to scroll down through past conversations. During this idle state the classifier resumes finetuning its comprehension of truth by using all past classifications including the last conversation alongside the base dataset as training examples. With the next key press this process halts and a new exchange can take place.
 ::
 
 ::image-display
 ---
 imageArray:
   - src: /projects/inter/screens/hello-world.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+    alt: 'a screenshot from the installation showing the machine saying: "Hello, what is your name?" and a blinking cursor in the input field'
     cols: 5 / 7
     startCol: auto / 6
   - src: /projects/inter/screens/photography.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
-    cols: full / 7
+    alt: 'a longer conversation with the machine: "Hey! I`m just a guy with a camera, but I have a lot of other hobbies as well.", "So what else do you do? Have you ever shot a movie?", "Yeah, I did, and it`s still one of my favorite things to do.", "Cool. So how did that happen? Did someone just asked you or did you apply somewhere?", "I`ve been shooting since I was in high school, so I applied to be a student at the School of Visual Arts (SVA) New York", "Damn, that`s impressive! So what degree did you get?". Throughout the conversation the answers from the machine approacht the inputs by the user.'
+    cols: 5 / 7
     startCol: 1 / auto
   - src: /projects/inter/keys/key-light.jpg
-    alt: a front view of the installation showing a keyboard and a screen on a table
+    alt: an abstract key visual displaying black and white geometric shapes in a light setting
     cols: 3 / 5
     startRow: 1 / 1
     startCol: 1 / auto
@@ -114,6 +114,7 @@ As users approach the installation, an endless conversation cascades down the sc
 ---
 imageArray:
   - src: i-interflow.svg
+    alt: a flowchart visualizing the interaction between the software components of the installation
     cols: 5 / 7
     startCol: 4 / 6
 ---

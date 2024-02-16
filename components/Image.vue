@@ -9,6 +9,7 @@
 			:fontControlled="false"
 			filled
 			:is="svgComponent"
+			:alt="props.alt"
 		/>
 	</div>
 	<div v-else class="h-full w-full">

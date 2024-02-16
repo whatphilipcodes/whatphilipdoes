@@ -4,7 +4,8 @@
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
 					<div
-						class="z-[200] col-start-12 h-10 w-44 justify-self-end max-lg:hidden"
+						ref="contactBtn"
+						class="z-[200] col-start-12 h-10 w-44 justify-self-end opacity-0 transition-opacity duration-300 max-lg:hidden"
 					>
 						<Button
 							class="w-full"
@@ -56,6 +57,8 @@
 let cbRotorComplete: () => void
 let exitScrollStops: () => void
 
+const contactBtn = ref<HTMLElement>()
+
 const projectRotor = ref()
 const { updateActivePage } = useGlobalStore()
 
@@ -102,6 +105,13 @@ onMounted(() => {
 			window.addEventListener('wheel', dbWheelTrigger)
 			window.addEventListener('touchstart', touchTrigger)
 		}
+	})
+
+	// wait for contactBtn to have a value
+	watchOnce(contactBtn, (value) => {
+		setTimeout(() => {
+			if (value) value.classList.remove('opacity-0')
+		}, 300)
 	})
 })
 onUnmounted(() => {
