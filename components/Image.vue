@@ -11,7 +11,7 @@
 			:is="svgComponent"
 		/>
 	</div>
-	<div v-else class="relative h-full w-full">
+	<div v-else class="h-full w-full">
 		<nuxt-img
 			ref="image"
 			:src="props.src"
@@ -25,7 +25,7 @@
 		/>
 		<div
 			ref="blurOverlay"
-			class="absolute top-0 h-full w-full backdrop-blur-xl transition-opacity duration-1000 ease-in-out"
+			class="h-full w-full -translate-y-full backdrop-blur-xl transition-opacity duration-1000 ease-in-out"
 		></div>
 	</div>
 </template>
