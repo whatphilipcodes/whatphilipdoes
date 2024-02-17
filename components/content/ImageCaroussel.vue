@@ -1,11 +1,11 @@
 <template>
 	<div
 		data-info="sm-container"
-		class="md:hidden w-screen col-span-full justify-self-center"
+		class="col-span-full w-screen justify-self-center md:hidden"
 	>
 		<div
 			data-info="sm-caroussel"
-			class="flex flex-row h-fit overflow-x-scroll gap-x-4 px-4"
+			class="flex h-fit flex-row gap-x-4 overflow-y-clip overflow-x-scroll px-4"
 			v-if="props.imageArray.length > 1"
 		>
 			<div
