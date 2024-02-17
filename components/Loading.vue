@@ -1,10 +1,12 @@
 <template>
 	<div
-		class="absolute top-0 z-nav h-16 w-full bg-gradient-to-b from-mono-950 md:hidden"
-	></div>
-	<div
-		class="loading-gradient pointer-events-none fixed bottom-0 left-0 right-0 top-0 z-[80] h-screen w-screen transition-opacity duration-500"
-	/>
+		class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 z-[80] transition-opacity duration-500"
+	>
+		<div class="loading-gradient h-screen w-screen" />
+		<div
+			class="absolute top-0 h-16 w-full bg-gradient-to-b from-mono-950 md:hidden"
+		/>
+	</div>
 </template>
 
 <script setup lang="ts"></script>
