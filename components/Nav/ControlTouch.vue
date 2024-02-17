@@ -1,7 +1,10 @@
 <template>
-	<div class="absolute bottom-0 right-0 flex flex-col-reverse gap-4">
+	<div
+		class="absolute bottom-0 right-0 flex flex-col-reverse gap-4 transition-opacity duration-300"
+		:class="opacity"
+	>
 		<Button
-			v-for="button in props.buttons.slice(0, 2).reverse()"
+			v-for="button in buffer.slice(0, 2).reverse()"
 			class="h-20 w-20 hyphens-manual"
 			padding-override="p-3"
 			:to="typeof button.to === 'string' ? button.to : undefined"
@@ -29,5 +32,23 @@ const props = defineProps({
 			}
 		},
 	},
+})
+
+let opacity = ''
+let buffer: buttonData[] = []
+let empty = true
+watchEffect(() => {
+	if (props.buttons.length === 0) {
+		if (empty) return
+		opacity = 'opacity-0'
+		setTimeout(() => {
+			empty = true
+			buffer = []
+		}, 300)
+	} else {
+		empty = false
+		opacity = ''
+		buffer = props.buttons
+	}
 })
 </script>

@@ -16,9 +16,9 @@
 			:show-u-i="visibleUI"
 		/>
 		<div v-if="restartUI" :class="restartClasses">
-			<div class="absolute w-full h-full bg-mono-950 opacity-75"></div>
+			<div class="absolute h-full w-full bg-mono-950 opacity-75"></div>
 			<Button
-				class="absolute invisible lg:visible w-44 h-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+				class="invisible absolute left-1/2 top-1/2 h-10 w-44 -translate-x-1/2 -translate-y-1/2 lg:visible"
 				as="button"
 				:variant="'dark'"
 				@click="restart"
@@ -54,11 +54,11 @@ const classList = computed(() => {
 
 const computeTranslate = (index: number) => {
 	if (index === activeSlide.value) {
-		return '-translate-y-[100%]'
-	} else if (index < activeSlide.value) {
-		return '-translate-y-[200%]'
-	} else {
 		return ''
+	} else if (index < activeSlide.value) {
+		return '-translate-y-[100%]'
+	} else {
+		return 'translate-y-[100%]'
 	}
 }
 
@@ -176,7 +176,7 @@ const startSwipeWatch = () => {
 			} else if (direction.value === 'down') {
 				up()
 			}
-		}
+		},
 	)
 }
 const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
@@ -185,7 +185,7 @@ const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
 	down,
 	() => {
 		window.addEventListener('wheel', enableRestartable)
-	}
+	},
 )
 function down() {
 	if (isAnimating.value) return

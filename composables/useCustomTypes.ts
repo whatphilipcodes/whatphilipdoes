@@ -26,7 +26,7 @@ export interface contentProject extends ParsedContent {
 	/**
 	 * The header image data.
 	 */
-	header: imageData
+	header: videoData
 
 	/**
 	 * Optional. The badge that is displayed on the project.
@@ -138,6 +138,21 @@ export interface badgeData {
 }
 
 /**
+ * Represents the data structure for a video.
+ */
+export interface videoData {
+	/**
+	 * The source URL of the video.
+	 */
+	src: string
+
+	/**
+	 * The URL of the video's poster image.
+	 */
+	poster: string
+}
+
+/**
  * Represents an image data object.
  */
 export interface imageData {
@@ -160,6 +175,16 @@ export interface imageData {
 	 * The number of columns for the image when displayed in a grid (only md and lg breakpoints).
 	 */
 	cols?: string
+
+	/**
+	 * The start row for the image when displayed in a grid (only md and lg breakpoints).
+	 */
+	startRow?: string
+
+	/**
+	 * The start column for the image when displayed in a grid (only md and lg breakpoints).
+	 */
+	startCol?: string
 
 	/**
 	 * Indicates if the image should be displayed in a narrow layout (only sm breakpoint).

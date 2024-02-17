@@ -2,9 +2,13 @@
 	<div class="relative col-span-full h-44">
 		<div
 			data-info="bg-container"
-			class="absolute top-0 h-full w-full bg-cinnabar-900"
+			class="absolute top-0 h-full w-full bg-cinnabar-950"
 		>
-			<Image :src="data.header.src" :alt="data.header.alt" />
+			<Video
+				v-if="data.header"
+				:src="data.header.src"
+				:poster="data.header.poster"
+			/>
 			<div
 				class="absolute top-0 h-full w-full bg-gradient-to-t from-mono-900"
 			/>
@@ -14,7 +18,7 @@
 			class="absolute bottom-4 right-4 flex flex-col place-content-end text-end"
 		>
 			<div class="text-mono-500">{{ props.label }}</div>
-			<div class="text-cinnabar-500">
+			<div class="text-cinnabar-500" v-if="data.header">
 				{{ data.title }}
 			</div>
 		</div>

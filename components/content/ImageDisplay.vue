@@ -1,11 +1,11 @@
 <template>
-	<div class="col-span-full grid grid-cols-8 lg:grid-cols-12 gap-4">
+	<div class="col-span-full grid grid-cols-8 gap-4 lg:grid-cols-12">
 		<ImageCaroussel :imageArray="props.imageArray" />
 		<ImageGrid :imageArray="props.imageArray" />
 		<div
 			v-if="slots.default"
 			data-info="description"
-			class="col-start-1 col-span-full md:col-span-5 lg:col-span-7 text-mono-300 hyphens-auto text-pretty"
+			class="col-span-full col-start-1 hyphens-auto text-pretty text-mono-300 md:col-span-5 lg:col-span-7"
 		>
 			<ContentSlot unwrap="p" />
 		</div>

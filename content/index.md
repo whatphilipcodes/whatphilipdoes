@@ -24,10 +24,10 @@ bundle:
         - frontend development
         - machine learning
         - digital design
-      text: 'Vom Designstudent zum kreativen Entwickler. Ich konzentriere mich auf UI/UX vom Design bis hin zur Implementierung, sowie maschinelles Lernen in generativen Kontexten.'
+      text: 'Designing and implementing interactive experiences in the digital realm. Focused on web technologies, real-time visualization and machine learning.'
     closer:
       cta:
-        text: '…might be up to you.'
+        text: '…could be up to you.'
         buttons:
           - label: get in touch
             to: 'mailto:hello@whatphilipdoes.com?subject=lets%20talk'
@@ -37,10 +37,10 @@ bundle:
             download: gerdes-philip-cv.pdf
             variant: dark
       social:
-        - icon: SvgoLinkedin
+        - icon: i-linkedin
           to: https://www.linkedin.com/in/gerdes-philip/
-        - icon: SvgoGithub
+        - icon: i-github
           to: https://github.com/whatphilipcodes
-        - icon: SvgoInstagram
+        - icon: i-instagram
           to: https://www.instagram.com/whatphilipdoes/
 ---
