@@ -22,6 +22,8 @@ footer:
   buttons:
     - label: repo
       to: https://github.com/whatphilipcodes/entity
+    - label: 'inspiring essay'
+      to: https://inconvergent.net/generative/
 ---
 
 ::project-header{:header=header :title=title :projectTags=projectTags}
