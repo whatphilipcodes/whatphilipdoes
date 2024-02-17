@@ -27,7 +27,7 @@ bundle:
       text: 'Designing and implementing interactive experiences in the digital realm. Focused on web technologies, real-time visualization and machine learning.'
     closer:
       cta:
-        text: '…might be up to you.'
+        text: '…could be up to you.'
         buttons:
           - label: get in touch
             to: 'mailto:hello@whatphilipdoes.com?subject=lets%20talk'
