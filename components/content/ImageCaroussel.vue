@@ -11,7 +11,7 @@
 			<div
 				v-for="(image, index) in props.imageArray"
 				:key="index"
-				class="h-[56vh]"
+				class="h-[28rem]"
 				:class="image.smnarrow ? 'min-w-[100vw]' : 'aspect-landscape'"
 			>
 				<Image :src="image.src" :alt="image.alt" />
@@ -20,7 +20,7 @@
 		<div data-info="sm-single" class="flex h-fit overflow-hidden px-4" v-else>
 			<div
 				class="w-full"
-				:class="props.imageArray[0].smnarrow ? 'h-[64vh]' : 'aspect-landscape'"
+				:class="props.imageArray[0].smnarrow ? 'h-[28rem]' : 'aspect-landscape'"
 			>
 				<Image :src="props.imageArray[0].src" :alt="props.imageArray[0].alt" />
 			</div>

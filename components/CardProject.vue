@@ -10,7 +10,7 @@
 			<div
 				data-info="bg"
 				class="relative w-full"
-				:class="{ 'h-[64vh]': props.opened, 'h-[100vh]': !props.opened }"
+				:class="{ 'h-[28rem]': props.opened, 'h-[100vh]': !props.opened }"
 			>
 				<Video
 					class="h-full w-full"
@@ -20,7 +20,7 @@
 				<div
 					data-info="gradient-overlay"
 					class="absolute top-0 z-[20] h-full w-full bg-gradient-to-b from-mono-900 lg:bg-gradient-to-t"
-				></div>
+				/>
 			</div>
 		</div>
 		<div data-info="meta" class="flex h-full w-full flex-col">
@@ -31,7 +31,7 @@
 			>
 				<div
 					data-info="spacer-top"
-					class="flex h-[64vh] flex-row justify-end md:col-span-5 lg:col-span-full"
+					class="flex h-[28rem] flex-row justify-end md:col-span-5 lg:col-span-full"
 				>
 					<div
 						class="relative z-[20] flex flex-row gap-4 self-end py-4 md:py-6 lg:py-8"
