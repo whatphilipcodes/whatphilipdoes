@@ -1,5 +1,5 @@
 <template>
-	<div data-info="page-root">
+	<TransitionWrapper>
 		<LayoutColumns>
 			<ContentDoc v-slot="{ doc }">
 				<ContentRenderer
@@ -7,11 +7,11 @@
 					tag="div"
 					class="col-span-full lg:mt-32"
 				/>
+				<div class="h-8" />
+				<Footer />
 			</ContentDoc>
 		</LayoutColumns>
-		<div class="h-8"></div>
-		<Footer />
-	</div>
+	</TransitionWrapper>
 </template>
 
 <script setup lang="ts">

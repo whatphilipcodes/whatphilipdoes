@@ -1,6 +1,6 @@
 <template>
 	<video
-		v-if="props.src"
+		v-if="props.src && !error"
 		autoplay
 		muted
 		loop
@@ -8,14 +8,21 @@
 		preload="auto"
 		class="block h-full w-full object-cover"
 	>
-		<source :src="props.src" type="video/mp4" />
-		<Image :src="props.poster" />
+		<source
+			:src="props.src"
+			type="video/mp4"
+			class="hidden"
+			:onerror="fallback"
+		/>
 	</video>
 	<Image v-else :src="props.poster" />
 </template>
 
 <script setup lang="ts">
-// :poster="img(props.poster, { w: 1920, h: 1920, q: 90 })"
+const error = ref(false)
+function fallback() {
+	error.value = true
+}
 const props = defineProps({
 	src: {
 		type: String,
@@ -27,5 +34,4 @@ const props = defineProps({
 		default: '',
 	},
 })
-const img = useImage()
 </script>

@@ -2,7 +2,7 @@
 	<div
 		id="app"
 		lang="en"
-		class="overflow-x-clip bg-mono-950 text-mono-50 selection:bg-cinnabar-500"
+		class="bg-mono-950 text-mono-50 selection:bg-cinnabar-500"
 	>
 		<Nav />
 		<NuxtPage />
@@ -10,11 +10,11 @@
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 	<div
 		data-info="transition-background"
-		class="absolute top-0 -z-[990] h-lvh w-screen bg-mono-950"
+		class="absolute top-0 -z-[990] h-lvh w-full bg-mono-950"
 	/>
 	<div
 		data-info="static-background"
-		class="background-gradient-split fixed bottom-0 left-0 right-0 z-bottom h-lvh w-screen"
+		class="background-gradient-split fixed bottom-0 left-0 right-0 z-bottom h-lvh w-full"
 	/>
 </template>
 

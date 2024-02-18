@@ -90,7 +90,7 @@ function exit() {
 function showUI() {
 	visibleUI.value = true
 }
-defineExpose({ enter, exit, showUI })
+defineExpose({ enter, exit, showUI, scrollToTop })
 
 // mount behavior
 onUnmounted(() => {

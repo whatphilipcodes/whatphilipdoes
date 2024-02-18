@@ -1,5 +1,5 @@
 <template>
-	<div data-info="page-root">
+	<TransitionWrapper>
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
@@ -14,7 +14,7 @@
 							>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
 						>
 					</div>
-					<div class="col-span-full h-[56vh] md:col-span-6 lg:h-[64vh]">
+					<div class="col-span-full h-[28rem] md:col-span-6 lg:h-[64vh]">
 						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 					</div>
 				</ScrollSegment>
@@ -29,7 +29,7 @@
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
-						class="col-span-full mb-4 flex h-[56vh] items-end md:mb-8 lg:h-[64vh] lg:items-center"
+						class="col-span-full mb-4 flex h-[32rem] items-end md:mb-8 lg:h-[64vh] lg:items-center"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
@@ -49,7 +49,7 @@
 				</ScrollSegment>
 			</ScrollStop>
 		</LayoutColumns>
-	</div>
+	</TransitionWrapper>
 </template>
 
 <script setup lang="ts">
@@ -102,6 +102,9 @@ onMounted(() => {
 	watch(scrollingBlocked, (value) => {
 		if (value) {
 			projectRotor.value?.showUI()
+			setTimeout(() => {
+				projectRotor.value?.scrollToTop()
+			}, 800)
 			window.addEventListener('wheel', dbWheelTrigger)
 			window.addEventListener('touchstart', touchTrigger)
 		}
