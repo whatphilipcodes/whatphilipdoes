@@ -1,10 +1,5 @@
 <template>
-	<div
-		data-info="project-display"
-		ref="projectDisplay"
-		class="relative col-span-full h-svh w-screen justify-self-center overflow-clip md:h-screen"
-		:class="classList"
-	>
+	<div data-info="project-display" ref="projectDisplay" :class="classList">
 		<RotorSlide
 			v-for="(slide, index) in slides"
 			ref="slideInstances"
@@ -51,6 +46,8 @@ const isActive = ref(false)
 const linkActive = ref(false)
 const classList = computed(() => {
 	return {
+		'w-screen h-lvh md:h-screen col-span-full justify-self-center overflow-clip relative':
+			true,
 		'absolute top-0 md:bottom-0': isActive.value,
 	}
 })
