@@ -10,7 +10,10 @@
 			<div
 				data-info="bg"
 				class="relative w-full"
-				:class="{ 'h-[28rem]': props.opened, 'h-[100vh]': !props.opened }"
+				:class="{
+					'h-[28rem] lg:h-[64vh]': props.opened,
+					'h-[100vh]': !props.opened,
+				}"
 			>
 				<Video
 					class="h-full w-full"
@@ -31,7 +34,7 @@
 			>
 				<div
 					data-info="spacer-top"
-					class="flex h-[28rem] flex-row justify-end md:col-span-5 lg:col-span-full"
+					class="flex h-[28rem] flex-row justify-end md:col-span-5 lg:col-span-full lg:h-[64vh]"
 				>
 					<div
 						class="relative z-[20] flex flex-row gap-4 self-end py-4 md:py-6 lg:py-8"
