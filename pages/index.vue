@@ -1,5 +1,5 @@
 <template>
-	<div data-info="page-root">
+	<TransitionWrapper>
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
@@ -49,7 +49,7 @@
 				</ScrollSegment>
 			</ScrollStop>
 		</LayoutColumns>
-	</div>
+	</TransitionWrapper>
 </template>
 
 <script setup lang="ts">

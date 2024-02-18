@@ -1,5 +1,5 @@
 <template>
-	<div data-info="page-root">
+	<TransitionWrapper>
 		<ContentDoc v-slot="{ doc }">
 			<ContentRenderer
 				:value="doc"
@@ -8,7 +8,7 @@
 			/>
 			<Footer :segment="doc.footer" />
 		</ContentDoc>
-	</div>
+	</TransitionWrapper>
 </template>
 
 <script setup lang="ts">
