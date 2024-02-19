@@ -15,8 +15,14 @@
 			:cb-restart="restart"
 			:show-u-i="visibleUI"
 		/>
+		<div
+			class="pointer-events-none absolute h-full w-full bg-mono-950 duration-500"
+			:class="{
+				'opacity-0': visibleUI || !restartable,
+				'opacity-75': !visibleUI || restartable,
+			}"
+		/>
 		<div v-if="restartUI" :class="restartClasses">
-			<div class="absolute h-full w-full bg-mono-950 opacity-75"></div>
 			<Button
 				class="invisible absolute left-1/2 top-1/2 h-10 w-44 -translate-x-1/2 -translate-y-1/2 lg:visible"
 				as="button"
