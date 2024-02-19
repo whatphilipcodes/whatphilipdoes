@@ -1,5 +1,6 @@
 <template>
 	<TransitionWrapper>
+		<ScrollPromptAuto />
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
