@@ -20,7 +20,7 @@
 			<ScrollPromptManual
 				:active="active"
 				direction="left-right"
-				class="absolute bottom-1/2 right-0 z-front w-screen"
+				class="absolute bottom-1/2 right-1/3 z-front w-2/3"
 			/>
 		</div>
 		<div data-info="sm-single" class="flex h-fit overflow-hidden px-4" v-else>

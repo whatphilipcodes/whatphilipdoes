@@ -1,6 +1,6 @@
 <template>
-	<div class="fixed bottom-36 left-1/2 z-front lg:top-2/3">
-		<ScrollPromptManual class="h-32" :active="promptScroll" />
+	<div class="fixed bottom-32 left-1/2 z-front lg:top-2/3">
+		<ScrollPromptManual class="h-[20dvh]" :active="promptScroll" />
 	</div>
 </template>
 
