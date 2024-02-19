@@ -10,7 +10,7 @@
 		/>
 		<div
 			v-else
-			class="scroll-animation-lr h-[1px] w-56"
+			class="scroll-animation-lr h-[1px]"
 			:class="{ [props.class]: true }"
 		/>
 	</div>

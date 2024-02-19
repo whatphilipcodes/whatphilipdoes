@@ -53,6 +53,12 @@ export const useGlobalStore = defineStore('global', () => {
 		scrollStopTriggers.splice(0, scrollStopTriggers.length)
 	}
 
+	// caroussel scroll prompt
+	const carousselScrollPrompted = ref(false)
+	function setCarousselScrollPrompted(value: boolean) {
+		carousselScrollPrompted.value = value
+	}
+
 	return {
 		activePage,
 		updateActivePage,
@@ -71,5 +77,8 @@ export const useGlobalStore = defineStore('global', () => {
 		toggleStopTrigger,
 		getStopTriggerIndex,
 		clearScrollStopTriggers,
+		//
+		carousselScrollPrompted,
+		setCarousselScrollPrompted,
 	}
 })

@@ -1,21 +1,27 @@
 <template>
 	<div
 		data-info="sm-container"
-		class="col-span-full w-screen justify-self-center md:hidden"
+		class="relative col-span-full w-screen justify-self-center md:hidden"
 	>
-		<div
-			data-info="sm-caroussel"
-			class="flex h-fit flex-row gap-x-4 overflow-y-clip overflow-x-scroll px-4"
-			v-if="props.imageArray.length > 1"
-		>
+		<div data-info="sm-caroussel" v-if="props.imageArray.length > 1">
 			<div
-				v-for="(image, index) in props.imageArray"
-				:key="index"
-				class="h-[28rem]"
-				:class="image.smnarrow ? 'min-w-[100vw]' : 'aspect-landscape'"
+				class="flex h-fit flex-row gap-x-4 overflow-y-clip overflow-x-scroll px-4"
+				ref="scrollContainer"
 			>
-				<Image :src="image.src" :alt="image.alt" />
+				<div
+					v-for="(image, index) in props.imageArray"
+					:key="index"
+					class="h-[28rem]"
+					:class="image.smnarrow ? 'min-w-[100vw]' : 'aspect-landscape'"
+				>
+					<Image :src="image.src" :alt="image.alt" />
+				</div>
 			</div>
+			<ScrollPromptManual
+				:active="active"
+				direction="left-right"
+				class="absolute bottom-1/2 right-0 z-front w-screen"
+			/>
 		</div>
 		<div data-info="sm-single" class="flex h-fit overflow-hidden px-4" v-else>
 			<div
@@ -36,6 +42,23 @@ const props = defineProps({
 		required: true,
 	},
 })
-</script>
 
-<style scoped></style>
+// scroll prompt
+const scrollTimeout = ref(false)
+const scrollContainer = ref<HTMLElement>()
+const { x } = useScroll(scrollContainer)
+let stop = watch(x, (val) => {
+	if (val > 80) {
+		useGlobalStore().setCarousselScrollPrompted(true)
+		stop()
+	}
+})
+onMounted(() => {
+	setTimeout(() => {
+		scrollTimeout.value = true
+	}, 5000)
+})
+const active = computed(() => {
+	return !useGlobalStore().carousselScrollPrompted && scrollTimeout.value
+})
+</script>

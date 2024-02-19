@@ -10,7 +10,7 @@ const { y } = useWindowScroll()
 let timeout: NodeJS.Timeout
 const promptScroll = ref(false)
 watchEffect(() => {
-	if (y.value < 40) {
+	if (y.value < 80) {
 		clearTimeout(timeout)
 		timeout = setTimeout(() => {
 			promptScroll.value = true
