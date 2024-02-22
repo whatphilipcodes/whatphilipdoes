@@ -4,9 +4,11 @@
 		<div
 			class="flash-enter absolute top-0 h-full w-full bg-gradient-to-t from-mono-900 hover:bg-mono-800/20 active:bg-cinnabar-500/20"
 		/>
-		<!-- <LayoutColumns class="absolute h-full w-full">
-			<div class="col-span-full">show again</div>
-		</LayoutColumns> -->
+		<LayoutColumns class="absolute h-full w-full">
+			<div class="col-span-full self-end py-12 text-cinnabar-500">
+				click to show again
+			</div>
+		</LayoutColumns>
 	</div>
 </template>
 

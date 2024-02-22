@@ -12,7 +12,7 @@ export class BlockExceptionHandler {
 	private blockHandler(event: Event) {
 		const target = event.target as HTMLElement
 		if (this.isActive && !target?.classList.contains('persistent-default')) {
-			console.log('blocked: ', this.id, '| event: ', event)
+			// console.log('blocked: ', this.id, '| event: ', event)
 			event.preventDefault()
 		}
 	}
