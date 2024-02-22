@@ -13,7 +13,7 @@
 		"@nuxt/devtools": "^1.0.6",
 		"@nuxtjs/google-fonts": "^3.1.0",
 		"@nuxtjs/tailwindcss": "^6.11.4",
-		"nuxt": "^3.10.2",
+		"nuxt": "^3.10.3",
 		"nuxt-svgo": "^4.0.0",
 		"prettier": "^3.2.5",
 		"prettier-plugin-tailwindcss": "^0.5.11",
