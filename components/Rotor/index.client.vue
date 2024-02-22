@@ -2,7 +2,6 @@
 	<div
 		ref="swiperTarget"
 		class="swiper col-span-full h-lvh w-screen justify-self-center overflow-clip"
-		@swiperReachEnd="exit"
 	>
 		<div class="swiper-wrapper">
 			<div v-for="slide in props.slides" class="swiper-slide">
