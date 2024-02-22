@@ -2,7 +2,7 @@ export const useScrollStops = () => {
 	// dependencies
 	const { scrollStopTriggers, toggleStopTrigger, clearScrollStopTriggers } =
 		useGlobalStore()
-	const block = new BlockExceptionHandler()
+	const block = new BlockExceptionHandler('scroll-stops')
 
 	// props
 	const activeIndex = ref(0)

@@ -1,7 +1,7 @@
 <template>
 	<div
-		data-info="project"
-		class="relative flex h-fit w-full flex-col justify-self-center"
+		data-info="project-card"
+		class="relative flex h-full w-full flex-col justify-self-center"
 	>
 		<div
 			data-info="container-bg"
@@ -27,11 +27,7 @@
 			</div>
 		</div>
 		<div data-info="meta" class="flex h-full w-full flex-col">
-			<LayoutColumns
-				data-info="text"
-				class="h-full w-full"
-				:class="{ 'auto-rows-min': props.opened }"
-			>
+			<LayoutColumns data-info="text" class="h-full w-full">
 				<div
 					data-info="spacer-top"
 					class="flex h-[28rem] flex-row justify-end md:col-span-5 lg:col-span-full lg:h-[64vh]"
@@ -50,7 +46,7 @@
 				</div>
 				<div
 					data-info="overlay"
-					class="relative z-[20] col-span-3 row-start-1 flex h-full flex-col pt-4 md:pt-6 lg:col-span-4 lg:row-start-auto lg:self-end lg:pt-8"
+					class="relative z-[20] col-span-3 row-start-1 flex h-full flex-col pt-4 md:pt-6 lg:col-span-4 lg:row-start-auto lg:self-end lg:pt-12"
 					:class="{ 'lg:justify-end': !props.opened }"
 				>
 					<div
@@ -79,7 +75,7 @@
 				</div>
 				<div
 					data-info="abstract"
-					class="col-span-full flex h-full hyphens-auto pt-4 text-lg italic md:col-start-4 md:col-end-9 md:pt-6 lg:col-start-6 lg:col-end-13 lg:pt-8"
+					class="col-span-full flex h-full hyphens-auto pt-4 text-lg italic md:col-start-4 md:col-end-9 md:pt-6 lg:col-start-6 lg:col-end-13 lg:pt-12"
 				>
 					{{ props.projectData.abstract }}
 				</div>

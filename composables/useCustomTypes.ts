@@ -195,8 +195,6 @@ export interface imageData {
 /**
  * Enables tailwindcss autocompletion and syntax highlighting within the script tag.
  */
-export function tw(
-	classes: string | TemplateStringsArray,
-): string | TemplateStringsArray {
-	return classes
+export function tw(classes: string | TemplateStringsArray): string {
+	return classes.toString()
 }

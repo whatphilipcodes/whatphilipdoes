@@ -22,8 +22,8 @@
 				<ScrollSegment :pageSegment="content.segments[1]">
 					<Rotor
 						ref="projectRotor"
-						:completionCallback="cbRotorComplete"
 						:slides="projectsContent"
+						:exitCallback="cbRotorComplete"
 					/>
 				</ScrollSegment>
 			</ScrollStop>
@@ -74,16 +74,6 @@ useContentHead(content)
 
 const projectsContent = await queryContent<contentProject>('projects').find()
 
-const dbWheelTrigger = useDebounceFn(() => {
-	projectRotor.value?.enter()
-	window.removeEventListener('wheel', dbWheelTrigger)
-}, 400)
-
-function touchTrigger() {
-	projectRotor.value?.enter()
-	window.removeEventListener('touchstart', touchTrigger)
-}
-
 onMounted(() => {
 	// set page title
 	updateActivePage('what philip')
@@ -102,12 +92,7 @@ onMounted(() => {
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
-			projectRotor.value?.showUI()
-			setTimeout(() => {
-				projectRotor.value?.scrollToTop()
-			}, 800)
-			window.addEventListener('wheel', dbWheelTrigger)
-			window.addEventListener('touchstart', touchTrigger)
+			projectRotor.value?.enter()
 		}
 	})
 

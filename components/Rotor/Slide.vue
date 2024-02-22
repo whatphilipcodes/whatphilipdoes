@@ -1,21 +1,14 @@
 <template>
 	<div
-		class="dynamic-duration absolute h-full w-full transition-transform ease-in-out will-change-transform"
-		:class="classList"
+		class="absolute h-lvh w-full transition-transform ease-in-out will-change-transform"
+		:class="props.translate"
+		:style="{ transitionDuration: props.msDuration + 'ms' }"
 	>
-		<CardProject
-			:projectData="props.projectData"
-			class="col-span-full h-screen w-screen md:h-dvh"
-		/>
+		<slot />
 	</div>
 </template>
 
 <script setup lang="ts">
-// exposed
-const isAnimating = ref(false)
-defineExpose({ isAnimating })
-
-// props
 const props = defineProps({
 	translate: {
 		type: String,
@@ -25,30 +18,19 @@ const props = defineProps({
 		type: Number,
 		default: 1000,
 	},
-	projectData: {
-		type: Object as PropType<contentProject>,
-		required: true,
+})
+
+const isAnimating = ref(false)
+
+// watch
+watch(
+	() => props.translate,
+	() => {
+		isAnimating.value = true
+		setTimeout(() => {
+			isAnimating.value = false
+		}, props.msDuration)
 	},
-})
-const durationClassToken = computed(() => {
-	return `${props.msDuration}ms`
-})
-const classList = computed(() => {
-	return {
-		[props.translate]: true,
-	}
-})
-
-watch(classList, () => {
-	isAnimating.value = true
-	setTimeout(() => {
-		isAnimating.value = false
-	}, props.msDuration)
-})
+)
+defineExpose({ isAnimating })
 </script>
-
-<style scoped>
-.dynamic-duration {
-	transition-duration: v-bind('durationClassToken');
-}
-</style>

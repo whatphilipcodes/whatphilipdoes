@@ -1,36 +1,20 @@
 <template>
-	<div data-info="project-display" ref="projectDisplay" :class="classList">
+	<div
+		ref="swipeTarget"
+		data-info="project-rotor"
+		class="relative col-span-full h-lvh w-screen justify-self-center overflow-clip"
+	>
 		<RotorSlide
-			v-for="(slide, index) in slides"
-			ref="slideInstances"
-			:translate="computeTranslate(index)"
-			:ms-duration="1000"
-			:projectData="slide"
-		/>
-		<RotorOpenCase
-			:active-case="slides[activeSlide]"
-			:is-active="linkActive"
-			:is-animating="isAnimating"
-			:show-restart-u-i="restartUI"
-			:cb-restart="restart"
-			:show-u-i="visibleUI"
-		/>
-		<div
-			class="pointer-events-none absolute h-full w-full bg-mono-950 duration-500"
-			:class="{
-				'opacity-0': visibleUI || !restartable,
-				'opacity-75': !visibleUI || restartable,
-			}"
-		/>
-		<div v-if="restartUI" :class="restartClasses">
-			<Button
-				class="invisible absolute left-1/2 top-1/2 h-10 w-44 -translate-x-1/2 -translate-y-1/2 lg:visible"
-				as="button"
-				:variant="'dark'"
-				@click="restart"
-				>show again</Button
-			>
-		</div>
+			v-for="(slide, index) in props.slides"
+			:translate="slideTranslate(index)"
+		>
+			<RotorWorkLink :link-active="linksActive" :to="slide._path">
+				<CardProject :projectData="slide" />
+			</RotorWorkLink>
+		</RotorSlide>
+		<RotorSlide :translate="slideTranslate(props.slides.length)">
+			<RotorRestart :callback="enter" />
+		</RotorSlide>
 	</div>
 </template>
 
@@ -42,173 +26,107 @@ const props = defineProps({
 		type: Array as PropType<contentProject[]>,
 		required: true,
 	},
-	completionCallback: {
+	exitCallback: {
 		type: Function,
 		required: false,
 	},
 })
-const visibleUI = ref(false)
-const isActive = ref(false)
-const linkActive = ref(false)
-const classList = computed(() => {
-	return {
-		'w-screen h-lvh md:h-screen col-span-full justify-self-center overflow-clip relative':
-			true,
-		'absolute top-0 md:bottom-0': isActive.value,
-	}
-})
 
-const computeTranslate = (index: number) => {
-	if (index === activeSlide.value) {
-		return ''
-	} else if (index < activeSlide.value) {
-		return '-translate-y-[100%]'
-	} else {
-		return 'translate-y-[100%]'
-	}
-}
+const linksActive = ref(false)
+const activeSlide = ref(0)
+const swipeTarget = ref()
+const blocker = new BlockExceptionHandler('rotor-component')
 
-// main controller
+const { direction: touchDirection, isSwiping: isTouching } =
+	useSwipe(swipeTarget)
+const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
+	window,
+	slideDown,
+	slideUp,
+)
+
+let exitTouchSwipe: WatchStopHandle
+
+//
 function enter() {
-	isActive.value = true
-	linkActive.value = true
-	activeSlide.value = 0
-
-	window.addEventListener('wheel', useBlockException, { passive: false })
-	window.addEventListener('touchstart', useBlockException, { passive: false })
+	blocker.attachEvent('wheel', window)
+	blocker.attachEvent('touchstart', window)
 	window.addEventListener('touchend', scrollToTop, { passive: false })
 
-	enterWheelSwipe()
-	startSwipeWatch()
-	startExitWatch()
-}
-function exit() {
-	isActive.value = false
-	window.removeEventListener('touchend', scrollToTop)
-	setTimeout(() => {
-		window.removeEventListener('wheel', useBlockException)
-		window.removeEventListener('touchstart', useBlockException)
-		window.addEventListener('touchstart', enableRestartable)
-		exitWheelSwipe()
-		stopSwipeWatch?.()
-	}, 400)
-}
-function showUI() {
-	visibleUI.value = true
-}
-defineExpose({ enter, exit, showUI, scrollToTop })
-
-// mount behavior
-onUnmounted(() => {
-	linkActive.value = false
-	exit()
-})
-
-// restart
-const restartUI = ref(false)
-const restartable = ref(false)
-const restartClasses = computed(() => {
-	return {
-		'duration-1000': true,
-		'opacity-0': !restartable.value,
-	}
-})
-function enableRestartable(event: Event) {
-	const target = event.target as HTMLElement
-	if (target.classList.contains('persistent-default')) return
-	linkActive.value = false
-	visibleUI.value = false
-	restartUI.value = true
-	setTimeout(() => {
-		restartable.value = true
-	}, 1000)
-	window.removeEventListener('wheel', enableRestartable)
-	window.removeEventListener('touchstart', enableRestartable)
-}
-function disableRestartable() {
-	restartable.value = false
-	setTimeout(() => {
-		restartUI.value = false
-	}, 1000)
-}
-function restart() {
-	if (!restartable.value) return
-	disableRestartable()
-	enter()
 	scrollToTop()
-	visibleUI.value = true
+	enterWheelSwipe()
+	exitTouchSwipe = enterTouchSwipe()
+	activeSlide.value = 0
+	linksActive.value = true
+
+	console.log('enter')
+}
+defineExpose({ enter })
+function exit() {
+	blocker.detachEvent('wheel', window)
+	blocker.detachEvent('touchstart', window)
+	window.removeEventListener('touchend', scrollToTop)
+
+	exitWheelSwipe()
+	exitTouchSwipe()
+	linksActive.value = false
+
+	props.exitCallback?.()
+
+	console.log('exit')
 }
 
-// is animating state
-import { RotorSlide } from '#components'
-const slideInstances = ref<(typeof RotorSlide)[]>([])
-const isAnimating = computed(() => {
-	return slideInstances.value.some((slide) => {
-		return slide.isAnimating
-	})
+function slideUp() {
+	if (activeSlide.value === props.slides.length) return
+	activeSlide.value++
+	console.log('slide down')
+}
+function slideDown() {
+	if (activeSlide.value === 0) return
+	activeSlide.value--
+	console.log('slide up')
+}
+
+//
+onUnmounted(() => {
+	exit()
+	console.log('unmounted')
 })
 
-const activeSlide = ref(0)
-const projectDisplay = ref()
-const completed = computed(() => activeSlide.value === props.slides.length - 1)
+//
+watch(activeSlide, (val) => {
+	if (val === props.slides.length) exit()
+})
 
-// exit rotor
-const startExitWatch = () => {
-	const stopExitWatch = watch(completed, (value) => {
-		if (value) {
-			// isLocked.value = false
-			stopExitWatch()
-			const stopAnimationWatch = watch(isAnimating, (value) => {
-				if (!value) {
-					props.completionCallback?.()
-					stopAnimationWatch()
-				}
-			})
-			exit()
+//
+function enterTouchSwipe(): WatchStopHandle {
+	return watch(isTouching, (val) => {
+		if (val) {
+			switch (touchDirection.value) {
+				case 'up':
+					slideUp()
+					break
+				case 'down':
+					slideDown()
+					break
+				default:
+					break
+			}
 		}
 	})
 }
-
-// swipe
-const { direction, isSwiping } = useSwipe(projectDisplay)
-let stopSwipeWatch: WatchStopHandle = () => {}
-const startSwipeWatch = () => {
-	stopSwipeWatch = watch(
-		() => isSwiping.value,
-		(value) => {
-			if (!value || isAnimating.value) return
-			if (direction.value === 'up') {
-				down()
-			} else if (direction.value === 'down') {
-				up()
-			}
-		},
-	)
+function slideTranslate(index: number): string {
+	if (index === activeSlide.value) {
+		return ``
+	} else if (index < activeSlide.value) {
+		return tw`-translate-y-full`
+	} else {
+		return tw`translate-y-full`
+	}
 }
-const { enter: enterWheelSwipe, exit: exitWheelSwipe } = useWheelSwipe(
-	window,
-	up,
-	down,
-	() => {
-		window.addEventListener('wheel', enableRestartable)
-	},
-)
-function down() {
-	if (isAnimating.value) return
-	if (activeSlide.value === props.slides.length - 1) return
-	activeSlide.value += 1
-}
-
-function up() {
-	if (isAnimating.value) return
-	if (activeSlide.value === 0) return
-	activeSlide.value -= 1
-}
-
-// helpers
 function scrollToTop() {
 	window.scrollTo({
-		top: projectDisplay.value.offsetTop,
+		top: swipeTarget.value.offsetTop,
 		behavior: 'smooth',
 	})
 }
