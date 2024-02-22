@@ -52,6 +52,7 @@ onMounted(async () => {
 		keyboard: true,
 		autoHeight: true,
 	})
+	swiper.on('reachBeginning', scrollToTop)
 	swiper.on('reachEnd', exit)
 })
 onUnmounted(() => {
@@ -65,8 +66,8 @@ function enter() {
 	blocker.attachEvent('touchstart', window)
 	window.addEventListener('touchend', scrollToTop, { passive: false })
 	window.addEventListener('wheel', scrollToTop, { passive: false })
+	setTimeout(scrollToTop, 800)
 
-	scrollToTop()
 	swiper.enable()
 	swiper.slideTo(0, 600)
 	linksActive.value = true

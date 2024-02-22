@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="dynamic-heading"
-		class="absolute bottom-0 lg:top-0 left-0 flex flex-col font-semibold text-xl leading-xl"
+		class="absolute bottom-0 left-0 flex flex-col text-xl font-semibold leading-xl lg:top-0"
 	>
 		<div
 			data-info="container-logo-top"

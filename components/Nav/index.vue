@@ -1,8 +1,5 @@
 <template>
-	<div
-		data-info="menu"
-		class="fixed bottom-0 z-nav mx-auto h-36 w-full lg:top-0"
-	>
+	<div data-info="menu" class="fixed top-0 z-nav mx-auto h-36 w-full">
 		<NavDissolver />
 		<LayoutPadding class="h-full w-full">
 			<div class="relative col-span-full h-full flex-grow-0">
