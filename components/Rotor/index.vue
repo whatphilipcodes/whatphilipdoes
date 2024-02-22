@@ -52,6 +52,7 @@ function enter() {
 	blocker.attachEvent('wheel', window)
 	blocker.attachEvent('touchstart', window)
 	window.addEventListener('touchend', scrollToTop, { passive: false })
+	window.addEventListener('wheel', scrollToTop, { passive: false })
 
 	scrollToTop()
 	enterWheelSwipe()
@@ -66,6 +67,7 @@ function exit() {
 	blocker.detachEvent('wheel', window)
 	blocker.detachEvent('touchstart', window)
 	window.removeEventListener('touchend', scrollToTop)
+	window.removeEventListener('wheel', scrollToTop)
 
 	exitWheelSwipe()
 	exitTouchSwipe()
