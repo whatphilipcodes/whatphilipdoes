@@ -5,7 +5,7 @@
 		class="relative col-span-full min-h-dvh w-screen justify-self-center overflow-visible"
 		:style="{ height: useDisplayResolution().height + 'px' }"
 	>
-		<div class="swiper absolute top-0 h-lvh overflow-clip">
+		<div class="swiper absolute top-0 h-dvh overflow-clip">
 			<div class="swiper-wrapper">
 				<div v-for="slide in props.slides" class="swiper-slide">
 					<RotorWorkLink :link-active="linksActive" :to="slide._path">
@@ -56,7 +56,7 @@ onMounted(async () => {
 		keyboard: true,
 		autoHeight: true,
 	})
-	// swiper.on('reachBeginning', scrollToTop)
+	swiper.on('reachBeginning', scrollToTop)
 	swiper.on('reachEnd', exit)
 })
 onUnmounted(() => {
