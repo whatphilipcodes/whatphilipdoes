@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="absolute bottom-0 right-0 flex flex-col-reverse gap-4 transition-opacity duration-300"
+		class="pointer-events-auto absolute bottom-0 right-0 flex flex-col-reverse gap-4 transition-opacity duration-300"
 		:class="opacity"
 	>
 		<Button

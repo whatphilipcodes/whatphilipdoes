@@ -1,6 +1,7 @@
 <template>
 	<TransitionWrapper>
 		<ScrollPromptFullscreen />
+		<div datainfo="spacer-header" class="h-36" />
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">

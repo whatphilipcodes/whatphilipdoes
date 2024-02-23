@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="dissolver"
-		class="absolute top-0 h-full w-full bg-gradient-to-b from-mono-950"
+		class="absolute top-0 h-36 w-full bg-gradient-to-b from-mono-950"
 	></div>
 </template>
 
