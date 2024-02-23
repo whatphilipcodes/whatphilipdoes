@@ -9,8 +9,6 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
 .loading-gradient {
 	background: linear-gradient(

@@ -19,10 +19,12 @@
 </template>
 
 <script lang="ts" setup>
-const isLoading = ref(true)
+const { setRes } = useDisplayResolution()
 const loaderMounted = ref(true)
+const isLoading = ref(true)
 
 onMounted(() => {
+	setRes(window)
 	setTimeout(() => {
 		isLoading.value = false
 	}, 300)
