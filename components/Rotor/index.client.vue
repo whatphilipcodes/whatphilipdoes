@@ -24,14 +24,6 @@
 import Swiper from 'swiper'
 import { Mousewheel, Keyboard } from 'swiper/modules'
 
-watchDeep(
-	useDisplayResolution().height,
-	() => {
-		console.log('height changed')
-	},
-	{ immediate: true },
-)
-
 const props = defineProps({
 	slides: {
 		type: Array as PropType<contentProject[]>,
