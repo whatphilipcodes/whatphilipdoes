@@ -44,21 +44,13 @@ const props = defineProps({
 })
 
 // scroll prompt
-const scrollTimeout = ref(false)
+const active = ref(true)
 const scrollContainer = ref<HTMLElement>()
 const { x } = useScroll(scrollContainer)
-let stop = watch(x, (val) => {
+const stop = watch(x, (val) => {
 	if (val > 80) {
-		useGlobalStore().setCarousselScrollPrompted(true)
+		active.value = false
 		stop()
 	}
-})
-onMounted(() => {
-	setTimeout(() => {
-		scrollTimeout.value = true
-	}, 5000)
-})
-const active = computed(() => {
-	return !useGlobalStore().carousselScrollPrompted && scrollTimeout.value
 })
 </script>
