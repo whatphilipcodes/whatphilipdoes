@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="col-span-full grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4"
+		class="col-span-full grid grid-cols-4 gap-4 md:grid-cols-8 lg:grid-cols-12"
 		v-for="section in props.content"
 	>
 		<div class="text-mono-500">
@@ -54,7 +54,7 @@ const props = defineProps({
 							if (row.cols.length > 2)
 								throw new Error(
 									'The current layout can only display 2 columns: ' +
-										JSON.stringify(row.cols)
+										JSON.stringify(row.cols),
 								)
 						}
 					}

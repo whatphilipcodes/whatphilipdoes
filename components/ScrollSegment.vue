@@ -44,14 +44,18 @@ onMounted(() => {
 	const enterRect = enter.value?.getBoundingClientRect()
 	const exitRect = exit.value?.getBoundingClientRect()
 	if (enterRect && exitRect) {
+		console.log(
+			Math.round(enterRect.top + window.scrollY),
+			Math.round(exitRect.top + window.scrollY),
+		)
 		addSegment(
 			Math.round(enterRect.top + window.scrollY),
 			Math.round(exitRect.top + window.scrollY),
-			segment.value
+			segment.value,
 		)
 	} else {
 		throw new Error(
-			`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.` // does this make sense?
+			`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.`, // does this make sense?
 		)
 	}
 })
