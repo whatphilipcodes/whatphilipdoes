@@ -76,6 +76,9 @@ useContentHead(content)
 const projectsContent = await queryContent<contentProject>('projects').find()
 
 onMounted(() => {
+	// set scroll to top
+	window.scrollTo(0, 0)
+
 	// set page title
 	updateActivePage('what philip')
 
