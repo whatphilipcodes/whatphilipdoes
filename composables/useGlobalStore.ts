@@ -53,6 +53,12 @@ export const useGlobalStore = defineStore('global', () => {
 		scrollStopTriggers.splice(0, scrollStopTriggers.length)
 	}
 
+	// static lvh
+	const lvh = ref<number>(0)
+	function setLvh(window: Window) {
+		lvh.value = window.screen.height
+	}
+
 	return {
 		activePage,
 		updateActivePage,
@@ -71,5 +77,8 @@ export const useGlobalStore = defineStore('global', () => {
 		toggleStopTrigger,
 		getStopTriggerIndex,
 		clearScrollStopTriggers,
+		//
+		lvh,
+		setLvh,
 	}
 })

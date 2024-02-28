@@ -19,9 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+const { setLvh } = useGlobalStore()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
+onBeforeMount(() => {
+	setLvh(window)
+})
 onMounted(() => {
 	setTimeout(() => {
 		isLoading.value = false

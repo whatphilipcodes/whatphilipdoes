@@ -4,7 +4,7 @@
 		data-info="rotor-wrapper"
 		ref="rotorScrollPos"
 		class="relative col-span-full h-[560px] w-screen justify-self-center overflow-visible"
-		:style="{ height: `${staticHeight}px` }"
+		:style="{ height: `${useGlobalStore().lvh}px` }"
 	>
 		<RotorSwiper
 			ref="swiperInstance"
@@ -45,12 +45,6 @@ function exit() {
 
 	props.exitCallback?.()
 }
-
-//
-const staticHeight = ref(0)
-onBeforeMount(() => {
-	staticHeight.value = window.screen.height
-})
 
 //
 function alignSwiper() {
