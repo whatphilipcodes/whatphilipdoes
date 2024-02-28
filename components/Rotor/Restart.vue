@@ -1,5 +1,5 @@
 <template>
-	<div @click="props.callback" class="relative h-lvh w-full cursor-pointer">
+	<div @click="props.callback" class="relative h-full w-full cursor-pointer">
 		<div class="absolute top-0 h-full w-full bg-cinnabar-950" />
 		<div
 			class="flash-enter absolute top-0 h-full w-full bg-gradient-to-t from-mono-900 hover:bg-mono-800/20 active:bg-cinnabar-500/20"

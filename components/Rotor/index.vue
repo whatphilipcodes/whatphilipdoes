@@ -1,9 +1,9 @@
 <template>
+	<!-- h-lvh needs to be replaced with static value -->
 	<div
 		data-info="rotor-wrapper"
 		ref="rotorScrollTop"
-		class="relative col-span-full min-h-lvh w-screen justify-self-center overflow-visible"
-		:style="{ height: useDisplayResolution().height + 'px' }"
+		class="relative col-span-full h-lvh w-screen justify-self-center overflow-visible"
 	>
 		<RotorSwiper
 			ref="swiperInstance"

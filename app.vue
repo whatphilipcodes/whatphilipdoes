@@ -10,21 +10,19 @@
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 	<div
 		data-info="transition-background"
-		class="absolute top-0 -z-[990] h-lvh w-full bg-mono-950"
+		class="absolute top-0 -z-[990] h-full w-full bg-mono-950"
 	/>
 	<div
 		data-info="static-background"
-		class="background-gradient-split fixed bottom-0 left-0 right-0 z-bottom h-lvh w-full"
+		class="background-gradient-split fixed bottom-0 left-0 right-0 z-bottom h-full w-full"
 	/>
 </template>
 
 <script lang="ts" setup>
-const { setRes } = useDisplayResolution()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
 onMounted(() => {
-	setRes(window)
 	setTimeout(() => {
 		isLoading.value = false
 	}, 300)

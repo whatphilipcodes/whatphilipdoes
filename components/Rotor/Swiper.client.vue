@@ -1,5 +1,5 @@
 <template>
-	<div class="swiper absolute top-0 h-lvh overflow-clip">
+	<div class="swiper absolute top-0 h-full overflow-clip">
 		<div class="swiper-wrapper">
 			<div v-for="slide in props.slides" class="swiper-slide">
 				<RotorWorkLink :link-active="linksActive" :to="slide._path">
