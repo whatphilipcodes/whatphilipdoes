@@ -1,7 +1,6 @@
 <template>
 	<TransitionWrapper>
 		<ScrollPromptFullscreen />
-		<div datainfo="spacer-header" class="h-36" />
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
@@ -16,6 +15,7 @@
 							>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
 						>
 					</div>
+					<div datainfo="spacer-title" class="col-span-full h-36" />
 					<div class="col-span-full h-[28rem] md:col-span-6 lg:h-[64vh]">
 						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 					</div>
