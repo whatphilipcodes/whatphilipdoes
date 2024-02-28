@@ -2,7 +2,7 @@
 	<div
 		data-info="rotor-wrapper"
 		ref="rotorScrollTop"
-		class="relative col-span-full min-h-dvh w-screen justify-self-center overflow-visible"
+		class="relative col-span-full min-h-lvh w-screen justify-self-center overflow-visible"
 		:style="{ height: useDisplayResolution().height + 'px' }"
 	>
 		<RotorSwiper

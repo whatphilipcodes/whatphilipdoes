@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="menu"
-		class="pointer-events-none fixed top-0 z-nav mx-auto h-dvh w-full"
+		class="pointer-events-none fixed top-0 z-nav mx-auto h-lvh w-full"
 	>
 		<NavDissolver />
 		<LayoutPadding class="h-full w-full">
@@ -11,10 +11,10 @@
 						:page="store.$state.activePage"
 						:highlight="store.$state.activeSegment.name"
 				/></NuxtLink>
-				<NavControlTouch
+				<!-- <NavControlTouch
 					class="lg:hidden"
 					:buttons="store.$state.activeSegment.buttons"
-				/>
+				/> -->
 			</div>
 		</LayoutPadding>
 	</div>
