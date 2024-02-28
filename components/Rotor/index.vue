@@ -1,14 +1,15 @@
 <template>
-	<!-- h-lvh needs to be replaced with static value -->
+	<!-- h-lvh needs to be replaced with static value here (chrome & firefox issue) -->
 	<div
 		data-info="rotor-wrapper"
-		ref="rotorScrollTop"
-		class="relative col-span-full h-lvh w-screen justify-self-center overflow-visible"
+		ref="rotorScrollPos"
+		class="relative col-span-full h-[560px] w-screen justify-self-center overflow-visible"
+		:style="{ height: `${staticHeight}px` }"
 	>
 		<RotorSwiper
 			ref="swiperInstance"
 			:cb-exit="exit"
-			:scroll-to-top="scrollToTop"
+			:align-swiper="alignSwiper"
 			:slides="props.slides"
 		/>
 	</div>
@@ -27,7 +28,7 @@ const props = defineProps({
 })
 const blocker = new BlockExceptionHandler('rotor-component')
 const swiperInstance = ref()
-const rotorScrollTop = ref<HTMLElement>()
+const rotorScrollPos = ref<HTMLElement>()
 
 //
 function enter() {
@@ -46,10 +47,18 @@ function exit() {
 }
 
 //
-function scrollToTop() {
-	console.log('scrollToTop')
+const staticHeight = ref(0)
+onBeforeMount(() => {
+	staticHeight.value = window.screen.height
+})
+
+//
+function alignSwiper() {
+	if (!rotorScrollPos.value) return
+	const bottom =
+		rotorScrollPos.value.offsetTop + rotorScrollPos.value.offsetHeight
 	window.scrollTo({
-		top: rotorScrollTop.value?.offsetTop,
+		top: bottom - window.innerHeight,
 		behavior: 'smooth',
 	})
 }

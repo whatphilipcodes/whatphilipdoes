@@ -27,7 +27,7 @@ const props = defineProps({
 		type: Function,
 		required: true,
 	},
-	scrollToTop: {
+	alignSwiper: {
 		type: Function as PropType<() => void>,
 		required: true,
 	},
@@ -52,7 +52,7 @@ onMounted(async () => {
 		keyboard: true,
 		autoHeight: true,
 	})
-	swiper.on('reachBeginning', props.scrollToTop)
+	swiper.on('reachBeginning', props.alignSwiper)
 	swiper.on('reachEnd', exit)
 })
 onUnmounted(() => {
@@ -62,9 +62,9 @@ onUnmounted(() => {
 
 //
 function enter() {
-	window.addEventListener('touchend', props.scrollToTop, { passive: false })
-	window.addEventListener('wheel', props.scrollToTop, { passive: false })
-	setTimeout(props.scrollToTop, 800)
+	window.addEventListener('touchend', props.alignSwiper, { passive: false })
+	window.addEventListener('wheel', props.alignSwiper, { passive: false })
+	setTimeout(props.alignSwiper, 800)
 
 	swiper.enable()
 	swiper.slideTo(0, 600)
@@ -73,8 +73,8 @@ function enter() {
 	console.log('enter')
 }
 function exit() {
-	window.removeEventListener('touchend', props.scrollToTop)
-	window.removeEventListener('wheel', props.scrollToTop)
+	window.removeEventListener('touchend', props.alignSwiper)
+	window.removeEventListener('wheel', props.alignSwiper)
 
 	swiper.disable()
 	linksActive.value = false
