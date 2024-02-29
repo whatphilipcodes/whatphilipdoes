@@ -11,7 +11,9 @@
 			:src="props.projectData.header.src"
 			:poster="props.projectData.header.poster"
 		/>
-		<div class="absolute top-0 h-full w-full bg-gradient-to-t from-mono-900" />
+		<div
+			class="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-mono-900"
+		/>
 		<LayoutPadding data-info="meta" class="absolute bottom-0 w-full">
 			<div data-info="project-title" class="col-span-full text-cinnabar-500">
 				{{ props.projectData.title?.toLowerCase() }}
