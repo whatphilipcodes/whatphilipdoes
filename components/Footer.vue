@@ -15,7 +15,7 @@
 		<div class="h-full w-screen justify-self-center bg-mono-900">
 			<LayoutPadding
 				data-info="footer"
-				class="h-52 bg-mono-900 max-sm:translate-y-[1px] md:h-60 lg:h-[88px]"
+				class="h-32 bg-mono-900 max-sm:translate-y-[1px] md:h-60 lg:h-[88px]"
 			>
 				<TouchableLink href="/legal/imprint">imprint</TouchableLink>
 				<TouchableLink href="/legal/privacy">privacy</TouchableLink>
