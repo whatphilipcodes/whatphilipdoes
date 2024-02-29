@@ -44,7 +44,10 @@ const props = defineProps({
 })
 
 // scroll prompt
-const active = ref(true)
+const active = ref(false)
+onMounted(() => {
+	active.value = true
+})
 const scrollContainer = ref<HTMLElement>()
 const { x } = useScroll(scrollContainer)
 const stop = watch(x, (val) => {
