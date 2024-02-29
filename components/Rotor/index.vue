@@ -41,6 +41,8 @@ function enter() {
 	alignSwiper()
 
 	swiperInstance.value?.enter()
+
+	console.log('rotor enter')
 }
 defineExpose({ enter })
 
@@ -53,6 +55,8 @@ function exit() {
 	window.removeEventListener('wheel', alignSwiper)
 
 	props.exitCallback?.()
+
+	console.log('rotor exit')
 }
 
 //
