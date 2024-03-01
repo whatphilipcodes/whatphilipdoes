@@ -38,7 +38,7 @@ function enter() {
 
 	window.addEventListener('touchend', alignSwiper, { passive: false })
 	window.addEventListener('wheel', alignSwiper, { passive: false })
-	alignSwiper()
+	setTimeout(alignSwiper, 800) // delay to prevent scroll jump on scroll stop
 
 	swiperInstance.value?.enter()
 
