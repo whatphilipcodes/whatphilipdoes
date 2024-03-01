@@ -7,8 +7,6 @@
 		<Nav />
 		<NuxtPage
 			:transition="{
-				name: 'fade',
-				mode: 'out-in',
 				onAfterEnter: () => {
 					useGlobalStore().setTransitioning(false)
 				},
