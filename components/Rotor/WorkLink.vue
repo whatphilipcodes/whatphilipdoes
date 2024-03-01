@@ -7,7 +7,7 @@
 			@touchmove.prevent
 			@click="onClick"
 			:to="props.to"
-			class="persistent-default absolute top-0 z-front h-full w-full"
+			class="persistent-default absolute bottom-0 z-front h-full w-full"
 		/>
 		<div
 			ref="activeDisplay"

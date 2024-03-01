@@ -1,5 +1,6 @@
 export default defineNuxtRouteMiddleware(async (to) => {
 	const { updateActivePage, updateActiveSegment } = useGlobalStore()
+	useGlobalStore().setTransitioning(true)
 	try {
 		const content = await queryContent(to.path).findOne() // useRoute warning caused by nuxt content
 		updateActivePage(content.segments[0].page)

@@ -1,6 +1,6 @@
 <template>
 	<div @click="props.callback" class="relative h-full w-full cursor-pointer">
-		<div class="absolute top-0 h-full w-full bg-cinnabar-950" />
+		<div class="absolute bottom-0 h-full w-full bg-cinnabar-950" />
 		<div
 			class="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-mono-900"
 		/>

@@ -5,7 +5,15 @@
 		class="bg-mono-950 text-mono-50 selection:bg-cinnabar-500"
 	>
 		<Nav />
-		<NuxtPage />
+		<NuxtPage
+			:transition="{
+				name: 'fade',
+				mode: 'default',
+				onAfterEnter: () => {
+					useGlobalStore().setTransitioning(false)
+				},
+			}"
+		/>
 	</div>
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 	<div
@@ -27,6 +35,7 @@ onBeforeMount(() => {
 	setLvh(window)
 })
 onMounted(() => {
+	useGlobalStore().setTransitioning(false)
 	setTimeout(() => {
 		isLoading.value = false
 	}, 300)

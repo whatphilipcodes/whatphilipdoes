@@ -59,6 +59,12 @@ export const useGlobalStore = defineStore('global', () => {
 		lvh.value = window.screen.height
 	}
 
+	// transitions
+	const isTransitioning = ref<boolean>(false)
+	function setTransitioning(value: boolean) {
+		isTransitioning.value = value
+	}
+
 	return {
 		activePage,
 		updateActivePage,
@@ -80,5 +86,8 @@ export const useGlobalStore = defineStore('global', () => {
 		//
 		lvh,
 		setLvh,
+		//
+		isTransitioning,
+		setTransitioning,
 	}
 })
