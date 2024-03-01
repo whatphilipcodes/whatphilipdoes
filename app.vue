@@ -8,7 +8,7 @@
 		<NuxtPage
 			:transition="{
 				name: 'fade',
-				mode: 'default',
+				mode: 'out-in',
 				onAfterEnter: () => {
 					useGlobalStore().setTransitioning(false)
 				},

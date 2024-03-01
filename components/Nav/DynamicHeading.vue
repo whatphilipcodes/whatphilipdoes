@@ -7,7 +7,7 @@
 			data-info="container-logo-top"
 			class="gradient flex flex-row text-mono-500"
 			:class="{
-				'text-transparent': useGlobalStore().isTransitioning,
+				'': useGlobalStore().isTransitioning,
 				'': !useGlobalStore().isTransitioning,
 			}"
 		>
