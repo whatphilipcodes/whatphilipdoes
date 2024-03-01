@@ -18,7 +18,7 @@
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 	<div
 		data-info="transition-background"
-		class="absolute top-0 -z-[990] h-full w-full bg-mono-950"
+		class="absolute bottom-0 -z-[990] h-full w-full bg-mono-950"
 	/>
 	<div
 		data-info="static-background"
