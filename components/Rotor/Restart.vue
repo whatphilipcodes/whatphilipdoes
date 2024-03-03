@@ -7,7 +7,9 @@
 		<div
 			class="flash-enter absolute bottom-0 h-full w-full hover:bg-mono-800/20 active:bg-cinnabar-500/20"
 		/>
-		<LayoutColumns class="pointer-events-none absolute h-full w-full">
+		<LayoutColumns
+			class="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full"
+		>
 			<div class="col-span-full self-end py-12 text-cinnabar-500">
 				click to show again
 			</div>
