@@ -9,7 +9,6 @@
 			ref="swiperInstance"
 			:cb-enter="enter"
 			:cb-exit="exit"
-			:align-swiper="alignSwiper"
 			:slides="props.slides"
 		/>
 	</div>
