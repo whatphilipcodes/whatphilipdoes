@@ -1,5 +1,11 @@
 <template>
-	<div class="swiper absolute bottom-0 h-lvh w-full overflow-clip">
+	<div
+		class="swiper bottom-0 h-lvh w-full overflow-clip"
+		:class="{
+			absolute: !active,
+			fixed: active,
+		}"
+	>
 		<div class="swiper-wrapper">
 			<div v-for="slide in props.slides" class="swiper-slide">
 				<RotorWorkLink :link-active="linksActive" :to="slide._path">
@@ -35,6 +41,7 @@ const props = defineProps({
 
 let swiper: Swiper
 const linksActive = ref(false)
+const active = ref(false)
 
 //
 onMounted(async () => {
@@ -66,11 +73,15 @@ function enter() {
 	swiper.enable()
 	swiper.slideTo(0, 600)
 	linksActive.value = true
+	setTimeout(() => {
+		active.value = true
+	}, 800)
 }
 defineExpose({ enter })
 function exit() {
 	swiper.disable()
 	linksActive.value = false
+	active.value = false
 	props.cbExit()
 }
 </script>
