@@ -9,6 +9,7 @@
 			ref="swiperInstance"
 			:cb-enter="enter"
 			:cb-exit="exit"
+			:fixed="isFixed"
 			:slides="props.slides"
 		/>
 	</div>
@@ -25,19 +26,20 @@ const props = defineProps({
 		required: false,
 	},
 })
-const blocker = new BlockExceptionHandler('rotor-component')
 const swiperInstance = ref()
 const rotorWrap = ref<HTMLElement>()
+const blocker = new BlockExceptionHandler('rotor-component')
+const isFixed = ref(false)
 
 //
-function enter() {
+function enter(alignDelay = 800) {
 	blocker.attachEvent('wheel', window)
 	blocker.attachEvent('touchstart', window)
 	rotorWrap.value?.classList.add('block-touch-actions')
 
 	window.addEventListener('touchend', alignSwiper, { passive: false })
 	window.addEventListener('wheel', alignSwiper, { passive: false })
-	setTimeout(alignSwiper, 800) // delay to prevent scroll jump on scroll stop
+	setTimeout(alignSwiper, alignDelay) // delay to prevent scroll jump on scroll stop
 
 	swiperInstance.value?.enter()
 
@@ -46,6 +48,7 @@ function enter() {
 defineExpose({ enter })
 
 function exit() {
+	isFixed.value = false
 	blocker.detachEvent('wheel', window)
 	blocker.detachEvent('touchstart', window)
 	rotorWrap.value?.classList.remove('block-touch-actions')
@@ -59,12 +62,12 @@ function exit() {
 }
 
 //
+const { scrollToCb } = useScrollCallback()
 function alignSwiper() {
 	if (!rotorWrap.value) return
 	const bottom = rotorWrap.value.offsetTop + rotorWrap.value.offsetHeight
-	window.scrollTo({
-		top: bottom - window.innerHeight,
-		behavior: 'smooth',
+	scrollToCb(window, bottom - window.innerHeight, () => {
+		isFixed.value = true
 	})
 }
 </script>

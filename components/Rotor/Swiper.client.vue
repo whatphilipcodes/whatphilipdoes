@@ -2,8 +2,8 @@
 	<div
 		class="swiper bottom-0 h-lvh w-full overflow-clip"
 		:class="{
-			absolute: !active,
-			fixed: active,
+			absolute: !props.fixed,
+			fixed: props.fixed,
 		}"
 	>
 		<div class="swiper-wrapper">
@@ -37,11 +37,14 @@ const props = defineProps({
 		type: Function,
 		required: true,
 	},
+	fixed: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 let swiper: Swiper
 const linksActive = ref(false)
-const active = ref(false)
 
 //
 onMounted(async () => {
@@ -73,15 +76,11 @@ function enter() {
 	swiper.enable()
 	swiper.slideTo(0, 600)
 	linksActive.value = true
-	setTimeout(() => {
-		active.value = true
-	}, 800)
 }
 defineExpose({ enter })
 function exit() {
 	swiper.disable()
 	linksActive.value = false
-	active.value = false
 	props.cbExit()
 }
 </script>
