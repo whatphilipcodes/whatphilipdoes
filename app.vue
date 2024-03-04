@@ -4,7 +4,7 @@
 		lang="en"
 		class="bg-mono-950 text-mono-50 selection:bg-cinnabar-500"
 	>
-		<Nav />
+		<DynamicHeading />
 		<NuxtPage
 			:transition="{
 				onAfterEnter: () => {
