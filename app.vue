@@ -12,6 +12,7 @@
 				},
 			}"
 		/>
+		<TouchActions />
 	</div>
 	<Loading v-if="loaderMounted" :class="{ 'opacity-0': !isLoading }" />
 	<div
