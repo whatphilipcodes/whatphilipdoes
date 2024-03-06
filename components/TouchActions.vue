@@ -5,14 +5,15 @@
 	>
 		<Button
 			v-for="button in buffer.slice(0, 2)"
-			class="col-span-full h-14 hyphens-manual"
-			:class-overrides="tw`pl-4 items-center justify-start`"
+			class="col-span-full flex h-14 hyphens-manual"
+			:class-overrides="tw`pl-4 pr-6 items-center flex-row justify-between`"
 			:to="typeof button.to === 'string' ? button.to : undefined"
 			:callback="typeof button.to === 'function' ? button.to : undefined"
 			:variant="button.variant ?? 'basic'"
 			:download="button.download ?? undefined"
-			>{{ button.label }}</Button
-		>
+			>{{ button.label }}
+			<!-- <div class="h-4 w-4 border" /> -->
+		</Button>
 	</LayoutPadding>
 </template>
 
