@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="relative col-span-full h-44 w-screen justify-self-center lg:w-full"
+		class="relative col-span-full h-44 w-screen justify-self-center md:w-full"
 	>
 		<div
 			data-info="bg-container"

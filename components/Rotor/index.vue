@@ -30,6 +30,7 @@ const swiperInstance = ref()
 const rotorWrap = ref<HTMLElement>()
 const blocker = new BlockExceptionHandler('rotor-component')
 const isFixed = ref(false)
+let pendingAlign: NodeJS.Timeout
 
 //
 function enter(alignDelay = 800) {
@@ -37,9 +38,12 @@ function enter(alignDelay = 800) {
 	blocker.attachEvent('touchstart', window)
 	rotorWrap.value?.classList.add('block-touch-actions')
 
-	window.addEventListener('touchend', alignSwiper, { passive: false })
-	window.addEventListener('wheel', alignSwiper, { passive: false })
-	setTimeout(alignSwiper, alignDelay) // delay to prevent scroll jump on scroll stop
+	if (pendingAlign) clearTimeout(pendingAlign)
+	pendingAlign = setTimeout(() => {
+		alignSwiper()
+		window.addEventListener('touchend', alignSwiper, { passive: false })
+		window.addEventListener('wheel', alignSwiper, { passive: false })
+	}, alignDelay) // delay to prevent scroll jump on scroll stop
 
 	swiperInstance.value?.enter()
 
