@@ -14,10 +14,7 @@
 		<div
 			class="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-mono-900"
 		/>
-		<LayoutPadding
-			data-info="meta"
-			class="absolute bottom-0 left-0 right-0 pb-16"
-		>
+		<LayoutPadding data-info="meta" class="absolute bottom-0 left-0 right-0">
 			<div data-info="project-title" class="col-span-full text-mono-50">
 				{{ props.projectData.title?.toLowerCase() }}
 			</div>
@@ -32,6 +29,9 @@
 				>
 					{{ tag.toLowerCase() }}
 				</div>
+			</div>
+			<div v-if="!props.opened" class="col-span-full pt-4 text-cinnabar-500">
+				{{ prompt }}
 			</div>
 		</LayoutPadding>
 	</div>
@@ -48,5 +48,17 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+})
+const input = useDeviceType()
+const prompt = computed(() => {
+	switch (input.value) {
+		case 'mouse':
+			return 'click anywhere to open'
+			break
+
+		default:
+			return 'tap anywhere to open'
+			break
+	}
 })
 </script>
