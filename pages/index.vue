@@ -39,7 +39,7 @@
 						>
 							<Button
 								v-for="link in content.bundle.closer.social"
-								class="aspect-square lg:w-10"
+								class="aspect-square lg:w-14"
 								:to="link.to"
 								variant="dark"
 							>

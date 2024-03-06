@@ -4,7 +4,7 @@
 			<ContentRenderer
 				:value="doc"
 				tag="layout-columns"
-				class="gap-y-12 pb-4 md:pb-8"
+				class="gap-y-12 pb-8 md:pb-12"
 			/>
 			<Footer :segment="doc.footer" />
 		</ContentDoc>
