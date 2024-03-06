@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-const { addSegmentCallback, updateActiveSegment } = useGlobalStore()
 const segment = useGlobalStore().activeSegment
 const buttons = computed(() => segment.buttons)
 
@@ -46,17 +45,5 @@ const opacity = computed(() => {
 	return {
 		'opacity-0': !opaque.value,
 	}
-})
-
-addSegmentCallback('getRotorButtons', () => {
-	updateActiveSegment({
-		buttons: [
-			{
-				label: 'tap anywhere to open',
-				to: '',
-				variant: 'prompt',
-			},
-		],
-	})
 })
 </script>

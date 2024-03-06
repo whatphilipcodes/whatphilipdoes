@@ -70,6 +70,31 @@ function alignSwiper() {
 		isFixed.value = true
 	})
 }
+
+//
+const { addSegmentCallback, updateActiveSegment } = useGlobalStore()
+const rotorButtons = computed(() => {
+	if (isFixed.value)
+		return {
+			buttons: [
+				{
+					label: 'tap anywhere to open',
+					to: '',
+					variant: 'prompt',
+				},
+			],
+		}
+	else
+		return {
+			buttons: [],
+		}
+})
+watch(rotorButtons, () => {
+	updateActiveSegment(rotorButtons.value)
+})
+addSegmentCallback('getRotorButtons', () => {
+	updateActiveSegment(rotorButtons.value)
+})
 </script>
 
 <style lang="css" scoped>
