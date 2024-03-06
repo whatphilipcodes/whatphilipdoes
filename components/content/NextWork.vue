@@ -1,5 +1,5 @@
 <template>
-	<div class="relative col-span-full h-44">
+	<div class="relative col-span-full h-44 w-screen justify-self-center">
 		<div
 			data-info="bg-container"
 			class="absolute top-0 h-full w-full bg-cinnabar-950"
@@ -13,10 +13,7 @@
 				class="absolute top-0 h-full w-full bg-gradient-to-t from-mono-900"
 			/>
 		</div>
-		<div
-			data-info="description"
-			class="absolute bottom-4 right-4 flex flex-col place-content-end text-end"
-		>
+		<div data-info="description" class="absolute bottom-4 left-4 flex flex-col">
 			<div class="text-mono-500">{{ props.label }}</div>
 			<div class="text-cinnabar-500" v-if="data.header">
 				{{ data.title }}
