@@ -29,11 +29,11 @@ const input = useDeviceType()
 const prompt = computed(() => {
 	switch (input.value) {
 		case 'mouse':
-			return 'click anywhere to restart'
+			return 'click to have another look'
 			break
 
 		default:
-			return 'tap anywhere to restart'
+			return 'tap to have another look'
 			break
 	}
 })

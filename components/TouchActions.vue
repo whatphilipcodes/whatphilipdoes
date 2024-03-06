@@ -6,7 +6,7 @@
 		<Button
 			v-for="button in buffer.slice(0, 2)"
 			class="col-span-full h-14 hyphens-manual"
-			:class-overrides="tw`pl-3 items-center justify-start`"
+			:class-overrides="tw`pl-4 items-center justify-start`"
 			:to="typeof button.to === 'string' ? button.to : undefined"
 			:callback="typeof button.to === 'function' ? button.to : undefined"
 			:variant="button.variant ?? 'basic'"
