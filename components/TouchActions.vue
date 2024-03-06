@@ -23,18 +23,20 @@ const buttons = computed(() => segment.buttons)
 const opaque = ref(true)
 let buffer: Ref<buttonData[]> = ref([])
 let empty = true
+let pendingReset: NodeJS.Timeout
 
 watch(segment, () => {
 	if (!buttons.value) return
 	if (buttons.value.length === 0) {
 		if (empty) return
 		opaque.value = false
-		setTimeout(() => {
+		pendingReset = setTimeout(() => {
 			empty = true
 			buffer.value = []
 			opaque.value = true
 		}, 300)
 	} else {
+		clearTimeout(pendingReset)
 		empty = false
 		buffer.value = buttons.value
 		opaque.value = true
