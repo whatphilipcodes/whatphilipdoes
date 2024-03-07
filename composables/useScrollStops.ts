@@ -27,7 +27,7 @@ export const useScrollStops = () => {
 	function startLoop() {
 		const { stop } = useIntersectionObserver(
 			activeStop.value.target,
-			([{ isIntersecting, target }]) => {
+			([{ isIntersecting }]) => {
 				if (!isIntersecting) return // only trigger on enter
 				if (activeIndex.value >= scrollStopTriggers.length - 1) {
 					stop()
