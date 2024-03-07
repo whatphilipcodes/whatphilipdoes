@@ -96,7 +96,7 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 	devtools: {
-		enabled: true,
+		enabled: false,
 	},
 	devServer: {
 		host: '0',
