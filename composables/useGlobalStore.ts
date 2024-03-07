@@ -6,16 +6,19 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 
 	// segments
-	const scrollSegments = ref<
-		{ enter: number; exit: number; segment: Partial<pageSegment> }[]
-	>([])
-	const activeSegment = ref<Partial<pageSegment>>({
+	interface scrollSegment {
+		enter: globalThis.ComputedRef<number>
+		exit: globalThis.ComputedRef<number>
+		segment: Partial<pageSegment>
+	}
+	const scrollSegments: globalThis.Ref<scrollSegment[]> = ref([])
+	const activeSegment: globalThis.Ref<Partial<pageSegment>> = ref({
 		name: 'does',
 		buttons: [],
 	})
 	function addSegment(
-		enter: number,
-		exit: number,
+		enter: globalThis.ComputedRef<number>,
+		exit: globalThis.ComputedRef<number>,
 		segment: Partial<pageSegment>,
 	) {
 		scrollSegments.value.push({ enter, exit, segment })

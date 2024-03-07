@@ -9,7 +9,7 @@
 			class="absolute bottom-0 z-bottom h-[56dvh] w-full"
 		>
 			<ScrollSegment :page-segment="props.segment">
-				<div class="relative h-full w-full"></div>
+				<div class="relative h-full w-full" />
 			</ScrollSegment>
 		</div>
 		<div class="h-full w-screen justify-self-center bg-mono-900">
@@ -30,10 +30,5 @@ const props = defineProps({
 		type: Object as PropType<pageSegment>,
 		default: undefined,
 	},
-})
-
-const activeSegment = useGlobalStore().activeSegment
-watch(activeSegment, () => {
-	console.log(activeSegment)
 })
 </script>

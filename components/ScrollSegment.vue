@@ -1,14 +1,11 @@
 <template>
-	<div class="z-front col-span-full" ref="enter" />
+	<div class="z-front col-span-full" ref="elEnter" />
 	<slot />
-	<div class="z-front col-span-full" ref="exit" />
+	<div class="z-front col-span-full" ref="elExit" />
 </template>
 
 <script setup lang="ts">
-const enter = ref<HTMLElement>()
-const exit = ref<HTMLElement>()
-
-const { addSegment } = useGlobalStore()
+const { addSegment, scrollSegments } = useGlobalStore()
 
 const props = defineProps({
 	title: {
@@ -40,23 +37,40 @@ const segment = computed(() => {
 	}
 })
 
-onMounted(() => {
-	const enterRect = enter.value?.getBoundingClientRect()
-	const exitRect = exit.value?.getBoundingClientRect()
-	if (enterRect && exitRect) {
-		console.log(
-			Math.round(enterRect.top + window.scrollY),
-			Math.round(exitRect.top + window.scrollY),
-		)
-		addSegment(
-			Math.round(enterRect.top + window.scrollY),
-			Math.round(exitRect.top + window.scrollY),
-			segment.value,
-		)
-	} else {
-		throw new Error(
-			`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.`, // does this make sense?
-		)
-	}
+const elEnter = ref<HTMLElement>()
+const elExit = ref<HTMLElement>()
+
+const enter = computed(() => {
+	if (!elEnter.value) return 0
+	const rect: DOMRect = elEnter.value?.getBoundingClientRect()
+	return Math.round(rect.top)
 })
+
+const exit = computed(() => {
+	if (!elExit.value) return 0
+	const rect: DOMRect = elExit.value?.getBoundingClientRect()
+	return Math.round(rect.top)
+})
+
+watchImmediate(scrollSegments, () => {
+	console.log('scrollSegments', scrollSegments)
+})
+
+onMounted(() => {
+	addSegment(enter, exit, segment.value)
+})
+
+// onMounted(() => {
+// if (enter && exit) {
+// 	addSegment(
+// 		Math.round(enterRect.top + window.scrollY),
+// 		Math.round(exitRect.top + window.scrollY),
+// 		segment.value,
+// 	)
+// } else {
+// 	throw new Error(
+// 		`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.`, // does this make sense?
+// 	)
+// }
+// })
 </script>
