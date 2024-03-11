@@ -4,7 +4,7 @@
 		:class="opacity"
 	>
 		<Button
-			v-for="button in segment.buttons?.slice(0, 2)"
+			v-for="button in activeSegment.buttons?.slice(0, 2)"
 			class="col-span-full flex h-14 hyphens-manual"
 			:class-overrides="tw`pl-4 pr-6 items-center flex-row justify-between`"
 			:to="typeof button.to === 'string' ? button.to : undefined"
@@ -18,16 +18,16 @@
 </template>
 
 <script setup lang="ts">
-const segment = useGlobalStore().activeSegment
-const buttons = computed(() => segment.buttons)
+const store = useGlobalStore()
+const { activeSegment } = storeToRefs(store)
 
 // const opaque = ref(true)
 let buffer: Ref<buttonData[]> = ref([])
 let pendingReset: NodeJS.Timeout
 
-watch(segment, () => {
-	if (!buttons.value) return
-	if (buttons.value.length === 0) {
+watch(activeSegment, () => {
+	if (!activeSegment.value.buttons) return
+	if (activeSegment.value.buttons.length === 0) {
 		// opaque.value = false
 		pendingReset = setTimeout(() => {
 			buffer.value = []
@@ -35,7 +35,7 @@ watch(segment, () => {
 		}, 300)
 	} else {
 		clearTimeout(pendingReset)
-		buffer.value = buttons.value
+		buffer.value = activeSegment.value.buttons
 		// opaque.value = true
 	}
 })

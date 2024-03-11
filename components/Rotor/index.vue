@@ -3,7 +3,7 @@
 		data-info="rotor-wrapper"
 		ref="rotorWrap"
 		class="relative col-span-full h-[560px] w-screen justify-self-center overflow-visible"
-		:style="{ height: `${useGlobalStore().lvh}px` }"
+		:style="{ height: `${store.lvh}px` }"
 	>
 		<RotorSwiper
 			ref="swiperInstance"
@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+const store = useGlobalStore()
 const props = defineProps({
 	slides: {
 		type: Array as PropType<contentProject[]>,
@@ -76,7 +77,6 @@ function alignSwiper() {
 }
 
 //
-const store = useGlobalStore()
 store.addSegmentCallback('getRotorButtons', () => {
 	console.log('call to getRotorButtons')
 	if (store.activeSegment.buttons?.length == 0) return

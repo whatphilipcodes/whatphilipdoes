@@ -1,12 +1,8 @@
 import type { WatchStopHandle } from 'vue'
 export const useScrollSegments = () => {
 	// props
-	const {
-		scrollSegments,
-		updateActiveSegment,
-		executeSegmentCallback,
-		resetSegments,
-	} = useGlobalStore()
+	const store = useGlobalStore()
+	const { scrollSegments } = storeToRefs(store)
 	const { y } = useWindowScroll()
 	let cbUnwatch: WatchStopHandle
 
@@ -18,30 +14,30 @@ export const useScrollSegments = () => {
 	onMounted(() => {
 		watchOnce(currentSegments, () => {
 			if (y.value > 0) return // bandaid fix -> todo: proper handling
-			updateActiveSegment(currentSegments.value[0]?.segment)
+			store.updateActiveSegment(currentSegments.value[0]?.segment)
 		})
 		cbUnwatch = watch(y, () => {
 			const segment = currentSegments.value[0]?.segment
 			if (!segment) {
 				// reset buttons
-				updateActiveSegment({
+				store.updateActiveSegment({
 					buttons: [],
 				})
 				return
 			}
-			if (segment.callback) executeSegmentCallback(segment.callback)
-			updateActiveSegment(segment)
+			if (segment.callback) store.executeSegmentCallback(segment.callback)
+			store.updateActiveSegment(segment)
 		})
 	})
 	onBeforeUnmount(() => {
-		resetSegments()
+		store.resetSegments()
 		cbUnwatch()
 	})
 
 	// helpers
 	const currentSegments = computed(() => {
 		const center = y.value + window.innerHeight / 2
-		const activeSegments = scrollSegments.filter(
+		const activeSegments = scrollSegments.value.filter(
 			(segment) => segment.enter <= center && segment.exit >= center,
 		)
 		return activeSegments

@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const { addSegment } = useGlobalStore()
-
+const store = useGlobalStore()
 const props = defineProps({
 	title: {
 		type: String,
@@ -53,7 +52,7 @@ const exit = computed(() => {
 })
 
 onMounted(() => {
-	addSegment(enter, exit, segment.value)
+	store.addSegment(enter, exit, segment.value)
 
 	// setInterval(() => {
 	// 	console.log('enter', enter.value)

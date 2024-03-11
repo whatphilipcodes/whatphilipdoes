@@ -62,7 +62,7 @@ let exitScrollStops: () => void
 const contactBtn = ref<HTMLElement>()
 
 const projectRotor = ref()
-const { updateActivePage } = useGlobalStore()
+const store = useGlobalStore()
 
 useScrollSegments()
 
@@ -80,7 +80,7 @@ onMounted(() => {
 	window.scrollTo(0, 0)
 
 	// set page title
-	updateActivePage('what philip')
+	store.updateActivePage('what philip')
 
 	// enter scroll stops
 	const {

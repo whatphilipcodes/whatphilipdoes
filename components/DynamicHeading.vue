@@ -14,11 +14,11 @@
 				class="pointer-events-auto col-span-full text-xl font-semibold leading-xl"
 			>
 				<span data-info="page" class="inline text-mono-500">{{
-					store.$state.activePage
+					store.activePage
 				}}</span
 				><br />
 				<span data-info="highlight" class="inline text-mono-50">{{
-					store.$state.activeSegment.name
+					store.activeSegment.name
 				}}</span>
 			</NuxtLink>
 		</LayoutPadding>

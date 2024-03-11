@@ -8,7 +8,7 @@
 		<NuxtPage
 			:transition="{
 				onAfterEnter: () => {
-					useGlobalStore().setTransitioning(false)
+					store.setTransitioning(false)
 				},
 			}"
 		/>
@@ -26,15 +26,15 @@
 </template>
 
 <script lang="ts" setup>
-const { setLvh } = useGlobalStore()
+const store = useGlobalStore()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
 onBeforeMount(() => {
-	setLvh(window)
+	store.setLvh(window)
 })
 onMounted(() => {
-	useGlobalStore().setTransitioning(false)
+	store.setTransitioning(false)
 	setTimeout(() => {
 		isLoading.value = false
 	}, 300)
