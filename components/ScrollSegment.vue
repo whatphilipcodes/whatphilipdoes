@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const { addSegment, scrollSegments } = useGlobalStore()
+const { addSegment } = useGlobalStore()
 
 const props = defineProps({
 	title: {
@@ -52,12 +52,13 @@ const exit = computed(() => {
 	return Math.round(rect.top)
 })
 
-watchImmediate(scrollSegments, () => {
-	console.log('scrollSegments', scrollSegments)
-})
-
 onMounted(() => {
 	addSegment(enter, exit, segment.value)
+
+	// setInterval(() => {
+	// 	console.log('enter', enter.value)
+	// 	console.log('exit', exit.value)
+	// }, 3000)
 })
 
 // onMounted(() => {

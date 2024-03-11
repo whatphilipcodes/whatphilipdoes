@@ -21,6 +21,7 @@ export const useGlobalStore = defineStore('global', () => {
 		exit: globalThis.ComputedRef<number>,
 		segment: Partial<pageSegment>,
 	) {
+		console.log('adding segment', segment)
 		scrollSegments.value.push({ enter, exit, segment })
 	}
 	function updateActiveSegment(segment: Partial<pageSegment>) {
@@ -28,12 +29,14 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 	const segmentCallbacks: { [key: string]: () => any } = {}
 	function addSegmentCallback(name: string, callback: () => any) {
+		console.log('adding segment callback', name)
 		segmentCallbacks[name] = callback
 	}
 	function executeSegmentCallback(name: string) {
 		segmentCallbacks[name]?.()
 	}
 	function resetSegments() {
+		console.log('resetting segments')
 		scrollSegments.value.splice(0, scrollSegments.value.length)
 	}
 

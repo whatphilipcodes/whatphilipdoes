@@ -10,6 +10,10 @@ export const useScrollSegments = () => {
 	const { y } = useWindowScroll()
 	let cbUnwatch: WatchStopHandle
 
+	watchImmediate(scrollSegments, () => {
+		console.log('scrollSegments', scrollSegments)
+	})
+
 	//controller
 	onMounted(() => {
 		watchOnce(currentSegments, () => {
