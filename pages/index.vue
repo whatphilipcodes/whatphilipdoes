@@ -18,7 +18,7 @@
 					<div datainfo="spacer-title" class="col-span-full h-36" />
 					<div
 						class="col-span-full md:col-span-6"
-						:style="{ height: `${store.lvh * 0.64}px` }"
+						:style="{ height: `${store.lvh * 0.56}px` }"
 					>
 						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 					</div>
@@ -34,7 +34,8 @@
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
-						class="col-span-full mb-4 flex h-[32rem] items-end md:mb-8 lg:h-[64vh] lg:items-center"
+						class="col-span-full mb-4 flex items-end md:mb-8 lg:items-center"
+						:style="{ height: `${store.lvh * 0.64}px` }"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
