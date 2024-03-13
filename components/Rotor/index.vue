@@ -78,7 +78,6 @@ function alignSwiper() {
 
 //
 store.addSegmentCallback('getRotorButtons', () => {
-	console.log('call to getRotorButtons')
 	if (store.activeSegment.buttons?.length == 0) return
 	store.updateActiveSegment({
 		buttons: [],

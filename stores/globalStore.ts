@@ -6,38 +6,32 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 
 	// segments
-	interface scrollSegment {
-		enter: globalThis.ComputedRef<number>
-		exit: globalThis.ComputedRef<number>
-		segment: Partial<pageSegment>
-	}
-	const scrollSegments: globalThis.Ref<scrollSegment[]> = ref([])
-	const activeSegment: globalThis.Ref<Partial<pageSegment>> = ref({
+	const activeSegment = ref<Partial<pageSegment>>({
 		name: 'does',
 		buttons: [],
 	})
+	const segmentPositions = ref<
+		{ enter: HTMLElement; exit: HTMLElement; segment: Partial<pageSegment> }[]
+	>([])
 	function addSegment(
-		enter: globalThis.ComputedRef<number>,
-		exit: globalThis.ComputedRef<number>,
+		enter: HTMLElement,
+		exit: HTMLElement,
 		segment: Partial<pageSegment>,
 	) {
-		console.log('adding segment', segment)
-		scrollSegments.value.push({ enter, exit, segment })
+		segmentPositions.value.push({ enter, exit, segment })
 	}
 	function updateActiveSegment(segment: Partial<pageSegment>) {
 		Object.assign(activeSegment.value, segment)
 	}
-	const segmentCallbacks: { [key: string]: () => any } = {}
+	const segmentCallbacks = ref<{ [key: string]: () => any }>({})
 	function addSegmentCallback(name: string, callback: () => any) {
-		console.log('adding segment callback', name)
-		segmentCallbacks[name] = callback
+		segmentCallbacks.value[name] = callback
 	}
 	function executeSegmentCallback(name: string) {
-		segmentCallbacks[name]?.()
+		segmentCallbacks.value[name]?.()
 	}
 	function resetSegments() {
-		console.log('resetting segments')
-		scrollSegments.value.splice(0, scrollSegments.value.length)
+		segmentPositions.value.splice(0, segmentPositions.value.length)
 	}
 
 	// stops
@@ -60,13 +54,13 @@ export const useGlobalStore = defineStore('global', () => {
 	}
 
 	// static lvh
-	const lvh = ref<number>(0)
+	const lvh = ref(0)
 	function setLvh(window: Window) {
 		lvh.value = window.screen.height
 	}
 
 	// transitions
-	const isTransitioning = ref<boolean>(false)
+	const isTransitioning = ref(false)
 	function setTransitioning(value: boolean) {
 		isTransitioning.value = value
 	}
@@ -76,7 +70,7 @@ export const useGlobalStore = defineStore('global', () => {
 		updateActivePage,
 		//
 		activeSegment,
-		scrollSegments,
+		segmentPositions,
 		addSegment,
 		updateActiveSegment,
 		segmentCallbacks,

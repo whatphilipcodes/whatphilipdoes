@@ -39,38 +39,14 @@ const segment = computed(() => {
 const elEnter = ref<HTMLElement>()
 const elExit = ref<HTMLElement>()
 
-const enter = computed(() => {
-	if (!elEnter.value) return 0
-	const rect: DOMRect = elEnter.value?.getBoundingClientRect()
-	return Math.round(rect.top)
-})
-
-const exit = computed(() => {
-	if (!elExit.value) return 0
-	const rect: DOMRect = elExit.value?.getBoundingClientRect()
-	return Math.round(rect.top)
-})
-
 onMounted(() => {
-	store.addSegment(enter, exit, segment.value)
-
-	// setInterval(() => {
-	// 	console.log('enter', enter.value)
-	// 	console.log('exit', exit.value)
-	// }, 3000)
+	if (!elEnter.value || !elExit.value)
+		throw new Error(
+			'there seems to be an issue with one of the scrollSegment component instances. elEnter: ' +
+				elEnter.value +
+				' elExit: ' +
+				elExit.value,
+		)
+	store.addSegment(elEnter.value, elExit.value, segment.value)
 })
-
-// onMounted(() => {
-// if (enter && exit) {
-// 	addSegment(
-// 		Math.round(enterRect.top + window.scrollY),
-// 		Math.round(exitRect.top + window.scrollY),
-// 		segment.value,
-// 	)
-// } else {
-// 	throw new Error(
-// 		`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.`, // does this make sense?
-// 	)
-// }
-// })
 </script>

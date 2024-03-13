@@ -21,29 +21,28 @@
 const store = useGlobalStore()
 const { activeSegment } = storeToRefs(store)
 
-// const opaque = ref(true)
+const opaque = ref(true)
 let buffer: Ref<buttonData[]> = ref([])
 let pendingReset: NodeJS.Timeout
 
 watch(activeSegment, () => {
 	if (!activeSegment.value.buttons) return
 	if (activeSegment.value.buttons.length === 0) {
-		// opaque.value = false
+		opaque.value = false
 		pendingReset = setTimeout(() => {
 			buffer.value = []
-			// opaque.value = true
+			opaque.value = true
 		}, 300)
 	} else {
 		clearTimeout(pendingReset)
 		buffer.value = activeSegment.value.buttons
-		// opaque.value = true
+		opaque.value = true
 	}
 })
 
 const opacity = computed(() => {
-	return '' /* {
+	return {
 		'opacity-0': !opaque.value,
-		
-	}*/
+	}
 })
 </script>
