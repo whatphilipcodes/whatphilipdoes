@@ -16,7 +16,10 @@
 						>
 					</div>
 					<div datainfo="spacer-title" class="col-span-full h-36" />
-					<div class="col-span-full h-[28rem] md:col-span-6 lg:h-[64vh]">
+					<div
+						class="col-span-full md:col-span-6"
+						:style="{ height: `${store.lvh * 0.64}px` }"
+					>
 						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 					</div>
 				</ScrollSegment>

@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="relative col-span-full h-44 w-screen justify-self-center md:w-full"
-	>
+	<div class="relative col-span-full h-44 md:w-full">
 		<div
 			data-info="bg-container"
 			class="absolute top-0 h-full w-full bg-cinnabar-950"
