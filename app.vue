@@ -30,11 +30,16 @@ const store = useGlobalStore()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
+const content = await queryContent('/').findOne()
+
 onBeforeMount(() => {
 	store.setLvh(window)
 })
 onMounted(() => {
 	store.setTransitioning(false)
+	store.updateActiveSegment({
+		buttons: content.segments[0].buttons ?? [],
+	})
 	setTimeout(() => {
 		isLoading.value = false
 	}, 300)
