@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 		store.updateActivePage(content.segments[0].page)
 		store.updateActiveSegment({
 			name: content.segments[0].name,
-			buttons: content.segments[0].buttons ?? [],
+			buttons: [],
 		})
 	} catch (error) {
 		console.error(
