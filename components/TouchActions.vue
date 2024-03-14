@@ -4,7 +4,7 @@
 		:class="opacity"
 	>
 		<Button
-			v-for="button in activeSegment.buttons?.slice(0, 2)"
+			v-for="button in buffer.slice(0, 2)"
 			class="col-span-full flex h-14 hyphens-manual"
 			:class-overrides="tw`pl-4 pr-6 items-center flex-row justify-between`"
 			:to="typeof button.to === 'string' ? button.to : undefined"
@@ -12,7 +12,6 @@
 			:variant="button.variant ?? 'basic'"
 			:download="button.download ?? undefined"
 			>{{ button.label }}
-			<!-- <div class="h-4 w-4 border" /> -->
 		</Button>
 	</LayoutPadding>
 </template>
@@ -22,19 +21,22 @@ const store = useGlobalStore()
 const { activeSegment } = storeToRefs(store)
 
 const opaque = ref(true)
-let buffer: Ref<buttonData[]> = ref([])
-let pendingReset: NodeJS.Timeout
+let buffer = ref<buttonData[]>([])
+let pendingReset: undefined | NodeJS.Timeout
 
-watch(activeSegment, () => {
+watch(activeSegment.value, () => {
 	if (!activeSegment.value.buttons) return
 	if (activeSegment.value.buttons.length === 0) {
 		opaque.value = false
+		if (pendingReset) return
 		pendingReset = setTimeout(() => {
 			buffer.value = []
+			pendingReset = undefined
 			opaque.value = true
 		}, 300)
 	} else {
 		clearTimeout(pendingReset)
+		pendingReset = undefined
 		buffer.value = activeSegment.value.buttons
 		opaque.value = true
 	}
