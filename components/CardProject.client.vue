@@ -20,15 +20,14 @@
 			</div>
 			<div
 				data-info="project-tags"
-				class="col-span-3 mt-4 flex h-fit flex-row flex-wrap gap-x-6"
+				class="col-span-3 mt-4 flex h-fit flex-row flex-wrap gap-x-2 text-mono-500"
 			>
-				<div
+				<template
 					v-for="(tag, index) in props.projectData.projectTags"
 					:key="index"
-					class="text-mono-500"
+					><div v-if="index > 0">·</div>
+					<div>{{ tag.toLowerCase() }}</div></template
 				>
-					{{ tag.toLowerCase() }}
-				</div>
 			</div>
 			<div v-if="!props.opened" class="col-span-full pt-4 text-cinnabar-500">
 				{{ prompt }}

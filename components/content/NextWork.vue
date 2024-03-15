@@ -2,7 +2,7 @@
 	<div class="relative col-span-full h-44 md:w-full">
 		<div
 			data-info="bg-container"
-			class="absolute top-0 h-full w-full bg-cinnabar-950"
+			class="absolute top-0 h-full w-full bg-cinnabar-900"
 		>
 			<Video
 				v-if="data.header"
