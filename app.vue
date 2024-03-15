@@ -30,7 +30,7 @@ const store = useGlobalStore()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
-const content = await queryContent('/').findOne()
+const content = await queryContent(useRoute().fullPath).findOne()
 
 onBeforeMount(() => {
 	store.setLvh(window)
