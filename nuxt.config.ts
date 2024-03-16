@@ -34,12 +34,13 @@ export default defineNuxtConfig({
 	},
 	googleFonts: {
 		families: {
-			preload: true,
 			Jost: {
-				wght: [400, 600],
+				wght: '400..600',
 				ital: [500],
 			},
 		},
+		preload: true,
+		subsets: 'latin',
 	},
 	alias: {
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
