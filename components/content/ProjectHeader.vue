@@ -4,7 +4,9 @@
 		:opened="true"
 		class="col-span-full w-screen"
 	/>
-	<div class="col-span-full hyphens-auto text-pretty text-lg italic">
+	<div
+		class="col-span-full hyphens-auto text-pretty text-lg italic md:col-start-4 lg:col-start-6"
+	>
 		{{ projectData.abstract }}
 	</div>
 </template>

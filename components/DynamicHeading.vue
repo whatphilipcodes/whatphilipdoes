@@ -8,19 +8,21 @@
 			class="absolute top-0 h-36 w-full bg-gradient-to-b from-mono-950"
 		/>
 		<LayoutPadding class="relative z-nav">
-			<NuxtLink
-				to="/"
-				data-info="heading"
-				class="pointer-events-auto col-span-full text-xl font-semibold leading-xl"
-			>
-				<span data-info="page" class="inline text-mono-500">{{
-					store.activePage
-				}}</span
-				><br />
-				<span data-info="highlight" class="inline text-mono-50">{{
-					store.activeSegment.name
-				}}</span>
-			</NuxtLink>
+			<div class="col-span-full flex h-fit">
+				<NuxtLink
+					to="/"
+					data-info="heading"
+					class="pointer-events-auto col-span-3 text-xl font-semibold leading-xl"
+				>
+					<span data-info="page" class="inline text-mono-500">{{
+						store.activePage
+					}}</span
+					><br />
+					<span data-info="highlight" class="inline text-mono-50">{{
+						store.activeSegment.name
+					}}</span>
+				</NuxtLink>
+			</div>
 		</LayoutPadding>
 	</div>
 </template>

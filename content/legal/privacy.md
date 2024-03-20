@@ -6,8 +6,6 @@ segments:
     name: should know
 ---
 
-Because this website is hosted in Germany the following information is given in German. If you need a translation, please use a translation service like [DeepL](https://www.deepl.com/translator) or [Google Translate](https://translate.google.com/).
-
 # Datenschutzerklärung
 
 Ich freue mich sehr über Ihr Interesse an meinem Portfolio. Datenschutz hat einen besonders hohen Stellenwert für mich. Eine Nutzung dieser Internetseite ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services über diese Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, wird generell eine Einwilligung der betroffenen Person eingeholt.

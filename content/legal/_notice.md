@@ -1,0 +1,1 @@
+Because this website is hosted in Germany the following information is given in German. If you need a translation, please use a translation service like [DeepL](https://www.deepl.com/translator) or [Google Translate](https://translate.google.com/).
