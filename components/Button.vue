@@ -58,7 +58,7 @@ const variantClasses = computed(() => {
 		case 'accent':
 			return tw`text-cinnabar-500 border-cinnabar-500 hover:bg-cinnabar-500/20 active:bg-cinnabar-500`
 		case 'dark':
-			return tw`text-mono-500 bg-mono-900 border-mono-900 hover:text-mono-50 hover:bg-mono-800 hover:border-mono-800 active:text-mono-50 active:bg-mono-50 active:border-mono-50`
+			return tw`text-mono-600 bg-mono-900 border-mono-900 hover:text-mono-50 hover:bg-mono-800 hover:border-mono-800 active:text-mono-50 active:bg-mono-50 active:border-mono-50`
 		case 'prompt':
 			return tw`text-cinnabar-500 border-none px-0`
 	}

@@ -1,6 +1,6 @@
 <template>
 	<div class="col-span-full hidden grid-cols-subgrid lg:grid">
-		<p class="col-span-2 col-start-1 text-mono-500">{{ props.label }}</p>
+		<p class="col-span-2 col-start-1 text-mono-600">{{ props.label }}</p>
 		<div class="col-span-10 flex flex-row gap-4">
 			<Button
 				v-for="button in props.segment?.buttons"

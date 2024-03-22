@@ -14,7 +14,7 @@
 					data-info="heading"
 					class="pointer-events-auto col-span-3 text-xl font-semibold leading-xl"
 				>
-					<span data-info="page" class="inline text-mono-500">{{
+					<span data-info="page" class="inline text-mono-600">{{
 						store.activePage
 					}}</span
 					><br />

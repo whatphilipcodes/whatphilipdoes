@@ -37,8 +37,8 @@ const colors = computed(() => {
 	switch (props.variant) {
 		case 'inline-dark':
 			return {
-				idle: ['text-mono-500', 'decoration-transparent'],
-				hover: ['text-mono-500', 'decoration-mono-500'],
+				idle: ['text-mono-600', 'decoration-transparent'],
+				hover: ['text-mono-600', 'decoration-mono-600'],
 				active: ['text-mono-400', 'decoration-mono-400'],
 			}
 		case 'inline-accent':
@@ -49,7 +49,7 @@ const colors = computed(() => {
 			}
 		default:
 			return {
-				idle: ['text-mono-500', 'decoration-transparent'],
+				idle: ['text-mono-600', 'decoration-transparent'],
 				hover: ['text-mono-300', 'decoration-transparent'],
 				active: ['text-mono-50', 'decoration-transparent'],
 			}

@@ -14,7 +14,7 @@
 			/>
 		</div>
 		<div data-info="description" class="absolute bottom-4 left-4 flex flex-col">
-			<div class="text-mono-500">{{ props.label }}</div>
+			<div class="text-mono-600">{{ props.label }}</div>
 			<div class="text-cinnabar-500" v-if="data.header">
 				{{ data.title }}
 			</div>

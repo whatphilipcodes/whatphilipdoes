@@ -20,7 +20,7 @@
 			</div>
 			<div
 				data-info="project-tags"
-				class="col-span-3 mt-4 flex h-fit flex-row flex-wrap gap-x-2 text-mono-500"
+				class="col-span-3 mt-4 flex h-fit flex-row flex-wrap gap-x-2 text-mono-600"
 			>
 				<template
 					v-for="(tag, index) in props.projectData.projectTags"
