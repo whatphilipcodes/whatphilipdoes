@@ -12,9 +12,9 @@ segments:
     callback: getRotorButtons
   - name: will do
     buttons:
-    - label: load cv
-      to: /downloads/gerdes-philip-cv.pdf
-      download: gerdes-philip-cv.pdf
+    - label: download resume
+      to: /downloads/whatphilipdoes.pdf
+      download: whatphilipdoes.pdf
     - label: get in touch
       to: mailto:hello@whatphilipdoes.com?subject=lets%20talk
       variant: accent
@@ -32,9 +32,9 @@ bundle:
           - label: get in touch
             to: 'mailto:hello@whatphilipdoes.com?subject=lets%20talk'
             variant: accent
-          - label: load cv
-            to: /downloads/gerdes-philip-cv.pdf
-            download: gerdes-philip-cv.pdf
+          - label: download resume
+            to: /downloads/whatphilipdoes.pdf
+            download: whatphilipdoes.pdf
             variant: dark
       social:
         - icon: i-linkedin
