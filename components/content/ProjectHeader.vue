@@ -12,9 +12,11 @@
 			data-info="project-tags"
 			class="col-span-3 mt-4 flex h-fit flex-row flex-wrap gap-x-2 text-mono-600"
 		>
-			<template v-for="(tag, index) in projectData.projectTags" :key="index"
-				><div v-if="index > 0">·</div>
-				<div>{{ tag.toLowerCase() }}</div></template
+			<template v-for="(tag, index) in projectData.projectTags" :key="index">
+				<div class="flex flex-row flex-nowrap gap-x-2">
+					<div>{{ tag.toLowerCase() }}</div>
+					<div v-if="index < projectData.projectTags.length - 1">·</div>
+				</div></template
 			>
 		</div>
 	</div>
