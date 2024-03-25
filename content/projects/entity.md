@@ -20,7 +20,7 @@ projectTags:
 
 footer:
   buttons:
-    - label: repo
+    - label: repository
       to: https://github.com/whatphilipcodes/entity
     - label: 'inspiring essay'
       to: https://inconvergent.net/generative/

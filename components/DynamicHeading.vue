@@ -7,7 +7,7 @@
 			data-info="dissolver"
 			class="absolute top-0 h-36 w-full bg-gradient-to-b from-mono-950"
 		/>
-		<LayoutPadding class="relative z-nav">
+		<LayoutPadding class="relative">
 			<div class="col-span-full flex h-fit">
 				<NuxtLink
 					to="/"

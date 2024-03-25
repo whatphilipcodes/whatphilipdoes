@@ -14,7 +14,11 @@
 		<div
 			class="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-mono-900"
 		/>
-		<LayoutPadding data-info="meta" class="absolute bottom-0 left-0 right-0">
+		<LayoutPadding
+			data-info="meta"
+			class="absolute bottom-0 left-0 right-0"
+			:class="{ 'md:hidden': props.opened }"
+		>
 			<div data-info="project-title" class="col-span-full text-mono-50">
 				{{ props.projectData.title?.toLowerCase() }}
 			</div>

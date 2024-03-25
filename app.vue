@@ -1,9 +1,5 @@
 <template>
-	<div
-		id="app"
-		lang="en"
-		class="bg-mono-950 text-mono-50 selection:bg-cinnabar-500"
-	>
+	<div id="app" lang="en" class="bg-mono-950 text-mono-50">
 		<DynamicHeading />
 		<NuxtPage
 			:transition="{

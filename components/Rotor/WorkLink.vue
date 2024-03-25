@@ -7,11 +7,11 @@
 			@touchmove.prevent
 			@click="onClick"
 			:to="props.to"
-			class="persistent-default absolute bottom-0 z-front h-full w-full"
+			class="persistent-default absolute bottom-0 z-[1] h-full w-full"
 		/>
 		<div
 			ref="activeDisplay"
-			class="flash-enter pointer-events-none absolute top-0 z-front h-full w-full"
+			class="pointer-events-none absolute top-0 z-[1] h-full w-full"
 		/>
 	</div>
 </template>
@@ -34,7 +34,8 @@ const activeDisplay = ref<HTMLElement>()
 function onClick() {
 	activeDisplay.value?.classList.add(tw`bg-cinnabar-500/20`)
 	setTimeout(() => {
-		activeDisplay.value?.classList.remove(tw`bg-cinnabar-500/20`)
+		activeDisplay.value?.classList.add(tw`duration-300`)
+		activeDisplay.value?.classList.remove(tw`bg-cinnabar-500/20 duration-300`)
 	}, 300)
 }
 </script>

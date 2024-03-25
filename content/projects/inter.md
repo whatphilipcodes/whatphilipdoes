@@ -20,7 +20,7 @@ projectTags:
 
 footer:
   buttons:
-    - label: repo
+    - label: repository
       to: https://github.com/whatphilipcodes/inter
     - label: campus exhibit
       to: https://ars.electronica.art/who-owns-the-truth/de/inter/
