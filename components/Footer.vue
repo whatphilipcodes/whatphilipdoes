@@ -15,10 +15,14 @@
 		<div class="h-full w-screen justify-self-center bg-mono-900">
 			<LayoutPadding
 				data-info="footer"
-				class="h-52 bg-mono-900 max-sm:translate-y-[1px] md:h-60 lg:h-[88px]"
+				class="h-[200px] bg-mono-900 max-sm:translate-y-[1px] md:h-[248px] lg:h-[88px]"
 			>
-				<TouchableLink href="/legal/imprint">imprint</TouchableLink>
-				<TouchableLink href="/legal/privacy">privacy</TouchableLink>
+				<TouchableLink class="h-fit" href="/legal/imprint"
+					>imprint</TouchableLink
+				>
+				<TouchableLink class="h-fit" href="/legal/privacy"
+					>privacy</TouchableLink
+				>
 			</LayoutPadding>
 		</div>
 	</div>

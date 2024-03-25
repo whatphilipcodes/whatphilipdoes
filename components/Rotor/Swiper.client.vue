@@ -13,9 +13,10 @@
 				</RotorWorkLink>
 			</div>
 			<div class="swiper-slide">
-				<RotorRestart :callback="props.cbEnter" />
+				<RotorRestartSlide :callback="props.cbEnter" />
 			</div>
 		</div>
+		<RotorRestartPrompt :restartable="restartable" />
 	</div>
 </template>
 
@@ -45,6 +46,7 @@ const props = defineProps({
 
 let swiper: Swiper
 const linksActive = ref(false)
+const restartable = ref(false)
 
 //
 onMounted(async () => {
@@ -76,11 +78,13 @@ function enter() {
 	swiper.enable()
 	swiper.slideTo(0, 600)
 	linksActive.value = true
+	restartable.value = false
 }
 defineExpose({ enter })
 function exit() {
 	swiper.disable()
 	linksActive.value = false
+	restartable.value = true
 	props.cbExit()
 }
 </script>
