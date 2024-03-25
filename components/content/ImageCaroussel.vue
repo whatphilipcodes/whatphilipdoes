@@ -17,7 +17,7 @@
 					<Image :src="image.src" :alt="image.alt" />
 				</div>
 			</div>
-			<ScrollPromptManual
+			<ScrollPromptBase
 				:active="active"
 				direction="left-right"
 				class="absolute bottom-1/2 right-1/3 z-front w-2/3"
