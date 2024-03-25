@@ -2,11 +2,15 @@
 	<TransitionWrapper>
 		<div lang="de">
 			<LayoutColumns>
-				<ContentRenderer
-					class="col-span-full mt-[136px] flex md:col-span-2 lg:col-span-4"
-					v-if="notice"
-					:value="notice"
-				/>
+				<div
+					class="relative col-span-full mt-[136px] md:col-span-2 md:mt-0 lg:col-span-4"
+				>
+					<ContentRenderer
+						class="top-[136px] flex md:sticky"
+						v-if="notice"
+						:value="notice"
+					/>
+				</div>
 				<ContentDoc v-slot="{ doc }">
 					<ContentRenderer
 						:value="doc"
