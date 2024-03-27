@@ -95,7 +95,14 @@ onMounted(() => {
 	} = useScrollStops()
 	enterScrollstops()
 
-	cbRotorComplete = next
+	cbRotorComplete = () => {
+		next()
+		window.scrollTo({
+			top: window.scrollY + store.lvh,
+			behavior: 'smooth',
+		})
+		window.scrollBy
+	}
 	exitScrollStops = exit
 
 	watch(scrollingBlocked, (value) => {
