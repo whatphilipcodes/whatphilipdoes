@@ -47,8 +47,6 @@ function enter(alignDelay = 800) {
 	}, alignDelay) // delay to prevent scroll jump on scroll stop
 
 	swiperInstance.value?.enter()
-
-	console.log('rotor enter')
 }
 defineExpose({ enter })
 
@@ -62,8 +60,6 @@ function exit() {
 	window.removeEventListener('wheel', alignSwiper)
 
 	props.exitCallback?.()
-
-	console.log('rotor exit')
 }
 
 //
