@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-const store = useGlobalStore()
 const props = defineProps({
 	restartable: {
 		type: Boolean,
