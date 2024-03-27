@@ -1,7 +1,7 @@
 // nut content fix -> https://github.com/nuxt/content/issues/1551#issuecomment-1470246543
 import { globSync } from 'glob'
 const contentRoutes = globSync('./content/**/*.md', {
-	ignore: 'content/index.md',
+	ignore: ['content/index.md', 'content/**/_*.md'],
 }).map((path) => path.slice(7, -3))
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
