@@ -23,6 +23,7 @@
 			format="webp"
 			sizes="480px md:720px lg:1024px"
 			@load="unblur"
+			quality="100"
 		/>
 		<div
 			ref="blurOverlay"
@@ -46,7 +47,7 @@ const props = defineProps({
 const img = useImage()
 const isSvg = computed(() => props.src.endsWith('.svg'))
 const svgComponent = props.src.replace('.svg', '')
-// note: using q100 for placeholder to make it look better since rendering happens at the build step
+// note: using q100 since rendering happens at the build step and therfore does not impact performance on the client side
 
 const blurOverlay = ref<HTMLElement>()
 function unblur() {
