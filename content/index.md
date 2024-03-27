@@ -6,7 +6,7 @@ segments:
     name: does
     buttons:
       - label: get in touch
-        to: 'mailto:hello@whatphilipdoes.com?subject=lets%20talk'
+        to: mailto:hello@whatphilipdoes.com
         variant: accent
   - name: did
     callback: getRotorButtons
@@ -30,7 +30,7 @@ bundle:
         text: '…could be up to you.'
         buttons:
           - label: get in touch
-            to: 'mailto:hello@whatphilipdoes.com'
+            to: mailto:hello@whatphilipdoes.com
             variant: accent
           - label: download resume
             to: /downloads/whatphilipdoes.pdf
