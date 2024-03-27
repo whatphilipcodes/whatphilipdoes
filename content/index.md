@@ -16,7 +16,7 @@ segments:
       to: /downloads/whatphilipdoes.pdf
       download: whatphilipdoes.pdf
     - label: get in touch
-      to: mailto:hello@whatphilipdoes.com?subject=lets%20talk
+      to: mailto:hello@whatphilipdoes.com
       variant: accent
 bundle:
     hero:
@@ -30,7 +30,7 @@ bundle:
         text: '…could be up to you.'
         buttons:
           - label: get in touch
-            to: 'mailto:hello@whatphilipdoes.com?subject=lets%20talk'
+            to: 'mailto:hello@whatphilipdoes.com'
             variant: accent
           - label: download resume
             to: /downloads/whatphilipdoes.pdf
