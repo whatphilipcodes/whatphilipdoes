@@ -35,7 +35,10 @@ function onClick() {
 	activeDisplay.value?.classList.add(tw`bg-cinnabar-500/20`)
 	setTimeout(() => {
 		activeDisplay.value?.classList.add(tw`duration-300`)
-		activeDisplay.value?.classList.remove(tw`bg-cinnabar-500/20 duration-300`)
+		activeDisplay.value?.classList.remove(
+			tw`bg-cinnabar-500/20`,
+			tw`duration-300`,
+		)
 	}, 300)
 }
 </script>
