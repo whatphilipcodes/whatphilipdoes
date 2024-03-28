@@ -1,6 +1,6 @@
 <template>
 	<TransitionWrapper>
-		<ScrollPromptFullscreen />
+		<ScrollPromptAuto />
 		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
@@ -15,22 +15,27 @@
 							>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
 						>
 					</div>
-					<div class="col-span-full h-[28rem] md:col-span-6 lg:h-[64vh]">
+					<div datainfo="spacer-title" class="col-span-full h-36" />
+					<div
+						class="col-span-full md:col-span-6"
+						:style="{ height: `${store.lvh * 0.56}px` }"
+					>
 						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
 					</div>
 				</ScrollSegment>
 				<ScrollSegment :pageSegment="content.segments[1]">
 					<Rotor
 						ref="projectRotor"
-						:completionCallback="cbRotorComplete"
 						:slides="projectsContent"
+						:exitCallback="cbRotorComplete"
 					/>
 				</ScrollSegment>
 			</ScrollStop>
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
-						class="col-span-full mb-4 flex h-[32rem] items-end md:mb-8 lg:h-[64vh] lg:items-center"
+						class="col-span-full mb-4 flex items-end md:mb-8 lg:items-center"
+						:style="{ height: `${store.lvh * 0.4}px` }"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
@@ -61,7 +66,7 @@ let exitScrollStops: () => void
 const contactBtn = ref<HTMLElement>()
 
 const projectRotor = ref()
-const { updateActivePage } = useGlobalStore()
+const store = useGlobalStore()
 
 useScrollSegments()
 
@@ -74,19 +79,12 @@ useContentHead(content)
 
 const projectsContent = await queryContent<contentProject>('projects').find()
 
-const dbWheelTrigger = useDebounceFn(() => {
-	projectRotor.value?.enter()
-	window.removeEventListener('wheel', dbWheelTrigger)
-}, 400)
-
-function touchTrigger() {
-	projectRotor.value?.enter()
-	window.removeEventListener('touchstart', touchTrigger)
-}
-
 onMounted(() => {
+	// set scroll to top
+	window.scrollTo(0, 0)
+
 	// set page title
-	updateActivePage('what philip')
+	store.updateActivePage('what philip')
 
 	// enter scroll stops
 	const {
@@ -97,17 +95,19 @@ onMounted(() => {
 	} = useScrollStops()
 	enterScrollstops()
 
-	cbRotorComplete = next
+	cbRotorComplete = () => {
+		next()
+		window.scrollTo({
+			top: window.scrollY + store.lvh,
+			behavior: 'smooth',
+		})
+		window.scrollBy
+	}
 	exitScrollStops = exit
 
 	watch(scrollingBlocked, (value) => {
 		if (value) {
-			projectRotor.value?.showUI()
-			setTimeout(() => {
-				projectRotor.value?.scrollToTop()
-			}, 800)
-			window.addEventListener('wheel', dbWheelTrigger)
-			window.addEventListener('touchstart', touchTrigger)
+			projectRotor.value?.enter()
 		}
 	})
 

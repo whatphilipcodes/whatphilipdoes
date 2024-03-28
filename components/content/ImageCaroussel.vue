@@ -17,7 +17,7 @@
 					<Image :src="image.src" :alt="image.alt" />
 				</div>
 			</div>
-			<ScrollPromptManual
+			<ScrollPromptBase
 				:active="active"
 				direction="left-right"
 				class="absolute bottom-1/2 right-1/3 z-front w-2/3"
@@ -44,21 +44,16 @@ const props = defineProps({
 })
 
 // scroll prompt
-const scrollTimeout = ref(false)
+const active = ref(false)
+onMounted(() => {
+	active.value = true
+})
 const scrollContainer = ref<HTMLElement>()
 const { x } = useScroll(scrollContainer)
-let stop = watch(x, (val) => {
+const stop = watch(x, (val) => {
 	if (val > 80) {
-		useGlobalStore().setCarousselScrollPrompted(true)
+		active.value = false
 		stop()
 	}
-})
-onMounted(() => {
-	setTimeout(() => {
-		scrollTimeout.value = true
-	}, 5000)
-})
-const active = computed(() => {
-	return !useGlobalStore().carousselScrollPrompted && scrollTimeout.value
 })
 </script>

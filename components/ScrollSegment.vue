@@ -1,15 +1,11 @@
 <template>
-	<div class="z-front col-span-full" ref="enter" />
+	<div class="z-front col-span-full" ref="elEnter" />
 	<slot />
-	<div class="z-front col-span-full" ref="exit" />
+	<div class="z-front col-span-full" ref="elExit" />
 </template>
 
 <script setup lang="ts">
-const enter = ref<HTMLElement>()
-const exit = ref<HTMLElement>()
-
-const { addSegment } = useGlobalStore()
-
+const store = useGlobalStore()
 const props = defineProps({
 	title: {
 		type: String,
@@ -40,19 +36,17 @@ const segment = computed(() => {
 	}
 })
 
+const elEnter = ref<HTMLElement>()
+const elExit = ref<HTMLElement>()
+
 onMounted(() => {
-	const enterRect = enter.value?.getBoundingClientRect()
-	const exitRect = exit.value?.getBoundingClientRect()
-	if (enterRect && exitRect) {
-		addSegment(
-			Math.round(enterRect.top + window.scrollY),
-			Math.round(exitRect.top + window.scrollY),
-			segment.value
-		)
-	} else {
+	if (!elEnter.value || !elExit.value)
 		throw new Error(
-			`ScrollSegment: enter:${enter.value} or exit:${exit.value} element did not have boundingClientRect.` // does this make sense?
+			'there seems to be an issue with one of the scrollSegment component instances. elEnter: ' +
+				elEnter.value +
+				' elExit: ' +
+				elExit.value,
 		)
-	}
+	store.addSegment(elEnter.value, elExit.value, segment.value)
 })
 </script>

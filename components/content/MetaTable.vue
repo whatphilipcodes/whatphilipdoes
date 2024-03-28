@@ -1,9 +1,9 @@
 <template>
 	<div
-		class="col-span-full grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-4"
+		class="col-span-full grid grid-cols-4 gap-4 md:grid-cols-8 lg:grid-cols-12"
 		v-for="section in props.content"
 	>
-		<div class="text-mono-500">
+		<div class="text-mono-600">
 			{{ section.title.toLowerCase() }}
 		</div>
 		<template v-for="(row, rowdex) in section.rows">
@@ -18,7 +18,7 @@
 					rowdex * cellDimensions.rowSpan + 2
 				} md:row-start-${rowdex * cellDimensions.rowSpan + 1} row-span-${
 					cellDimensions.rowSpan
-				} odd:text-mono-500`"
+				} odd:text-mono-600`"
 			>
 				<div v-if="Array.isArray(col)" v-for="item in col">
 					{{ item.toLowerCase() }}
@@ -54,7 +54,7 @@ const props = defineProps({
 							if (row.cols.length > 2)
 								throw new Error(
 									'The current layout can only display 2 columns: ' +
-										JSON.stringify(row.cols)
+										JSON.stringify(row.cols),
 								)
 						}
 					}

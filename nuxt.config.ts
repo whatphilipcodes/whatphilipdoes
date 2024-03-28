@@ -1,7 +1,7 @@
 // nut content fix -> https://github.com/nuxt/content/issues/1551#issuecomment-1470246543
 import { globSync } from 'glob'
 const contentRoutes = globSync('./content/**/*.md', {
-	ignore: 'content/index.md',
+	ignore: ['content/index.md', 'content/**/_*.md'],
 }).map((path) => path.slice(7, -3))
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -34,12 +34,13 @@ export default defineNuxtConfig({
 	},
 	googleFonts: {
 		families: {
-			preload: true,
 			Jost: {
-				wght: [400, 600],
+				wght: '400..600',
 				ital: [500],
 			},
 		},
+		preload: true,
+		subsets: 'latin',
 	},
 	alias: {
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
@@ -96,7 +97,7 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 	devtools: {
-		enabled: true,
+		enabled: false,
 	},
 	devServer: {
 		host: '0',

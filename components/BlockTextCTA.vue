@@ -3,7 +3,7 @@
 		<div
 			v-if="tags"
 			data-info="tags"
-			class="flex flex-col gap-x-8 text-mono-500 lg:flex-row lg:flex-wrap"
+			class="flex flex-col gap-x-8 text-mono-600 lg:flex-row lg:flex-wrap"
 		>
 			<div v-for="tag in tags" :key="tag">{{ tag }}</div>
 		</div>
@@ -17,7 +17,7 @@
 				{{ text }}
 			</div>
 			<div
-				class="flex w-12 flex-col gap-4 self-end lg:mt-3 lg:w-fit lg:flex-row lg:self-start"
+				class="flex w-14 flex-col gap-4 self-end lg:mt-3 lg:w-fit lg:flex-row lg:self-start"
 			>
 				<Button
 					v-for="button in buttons"

@@ -1,9 +1,8 @@
-import { useBlockException } from './useBlockException'
-
 export const useScrollStops = () => {
 	// dependencies
 	const { scrollStopTriggers, toggleStopTrigger, clearScrollStopTriggers } =
 		useGlobalStore()
+	const block = new BlockExceptionHandler('scroll-stops')
 
 	// props
 	const activeIndex = ref(0)
@@ -28,7 +27,7 @@ export const useScrollStops = () => {
 	function startLoop() {
 		const { stop } = useIntersectionObserver(
 			activeStop.value.target,
-			([{ isIntersecting, target }]) => {
+			([{ isIntersecting }]) => {
 				if (!isIntersecting) return // only trigger on enter
 				if (activeIndex.value >= scrollStopTriggers.length - 1) {
 					stop()
@@ -40,7 +39,7 @@ export const useScrollStops = () => {
 			},
 			{
 				rootMargin: '1px', // fx: chrome bug
-			}
+			},
 		)
 	}
 
@@ -53,18 +52,14 @@ export const useScrollStops = () => {
 	}
 
 	function blockScrolling() {
-		window.addEventListener('touchstart', useBlockException, {
-			passive: false,
-		})
-		window.addEventListener('wheel', useBlockException, {
-			passive: false,
-		})
+		block.attachEvent('touchstart', window)
+		block.attachEvent('wheel', window)
 		scrollingBlocked.value = true
 	}
 
 	function enableScrolling() {
-		window.removeEventListener('touchstart', useBlockException)
-		window.removeEventListener('wheel', useBlockException)
+		block.detachEvent('touchstart', window)
+		block.detachEvent('wheel', window)
 		scrollingBlocked.value = false
 	}
 	onUnmounted(enableScrolling)

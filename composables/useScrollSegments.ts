@@ -1,44 +1,41 @@
 import type { WatchStopHandle } from 'vue'
 export const useScrollSegments = () => {
 	// props
-	const {
-		scrollSegments,
-		updateActiveSegment,
-		executeSegmentCallback,
-		resetSegments,
-	} = useGlobalStore()
+	const store = useGlobalStore()
 	const { y } = useWindowScroll()
 	let cbUnwatch: WatchStopHandle
 
-	//controller
+	const currentSegments = computed(() => {
+		const center = y.value + window.innerHeight / 2
+		const activeSegments = store.segmentPositions.filter(
+			(segment) =>
+				getDistFromEl(segment.enter) <= center &&
+				getDistFromEl(segment.exit) >= center,
+		)
+		return activeSegments
+	})
+
+	function getDistFromEl(el: HTMLElement) {
+		const rect: DOMRect = el.getBoundingClientRect()
+		return Math.round(rect.top + window.scrollY)
+	}
+
 	onMounted(() => {
-		watchOnce(currentSegments, (value: any) => {
-			updateActiveSegment(value[0]?.segment)
-		})
 		cbUnwatch = watch(y, () => {
 			const segment = currentSegments.value[0]?.segment
 			if (!segment) {
 				// reset buttons
-				updateActiveSegment({
+				store.updateActiveSegment({
 					buttons: [],
 				})
 				return
 			}
-			if (segment.callback) executeSegmentCallback(segment.callback)
-			updateActiveSegment(segment)
+			if (segment.callback) store.executeSegmentCallback(segment.callback)
+			store.updateActiveSegment(segment)
 		})
 	})
 	onBeforeUnmount(() => {
-		resetSegments()
+		store.resetSegments()
 		cbUnwatch()
-	})
-
-	// helpers
-	const currentSegments = computed(() => {
-		const center = y.value + window.innerHeight / 2
-		const activeSegments = scrollSegments.filter(
-			(segment) => segment.enter <= center && segment.exit >= center
-		)
-		return activeSegments
 	})
 }

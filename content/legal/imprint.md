@@ -6,8 +6,6 @@ segments:
     name: should know
 ---
 
-Because this website is hosted in Germany the following information is given in German. If you need a translation, please use a translation service like [DeepL](https://www.deepl.com/translator) or [Google Translate](https://translate.google.com/).
-
 # Impressum
 
 Angaben gem. § 5 TMG:
@@ -46,6 +44,6 @@ Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unt
 
 Die Nutzung dieser Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf diesen Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
 Es wird darauf hingewiesen, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
-Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Ich behalte mir ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
 
 Eine ausführliche Datenschutzerklärung finden Sie hier: [https://www.whatphilipdoes.com/legal/privacy](/legal/privacy)
