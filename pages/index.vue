@@ -35,7 +35,7 @@
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
 						class="col-span-full mb-4 flex items-end md:mb-8 lg:items-center"
-						:style="{ height: `${store.lvh * 0.64}px` }"
+						:style="{ height: `${store.lvh * 0.4}px` }"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
