@@ -11,7 +11,7 @@
 		"build-review": "npx serve .output/public"
 	},
 	"devDependencies": {
-		"@nuxt/devtools": "^1.1.4",
+		"@nuxt/devtools": "^1.1.5",
 		"@nuxtjs/google-fonts": "^3.2.0",
 		"@nuxtjs/tailwindcss": "^6.11.4",
 		"nuxt": "^3.11.1",
