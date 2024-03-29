@@ -21,18 +21,21 @@ export const useScrollSegments = () => {
 	}
 
 	onMounted(() => {
-		cbUnwatch = watch(y, () => {
-			const segment = currentSegments.value[0]?.segment
-			if (!segment) {
-				// reset buttons
-				store.updateActiveSegment({
-					buttons: [],
-				})
-				return
-			}
-			if (segment.callback) store.executeSegmentCallback(segment.callback)
-			store.updateActiveSegment(segment)
-		})
+		setTimeout(() => {
+			// #todo: acutally await all segments to engage
+			cbUnwatch = watchImmediate(y, () => {
+				console.log('y changed')
+				const segment = currentSegments.value[0]?.segment
+				if (!segment) {
+					store.updateActiveSegment({
+						buttons: [],
+					})
+					return
+				}
+				if (segment.callback) store.executeSegmentCallback(segment.callback)
+				store.updateActiveSegment(segment)
+			})
+		}, 1)
 	})
 	onBeforeUnmount(() => {
 		store.resetSegments()
