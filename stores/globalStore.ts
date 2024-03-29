@@ -56,7 +56,7 @@ export const useGlobalStore = defineStore('global', () => {
 	// static lvh
 	const lvh = ref(0)
 	function setLvh(window: Window) {
-		lvh.value = window.screen.height
+		lvh.value = window.screen.availHeight
 	}
 
 	// transitions
