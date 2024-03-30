@@ -20,7 +20,7 @@ const lvh = computed(() => lvhMeasure.value?.clientHeight ?? 0)
 const svh = computed(() => svhMeasure.value?.clientHeight ?? 0)
 
 onMounted(() => {
-	if (lvh.value == svh.value) store.setLvh(window.screen.availHeight)
-	else store.setLvh(lvh.value)
+	if (lvh.value == svh.value) store.setLvh(window.innerHeight)
+	else store.setLvh(window.screen.availHeight)
 })
 </script>
