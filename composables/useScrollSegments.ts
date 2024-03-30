@@ -22,7 +22,6 @@ export const useScrollSegments = () => {
 
 	onMounted(() => {
 		cbUnwatch = watchImmediate(y, () => {
-			console.log('y changed')
 			const segment = currentSegments.value[0]?.segment
 			if (!segment) {
 				store.updateActiveSegment({
