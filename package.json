@@ -7,12 +7,14 @@
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"preview-deploy": "node --env-file=.env ./direct-deploy.js"
 	},
 	"devDependencies": {
 		"@nuxt/devtools": "^1.1.5",
 		"@nuxtjs/google-fonts": "^3.2.0",
 		"@nuxtjs/tailwindcss": "^6.11.4",
+		"@samkirkland/ftp-deploy": "^1.2.4",
 		"nuxt": "^3.11.1",
 		"nuxt-svgo": "^4.0.0",
 		"prettier": "^3.2.5",
