@@ -33,6 +33,7 @@ export default {
 			black: '#000000',
 			white: '#ffffff',
 			transparent: 'transparent',
+			debug: '#0000ff',
 		},
 		fontSize: {
 			sm: '0.75rem', // 12px
