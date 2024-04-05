@@ -21,7 +21,7 @@ export const useScrollSegments = () => {
 	}
 
 	onMounted(() => {
-		cbUnwatch = watchImmediate(y, () => {
+		cbUnwatch = watch(y, () => {
 			const segment = currentSegments.value[0]?.segment
 			if (!segment) {
 				store.updateActiveSegment({
