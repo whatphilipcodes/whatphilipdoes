@@ -1,13 +1,17 @@
 <template>
-	<div class="fixed bottom-[16dvh] left-1/2 z-nav col-span-full">
-		<ScrollPromptBase class="h-[16dvh] md:h-[24dvh]" :active="promptScroll" />
+	<div class="absolute right-1/2 z-front -translate-y-1/2">
+		<ScrollPromptBase
+			:style="{ height: `${store.lvh * 0.08}px` }"
+			:active="promptScroll"
+		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-// scroll prompt
+const store = useGlobalStore()
 const { y } = useWindowScroll()
 let timeout: NodeJS.Timeout
+
 const promptScroll = ref(false)
 watchEffect(() => {
 	if (y.value < 80) {

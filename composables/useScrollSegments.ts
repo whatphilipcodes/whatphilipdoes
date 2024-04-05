@@ -24,7 +24,6 @@ export const useScrollSegments = () => {
 		cbUnwatch = watch(y, () => {
 			const segment = currentSegments.value[0]?.segment
 			if (!segment) {
-				// reset buttons
 				store.updateActiveSegment({
 					buttons: [],
 				})

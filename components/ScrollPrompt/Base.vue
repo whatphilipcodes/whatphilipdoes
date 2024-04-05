@@ -5,13 +5,15 @@
 	>
 		<div
 			v-if="props.direction == 'top-bottom'"
-			class="scroll-animation-tb h-56 w-[1px]"
+			class="scroll-animation-tb w-[1px]"
 			:class="{ [props.class]: true }"
+			:style="props.style"
 		/>
 		<div
 			v-else
 			class="scroll-animation-lr h-[1px]"
 			:class="{ [props.class]: true }"
+			:style="props.style"
 		/>
 	</div>
 </template>
@@ -33,6 +35,11 @@ const props = defineProps({
 		default: '',
 		required: false,
 	},
+	style: {
+		type: Object,
+		default: () => ({}),
+		required: false,
+	},
 })
 </script>
 
@@ -40,12 +47,12 @@ const props = defineProps({
 .scroll-animation-tb {
 	background: linear-gradient(to bottom, #f2f2f2 0%, #f2f2f200 50%);
 	background-size: 100% 200%;
-	animation: ani-tb 1s linear infinite;
+	animation: ani-tb 1.6s linear infinite;
 }
 .scroll-animation-lr {
 	background: linear-gradient(to right, #f2f2f2 0%, #f2f2f200 50%);
 	background-size: 200% 100%;
-	animation: ani-tr 1s linear infinite;
+	animation: ani-tr 1.6s linear infinite;
 }
 
 @keyframes ani-tb {

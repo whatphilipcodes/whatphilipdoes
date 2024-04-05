@@ -55,3 +55,5 @@ FTPSERVER
 ```
 
 Due to a bug in the FTP action, it is necessary to create an empty file called `.ftp-deploy-sync-state.json` in the 'public_html' directory of the FTP server before the first sync.
+
+In order to use the review-deploy script, the same secrets as above need to be included in a '.env' file in the project root.

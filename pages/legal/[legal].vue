@@ -18,7 +18,7 @@
 						class="col-start-1 col-end-[-1] mt-0 md:col-start-4 md:mt-12 lg:col-start-6"
 					/>
 					<div class="h-8" />
-					<Footer />
+					<PageFooter />
 				</ContentDoc>
 			</LayoutColumns>
 		</div>

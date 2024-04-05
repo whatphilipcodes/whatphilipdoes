@@ -1,5 +1,6 @@
 <template>
 	<div id="app" lang="en" class="bg-mono-950 text-mono-50">
+		<LvhMeasure />
 		<DynamicHeading />
 		<NuxtPage
 			:transition="{
@@ -22,15 +23,14 @@
 </template>
 
 <script lang="ts" setup>
+import type LvhMeasure from './components/LvhMeasure.vue'
+
 const store = useGlobalStore()
 const loaderMounted = ref(true)
 const isLoading = ref(true)
 
 const content = await queryContent(useRoute().fullPath).findOne()
 
-onBeforeMount(() => {
-	store.setLvh(window)
-})
 onMounted(() => {
 	store.setTransitioning(false)
 	store.updateActiveSegment({

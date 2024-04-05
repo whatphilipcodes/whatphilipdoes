@@ -1,26 +1,36 @@
 <template>
 	<TransitionWrapper>
-		<ScrollPromptAuto />
-		<LayoutColumns class="pt-4 md:pt-6 lg:pt-8">
+		<LayoutColumns>
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
 					<div
-						ref="contactBtn"
-						class="z-[200] col-start-12 h-10 w-44 justify-self-end opacity-0 transition-opacity duration-300 max-lg:hidden"
+						class="z-[200] col-span-2 col-start-[-3] mt-8 hidden justify-end lg:flex"
 					>
-						<Button
-							class="w-full"
-							:to="content.segments[0].buttons?.[0].to || '/404'"
-							variant="accent"
-							>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
+						<div
+							ref="contactBtn"
+							class="h-10 w-44 opacity-0 transition-opacity duration-300"
 						>
+							<Button
+								class="w-full"
+								:to="content.segments[0].buttons?.[0].to || '/404'"
+								variant="accent"
+								>{{ content.segments[0].buttons?.[0].label || 'error' }}</Button
+							>
+						</div>
 					</div>
-					<div datainfo="spacer-title" class="col-span-full h-36" />
+
 					<div
-						class="col-span-full md:col-span-6"
-						:style="{ height: `${store.lvh * 0.56}px` }"
+						class="col-span-full flex flex-col pb-12 md:col-span-6"
+						:style="{
+							minHeight: `${store.lvh * 0.64}px`,
+						}"
 					>
-						<BlockTextCTA class="lg:mt-44" :content="content.bundle.hero" />
+						<div datainfo="spacer-title" class="col-span-full h-40" />
+						<div
+							datainfo="spacer-lg"
+							class="col-span-full hidden h-24 md:block lg:h-32"
+						/>
+						<BlockTextCTA :content="content.bundle.hero" />
 					</div>
 				</ScrollSegment>
 				<ScrollSegment :pageSegment="content.segments[1]">
@@ -34,8 +44,11 @@
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
-						class="col-span-full mb-4 flex items-end md:mb-8 lg:items-center"
-						:style="{ height: `${store.lvh * 0.4}px` }"
+						data-info="cta-wrapper"
+						class="col-span-full flex items-end pt-12 lg:items-center"
+						:style="{
+							minHeight: `${store.lvh * 0.4}px`,
+						}"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
@@ -51,7 +64,7 @@
 							</Button>
 						</BlockTextCTA>
 					</div>
-					<Footer />
+					<PageFooter />
 				</ScrollSegment>
 			</ScrollStop>
 		</LayoutColumns>
