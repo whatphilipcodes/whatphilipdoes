@@ -1,6 +1,9 @@
 <template>
 	<div
-		class="swiper bottom-0 h-lvh w-full overflow-clip"
+		class="swiper bottom-0 w-full overflow-clip"
+		:style="{
+			height: `${store.lvh}px`,
+		}"
 		:class="{
 			absolute: !props.fixed,
 			fixed: props.fixed,
@@ -25,6 +28,7 @@ import Swiper from 'swiper'
 import { Mousewheel, Keyboard } from 'swiper/modules'
 import type { PropType } from 'vue'
 
+const store = useGlobalStore()
 const props = defineProps({
 	slides: {
 		type: Array as PropType<contentProject[]>,

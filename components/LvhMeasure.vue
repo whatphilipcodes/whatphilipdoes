@@ -16,11 +16,18 @@ const store = useGlobalStore()
 const lvhMeasure = ref<HTMLElement>()
 const svhMeasure = ref<HTMLElement>()
 
-const lvh = computed(() => lvhMeasure.value?.clientHeight ?? 0)
-const svh = computed(() => svhMeasure.value?.clientHeight ?? 0)
+const { height: lvh } = useElementSize(lvhMeasure)
+const { height: svh } = useElementSize(svhMeasure)
 
 onMounted(() => {
-	if (lvh.value == svh.value) store.setLvh(window.innerHeight)
-	else store.setLvh(window.screen.availHeight)
+	if (lvh.value == svh.value) growLvh(window)
+	else store.setLvh(lvh.value)
 })
+
+function growLvh(win: Window) {
+	store.setLvh(win.innerHeight)
+	win.addEventListener('resize', () => {
+		if (store.lvh < lvh.value) store.setLvh(lvh.value)
+	})
+}
 </script>

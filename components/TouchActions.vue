@@ -1,6 +1,6 @@
 <template>
-	<LayoutPadding
-		class="fixed bottom-0 z-nav w-full gap-4 transition-opacity duration-300 lg:hidden"
+	<LayoutColumns
+		class="fixed bottom-0 z-nav w-full gap-4 pb-4 transition-opacity duration-300 md:pb-8 lg:hidden"
 		:class="opacity"
 	>
 		<Button
@@ -13,7 +13,7 @@
 			:download="button.download ?? undefined"
 			>{{ button.label }}
 		</Button>
-	</LayoutPadding>
+	</LayoutColumns>
 </template>
 
 <script setup lang="ts">
