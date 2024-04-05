@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="fixed right-1/2 z-nav col-span-full"
-		:style="{ bottom: `${store.lvh * 0.16}px` }"
-	>
+	<div class="absolute right-1/2 z-front -translate-y-1/2">
 		<ScrollPromptBase
 			:style="{ height: `${store.lvh * 0.08}px` }"
 			:active="promptScroll"

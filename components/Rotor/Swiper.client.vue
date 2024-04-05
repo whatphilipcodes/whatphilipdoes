@@ -1,4 +1,5 @@
 <template>
+	<ScrollPromptAuto />
 	<div
 		class="swiper bottom-0 w-full overflow-clip"
 		:style="{
