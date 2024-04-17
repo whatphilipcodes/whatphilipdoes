@@ -6,7 +6,7 @@
 		loop
 		playsinline
 		preload="auto"
-		class="block h-full w-full object-cover"
+		class="block h-full w-full bg-black object-cover"
 	>
 		<source
 			:src="props.src"
