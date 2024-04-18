@@ -119,6 +119,7 @@ onMounted(() => {
 	}
 	exitScrollStops = exit
 
+	// rotor enter
 	watch(scrollingBlocked, (value) => {
 		if (value) {
 			projectRotor.value?.enter()

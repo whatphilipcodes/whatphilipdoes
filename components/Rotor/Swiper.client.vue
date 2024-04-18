@@ -2,12 +2,13 @@
 	<ScrollPromptAuto />
 	<div
 		class="swiper bottom-0 w-full overflow-clip"
-		:style="{
-			height: `${store.lvh}px`,
-		}"
 		:class="{
 			absolute: !props.fixed,
 			fixed: props.fixed,
+			'wheel-offline': !wheelControl,
+		}"
+		:style="{
+			height: `${store.lvh}px`,
 		}"
 	>
 		<div class="swiper-wrapper">
@@ -47,11 +48,38 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	deltaThreshold: {
+		type: Number,
+		default: 12,
+	},
 })
 
 let swiper: Swiper
 const linksActive = ref(false)
 const restartable = ref(false)
+
+const wheelControl = ref(false)
+const wheelEnableHandler = (e: WheelEvent) => {
+	if (Math.abs(e.deltaY) > props.deltaThreshold) return
+	window.removeEventListener('wheel', wheelEnableHandler)
+	wheelControl.value = true
+}
+function enableWheel() {
+	let event = false
+	window.addEventListener('wheel', () => {
+		event = true
+	})
+	setTimeout(() => {
+		if (!event) {
+			window.removeEventListener('wheel', () => {
+				event = true
+			})
+			wheelControl.value = true
+		} else {
+			window.addEventListener('wheel', wheelEnableHandler)
+		}
+	}, 100)
+}
 
 //
 onMounted(async () => {
@@ -66,8 +94,9 @@ onMounted(async () => {
 		speed: 600,
 		mousewheel: {
 			forceToAxis: true,
-			thresholdDelta: 10,
+			thresholdDelta: props.deltaThreshold,
 			thresholdTime: 600,
+			noMousewheelClass: 'wheel-offline',
 		},
 		keyboard: true,
 	})
@@ -82,12 +111,14 @@ onUnmounted(() => {
 function enter() {
 	swiper.enable()
 	swiper.slideTo(0, 600)
+	enableWheel()
 	linksActive.value = true
 	restartable.value = false
 }
 defineExpose({ enter })
 function exit() {
 	swiper.disable()
+	wheelControl.value = false
 	linksActive.value = false
 	restartable.value = true
 	props.cbExit()
