@@ -15,7 +15,7 @@ Schnellerstraße 112<br>
 12439 Berlin<br>
 
 Telefon: +49 (0)151 28997947<br>
-E-Mail: gerdes.philip@gmail.com
+E-Mail: issue@whatphilipdoes.com
 
 Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung zur Verfügung, welche Sie hier finden können: [https://ec.europa.eu/consumers/odr/].<br>
 Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bin ich weder verpflichtet noch bereit.
