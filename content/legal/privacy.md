@@ -75,7 +75,7 @@ Schnellerstraße 112<br>
 Deutschland<br>
 
 Tel.: +49 (0)151 28997947<br>
-E-Mail: gerdes.philip@gmail.com
+E-Mail: issue@whatphilipdoes.com
 
 Website: [https://www.whatphilipdoes.com](/)
 

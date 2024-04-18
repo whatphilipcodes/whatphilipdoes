@@ -80,6 +80,7 @@ const contactBtn = ref<HTMLElement>()
 
 const projectRotor = ref()
 const store = useGlobalStore()
+const device = useDeviceType()
 
 useScrollSegments()
 
@@ -110,14 +111,15 @@ onMounted(() => {
 
 	cbRotorComplete = () => {
 		next()
-		window.scrollTo({
-			top: window.scrollY + store.lvh,
-			behavior: 'smooth',
-		})
-		window.scrollBy
+		if (device.value === 'touch')
+			window.scrollTo({
+				top: window.scrollY + store.lvh,
+				behavior: 'smooth',
+			})
 	}
 	exitScrollStops = exit
 
+	// rotor enter
 	watch(scrollingBlocked, (value) => {
 		if (value) {
 			projectRotor.value?.enter()

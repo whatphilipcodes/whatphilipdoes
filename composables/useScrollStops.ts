@@ -13,7 +13,6 @@ export const useScrollStops = () => {
 
 	// controller
 	function enter() {
-		// initialization
 		activeIndex.value = 0
 		scrollingBlocked.value = false
 		toggleStopTrigger(activeIndex.value) // show first segment
@@ -35,6 +34,7 @@ export const useScrollStops = () => {
 				} // stop loop entirely if last segment
 				if (scrollStopTriggers[activeIndex.value + 1].toggle) return // only trigger if next segment is not already active
 				stop() // stop current observer
+				// blockScrolling()
 				blockScrolling()
 			},
 			{
@@ -62,7 +62,10 @@ export const useScrollStops = () => {
 		block.detachEvent('wheel', window)
 		scrollingBlocked.value = false
 	}
-	onUnmounted(enableScrolling)
+
+	onUnmounted(() => {
+		enableScrolling()
+	})
 
 	return { scrollingBlocked, enter, exit, next }
 }
