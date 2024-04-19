@@ -73,9 +73,6 @@
 
 <script setup lang="ts">
 // props
-let cbRotorComplete: () => void
-let exitScrollStops: () => void
-
 const contactBtn = ref<HTMLElement>()
 
 const projectRotor = ref()
@@ -83,6 +80,28 @@ const store = useGlobalStore()
 const device = useDeviceType()
 
 useScrollSegments()
+const {
+	enter: enterScrollStops,
+	next,
+	exit: exitScrollStops,
+	scrollingBlocked,
+} = useScrollStops()
+
+// on rotor complete
+function cbRotorComplete() {
+	next()
+	console.log('rotor complete callback')
+	if (device.value === 'touch')
+		window.scrollTo({
+			top: window.scrollY + store.lvh,
+			behavior: 'smooth',
+		})
+}
+watch(scrollingBlocked, (value) => {
+	if (value) {
+		projectRotor.value?.enter()
+	}
+})
 
 // content
 const { data } = await useAsyncData(() =>
@@ -94,37 +113,10 @@ useContentHead(content)
 const projectsContent = await queryContent<contentProject>('projects').find()
 
 onMounted(() => {
-	// set scroll to top
 	window.scrollTo(0, 0)
-
-	// set page title
 	store.updateActivePage('what philip')
 
-	// enter scroll stops
-	const {
-		enter: enterScrollstops,
-		next,
-		exit,
-		scrollingBlocked,
-	} = useScrollStops()
-	enterScrollstops()
-
-	cbRotorComplete = () => {
-		next()
-		if (device.value === 'touch')
-			window.scrollTo({
-				top: window.scrollY + store.lvh,
-				behavior: 'smooth',
-			})
-	}
-	exitScrollStops = exit
-
-	// rotor enter
-	watch(scrollingBlocked, (value) => {
-		if (value) {
-			projectRotor.value?.enter()
-		}
-	})
+	enterScrollStops()
 
 	// wait for contactBtn to have a value
 	watchOnce(contactBtn, (value) => {
