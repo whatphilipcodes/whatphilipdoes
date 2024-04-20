@@ -7,10 +7,13 @@ export const useScrollCallback = () => {
 
 	let scrollToInterval: NodeJS.Timeout | null = null
 	let scrollPos: number
+	let topRound: number
 
 	function scrollToCb(win: Window, top: number, callback: () => void) {
+		topRound = Math.round(top)
+
 		function onScroll() {
-			if (win.scrollY === top) {
+			if (Math.round(win.scrollY) === topRound) {
 				win.removeEventListener('scroll', onScroll)
 				if (scrollToInterval) clearTimeout(scrollToInterval)
 				scrollToInterval = null
@@ -20,10 +23,11 @@ export const useScrollCallback = () => {
 
 		if (scrollToInterval) clearInterval(scrollToInterval)
 		scrollToInterval = setInterval(() => {
-			if (scrollPos != win.scrollY) scrollPos = win.scrollY
+			let posRound = Math.round(win.scrollY)
+			if (scrollPos != posRound) scrollPos = posRound
 			else {
-				win.scrollTo({ top: top, behavior: 'smooth' })
-				scrollPos = win.scrollY
+				win.scrollTo({ top: topRound, behavior: 'smooth' })
+				scrollPos = posRound
 			}
 		}, 100)
 
