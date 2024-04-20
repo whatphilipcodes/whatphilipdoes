@@ -90,7 +90,6 @@ const {
 // on rotor complete
 function cbRotorComplete() {
 	next()
-	console.log('rotor complete callback')
 	if (device.value === 'touch')
 		window.scrollTo({
 			top: window.scrollY + store.lvh,

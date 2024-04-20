@@ -43,7 +43,6 @@ function enter(alignDelay = 800) {
 
 	if (pendingAlign) clearTimeout(pendingAlign)
 	pendingAlign = setTimeout(() => {
-		console.log('alignSwiper')
 		alignSwiper()
 		window.addEventListener('touchend', alignSwiper, { passive: false })
 		window.addEventListener('wheel', alignSwiper, { passive: false })
