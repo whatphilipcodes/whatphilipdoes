@@ -2,7 +2,7 @@
 	<CardProject
 		:projectData="projectData"
 		:opened="true"
-		class="col-span-full w-screen"
+		class="col-span-full w-lvw"
 	/>
 	<div class="col-span-3 hidden md:block lg:col-span-4">
 		<div data-info="project-title" class="col-span-full text-mono-50">

@@ -1,7 +1,7 @@
 <template>
 	<ScrollPromptAuto />
 	<div
-		class="swiper bottom-0 w-full overflow-clip"
+		class="swiper bottom-0 w-lvw overflow-clip"
 		:class="{
 			absolute: !props.fixed,
 			fixed: props.fixed,
