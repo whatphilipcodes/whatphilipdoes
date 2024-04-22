@@ -2,7 +2,7 @@
 	<div
 		data-info="rotor-wrapper"
 		ref="rotorWrap"
-		class="relative col-span-full w-screen justify-self-center overflow-visible"
+		class="relative col-span-full w-lvw justify-self-center overflow-visible"
 		:style="{ height: `${store.lvh}px` }"
 	>
 		<RotorSwiper

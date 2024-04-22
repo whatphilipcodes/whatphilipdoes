@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="sm-container"
-		class="relative col-span-full w-screen justify-self-center md:hidden"
+		class="relative col-span-full w-lvw justify-self-center md:hidden"
 	>
 		<div data-info="sm-caroussel" v-if="props.imageArray.length > 1">
 			<div
