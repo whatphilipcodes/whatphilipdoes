@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="image-grid-container"
-		class="col-span-full hidden auto-rows-[32vh] grid-cols-8 gap-4 md:grid lg:auto-rows-[40vh] lg:grid-cols-12"
+		class="col-span-full hidden auto-rows-[32vh] grid-cols-8 gap-4 md:grid lg:auto-rows-[44vh] lg:grid-cols-12"
 	>
 		<div
 			v-for="(image, index) in props.imageArray"
