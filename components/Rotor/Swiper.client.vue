@@ -58,27 +58,25 @@ let swiper: Swiper
 const linksActive = ref(false)
 const restartable = ref(false)
 
+//
+const device = useDeviceType()
 const wheelControl = ref(false)
+
+const dbEnableWheel = useDebounceFn(() => {
+	{
+		wheelControl.value = true
+		window.removeEventListener('wheel', wheelEnableHandler)
+	}
+}, 100)
 const wheelEnableHandler = (e: WheelEvent) => {
+	dbEnableWheel()
 	if (Math.abs(e.deltaY) > props.deltaThreshold) return
-	window.removeEventListener('wheel', wheelEnableHandler)
 	wheelControl.value = true
+	window.removeEventListener('wheel', wheelEnableHandler)
 }
-function enableWheel() {
-	let event = false
-	window.addEventListener('wheel', () => {
-		event = true
-	})
-	setTimeout(() => {
-		if (!event) {
-			window.removeEventListener('wheel', () => {
-				event = true
-			})
-			wheelControl.value = true
-		} else {
-			window.addEventListener('wheel', wheelEnableHandler)
-		}
-	}, 100)
+function controlledWheelEnter() {
+	if (device.value === 'touch') return
+	window.addEventListener('wheel', wheelEnableHandler)
 }
 
 //
@@ -111,7 +109,7 @@ onUnmounted(() => {
 function enter() {
 	swiper.enable()
 	swiper.slideTo(0, 600)
-	enableWheel()
+	controlledWheelEnter()
 	linksActive.value = true
 	restartable.value = false
 }
