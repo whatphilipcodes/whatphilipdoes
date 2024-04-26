@@ -36,6 +36,11 @@ const blocker = new BlockExceptionHandler('rotor-component')
 let pendingAlign: NodeJS.Timeout | null = null
 
 //
+onUnmounted(() => {
+	exit()
+})
+
+//
 function enter(alignDelay = 800) {
 	blocker.attachEvent('wheel', window)
 	blocker.attachEvent('touchstart', window)
