@@ -36,6 +36,11 @@ const blocker = new BlockExceptionHandler('rotor-component')
 let pendingAlign: NodeJS.Timeout | null = null
 
 //
+onBeforeUnmount(() => {
+	exit()
+})
+
+//
 function enter(alignDelay = 800) {
 	blocker.attachEvent('wheel', window)
 	blocker.attachEvent('touchstart', window)
@@ -72,7 +77,7 @@ const rotorBottom = computed(() => {
 	return rotorWrap.value?.offsetTop + rotorWrap.value?.offsetHeight
 })
 function alignSwiper() {
-	scrollToCb(window, rotorBottom.value - window.innerHeight, () => {
+	scrollToCb(rotorBottom.value - window.innerHeight, () => {
 		isFixed.value = true
 	})
 }
