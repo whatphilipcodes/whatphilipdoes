@@ -9,17 +9,12 @@ export const useScrollCallback = () => {
 	let scrollPos: number
 	let topRound: number
 
-	function scrollToCb(win: Window, top: number, callback: () => void) {
-		topRound = Math.round(top)
+	let win: Window
+	let cb: () => void
 
-		function onScroll() {
-			if (Math.round(win.scrollY) === topRound) {
-				win.removeEventListener('scroll', onScroll)
-				if (scrollToInterval) clearTimeout(scrollToInterval)
-				scrollToInterval = null
-				callback()
-			}
-		}
+	function scrollToCb(top: number, callback: () => void) {
+		cb = callback
+		topRound = Math.round(top)
 
 		if (scrollToInterval) clearInterval(scrollToInterval)
 		scrollToInterval = setInterval(() => {
@@ -34,5 +29,26 @@ export const useScrollCallback = () => {
 		win.addEventListener('scroll', onScroll)
 		onScroll()
 	}
+
+	function onScroll() {
+		if (Math.round(win.scrollY) === topRound) {
+			win.removeEventListener('scroll', onScroll)
+			if (scrollToInterval) clearTimeout(scrollToInterval)
+			scrollToInterval = null
+			cb()
+		}
+	}
+
+	onMounted(() => {
+		win = window
+	})
+
+	onUnmounted(() => {
+		if (scrollToInterval) clearInterval(scrollToInterval)
+		scrollToInterval = null
+		win.removeEventListener('scroll', onScroll)
+		cb = () => {}
+	})
+
 	return { scrollToCb }
 }
