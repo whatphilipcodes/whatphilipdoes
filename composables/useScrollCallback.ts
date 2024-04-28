@@ -13,6 +13,7 @@ export const useScrollCallback = () => {
 	let cb: () => void
 
 	function scrollToCb(top: number, callback: () => void) {
+		// console.log('log, enter scrollToCb')
 		cb = callback
 		topRound = Math.round(top)
 
@@ -30,10 +31,18 @@ export const useScrollCallback = () => {
 		onScroll()
 	}
 
+	function exitScrollToCb() {
+		win.removeEventListener('scroll', onScroll)
+		if (scrollToInterval) clearInterval(scrollToInterval)
+		scrollToInterval = null
+		cb = () => {}
+		// console.log('log, exitScrollToCb')s
+	}
+
 	function onScroll() {
 		if (Math.round(win.scrollY) === topRound) {
 			win.removeEventListener('scroll', onScroll)
-			if (scrollToInterval) clearTimeout(scrollToInterval)
+			if (scrollToInterval) clearInterval(scrollToInterval)
 			scrollToInterval = null
 			cb()
 		}
@@ -44,11 +53,8 @@ export const useScrollCallback = () => {
 	})
 
 	onUnmounted(() => {
-		if (scrollToInterval) clearInterval(scrollToInterval)
-		scrollToInterval = null
-		win.removeEventListener('scroll', onScroll)
-		cb = () => {}
+		exitScrollToCb()
 	})
 
-	return { scrollToCb }
+	return { scrollToCb, exitScrollToCb }
 }
