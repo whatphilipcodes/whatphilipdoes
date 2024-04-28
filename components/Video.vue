@@ -1,7 +1,7 @@
 <template>
 	<video
+		ref="video"
 		v-if="props.src && !error"
-		autoplay
 		muted
 		loop
 		playsinline
@@ -12,17 +12,19 @@
 			:src="props.src"
 			type="video/mp4"
 			class="hidden"
-			:onerror="fallback"
+			:onerror="
+				() => {
+					error = true
+				}
+			"
 		/>
 	</video>
 	<Image v-else :src="props.poster" />
 </template>
 
 <script setup lang="ts">
+const video = ref<HTMLVideoElement>()
 const error = ref(false)
-function fallback() {
-	error.value = true
-}
 const props = defineProps({
 	src: {
 		type: String,
@@ -33,5 +35,11 @@ const props = defineProps({
 		required: false,
 		default: '',
 	},
+})
+
+onMounted(() => {
+	video.value?.play().catch((e) => {
+		error.value = true
+	})
 })
 </script>
