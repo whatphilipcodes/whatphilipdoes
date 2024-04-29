@@ -1,14 +1,10 @@
 <template>
 	<div class="absolute right-1/2 z-front -translate-y-1/2">
-		<ScrollPromptBase
-			:style="{ height: `${store.lvh * 0.08}px` }"
-			:active="promptScroll"
-		/>
+		<ScrollPromptBase class="h-[8lvh]" :active="promptScroll" />
 	</div>
 </template>
 
 <script setup lang="ts">
-const store = useGlobalStore()
 const { y } = useWindowScroll()
 let timeout: NodeJS.Timeout
 
