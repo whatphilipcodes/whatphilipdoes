@@ -1,7 +1,7 @@
 <template>
 	<video
 		ref="video"
-		v-if="props.src && !error"
+		v-if="props.src && !showPoster"
 		muted
 		loop
 		playsinline
@@ -14,7 +14,7 @@
 			class="hidden"
 			:onerror="
 				() => {
-					error = true
+					showPoster = true
 				}
 			"
 		/>
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 const video = ref<HTMLVideoElement>()
-const error = ref(false)
+const showPoster = ref(false)
 const props = defineProps({
 	src: {
 		type: String,
@@ -37,9 +37,13 @@ const props = defineProps({
 	},
 })
 
+if (process.env.NODE_ENV === 'production') {
+	showPoster.value = true
+}
+
 onMounted(() => {
 	video.value?.play().catch((e) => {
-		error.value = true
+		showPoster.value = true
 	})
 })
 </script>
