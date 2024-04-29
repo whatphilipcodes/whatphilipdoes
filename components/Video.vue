@@ -37,7 +37,8 @@ const props = defineProps({
 	},
 })
 
-if (process.env.NODE_ENV === 'production') {
+// allows nuxt image to find poster for prerendering
+if (process.env.NODE_ENV === 'prerender') {
 	showPoster.value = true
 }
 
