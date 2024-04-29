@@ -3,9 +3,7 @@
 		<LayoutColumns>
 			<ScrollStop>
 				<ScrollSegment :pageSegment="content.segments[0]">
-					<div
-						class="z-[200] col-span-2 col-start-[-3] mt-8 hidden justify-end lg:flex"
-					>
+					<div class="z-[200] col-span-full mt-8 hidden justify-end lg:flex">
 						<div
 							ref="contactBtn"
 							class="h-10 w-44 opacity-0 transition-opacity duration-300"
