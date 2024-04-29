@@ -36,7 +36,7 @@ const blocker = new BlockExceptionHandler('rotor-component')
 let pendingAlign: NodeJS.Timeout | null = null
 
 //
-onBeforeUnmount(() => {
+onUnmounted(() => {
 	exit()
 })
 
@@ -49,8 +49,6 @@ function enter(alignDelay = 800) {
 	if (pendingAlign) clearTimeout(pendingAlign)
 	pendingAlign = setTimeout(() => {
 		alignSwiper()
-		window.addEventListener('touchend', alignSwiper, { passive: false })
-		window.addEventListener('wheel', alignSwiper, { passive: false })
 		pendingAlign = null
 	}, alignDelay) // delay to prevent scroll jump on scroll stop
 
@@ -59,19 +57,21 @@ function enter(alignDelay = 800) {
 defineExpose({ enter })
 
 function exit() {
+	if (pendingAlign) clearTimeout(pendingAlign)
+	pendingAlign = null
+	exitScrollToCb()
+
+	isFixed.value = false
+
 	blocker.detachEvent('wheel', window)
 	blocker.detachEvent('touchstart', window)
 	rotorWrap.value?.classList.remove('block-touch-actions')
 
-	window.removeEventListener('touchend', alignSwiper)
-	window.removeEventListener('wheel', alignSwiper)
-
-	isFixed.value = false
 	props.exitCallback?.()
 }
 
 //
-const { scrollToCb } = useScrollCallback()
+const { scrollToCb, exitScrollToCb } = useScrollCallback()
 const rotorBottom = computed(() => {
 	if (!rotorWrap.value) return 0
 	return rotorWrap.value?.offsetTop + rotorWrap.value?.offsetHeight
@@ -79,8 +79,14 @@ const rotorBottom = computed(() => {
 function alignSwiper() {
 	scrollToCb(rotorBottom.value - window.innerHeight, () => {
 		isFixed.value = true
+		// console.log('log, scrollToCb -> callback', 'isFixed:', isFixed.value)
 	})
 }
+
+//
+// watchImmediate(isFixed, (val) => {
+// 	console.log('log, isFixed:', val)
+// })
 
 //
 store.addSegmentCallback('getRotorButtons', () => {

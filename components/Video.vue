@@ -1,7 +1,7 @@
 <template>
 	<video
-		v-if="props.src && !error"
-		autoplay
+		ref="video"
+		v-if="props.src && !showPoster"
 		muted
 		loop
 		playsinline
@@ -12,17 +12,19 @@
 			:src="props.src"
 			type="video/mp4"
 			class="hidden"
-			:onerror="fallback"
+			:onerror="
+				() => {
+					showPoster = true
+				}
+			"
 		/>
 	</video>
 	<Image v-else :src="props.poster" />
 </template>
 
 <script setup lang="ts">
-const error = ref(false)
-function fallback() {
-	error.value = true
-}
+const video = ref<HTMLVideoElement>()
+const showPoster = ref(false)
 const props = defineProps({
 	src: {
 		type: String,
@@ -33,5 +35,16 @@ const props = defineProps({
 		required: false,
 		default: '',
 	},
+})
+
+// allows nuxt image to find poster for prerendering
+if (process.env.NODE_ENV === 'prerender') {
+	showPoster.value = true
+}
+
+onMounted(() => {
+	video.value?.play().catch((e) => {
+		showPoster.value = true
+	})
 })
 </script>
