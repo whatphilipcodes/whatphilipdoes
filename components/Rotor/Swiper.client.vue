@@ -1,20 +1,17 @@
 <template>
 	<ScrollPromptAuto />
 	<div
-		class="swiper bottom-0 w-lvw overflow-clip"
+		class="swiper bottom-0 h-lvh w-lvw overflow-clip"
 		:class="{
 			absolute: !props.fixed,
 			fixed: props.fixed,
 			'wheel-offline': !wheelControl,
 		}"
-		:style="{
-			height: `${store.lvh}px`,
-		}"
 	>
 		<div class="swiper-wrapper">
 			<div v-for="slide in props.slides" class="swiper-slide">
 				<RotorWorkLink :link-active="linksActive" :to="slide._path">
-					<CardProject :projectData="slide" />
+					<CardProject class="h-full" :projectData="slide" />
 				</RotorWorkLink>
 			</div>
 			<div class="swiper-slide">
@@ -30,7 +27,6 @@ import Swiper from 'swiper'
 import { Mousewheel, Keyboard } from 'swiper/modules'
 import type { PropType } from 'vue'
 
-const store = useGlobalStore()
 const props = defineProps({
 	slides: {
 		type: Array as PropType<contentProject[]>,

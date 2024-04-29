@@ -2,7 +2,7 @@
 	<CardProject
 		:projectData="projectData"
 		:opened="true"
-		class="col-span-full w-lvw"
+		class="col-span-full h-[72lvh] w-lvw md:h-[56lvh] lg:h-[64lvh]"
 	/>
 	<div class="col-span-3 hidden md:block lg:col-span-4">
 		<div data-info="project-title" class="col-span-full text-mono-50">
@@ -57,4 +57,6 @@ const projectData = computed(() => {
 	} as contentProject
 })
 const { flatUnwrap } = useUnwrap()
+
+onMounted(() => {})
 </script>

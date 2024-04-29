@@ -2,9 +2,6 @@
 	<div
 		data-info="project-card"
 		class="relative flex w-full justify-self-center"
-		:style="{
-			height: props.opened ? `${store.lvh * 0.6}px` : '100%',
-		}"
 	>
 		<Video
 			class="h-full w-full"
@@ -45,7 +42,6 @@
 
 <script setup lang="ts">
 // props
-const store = useGlobalStore()
 const props = defineProps({
 	projectData: {
 		type: Object as PropType<contentProject>,

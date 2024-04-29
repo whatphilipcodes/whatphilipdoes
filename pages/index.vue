@@ -18,10 +18,7 @@
 					</div>
 
 					<div
-						class="col-span-full flex flex-col pb-12 md:col-span-6"
-						:style="{
-							minHeight: `${store.lvh * 0.64}px`,
-						}"
+						class="col-span-full flex h-[64lvh] flex-col pb-12 md:col-span-6"
 					>
 						<div datainfo="spacer-title" class="col-span-full h-40" />
 						<div
@@ -43,10 +40,7 @@
 				<ScrollSegment :pageSegment="content.segments[2]">
 					<div
 						data-info="cta-wrapper"
-						class="col-span-full flex items-end pt-12 lg:items-center"
-						:style="{
-							minHeight: `${store.lvh * 0.4}px`,
-						}"
+						class="col-span-full flex h-[40lvh] items-end pt-12 lg:items-center"
 					>
 						<BlockTextCTA
 							:content="content.bundle.closer.cta"
@@ -90,7 +84,7 @@ function cbRotorComplete() {
 	next()
 	if (device.value === 'touch')
 		window.scrollTo({
-			top: window.scrollY + store.lvh,
+			top: window.scrollY + window.innerHeight,
 			behavior: 'smooth',
 		})
 }

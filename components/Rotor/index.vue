@@ -2,8 +2,7 @@
 	<div
 		data-info="rotor-wrapper"
 		ref="rotorWrap"
-		class="relative col-span-full w-lvw justify-self-center overflow-visible"
-		:style="{ height: `${store.lvh}px` }"
+		class="relative col-span-full h-lvh w-lvw justify-self-center overflow-visible"
 	>
 		<RotorSwiper
 			ref="swiperInstance"
@@ -82,11 +81,6 @@ function alignSwiper() {
 		// console.log('log, scrollToCb -> callback', 'isFixed:', isFixed.value)
 	})
 }
-
-//
-// watchImmediate(isFixed, (val) => {
-// 	console.log('log, isFixed:', val)
-// })
 
 //
 store.addSegmentCallback('getRotorButtons', () => {
