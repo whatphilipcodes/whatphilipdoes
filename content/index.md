@@ -12,7 +12,7 @@ segments:
     callback: getRotorButtons
   - name: will do
     buttons:
-    - label: download resume
+    - label: download résumé
       to: /downloads/whatphilipdoes.pdf
       download: whatphilipdoes.pdf
     - label: get in touch
