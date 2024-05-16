@@ -32,7 +32,7 @@ bundle:
           - label: get in touch
             to: mailto:hello@whatphilipdoes.com
             variant: accent
-          - label: download resume
+          - label: download résumé
             to: /downloads/whatphilipdoes.pdf
             download: whatphilipdoes.pdf
             variant: dark
