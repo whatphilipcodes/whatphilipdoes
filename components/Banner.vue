@@ -1,7 +1,7 @@
 <template>
 	<div
 		data-info="banner"
-		class="fixed top-0 flex w-full flex-col bg-cinnabar-900 transition-opacity duration-500"
+		class="fixed top-0 z-[2] flex w-full flex-col bg-cinnabar-900 transition-opacity duration-500"
 		:class="{ 'pointer-events-none opacity-0': !isVisible }"
 	>
 		<LayoutPadding class="h-fit w-full">
