@@ -6,7 +6,7 @@
 	>
 		<LayoutPadding class="h-fit w-full">
 			<div
-				class="col-span-full h-fit self-end pt-40 text-cinnabar-500 lg:col-span-6"
+				class="col-span-full h-fit self-end pt-28 text-cinnabar-500 md:pt-32 lg:col-span-6"
 			>
 				<div>
 					<slot />
