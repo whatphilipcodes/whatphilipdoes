@@ -19,6 +19,7 @@
 		data-info="static-background"
 		class="background-gradient-split fixed bottom-0 left-0 right-0 z-bottom h-full w-full"
 	/>
+	<CSSImplementationCheck />
 </template>
 
 <script lang="ts" setup>
