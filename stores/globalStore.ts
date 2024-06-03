@@ -53,12 +53,6 @@ export const useGlobalStore = defineStore('global', () => {
 		scrollStopTriggers.splice(0, scrollStopTriggers.length)
 	}
 
-	// static lvh
-	const lvh = ref(0)
-	function setLvh(value: number) {
-		lvh.value = value
-	}
-
 	// transitions
 	const isTransitioning = ref(false)
 	function setTransitioning(value: boolean) {
@@ -83,9 +77,6 @@ export const useGlobalStore = defineStore('global', () => {
 		toggleStopTrigger,
 		getStopTriggerIndex,
 		clearScrollStopTriggers,
-		//
-		lvh,
-		setLvh,
 		//
 		isTransitioning,
 		setTransitioning,
