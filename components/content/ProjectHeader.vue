@@ -45,18 +45,19 @@ const props = defineProps({
 		type: Object as PropType<badgeData>,
 		default: null,
 	},
+	abstract: {
+		type: String,
+		default: '',
+	},
 })
 const projectData = computed(() => {
 	return {
 		title: props.title,
 		header: props.header,
 		projectTags: props.projectTags,
-		abstract: flatUnwrap(useSlots().default?.(), ['p'])[0],
+		abstract: props.abstract,
 		badge: props.badge,
 		landing: false,
 	} as contentProject
 })
-const { flatUnwrap } = useUnwrap()
-
-onMounted(() => {})
 </script>

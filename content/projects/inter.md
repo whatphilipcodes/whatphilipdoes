@@ -26,14 +26,7 @@ footer:
       to: https://ars.electronica.art/who-owns-the-truth/de/inter/
 ---
 
-::project-header{:header=header :title=title :projectTags=projectTags}
----
-badge:
-  icon: i-arselectro
-  info: ars electronica campus exhibition 2023
-  link: https://ars.electronica.art/who-owns-the-truth/de/inter/
----
-Truth often implies a sense of objectiveness despite its subjective aspects. This installation explores artificial decision-making as a device to shape truth.
+::project-header{:header=header :title=title :projectTags=projectTags :abstract="Truth often implies a sense of objectiveness despite its subjective aspects. This installation explores artificial decision-making as a device to shape truth."}
 ::
 
 ::image-display

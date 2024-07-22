@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 			routes: [...contentRoutes],
 		},
 	},
+
 	modules: [
 		'@pinia/nuxt',
 		'@nuxt/content',
@@ -21,9 +22,11 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		'@nuxt/image',
 	],
+
 	svgo: {
 		componentPrefix: 'i',
 	},
+
 	image: {
 		dir: 'assets/img',
 		screens: {
@@ -32,6 +35,7 @@ export default defineNuxtConfig({
 			lg: 1200,
 		},
 	},
+
 	googleFonts: {
 		families: {
 			Jost: {
@@ -42,9 +46,11 @@ export default defineNuxtConfig({
 		preload: true,
 		subsets: 'latin',
 	},
+
 	alias: {
 		pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs', // fix pinia installation issue
 	},
+
 	app: {
 		pageTransition: {
 			name: 'fade',
@@ -92,14 +98,18 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	typescript: {
-		strict: true,
 		typeCheck: true,
 	},
+
 	devtools: {
-		enabled: false,
+		enabled: true,
 	},
+
 	devServer: {
 		host: '0',
 	},
+
+	compatibilityDate: '2024-07-22',
 })
