@@ -26,8 +26,7 @@ footer:
       to: https://inconvergent.net/generative/
 ---
 
-::project-header{:header=header :title=title :projectTags=projectTags}
-Existence as a constant process of transformation and evolution is reflected in the attempt to visually capture this metamorphosis through aesthetic derivatives of everyday objects.
+::project-header{:header=header :title=title :projectTags=projectTags :abstract="Existence as a constant process of transformation and evolution is reflected in the attempt to visually capture this metamorphosis through aesthetic derivatives of everyday objects."}
 ::
 
 ::image-display
