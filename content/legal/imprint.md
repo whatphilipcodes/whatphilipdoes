@@ -11,8 +11,8 @@ segments:
 Angaben gem. § 5 TMG:
 
 Philip Gerdes<br>
-Schnellerstraße 112<br>
-12439 Berlin<br>
+Wiclefstraße 65<br>
+10551 Berlin<br>
 
 Telefon: +49 (0)151 28997947<br>
 E-Mail: issue@whatphilipdoes.com
@@ -23,8 +23,8 @@ Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtung
 Redaktionelle Verantwortung:
 
 Philip Gerdes<br>
-Schnellerstraße 112<br>
-12439 Berlin<br>
+Wiclefstraße 65<br>
+10551 Berlin<br>
 
 # Haftungsausschluss
 
