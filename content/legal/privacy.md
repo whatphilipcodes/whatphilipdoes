@@ -70,8 +70,8 @@ Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitg
 
 Philip Gerdes
 
-Schnellerstraße 112<br>
-12439 Berlin<br>
+Wiclefstraße 65<br>
+10551 Berlin<br>
 Deutschland<br>
 
 Tel.: +49 (0)151 28997947<br>
