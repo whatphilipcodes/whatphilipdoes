@@ -24,7 +24,7 @@ const deployStage = async (v: valid) => {
 		username: v.SERVER_USER,
 		password: v.SERVER_PASSWORD,
 		protocol: 'ftps', // required for Hetzner konsoleh
-		exclude: [...excludeDefaults],
+		exclude: [...excludeDefaults, '.DS_Store'],
 		'local-dir': './dist/',
 		'server-dir': v.SERVER_PATH_TEST,
 	});
