@@ -1,0 +1,25 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	created?: string;
+}
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <BaseHead
+      title={title ?? 'whatphilipdoes'}
+      description={description ?? 'personal portfolio website'}
+    />
+  </head>
+  <body>
+    <main class='mx-auto max-w-4xl p-4'>
+      <slot />
+    </main>
+  </body>
+</html>
