@@ -6,6 +6,7 @@ const vars = {
 	SERVER_HOST: process.env.SERVER_HOST,
 	SERVER_PATH_TEST: process.env.SERVER_PATH_TEST,
 	SERVER_PASSWORD: process.env.SERVER_PASSWORD,
+	SERVER_URL_TEST: process.env.SERVER_URL_TEST,
 };
 
 const validate = (variable: string | undefined) => {
@@ -28,6 +29,10 @@ const deployStage = async (v: valid) => {
 		'local-dir': './dist/',
 		'server-dir': v.SERVER_PATH_TEST,
 	});
+	console.log(
+		'Done. Successfully deployed build to test stage:',
+		v.SERVER_URL_TEST,
+	);
 };
 
 const und = Object.entries(vars)

@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
 import { loadEnv } from 'vite';
 
-const { CONTACT_SITE } = loadEnv(
+const { SERVER_URL_LIVE } = loadEnv(
 	process.env.NODE_ENV ?? 'NODE_ENV is set by Astro',
 	process.cwd(),
 	'',
@@ -15,14 +15,14 @@ const { CONTACT_SITE } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
-	site: CONTACT_SITE,
+	site: SERVER_URL_LIVE,
 	// @ts-expect-error - Vite 7 type incompatibility with Tailwind CSS plugin
 	vite: { plugins: [tailwindcss()] },
 	integrations: [
 		react(),
 		mdx(),
 		sitemap({
-			filter: (page) => !page.startsWith(`${CONTACT_SITE}/legal/`),
+			filter: (page) => !page.startsWith(`${SERVER_URL_LIVE}/legal/`),
 		}),
 	],
 	env: {
@@ -35,6 +35,14 @@ export default defineConfig({
 				access: 'secret',
 			}),
 			SERVER_PATH_LIVE: envField.string({
+				context: 'server',
+				access: 'secret',
+			}),
+			SERVER_URL_LIVE: envField.string({
+				context: 'server',
+				access: 'secret',
+			}),
+			SERVER_URL_TEST: envField.string({
 				context: 'server',
 				access: 'secret',
 			}),
