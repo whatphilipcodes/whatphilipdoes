@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+	/* Colors */
+	--color-mono-50: oklch(0.9581 0 0);
+	--color-mono-100: oklch(0.9219 0 0);
+	--color-mono-200: oklch(0.8359 0 0);
+	--color-mono-300: oklch(0.7572 0 0);
+	--color-mono-400: oklch(0.6797 0 0);
+	--color-mono-500: oklch(0.5999 0 0);
+	--color-mono-600: oklch(0.5103 0 0);
+	--color-mono-700: oklch(0.4128 0 0);
+	--color-mono-800: oklch(0.3171 0 0);
+	--color-mono-900: oklch(0.2308 0 0);
+	--color-mono-950: oklch(0.1776 0 0);
+
+	--color-cinnabar-50: oklch(0.96 0.02 21.44);
+	--color-cinnabar-100: oklch(0.918 0.04 21.72);
+	--color-cinnabar-200: oklch(0.846 0.082 23.56);
+	--color-cinnabar-300: oklch(0.765 0.135 26.68);
+	--color-cinnabar-400: oklch(0.694 0.192 30.68);
+	--color-cinnabar-500: oklch(0.612 0.211 34.48);
+	--color-cinnabar-600: oklch(0.52 0.179 34.44);
+	--color-cinnabar-700: oklch(0.421 0.145 34.62);
+	--color-cinnabar-800: oklch(0.332 0.115 34.06);
+	--color-cinnabar-900: oklch(0.233 0.08 34.49);
+	--color-cinnabar-950: oklch(0.182 0.064 35.16);
+
+	/* Font Sizes */
+	--font-size-sm: 0.75rem; /* 12px */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-lg: 1.5rem; /* 24px */
+	--font-size-xl: 2.5rem; /* 40px */
+
+	/* Font Family */
+	--font-family-sans: Jost;
+
+	/* Line Heights */
+	--line-height-sm: 1rem;
+	--line-height-base: 1.5rem;
+	--line-height-lg: 2rem;
+	--line-height-xl: 3rem;
+	--line-height-xlbaseline: 0.7;
+	--line-height-xlxheight: 0.28;
+
+	/* Breakpoints */
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1200px;
+
+	/* Z-Index */
+	--z-index-bottom: -1000;
+	--z-index-default: 0;
+	--z-index-nav: 100;
+	--z-index-front: 1000;
+
+	/* Aspect Ratios */
+	--aspect-ratio-square: 1 / 1;
+	--aspect-ratio-landscape: 4 / 3;
+	--aspect-ratio-portrait: 3 / 4;
+}

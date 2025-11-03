@@ -2,58 +2,40 @@
 
 # whatphilipdoes
 
-This portfolio is based on the Nuxt 3 minimal starter template. The config is set up to build for static hosting without ssr. A live version can be found via the url in the repo description.
+This portfolio page is build with [`Astro`](https://astro.build/).
 
-## Setup
+### Environment Setup
 
-```bash
-# npm
-npm install
+Create a `.env` file with the following contents:
+
+```sh
+# Server Info
+USER = 
+SERVER = 
+URL =
+
+# Imprint
+SURNAME = 
+FIRSTNAME =
+STREET = 
+NUMBER = 
+ZIP = 
+CITY = 
+MAIL = 
+PHONE = 
+```
+To use the supplied `Github Actions` add upload the `.env` variables as repository secrets to Github (requires `gh` CLI tool):
+
+```sh
+gh secret set --env-file .env
 ```
 
-## Development Server
+### SSH Setup
 
-```bash
-# npm
-npm run dev
+> The pipeline in this repo is specific to Hetzner konsoleh webhosting. The workflow could be modified to other SFTP based interfaces.
+
+```sh
+ssh-keygen -t ed25519 -C "your-email@example.com"
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-```
-
-## Continuous Deployment
-
-This repo includes a GitHub action to automatically deploy the production build to an FTP server. The action is triggered by a push to the main branch. The action requires the following action secrets to be set in the repository settings:
-
-```bash
-FTPPASSWORD
-```
-
-```bash
-FTPUSERNAME
-```
-
-```bash
-FTPPORT
-```
-
-```bash
-FTPSERVER
-```
-
-Due to a bug in the FTP action, it is necessary to create an empty file called `.ftp-deploy-sync-state.json` in the 'public_html' directory of the FTP server before the first sync.
-
-In order to use the review-deploy script, the same secrets as above need to be included in a '.env' file in the project root.
+Then add the public key in konsoleh to "Öffentliche SFTP-Schlüssel"

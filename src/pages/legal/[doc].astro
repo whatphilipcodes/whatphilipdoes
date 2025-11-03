@@ -1,0 +1,17 @@
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const legal = await getCollection('legal', ({ data }) => {
+		return data.draft === false;
+	});
+	return legal.map((document) => ({
+		params: { doc: document.id },
+		props: { document },
+	}));
+}
+
+const { document } = Astro.props;
+const { Content } = await render(document);
+---
+<Content />
