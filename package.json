@@ -8,7 +8,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "pnpm exec biome check --write",
-		"test": "node --env-file=.env ./direct-deploy.js"
+		"stage": "node --env-file=.env ./scripts/deploy-stage.ts"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.9",

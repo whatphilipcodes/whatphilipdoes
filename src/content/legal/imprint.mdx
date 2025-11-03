@@ -4,7 +4,7 @@ description: Impressum und Haftungsausschluss
 draft: false
 ---
 
-import { FIRSTNAME, LASTNAME, STREET, NUMBER, ZIP, CITY, PHONE, MAIL, SITE } from 'astro:env/server';
+import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE } from 'astro:env/server';
 import FloatingNotice from '../../components/react/mdx/FloatingNotice.tsx';
 import LegalContact from '../../components/react/mdx/LegalContact.tsx'
 
@@ -17,12 +17,12 @@ Because this website is hosted in Germany the following information is given in 
 Angaben gem. § 5 TMG:
 
 <LegalContact>
-{FIRSTNAME} {LASTNAME}<br/>
-{STREET} {NUMBER}<br/>
-{ZIP} {CITY}<br/>
+{CONTACT_FIRSTNAME} {CONTACT_LASTNAME}<br/>
+{CONTACT_STREET} {CONTACT_NUMBER}<br/>
+{CONTACT_ZIP} {CONTACT_CITY}<br/>
 
-Tel.: {PHONE}<br/>
-Mail: <a href={`mailto:${MAIL}`}>{MAIL}</a>
+Tel.: {CONTACT_PHONE}<br/>
+Mail: <a href={`mailto:${CONTACT_MAIL}`}>{CONTACT_MAIL}</a>
 </LegalContact>
 
 Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bin ich weder verpflichtet noch bereit.
@@ -30,9 +30,9 @@ Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtung
 Redaktionelle Verantwortung:
 
 <LegalContact>
-{FIRSTNAME} {LASTNAME}<br/>
-{STREET} {NUMBER}<br/>
-{ZIP} {CITY}
+{CONTACT_FIRSTNAME} {CONTACT_LASTNAME}<br/>
+{CONTACT_STREET} {CONTACT_NUMBER}<br/>
+{CONTACT_ZIP} {CONTACT_CITY}
 </LegalContact>
 
 # Haftungsausschluss
@@ -55,4 +55,4 @@ Die Nutzung dieser Webseite ist in der Regel ohne Angabe personenbezogener Daten
 Es wird darauf hingewiesen, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Ich behalte mir ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
 
-Eine ausführliche Datenschutzerklärung finden Sie hier: [{SITE}/legal/privacy](/legal/privacy)
+Eine ausführliche Datenschutzerklärung finden Sie hier: [{CONTACT_SITE}/legal/privacy](/legal/privacy)

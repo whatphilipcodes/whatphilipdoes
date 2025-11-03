@@ -10,21 +10,23 @@ Create a `.env` file with the following contents:
 
 ```sh
 # Server Info
-USER = 
-SERVER = 
-URL =
+SERVER_USER = 
+SERVER_HOST = 
+SERVER_PATH_TEST = 
+SERVER_PATH_LIVE = 
 
-# Imprint
-FIRSTNAME =
-LASTNAME = 
-STREET = 
-NUMBER = 
-ZIP = 
-CITY = 
-MAIL = 
-PHONE = 
+# Contact Info
+CONTACT_FIRSTNAME = 
+CONTACT_LASTNAME = 
+CONTACT_STREET =
+CONTACT_NUMBER = 
+CONTACT_ZIP = 
+CONTACT_CITY = 
+CONTACT_PHONE = 
+CONTACT_MAIL = 
+CONTACT_SITE = 
 ```
-To use the supplied `Github Actions` add upload the `.env` variables as repository secrets to Github (requires `gh` CLI tool):
+To use the supplied `Github Actions`, upload the `.env` variables as repository secrets to Github (requires `gh` CLI tool):
 
 ```sh
 gh secret set --env-file .env
@@ -32,7 +34,7 @@ gh secret set --env-file .env
 
 ### SSH Setup
 
-> The pipeline in this repo is specific to Hetzner konsoleh webhosting. The workflow could be modified to other SFTP based interfaces.
+> The pipeline in this repo is specific to Hetzner `konsoleh` webhosting. The workflow could be modified to other SFTP based interfaces.
 
 ```sh
 ssh-keygen -t ed25519 -C "your-email@example.com"

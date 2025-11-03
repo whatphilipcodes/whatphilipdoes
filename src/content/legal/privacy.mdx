@@ -4,7 +4,7 @@ description: Datenschutzerklärung
 draft: false
 ---
 
-import { FIRSTNAME, LASTNAME, STREET, NUMBER, ZIP, CITY, PHONE, MAIL, SITE } from 'astro:env/server';
+import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE } from 'astro:env/server';
 import FloatingNotice from '../../components/react/mdx/FloatingNotice.tsx';
 import LegalContact from '../../components/react/mdx/LegalContact.tsx'
 
@@ -75,15 +75,15 @@ Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten 
 Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist:
 
 <LegalContact>
-{FIRSTNAME} {LASTNAME}<br/>
-{STREET} {NUMBER}<br/>
-{ZIP} {CITY}<br/>
+{CONTACT_FIRSTNAME} {CONTACT_LASTNAME}<br/>
+{CONTACT_STREET} {CONTACT_NUMBER}<br/>
+{CONTACT_ZIP} {CONTACT_CITY}<br/>
 
-Tel.: {PHONE}<br/>
-Mail: <a href={`mailto:${MAIL}`}>{MAIL}</a>
+Tel.: {CONTACT_PHONE}<br/>
+Mail: <a href={`mailto:${CONTACT_MAIL}`}>{CONTACT_MAIL}</a>
 </LegalContact>
 
-Website: [{SITE}](/)
+Website: [{CONTACT_SITE}](/)
 
 ## 3. Erfassung von allgemeinen Daten und Informationen
 
