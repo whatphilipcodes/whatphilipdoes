@@ -33,13 +33,3 @@ To use the supplied `Github Action`, first create a production environment in th
 ```sh
 gh secret set -e production -f .env
 ```
-
-### SSH Setup
-
-> The pipeline in this repo is specific to Hetzner `konsoleh` webhosting. The workflow could be modified to other SFTP based interfaces.
-
-```sh
-ssh-keygen -t ed25519 -C "your-email@example.com"
-```
-
-Then add the public key in konsoleh to "Öffentliche SFTP-Schlüssel"
