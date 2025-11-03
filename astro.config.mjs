@@ -16,6 +16,7 @@ const { SITE } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
 	site: SITE,
+	// @ts-expect-error - Vite 7 type incompatibility with Tailwind CSS plugin
 	vite: { plugins: [tailwindcss()] },
 	integrations: [
 		react(),
@@ -26,15 +27,15 @@ export default defineConfig({
 	],
 	env: {
 		schema: {
-			SITE: envField.string({ context: 'server', access: 'secret' }),
 			FIRSTNAME: envField.string({ context: 'server', access: 'secret' }),
 			LASTNAME: envField.string({ context: 'server', access: 'secret' }),
 			STREET: envField.string({ context: 'server', access: 'secret' }),
 			NUMBER: envField.string({ context: 'server', access: 'secret' }),
 			ZIP: envField.string({ context: 'server', access: 'secret' }),
 			CITY: envField.string({ context: 'server', access: 'secret' }),
-			MAIL: envField.string({ context: 'server', access: 'secret' }),
 			PHONE: envField.string({ context: 'server', access: 'secret' }),
+			MAIL: envField.string({ context: 'server', access: 'secret' }),
+			SITE: envField.string({ context: 'server', access: 'secret' }),
 		},
 	},
 });

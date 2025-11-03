@@ -15,8 +15,8 @@ SERVER =
 URL =
 
 # Imprint
-SURNAME = 
 FIRSTNAME =
+LASTNAME = 
 STREET = 
 NUMBER = 
 ZIP = 
