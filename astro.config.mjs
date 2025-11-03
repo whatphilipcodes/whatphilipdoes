@@ -27,8 +27,9 @@ export default defineConfig({
 	],
 	env: {
 		schema: {
-			SERVER_USER: envField.string({ context: 'server', access: 'secret' }),
 			SERVER_HOST: envField.string({ context: 'server', access: 'secret' }),
+			SERVER_USER: envField.string({ context: 'server', access: 'secret' }),
+			SERVER_PASSWORD: envField.string({ context: 'server', access: 'secret' }),
 			SERVER_PATH_TEST: envField.string({
 				context: 'server',
 				access: 'secret',

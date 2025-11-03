@@ -1,4 +1,5 @@
 import { deploy, excludeDefaults } from '@samkirkland/ftp-deploy';
+import { readdir } from 'node:fs/promises';
 
 const vars = {
 	SERVER_USER: process.env.SERVER_USER,
@@ -44,5 +45,19 @@ if (und.length > 0) {
 	});
 	process.exit(1);
 } else {
-	deployStage(vars as valid);
+	try {
+		const files = await readdir('./dist');
+		if (files.length === 0) {
+			console.error(
+				'Error: ./dist directory is empty. Run build script first.',
+			);
+			process.exit(1);
+		}
+		await deployStage(vars as valid);
+	} catch {
+		console.error(
+			'Error: ./dist directory does not exist. Run build script first.',
+		);
+		process.exit(1);
+	}
 }

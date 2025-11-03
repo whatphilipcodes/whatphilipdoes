@@ -10,21 +10,23 @@ Create a `.env` file with the following contents:
 
 ```sh
 # Server Info
-SERVER_USER = 
-SERVER_HOST = 
-SERVER_PATH_TEST = 
-SERVER_PATH_LIVE = 
+SERVER_HOST = ""
+SERVER_USER = ""
+SERVER_PASSWORD = ""
+
+SERVER_PATH_TEST = ""
+SERVER_PATH_LIVE = ""
 
 # Contact Info
-CONTACT_FIRSTNAME = 
-CONTACT_LASTNAME = 
-CONTACT_STREET =
-CONTACT_NUMBER = 
-CONTACT_ZIP = 
-CONTACT_CITY = 
-CONTACT_PHONE = 
-CONTACT_MAIL = 
-CONTACT_SITE = 
+CONTACT_FIRSTNAME = ""
+CONTACT_LASTNAME = ""
+CONTACT_STREET = ""
+CONTACT_NUMBER = ""
+CONTACT_ZIP = ""
+CONTACT_CITY = ""
+CONTACT_PHONE = ""
+CONTACT_MAIL = ""
+CONTACT_SITE = ""
 ```
 To use the supplied `Github Actions`, upload the `.env` variables as repository secrets to Github (requires `gh` CLI tool):
 
