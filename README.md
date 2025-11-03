@@ -28,10 +28,10 @@ CONTACT_PHONE = ""
 CONTACT_MAIL = ""
 CONTACT_SITE = ""
 ```
-To use the supplied `Github Actions`, upload the `.env` variables as repository secrets to Github (requires `gh` CLI tool):
+To use the supplied `Github Action`, first create a production environment in the repository and then upload the `.env` variables as environment secrets (requires `gh` CLI tool):
 
 ```sh
-gh secret set --env-file .env
+gh secret set -e production -f .env
 ```
 
 ### SSH Setup
