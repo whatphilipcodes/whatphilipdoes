@@ -17,6 +17,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
+      '@fontsource-variable/rethink-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource-variable/syne':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@tailwindcss/vite':
         specifier: ^4.1.16
         version: 4.1.16(vite@7.1.12(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -465,6 +471,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/rethink-sans@5.2.8':
+    resolution: {integrity: sha512-al4seUEA9sN3D7//lASAPUWPtehLIkKHQRxskZwTUHd3hOpfyjJWmXLOXYQwYAS5h4OhZ2D9S/3N73MzTJ5ecg==}
+
+  '@fontsource-variable/syne@5.2.7':
+    resolution: {integrity: sha512-B2z7P0mGdNSAgz6SmtK7HXReZL22WJ8Z8sk5Z1ZuKiCSRM7DwWLjWXLwhbQ+CvmtNS/+p95jGvVEfQT9bm+UKw==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -2946,6 +2958,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.12':
     optional: true
+
+  '@fontsource-variable/rethink-sans@5.2.8': {}
+
+  '@fontsource-variable/syne@5.2.7': {}
 
   '@img/colour@1.0.0':
     optional: true

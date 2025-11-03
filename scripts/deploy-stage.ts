@@ -1,5 +1,5 @@
-import { deploy, excludeDefaults } from '@samkirkland/ftp-deploy';
 import { readdir } from 'node:fs/promises';
+import { deploy, excludeDefaults } from '@samkirkland/ftp-deploy';
 
 const vars = {
 	SERVER_USER: process.env.SERVER_USER,
