@@ -6,28 +6,31 @@ on:
 #       - main
 jobs:
   build:
+    name: build
+    environment: production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v5
       - run: corepack enable
-      - uses: actions/setup-node@v4.0.1
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
       - run: npm install
       - run: npm run build
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.2.0
+        uses: actions/upload-artifact@v5
         with:
           path: ./.output/public
   deploy:
-    name: Deploy
+    name: deploy
     needs: build
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
-        uses: actions/download-artifact@v4.1.1
+        uses: actions/download-artifact@v6
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
