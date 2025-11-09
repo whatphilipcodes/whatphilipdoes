@@ -1,36 +1,6 @@
 @import "tailwindcss";
-
-@font-face {
-	font-family: "Syne Variable";
-	font-style: normal;
-	font-display: block;
-	font-weight: 400 800;
-	src: url("@fontsource-variable/syne/files/syne-latin-wght-normal.woff2")
-		format("woff2-variations");
-	unicode-range:
-		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: "Rethink Sans Variable";
-	font-style: normal;
-	font-display: block;
-	font-weight: 400 800;
-	src: url("@fontsource-variable/rethink-sans/files/rethink-sans-latin-wght-normal.woff2")
-		format("woff2-variations");
-	unicode-range:
-		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* uncomment if design uses italics */
-/* @font-face {
-	font-family: "Rethink Sans Variable";
-	font-style: italic;
-	font-display: block;
-	font-weight: 400 800;
-	src: url("@fontsource-variable/rethink-sans/files/rethink-sans-latin-wght-italic.woff2")
-		format("woff2-variations");
-	unicode-range:
-		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-} */
+@import "@fontsource-variable/urbanist";
+@import "@fontsource-variable/urbanist/wght-italic.css";
 
 @theme {
 	/* Colors */
@@ -59,36 +29,37 @@
 	--color-cinnabar-950: oklch(0.182 0.064 35.16);
 
 	/* Font Sizes */
-	--font-size-sm: 0.75rem; /* 12px */
-	--font-size-base: 1rem; /* 16px */
-	--font-size-lg: 1.5rem; /* 24px */
-	--font-size-xl: 2.5rem; /* 40px */
+	/* --font-size-sm: 0.75rem; /* 12px */
+	/*--font-size-base: 1rem; /* 16px */
+	/* --font-size-lg: 1.5rem; /* 24px */
+	/* --font-size-xl: 2.5rem; /* 40px */
 
 	/* Font Family */
-	--font-sans: "Rethink Sans Variable", sans-serif;
-	--font-accent: "Syne Variable", sans-serif;
+	--font-sans: "Urbanist Variable", sans-serif;
+	/* --font-sans: "Rethink Sans Variable", sans-serif; */
+	/* --font-accent: "Syne Variable", sans-serif; */
 
 	/* Line Heights */
-	--line-height-sm: 1rem;
+	/* --line-height-sm: 1rem;
 	--line-height-base: 1.5rem;
 	--line-height-lg: 2rem;
 	--line-height-xl: 3rem;
 	--line-height-xlbaseline: 0.7;
-	--line-height-xlxheight: 0.28;
+	--line-height-xlxheight: 0.28; */
 
 	/* Breakpoints */
-	--breakpoint-sm: 640px;
+	/* --breakpoint-sm: 640px;
 	--breakpoint-md: 768px;
-	--breakpoint-lg: 1200px;
+	--breakpoint-lg: 1200px; */
 
 	/* Z-Index */
-	--z-index-bottom: -1000;
+	/* --z-index-bottom: -1000;
 	--z-index-default: 0;
 	--z-index-nav: 100;
-	--z-index-front: 1000;
+	--z-index-front: 1000; */
 
 	/* Aspect Ratios */
-	--aspect-ratio-square: 1 / 1;
+	/* --aspect-ratio-square: 1 / 1;
 	--aspect-ratio-landscape: 4 / 3;
-	--aspect-ratio-portrait: 3 / 4;
+	--aspect-ratio-portrait: 3 / 4; */
 }
