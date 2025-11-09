@@ -5,7 +5,7 @@ import { useAnime } from './hooks/useAnime';
 const Header = () => {
 	const textRef = useRef<HTMLDivElement>(null);
 
-	useAnime(textRef, (_self) => {
+	useAnime(textRef, () => {
 		const textEl = textRef.current as HTMLDivElement;
 		const split = splitText(textEl, {
 			words: { wrap: 'clip' },
@@ -33,7 +33,7 @@ const Header = () => {
 	return (
 		<div
 			ref={textRef}
-			className="text-mono-200 text-8xl leading-32 font-bold h-32"
+			className="text-mono-200 text-8xl leading-29 font-bold h-32"
 		>
 			what philip does
 		</div>
