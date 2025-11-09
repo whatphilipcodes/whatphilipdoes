@@ -1,5 +1,5 @@
 import { createScope, type Scope } from 'animejs';
-import { useEffect, useRef, type RefObject } from 'react';
+import { type RefObject, useEffect, useRef } from 'react';
 
 type AnimeCallback = (self: Scope) => void;
 
@@ -7,31 +7,23 @@ type AnimeCallback = (self: Scope) => void;
  * Custom hook to manage anime.js scope with proper cleanup for React components.
  *
  * @param rootRef - RefObject pointing to the root element for the animation scope
- * @param callback - Function that receives the scope self and an isActive ref
- * @returns The scope ref (can be used to access scope.current.methods if needed)
+ * @param callback - Function that receives the anime.js scope instance
+ * @returns The scope ref (can be used to access scope.current if needed)
  *
  * @example
  * ```tsx
  * const Example = () => {
  *   const textRef = useRef<HTMLDivElement>(null);
  *
- *   useAnime(textRef, (self, isActive) => {
- *     const split = splitText('.text', { words: { wrap: 'clip' } });
- *
- *     const animateWords = () => {
- *       if (!isActive.current) return;
- *
- *       waapi.animate(split.words, { ... })
- *         .then(() => {
- *           if (!isActive.current) return;
- *           animateWords();
- *         });
- *     };
- *
- *     animateWords();
+ *   useAnime(textRef, (self) => {
+ *     self.animate('.text', {
+ *       translateX: [0, 100],
+ *       duration: 1000,
+ *       easing: 'easeInOutQuad'
+ *     });
  *   });
  *
- *   return <div ref={textRef}>Content</div>;
+ *   return <div ref={textRef}><div className="text">Content</div></div>;
  * }
  * ```
  */

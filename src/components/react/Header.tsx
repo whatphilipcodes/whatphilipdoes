@@ -1,6 +1,6 @@
-import { splitText, waapi, stagger } from 'animejs';
-import { useAnime } from './hooks/useAnime';
+import { splitText, stagger, waapi } from 'animejs';
 import { useRef } from 'react';
+import { useAnime } from './hooks/useAnime';
 
 const Header = () => {
 	const textRef = useRef<HTMLDivElement>(null);
