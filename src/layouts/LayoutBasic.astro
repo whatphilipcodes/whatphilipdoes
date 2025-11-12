@@ -1,6 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-
+import "../styles/view-transitions.css";
 interface Props {
   title?: string;
   description?: string;
@@ -18,7 +18,7 @@ const { title, description } = Astro.props;
     />
   </head>
   <body class="bg-mono-950">
-    <main class="@container/main">
+    <main class="@container/main view-main">
       <slot />
     </main>
   </body>

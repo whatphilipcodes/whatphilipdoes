@@ -4,5 +4,11 @@ import Header from "@/components/react/Preloader";
 ---
 
 <LayoutBasic>
-	<Header client:load />
+	<Header class:list={"view-disabled"} client:load />
+	<div class="bg-amber-600 text-2xl text-red-800 italic">
+		THIS IS THE INDEX
+	</div>
+	<div class="bg-amber-700 view-disabled">I AM NOT TRANSITIONED</div>
+	<a href="/test" class="bg-indigo-600 rounded-md p-2">Click to change page</a
+	>
 </LayoutBasic>

@@ -33,6 +33,7 @@ const Header = () => {
 	return (
 		<div
 			ref={textRef}
+			data-transition="none"
 			className="text-mono-200 text-8xl leading-29 font-bold h-32"
 		>
 			what philip does

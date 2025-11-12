@@ -1,9 +1,7 @@
+@import "./fonts.css";
 @import "tailwindcss";
-@import "@fontsource-variable/urbanist";
-@import "@fontsource-variable/urbanist/wght-italic.css";
 
 @theme {
-	/* Colors */
 	--color-mono-50: oklch(0.9581 0 0);
 	--color-mono-100: oklch(0.9219 0 0);
 	--color-mono-200: oklch(0.8359 0 0);
@@ -28,38 +26,15 @@
 	--color-cinnabar-900: oklch(0.233 0.08 34.49);
 	--color-cinnabar-950: oklch(0.182 0.064 35.16);
 
-	/* Font Sizes */
-	/* --font-size-sm: 0.75rem; /* 12px */
-	/*--font-size-base: 1rem; /* 16px */
-	/* --font-size-lg: 1.5rem; /* 24px */
-	/* --font-size-xl: 2.5rem; /* 40px */
-
-	/* Font Family */
 	--font-sans: "Urbanist Variable", sans-serif;
-	/* --font-sans: "Rethink Sans Variable", sans-serif; */
-	/* --font-accent: "Syne Variable", sans-serif; */
+}
 
-	/* Line Heights */
-	/* --line-height-sm: 1rem;
-	--line-height-base: 1.5rem;
-	--line-height-lg: 2rem;
-	--line-height-xl: 3rem;
-	--line-height-xlbaseline: 0.7;
-	--line-height-xlxheight: 0.28; */
+/* transitions defined in -> ./view-transitions.css */
 
-	/* Breakpoints */
-	/* --breakpoint-sm: 640px;
-	--breakpoint-md: 768px;
-	--breakpoint-lg: 1200px; */
+@utility view-disabled {
+	view-transition-name: no-transition;
+}
 
-	/* Z-Index */
-	/* --z-index-bottom: -1000;
-	--z-index-default: 0;
-	--z-index-nav: 100;
-	--z-index-front: 1000; */
-
-	/* Aspect Ratios */
-	/* --aspect-ratio-square: 1 / 1;
-	--aspect-ratio-landscape: 4 / 3;
-	--aspect-ratio-portrait: 3 / 4; */
+@utility view-main {
+	view-transition-name: main;
 }
