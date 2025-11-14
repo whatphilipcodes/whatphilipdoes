@@ -15,7 +15,7 @@ type AnimeCallback = (self: Scope) => void;
  * const Example = () => {
  *   const textRef = useRef<HTMLDivElement>(null);
  *
- *   useAnime(textRef, (self) => {
+ *   useAnime(textRef, (_self) => {
  *     self.animate('.text', {
  *       translateX: [0, 100],
  *       duration: 1000,
