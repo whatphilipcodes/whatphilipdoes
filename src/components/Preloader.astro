@@ -1,0 +1,111 @@
+---
+
+---
+
+<div
+    id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black"
+>
+    <div class="w-64">
+        <div class="h-1 w-full bg-gray-800 rounded-full overflow-hidden">
+            <div
+                id="progress-bar"
+                class="h-full bg-white transition-all duration-300 ease-out"
+                style="width: 0%"
+            >
+            </div>
+        </div>
+        <div
+            id="progress-text"
+            class="mt-4 text-center text-white text-sm font-mono"
+        >
+            0%
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("start load");
+
+    //
+
+    function testPerfObserver(
+        list: PerformanceObserverEntryList,
+        observer: PerformanceObserver,
+    ) {
+        const entries = list.getEntries();
+        console.log(entries, entries.length);
+    }
+    const test = new PerformanceObserver(testPerfObserver);
+
+    test.observe({ entryTypes: ["resource"] });
+
+    //
+
+    const TOTAL_TRANSFER_SIZE_BYTES = 43.5 * 1024 * 1024;
+
+    const preloader = document.getElementById("preloader");
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+
+    let currentProgress = 0;
+    let currentTransferredSize = 0;
+
+    const updateProgress = () => {
+        const calculatedProgress =
+            (currentTransferredSize / TOTAL_TRANSFER_SIZE_BYTES) * 100;
+        currentProgress = Math.max(
+            Math.min(calculatedProgress, 99),
+            currentProgress,
+        );
+
+        if (progressBar && progressText) {
+            progressBar.style.width = `${currentProgress}%`;
+            progressText.textContent = `${Math.round(currentProgress)}%`;
+        }
+    };
+
+    const perfObserver = (
+        list: PerformanceObserverEntryList,
+        observer: PerformanceObserver,
+    ) => {
+        const entries = list.getEntries() as PerformanceResourceTiming[];
+
+        for (const entry of entries) {
+            currentTransferredSize += entry.decodedBodySize;
+        }
+
+        updateProgress();
+    };
+
+    const observer = new PerformanceObserver(perfObserver);
+    observer.observe({ entryTypes: ["resource"] });
+
+    const handleLoad = () => {
+        observer.disconnect();
+
+        currentProgress = 100;
+
+        if (progressBar && progressText) {
+            progressBar.style.width = "100%";
+            progressText.textContent = "100%";
+        }
+
+        // Fade out preloader after a short delay
+        setTimeout(() => {
+            if (preloader) {
+                preloader.style.opacity = "0";
+                preloader.style.transition = "opacity 0.5s ease-out";
+
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 500);
+            }
+        }, 300);
+
+        console.log("load completion");
+    };
+
+    // Listen for page load completion
+    window.addEventListener("load", handleLoad);
+</script>

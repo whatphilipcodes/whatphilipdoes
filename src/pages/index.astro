@@ -1,11 +1,12 @@
 ---
 import LayoutBasic from "../layouts/LayoutBasic.astro";
-import Preloader from "@/components/react/Preloader";
+import Preloader from "@/components/Preloader.astro";
 import Video from "@/components/react/Video";
 import { Image } from "astro:assets";
 ---
 
 <LayoutBasic>
+	<Preloader />
 	<Video client:load src="./video/train.mp4" />
 	<Video client:load src="./video/header-entity.mp4" />
 	<Image
