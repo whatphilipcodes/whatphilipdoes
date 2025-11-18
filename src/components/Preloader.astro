@@ -39,17 +39,18 @@
         if (progressText) {
             progressText.textContent = `${percentage}%`;
         }
-        console.log(progress);
+        console.log("loading: ", percentage + "%");
     };
     const onComplete = () => {
+        console.log("on complete");
         if (preloader) {
             setTimeout(() => {
                 preloader.style.opacity = "0";
-                preloader.style.transition = "opacity 0.2s ease-out";
+                preloader.style.transition = "opacity 0.8s ease-out";
                 setTimeout(() => {
                     preloader.style.display = "none";
-                }, 200);
-            }, 200);
+                }, 800);
+            }, 400);
         }
     };
     usePreloading(onProgress, onComplete);
