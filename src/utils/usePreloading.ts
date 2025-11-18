@@ -1,36 +1,76 @@
-const response = await fetch('/meta.json');
-const { preloadMediaCount } = await response.json();
+const MEDIA_ELEMENTS = ['video', 'audio'];
+const LOADABLE_ELEMENTS = [
+	'img',
+	'script',
+	'iframe',
+	'link',
+	'style',
+	'embed',
+	'object',
+	'track',
+];
 
-const tracked: string[] = [];
-const indicators = ['img', 'audio', 'video'];
-
-const track = (candidates: PerformanceResourceTiming[]) => {
-	candidates.forEach((c) => {
-		if (tracked.includes(c.name)) return;
-		if (!indicators.includes(c.initiatorType)) return;
-		tracked.push(c.name);
-	});
+const getEventType = (tagName: string): string | null => {
+	if (MEDIA_ELEMENTS.includes(tagName)) return 'canplay';
+	if (LOADABLE_ELEMENTS.includes(tagName)) return 'load';
+	return null;
 };
 
 const usePreloading = (
 	onProgress: (progress: number) => void,
 	onComplete: () => void,
 ) => {
-	const observer = new PerformanceObserver(
-		(list: PerformanceObserverEntryList, _observer: PerformanceObserver) => {
-			const entries = list.getEntries() as PerformanceResourceTiming[];
-			track(entries);
-			onProgress(Math.min((tracked.length / preloadMediaCount) as number, 1));
-		},
-	);
-	const conclude = () => {
-		window.removeEventListener('load', conclude);
-		observer.disconnect();
-		onProgress(1);
-		onComplete();
+	let loaded = 0;
+
+	const elements = document.querySelectorAll('[data-preloader]');
+	const total = elements.length;
+
+	const handleLoad = () => {
+		loaded++;
+		onProgress(Math.min(loaded / total, 1));
 	};
-	observer.observe({ type: 'resource', buffered: true });
-	window.addEventListener('load', conclude);
+
+	const deployListeners = (elements: NodeListOf<Element>) => {
+		elements.forEach((el) => {
+			const tagName = el.tagName.toLowerCase();
+			const eventType = getEventType(tagName);
+
+			if (eventType) {
+				el.addEventListener(eventType, handleLoad, { once: true });
+			} else {
+				console.error(
+					`[data-preloader] Unsupported element type: <${tagName}>. Supported elements: <${LOADABLE_ELEMENTS.join('>, <')}>, <${MEDIA_ELEMENTS.join('>, <')}>.`,
+				);
+			}
+		});
+	};
+
+	const cancelListeners = (elements: NodeListOf<Element>) => {
+		elements.forEach((el) => {
+			const tagName = el.tagName.toLowerCase();
+			const eventType = getEventType(tagName);
+
+			if (eventType) {
+				el.removeEventListener(eventType, handleLoad);
+			} else {
+				console.error(
+					`[data-preloader] Unsupported element type: <${tagName}>. Supported elements: <${LOADABLE_ELEMENTS.join('>, <')}>, <${MEDIA_ELEMENTS.join('>, <')}>.`,
+				);
+			}
+		});
+	};
+
+	deployListeners(elements);
+
+	window.addEventListener(
+		'load',
+		() => {
+			cancelListeners(elements);
+			onProgress(1);
+			onComplete();
+		},
+		{ once: true },
+	);
 };
 
 export { usePreloading };

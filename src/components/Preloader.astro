@@ -1,6 +1,5 @@
 ---
-// import { updatePreloadMediaCount } from "@/utils/usePreloading";
-// update meta.json here during build time (also handle dev)
+
 ---
 
 <div
@@ -40,6 +39,7 @@
         if (progressText) {
             progressText.textContent = `${percentage}%`;
         }
+        console.log(progress);
     };
     const onComplete = () => {
         if (preloader) {
