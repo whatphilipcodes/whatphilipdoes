@@ -2,10 +2,10 @@
 
 ---
 
-<div class="@container/preloader w-screen h-screen overflow-clip">
+<div class="@container/preloader h-dvh overflow-clip">
     <div
         id="preloader-content"
-        class="flex justify-center w-screen h-screen text-mono-50 bg-mono-950 text-2xl p-10"
+        class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-2xl p-10"
     >
         <div
             id="preloader-frame"
@@ -69,14 +69,16 @@
             activeIndex = Math.round(dampIndex);
 
             const currentHeight = utils.get(progressEl, "height", false);
-            console.log(currentHeight);
             utils.set(progressEl, {
                 height:
-                    utils.damp(
+                    Math.max(
                         currentHeight,
-                        progress * 100,
-                        clock.deltaTime,
-                        factor,
+                        utils.damp(
+                            currentHeight,
+                            progress * 100,
+                            clock.deltaTime,
+                            factor,
+                        ),
                     ) + "%",
             });
 
