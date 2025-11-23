@@ -2,56 +2,96 @@
 
 ---
 
-<div
-    id="preloader"
-    class="fixed flex inset-0 z-50 items-center justify-center bg-black"
->
-    <div class="w-64">
-        <div class="h-1 w-full bg-gray-800 rounded-full overflow-hidden">
+<div class="@container/preloader w-screen h-screen overflow-clip">
+    <div
+        id="preloader-content"
+        class="flex justify-center w-screen h-screen text-mono-50 bg-mono-950 text-2xl p-10"
+    >
+        <div
+            id="preloader-frame"
+            class="w-full h-full flex flex-col place-content-between"
+        >
+            <div class="">what philip</div>
             <div
-                id="progress-bar"
-                class="h-full bg-white transition-all duration-300 ease-out"
-                style="width: 0%"
+                id="preloader-progress"
+                class="flex w-full place-content-between"
             >
+                <div id="preloader-status" class="font-bold">starts</div>
+                <div
+                    id="preloader-bar"
+                    class="bg-mono-50 h-full w-0.5 rounded-md"
+                >
+                </div>
             </div>
         </div>
-        <div
-            id="progress-text"
-            class="mt-4 text-center text-white text-sm font-mono"
-        >
-            0%
-        </div>
     </div>
+    <slot />
 </div>
 
 <script>
+    import { splitText, createTimer, utils } from "animejs";
     import { usePreloading } from "@/utils/usePreloading";
 
-    const preloader = document.getElementById("preloader");
-    const progressBar = document.getElementById("progress-bar");
-    const progressText = document.getElementById("progress-text");
+    const statusArray = [
+        "starts",
+        "sees",
+        "creates",
+        "enjoys",
+        "gaines",
+        "makes",
+        "trains",
+        "codes",
+        "does",
+    ];
 
-    const onProgress = (progress: number) => {
-        const percentage = Math.round(progress * 100);
-        if (progressBar) {
-            progressBar.style.width = `${percentage}%`;
-        }
-        if (progressText) {
-            progressText.textContent = `${percentage}%`;
-        }
-        console.log("loading: ", percentage + "%");
+    const progressEl = document.getElementById("preloader-progress")!;
+    const statusEl = document.getElementById("preloader-status")!;
+    const split = splitText(statusEl, { chars: true });
+
+    let factor = 0.035;
+    let progress = 0;
+
+    let dampIndex = 0;
+    let activeIndex = 0;
+    const maxIndex = statusArray.length - 1;
+
+    const dampedLoop = createTimer({
+        onUpdate: (clock) => {
+            if (clock.deltaTime < 0) return;
+            if (activeIndex >= maxIndex) dampedLoop.cancel();
+
+            dampIndex = utils.damp(
+                dampIndex,
+                Math.round(utils.mapRange(progress, 0, 1, 0, maxIndex)),
+                clock.deltaTime,
+                factor,
+            );
+            activeIndex = Math.round(dampIndex);
+
+            const currentHeight = utils.get(progressEl, "height", false);
+            console.log(currentHeight);
+            utils.set(progressEl, {
+                height:
+                    utils.damp(
+                        currentHeight,
+                        progress * 100,
+                        clock.deltaTime,
+                        factor,
+                    ) + "%",
+            });
+
+            split.html = statusArray[activeIndex];
+            split.refresh();
+        },
+    });
+
+    const onProgress = (p: number) => {
+        progress = p;
+        console.log("progress", progress);
     };
+
     const onComplete = () => {
         console.log("on complete");
-        if (preloader) {
-            setTimeout(() => {
-                preloader.style.opacity = "0";
-                preloader.style.transition = "opacity 0.8s ease-out";
-                setTimeout(() => {
-                    preloader.style.display = "none";
-                }, 800);
-            }, 400);
-        }
     };
-    usePreloading(onProgress, onComplete);
+    usePreloading(onProgress, onComplete, "data-preloader");
 </script>

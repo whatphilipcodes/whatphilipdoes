@@ -19,10 +19,11 @@ const getEventType = (tagName: string): string | null => {
 const usePreloading = (
 	onProgress: (progress: number) => void,
 	onComplete: () => void,
+	dataAttribute: string = 'data-preloader',
 ) => {
 	let loaded = 0;
 
-	const elements = document.querySelectorAll('[data-preloader]');
+	const elements = document.querySelectorAll(`[${dataAttribute}]`);
 	const total = elements.length;
 
 	const handleLoad = () => {
