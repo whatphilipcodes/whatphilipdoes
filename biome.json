@@ -15,9 +15,18 @@
 			"recommended": true
 		}
 	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "single"
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single"
 		}
 	},
 	"html": {
@@ -33,14 +42,6 @@
 		},
 		"linter": {
 			"enabled": true
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
 		}
 	},
 	"overrides": [
