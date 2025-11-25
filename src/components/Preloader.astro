@@ -1,99 +1,110 @@
 ---
-
+//
 ---
 
 <div class="@container/preloader h-dvh overflow-clip">
-    <div
-        id="preloader-content"
-        class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-2xl p-10"
-    >
-        <div
-            id="preloader-frame"
-            class="w-full h-full flex flex-col place-content-between"
-        >
-            <div class="">what philip</div>
-            <div
-                id="preloader-progress"
-                class="flex w-full place-content-between"
-            >
-                <div id="preloader-status" class="font-bold">starts</div>
-                <div
-                    id="preloader-bar"
-                    class="bg-mono-50 h-full w-0.5 rounded-md"
-                >
-                </div>
-            </div>
-        </div>
-    </div>
-    <slot />
+	<div
+		id="preloader-content"
+		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-2xl p-10"
+	>
+		<div
+			id="preloader-frame"
+			class="w-full h-full flex flex-col place-content-between"
+		>
+			<div class="">what philip</div>
+			<div id="preloader-progress" class="flex w-full place-content-between">
+				<div id="preloader-status" class="font-bold">starts</div>
+				<div
+					id="preloader-bar"
+					class="bg-mono-50 h-full w-0.5 rounded-md"
+				></div>
+			</div>
+		</div>
+	</div>
+	<slot/>
 </div>
 
 <script>
-    import { splitText, createTimer, utils } from "animejs";
-    import { usePreloading } from "@/utils/usePreloading";
+import { createTimer, splitText, utils, waapi } from 'animejs';
+import { getElement } from '@/utils/getElement';
+import { setupPreloading } from '@/utils/setupPreloading';
 
-    const statusArray = [
-        "starts",
-        "sees",
-        "creates",
-        "enjoys",
-        "gaines",
-        "makes",
-        "trains",
-        "codes",
-        "does",
-    ];
+const statusArray = [
+	'starts',
+	'sees',
+	'creates',
+	'enjoys',
+	'gaines',
+	'makes',
+	'trains',
+	'codes',
+	'does',
+];
 
-    const progressEl = document.getElementById("preloader-progress")!;
-    const statusEl = document.getElementById("preloader-status")!;
-    const split = splitText(statusEl, { chars: true });
+const progressElement = getElement('preloader-progress');
+const statusElement = getElement('preloader-status');
 
-    let factor = 0.035;
-    let progress = 0;
+const split = splitText(statusElement, {
+	words: { wrap: 'clip' },
+	chars: true,
+});
 
-    let dampIndex = 0;
-    let activeIndex = 0;
-    const maxIndex = statusArray.length - 1;
+let factor = 0.015;
+let progress = 0;
 
-    const dampedLoop = createTimer({
-        onUpdate: (clock) => {
-            if (clock.deltaTime < 0) return;
-            if (activeIndex >= maxIndex) dampedLoop.cancel();
+let dampIndex = 0;
+let activeIndex = 0;
+const maxIndex = statusArray.length - 1;
 
-            dampIndex = utils.damp(
-                dampIndex,
-                Math.round(utils.mapRange(progress, 0, 1, 0, maxIndex)),
-                clock.deltaTime,
-                factor,
-            );
-            activeIndex = Math.round(dampIndex);
+const dampedLoop = createTimer({
+	onUpdate: (clock) => {
+		if (clock.deltaTime < 0) return;
+		if (activeIndex >= maxIndex) dampedLoop.cancel();
 
-            const currentHeight = utils.get(progressEl, "height", false);
-            utils.set(progressEl, {
-                height:
-                    Math.max(
-                        currentHeight,
-                        utils.damp(
-                            currentHeight,
-                            progress * 100,
-                            clock.deltaTime,
-                            factor,
-                        ),
-                    ) + "%",
-            });
+		dampIndex = utils.damp(
+			dampIndex,
+			Math.round(utils.mapRange(progress, 0, 1, 0, maxIndex)),
+			clock.deltaTime,
+			factor,
+		);
+		activeIndex = Math.round(dampIndex);
 
-            split.html = statusArray[activeIndex];
-            split.refresh();
-        },
-    });
+		const currentHeight = utils.get(progressElement, 'height', false);
+		utils.set(progressElement, {
+			height: `${Math.max(
+				currentHeight,
+				utils.damp(currentHeight, progress * 100, clock.deltaTime, factor),
+			)}%`,
+		});
+		updateStatus();
+	},
+});
 
-    const onProgress = (p: number) => {
-        progress = p;
-        console.log("progress", progress);
-    };
+const updateStatus = async () => {
+	console.log('statusUpdate');
 
-    const onComplete = () => {
-        console.log("on complete");
-    };
-    usePreloading(onProgress, onComplete, "data-preloader");
+	await waapi.animate(split.chars, {
+		y: { from: '0%', to: '-100%', duration: 350, ease: 'in(3)' },
+		delay: utils.stagger(100, { from: 'random' }),
+	});
+
+	split.html = statusArray[activeIndex];
+	split.refresh();
+
+	await waapi.animate(split.chars, {
+		y: { from: '-100%', to: '0%', duration: 350, ease: 'out(3)' },
+		delay: utils.stagger(100, { from: 'random' }),
+	});
+};
+
+const onProgress = (p: number) => {
+	progress = p;
+	console.log('progress', progress);
+};
+
+const onComplete = () => {
+	console.log('on complete');
+};
+
+setupPreloading(onProgress, onComplete, 'data-preloader');
 </script>

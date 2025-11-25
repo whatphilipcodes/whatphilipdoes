@@ -1,15 +1,15 @@
 ---
-import LayoutBasic from "@/layouts/LayoutBasic.astro";
-import Preloader from "@comps/Preloader.astro";
-import Video from "@react/Video";
-import { Image } from "astro:assets";
-import testImage from "../assets/inter/exterior/front.jpg";
+import { Image } from 'astro:assets';
+import Preloader from '@comps/Preloader.astro';
+import VideoPlayer from '@react/VideoPlayer';
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import testImage from '../assets/inter/exterior/front.jpg';
 ---
 
 <LayoutBasic>
 	<Preloader>
-		<Video data-preloader client:load src="./video/train.mp4" />
-		<Video data-preloader client:load src="./video/header-entity.mp4" />
+		<VideoPlayer data-preloader client:load src="./video/train.mp4"/>
+		<VideoPlayer data-preloader client:load src="./video/header-entity.mp4"/>
 		<Image
 			data-preloader
 			src="https://images.unsplash.com/photo-1762205907900-1e651d68afd2?q=80&w=1292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

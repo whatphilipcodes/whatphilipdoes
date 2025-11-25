@@ -16,7 +16,7 @@ const getEventType = (tagName: string): string | null => {
 	return null;
 };
 
-const usePreloading = (
+const setupPreloading = (
 	onProgress: (progress: number) => void,
 	onComplete: () => void,
 	dataAttribute: string = 'data-preloader',
@@ -74,4 +74,4 @@ const usePreloading = (
 	);
 };
 
-export { usePreloading };
+export { setupPreloading };

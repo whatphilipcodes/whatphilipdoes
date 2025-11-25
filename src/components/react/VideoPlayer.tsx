@@ -1,8 +1,8 @@
-type VideoProps = {
+type VideoPlayerProps = {
 	src: string;
 } & React.HTMLAttributes<HTMLVideoElement>;
 
-const Video = ({ src, ...htmlAttributes }: VideoProps) => {
+const VideoPlayer = ({ src, ...htmlAttributes }: VideoPlayerProps) => {
 	return (
 		<video preload="auto" autoPlay loop muted playsInline {...htmlAttributes}>
 			<source src={src} type="video/mp4" />
@@ -10,4 +10,4 @@ const Video = ({ src, ...htmlAttributes }: VideoProps) => {
 	);
 };
 
-export default Video;
+export default VideoPlayer;

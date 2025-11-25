@@ -1,26 +1,26 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import "../styles/view-transitions.css";
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/view-transitions.css';
 interface Props {
-  title?: string;
-  description?: string;
-  created?: string;
+	title?: string;
+	description?: string;
+	created?: string;
 }
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead
-      title={title ?? "whatphilipdoes"}
-      description={description ?? "personal portfolio website"}
-    />
-  </head>
-  <body class="bg-mono-950">
-    <!-- <main class="@container/main view-main"> -->
-    <main class="@container/main">
-      <slot />
-    </main>
-  </body>
+	<head>
+		<BaseHead
+			title={title ?? "whatphilipdoes"}
+			description={description ?? "personal portfolio website"}
+		/>
+	</head>
+	<body class="bg-mono-950">
+		<!-- <main class="@container/main view-main"> -->
+		<main class="@container/main">
+			<slot/>
+		</main>
+	</body>
 </html>
