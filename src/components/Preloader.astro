@@ -83,18 +83,18 @@ const dampedLoop = createTimer({
 const updateStatus = async () => {
 	console.log('statusUpdate');
 
-	await waapi.animate(split.chars, {
-		y: { from: '0%', to: '-100%', duration: 350, ease: 'in(3)' },
-		delay: utils.stagger(100, { from: 'random' }),
-	});
+	// await waapi.animate(split.chars, {
+	// 	y: { from: '0%', to: '-100%', duration: 350, ease: 'in(3)' },
+	// 	delay: utils.stagger(100, { from: 'random' }),
+	// });
 
 	split.html = statusArray[activeIndex];
 	split.refresh();
 
-	await waapi.animate(split.chars, {
-		y: { from: '-100%', to: '0%', duration: 350, ease: 'out(3)' },
-		delay: utils.stagger(100, { from: 'random' }),
-	});
+	// await waapi.animate(split.chars, {
+	// 	y: { from: '-100%', to: '0%', duration: 350, ease: 'out(3)' },
+	// 	delay: utils.stagger(100, { from: 'random' }),
+	// });
 };
 
 const onProgress = (p: number) => {
