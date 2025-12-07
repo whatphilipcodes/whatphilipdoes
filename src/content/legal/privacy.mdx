@@ -75,15 +75,16 @@ Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten 
 Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist:
 
 <LegalContact>
-{CONTACT_FIRSTNAME} {CONTACT_LASTNAME}<br/>
-{CONTACT_STREET} {CONTACT_NUMBER}<br/>
-{CONTACT_ZIP} {CONTACT_CITY}<br/>
+{`${CONTACT_FIRSTNAME} ${CONTACT_LASTNAME}`}<br/>
+{`${CONTACT_STREET} ${CONTACT_NUMBER}`}<br/>
+{`${CONTACT_ZIP} ${CONTACT_CITY}`}<br/>
 
 Tel.: {CONTACT_PHONE}<br/>
 Mail: <a href={`mailto:${CONTACT_MAIL}`}>{CONTACT_MAIL}</a>
 </LegalContact>
 
-Website: [{CONTACT_SITE}](/)
+Website: <a href={CONTACT_SITE}>{CONTACT_SITE}</a>
+
 
 ## 3. Erfassung von allgemeinen Daten und Informationen
 
