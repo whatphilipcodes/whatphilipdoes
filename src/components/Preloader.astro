@@ -1,22 +1,63 @@
 ---
-//
+const statusArray = [
+	'starts',
+	'sees',
+	'reads',
+	'solves',
+	'thinks',
+	'learns',
+	'creates',
+	'enjoys',
+	'plans',
+	'designs',
+	'leads',
+	'gains',
+	'makes',
+	'builds',
+	'codes',
+	'trains',
+	'fixes',
+	'develops',
+	'ships',
+	'does',
+];
 ---
 
-<div class="@container/preloader h-dvh overflow-clip">
+<div data-info="preloader-page-wrapper" class="h-dvh overflow-clip">
 	<div
-		id="preloader-content"
-		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-2xl p-10"
+		data-info="preloader-element"
+		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-xl p-10"
 	>
-		<div
-			id="preloader-frame"
-			class="w-full h-full flex flex-col place-content-between"
-		>
-			<div class="">what philip</div>
-			<div id="preloader-progress" class="flex w-full place-content-between">
-				<div id="preloader-status" class="font-bold">starts</div>
+		<div data-info="preloader-screen-area" class="w-full h-full flex flex-col">
+			<div data-info="preloader-page-logo" class="text-mono-500">
+				what philip
+			</div>
+			<div
+				data-info="preloader-progress-area"
+				class="flex flex-row w-full h-full"
+			>
 				<div
-					id="preloader-bar"
-					class="bg-mono-50 h-full w-0.5 rounded-md"
+					data-info="preloader-keyword-container"
+					class="@container-[size] flex flex-col place-content-between relative w-full h-full"
+				>
+					<div
+						id="preloader-keyword-view"
+						data-info="preloader-keyword-view"
+						class="flex flex-col-reverse w-full h-lh overflow-clip absolute bottom-0"
+					>
+						<div
+							id="preloader-keyword-col"
+							data-info="preloader-keyword-col"
+							class="flex flex-col place-content-between shrink-0 grow-0 h-[80cqh]"
+						>
+							{statusArray.reverse().map((status) => <div>{status}</div>)}
+						</div>
+					</div>
+				</div>
+				<div
+					id="preloader-progress-bar"
+					data-info="preloader-progress-bar"
+					class="bg-mono-50 w-px h-0 rounded-md"
 				></div>
 			</div>
 		</div>
@@ -25,81 +66,36 @@
 </div>
 
 <script>
-import { createTimer, splitText, utils, waapi } from 'animejs';
+import { createTimer, utils } from 'animejs';
 import { getElement } from '@/utils/getElement';
 import { setupPreloading } from '@/utils/setupPreloading';
 
-const statusArray = [
-	'starts',
-	'sees',
-	'creates',
-	'enjoys',
-	'gaines',
-	'makes',
-	'trains',
-	'codes',
-	'does',
-];
+const progressBar = getElement('preloader-progress-bar');
+const keywordView = getElement('preloader-keyword-view');
+const keywordCol = getElement('preloader-keyword-col');
 
-const progressElement = getElement('preloader-progress');
-const statusElement = getElement('preloader-status');
-
-const split = splitText(statusElement, {
-	words: { wrap: 'clip' },
-	chars: true,
-});
-
-let factor = 0.015;
+const factor = 0.01;
 let progress = 0;
-
-let dampIndex = 0;
-let activeIndex = 0;
-const maxIndex = statusArray.length - 1;
 
 const dampedLoop = createTimer({
 	onUpdate: (clock) => {
 		if (clock.deltaTime < 0) return;
-		if (activeIndex >= maxIndex) dampedLoop.cancel();
-
-		dampIndex = utils.damp(
-			dampIndex,
-			Math.round(utils.mapRange(progress, 0, 1, 0, maxIndex)),
-			clock.deltaTime,
-			factor,
-		);
-		activeIndex = Math.round(dampIndex);
-
-		const currentHeight = utils.get(progressElement, 'height', false);
-		utils.set(progressElement, {
-			height: `${Math.max(
-				currentHeight,
-				utils.damp(currentHeight, progress * 100, clock.deltaTime, factor),
-			)}%`,
+		const heightBar = utils.get(progressBar, 'height', false);
+		const translateKView = utils.get(keywordView, 'y', 'cqh');
+		const translateKCol = utils.get(keywordCol, 'y', 'cqh');
+		utils.set(progressBar, {
+			height: `${utils.damp(heightBar, progress * 100, clock.deltaTime, factor)}%`,
 		});
-		updateStatus();
+		utils.set(keywordView, {
+			y: `${utils.damp(parseFloat(translateKView), -progress * 100, clock.deltaTime, factor)}cqh`,
+		});
+		utils.set(keywordCol, {
+			y: `${utils.damp(parseFloat(translateKCol), progress * 80, clock.deltaTime, factor)}cqh`,
+		});
 	},
 });
-
-const updateStatus = async () => {
-	console.log('statusUpdate');
-
-	// await waapi.animate(split.chars, {
-	// 	y: { from: '0%', to: '-100%', duration: 350, ease: 'in(3)' },
-	// 	delay: utils.stagger(100, { from: 'random' }),
-	// });
-
-	split.html = statusArray[activeIndex];
-	split.refresh();
-
-	// await waapi.animate(split.chars, {
-	// 	y: { from: '-100%', to: '0%', duration: 350, ease: 'out(3)' },
-	// 	delay: utils.stagger(100, { from: 'random' }),
-	// });
-};
-
 const onProgress = (p: number) => {
 	progress = p;
-	console.log('progress', progress);
 };
 
 const onComplete = () => {
