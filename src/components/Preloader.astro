@@ -17,7 +17,7 @@ const statusArray = [
 	{ txt: 'fixes', cls: 'hidden md:block' },
 	{ txt: 'develops', cls: 'hidden md:block' },
 	{ txt: 'ships', cls: '' },
-	{ txt: 'does', cls: '' },
+	// { txt: 'does', cls: '' }, -> this should be the end state
 ];
 ---
 
@@ -26,14 +26,14 @@ const statusArray = [
 		data-info="preloader-element"
 		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-xl p-10"
 	>
-		<div data-info="preloader-screen-area" class="w-full h-full flex flex-col">
-			<div data-info="preloader-page-logo" class="text-mono-500">
-				what philip
-			</div>
+		<div data-info="preloader-screen-area" class="w-full h-full flex flex-row">
 			<div
 				data-info="preloader-progress-area"
-				class="flex flex-row w-full h-full"
+				class="flex flex-col w-full h-full"
 			>
+				<div data-info="preloader-page-name" class="text-mono-500">
+					what philip
+				</div>
 				<div
 					data-info="preloader-keyword-container"
 					class="@container-[size] flex flex-col place-content-between relative w-full h-full"
@@ -52,12 +52,12 @@ const statusArray = [
 						</div>
 					</div>
 				</div>
-				<div
-					id="preloader-progress-bar"
-					data-info="preloader-progress-bar"
-					class="bg-mono-50 w-px h-0 rounded-md"
-				></div>
 			</div>
+			<div
+				id="preloader-progress-bar"
+				data-info="preloader-progress-bar"
+				class="bg-mono-50 w-px h-0 rounded-md"
+			></div>
 		</div>
 	</div>
 	<slot/>
