@@ -1,25 +1,23 @@
 ---
 const statusArray = [
-	'starts',
-	'sees',
-	'reads',
-	'solves',
-	'thinks',
-	'learns',
-	'creates',
-	'enjoys',
-	'plans',
-	'designs',
-	'leads',
-	'gains',
-	'makes',
-	'builds',
-	'codes',
-	'trains',
-	'fixes',
-	'develops',
-	'ships',
-	'does',
+	{ txt: 'starts', cls: '' },
+	{ txt: 'reads', cls: '' },
+	{ txt: 'solves', cls: '' },
+	{ txt: 'thinks', cls: 'hidden md:block' },
+	{ txt: 'learns', cls: 'hidden md:block' },
+	{ txt: 'creates', cls: '' },
+	{ txt: 'enjoys', cls: 'hidden md:block' },
+	{ txt: 'plans', cls: '' },
+	{ txt: 'designs', cls: '' },
+	{ txt: 'leads', cls: '' },
+	{ txt: 'gains', cls: 'hidden md:block' },
+	{ txt: 'makes', cls: '' },
+	{ txt: 'builds', cls: '' },
+	{ txt: 'codes', cls: '' },
+	{ txt: 'fixes', cls: 'hidden md:block' },
+	{ txt: 'develops', cls: 'hidden md:block' },
+	{ txt: 'ships', cls: '' },
+	{ txt: 'does', cls: '' },
 ];
 ---
 
@@ -50,7 +48,7 @@ const statusArray = [
 							data-info="preloader-keyword-col"
 							class="flex flex-col place-content-between shrink-0 grow-0 h-[80cqh]"
 						>
-							{statusArray.reverse().map((status) => <div>{status}</div>)}
+							{statusArray.reverse().map((status) => <div class={status.cls}>{status.txt}</div>)}
 						</div>
 					</div>
 				</div>
@@ -74,7 +72,7 @@ const progressBar = getElement('preloader-progress-bar');
 const keywordView = getElement('preloader-keyword-view');
 const keywordCol = getElement('preloader-keyword-col');
 
-const factor = 0.01;
+const factor = 0.05;
 let progress = 0;
 
 const dampedLoop = createTimer({
