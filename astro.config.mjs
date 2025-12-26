@@ -61,6 +61,10 @@ export default defineConfig({
 			CONTACT_PHONE: envField.string({ context: 'server', access: 'secret' }),
 			CONTACT_MAIL: envField.string({ context: 'server', access: 'secret' }),
 			CONTACT_SITE: envField.string({ context: 'server', access: 'secret' }),
+			MANAGED_SUBDOMAINS: envField.string({
+				context: 'server',
+				access: 'secret',
+			}),
 		},
 	},
 });

@@ -10,26 +10,29 @@ Create a `.env` file with the following contents:
 
 ```sh
 # Server Info
-SERVER_HOST = ""
-SERVER_USER = ""
-SERVER_PASSWORD = ""
+SERVER_HOST = "www123.your-server.com"
+SERVER_USER = "usernm"
+SERVER_PASSWORD = "serverpassword"
 
-SERVER_PATH_TEST = ""
-SERVER_PATH_LIVE = ""
+SERVER_PATH_TEST = "/public_html/test/"
+SERVER_PATH_LIVE = "/public_html/main/"
 
-SERVER_URL_LIVE = ""
-SERVER_URL_TEST = ""
+SERVER_URL_LIVE = "https://your-domain.com"
+SERVER_URL_TEST = "https://test.your-domain.com"
 
 # Contact Info
-CONTACT_FIRSTNAME = ""
-CONTACT_LASTNAME = ""
-CONTACT_STREET = ""
-CONTACT_NUMBER = ""
-CONTACT_ZIP = ""
-CONTACT_CITY = ""
-CONTACT_PHONE = ""
-CONTACT_MAIL = ""
-CONTACT_SITE = ""
+CONTACT_FIRSTNAME = "First"
+CONTACT_LASTNAME = "Last"
+CONTACT_STREET = "Street"
+CONTACT_NUMBER = "123"
+CONTACT_ZIP = "45678"
+CONTACT_CITY = "City"
+CONTACT_PHONE = "+0 (0) 12345 678910"
+CONTACT_MAIL = "mail@your-domain.com"
+CONTACT_SITE = "https://your-domain.com"
+
+# Domain Info
+MANAGED_SUBDOMAINS = "one,two,three"
 ```
 To use the supplied `Github Action`, first create a production environment in the repository and then upload the `.env` variables as environment secrets (requires `gh` CLI tool):
 

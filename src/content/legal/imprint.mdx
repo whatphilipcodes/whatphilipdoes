@@ -4,13 +4,20 @@ description: Impressum und Haftungsausschluss
 draft: false
 ---
 
-import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE } from 'astro:env/server';
-import FloatingNotice from '@mdx/FloatingNotice.tsx';
-import LegalContact from '@mdx/LegalContact.tsx';
+import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE, MANAGED_SUBDOMAINS } from 'astro:env/server';
+import FloatingNotice from '@mdx/FloatingNotice';
+import LegalScope from '@mdx/LegalScopeNotice'
+import LegalContact from '@mdx/LegalContact';
 
 <FloatingNotice>
 Because this website is hosted in Germany the following information is given in German. If you need a translation, please use a translation service like [DeepL](https://www.deepl.com/translator) or [Google Translate](https://translate.google.com/).
 </FloatingNotice>
+
+<LegalScope
+  doc="imprint"
+  main={CONTACT_SITE}
+  subdomains={MANAGED_SUBDOMAINS}
+/>
 
 # Impressum
 
