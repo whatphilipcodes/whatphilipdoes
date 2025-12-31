@@ -31,9 +31,6 @@ const statusArray = [
 				data-info="preloader-progress-area"
 				class="flex flex-col w-full h-full"
 			>
-				<div data-info="preloader-page-name" class="text-mono-500">
-					what philip
-				</div>
 				<div
 					data-info="preloader-keyword-container"
 					class="@container-[size] flex flex-col place-content-between relative w-full h-full"
@@ -41,16 +38,19 @@ const statusArray = [
 					<div
 						id="preloader-keyword-view"
 						data-info="preloader-keyword-view"
-						class="flex flex-col-reverse w-full h-lh overflow-clip absolute bottom-0"
+						class="flex flex-col-reverse w-full h-lh overflow-clip absolute"
 					>
 						<div
 							id="preloader-keyword-col"
 							data-info="preloader-keyword-col"
-							class="flex flex-col place-content-between shrink-0 grow-0 h-[80cqh]"
+							class="flex flex-col place-content-between shrink-0 grow-0 translate-y-[calc(80cqh-1lh)] h-[80cqh]"
 						>
-							{statusArray.reverse().map((status) => <div class={status.cls}>{status.txt}</div>)}
+							{statusArray.map((status) => <div class={status.cls}>{status.txt}</div>)}
 						</div>
 					</div>
+				</div>
+				<div data-info="preloader-page-name" class="text-mono-500">
+					what philip
 				</div>
 			</div>
 			<div
@@ -85,10 +85,10 @@ const dampedLoop = createTimer({
 			height: `${utils.damp(heightBar, progress * 100, clock.deltaTime, factor)}%`,
 		});
 		utils.set(keywordView, {
-			y: `${utils.damp(parseFloat(translateKView), -progress * 100, clock.deltaTime, factor)}cqh`,
+			y: `${utils.damp(parseFloat(translateKView), progress * 100, clock.deltaTime, factor)}cqh`,
 		});
 		utils.set(keywordCol, {
-			y: `${utils.damp(parseFloat(translateKCol), progress * 80, clock.deltaTime, factor)}cqh`,
+			y: `${utils.damp(parseFloat(translateKCol), -progress * 80, clock.deltaTime, factor)}cqh`,
 		});
 	},
 });
