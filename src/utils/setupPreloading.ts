@@ -20,11 +20,45 @@ const setupPreloading = (
 	onProgress: (progress: number) => void,
 	onComplete: () => void,
 	dataAttribute: string = 'data-preloader',
+	simulateLoad = false,
 ) => {
 	let loaded = 0;
 
 	const elements = document.querySelectorAll(`[${dataAttribute}]`);
 	const total = elements.length;
+
+	if (simulateLoad) {
+		onProgress(0);
+		const stepsCount = 5;
+		const steps: number[] = [];
+		for (let i = 0; i < stepsCount - 1; i++) {
+			steps.push(Math.random());
+		}
+		steps.sort((a, b) => a - b);
+		steps.push(1);
+
+		const timeouts: number[] = [];
+		let cumulative = 0;
+		for (let i = 0; i < steps.length; i++) {
+			const delay = Math.floor(400 + Math.random() * (1200 - 400));
+			cumulative += delay;
+			const value = Math.min(Math.max(steps[i], 0), 1);
+			const id = window.setTimeout(() => {
+				onProgress(value);
+				if (value === 1) onComplete();
+			}, cumulative);
+			timeouts.push(id);
+		}
+
+		const clearSim = () => {
+			for (const id of timeouts) {
+				clearTimeout(id);
+			}
+		};
+		window.addEventListener('pagehide', clearSim, { once: true });
+		window.addEventListener('beforeunload', clearSim, { once: true });
+		return;
+	}
 
 	const handleLoad = () => {
 		loaded++;
