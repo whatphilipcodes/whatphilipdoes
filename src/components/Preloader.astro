@@ -64,7 +64,7 @@ const statusArray = [
 </div>
 
 <script>
-import { createTimer, utils } from 'animejs';
+import { waapi, spring } from 'animejs';
 import { getElement } from '@/utils/getElement';
 import { setupPreloading } from '@/utils/setupPreloading';
 
@@ -72,32 +72,49 @@ const progressBar = getElement('preloader-progress-bar');
 const keywordView = getElement('preloader-keyword-view');
 const keywordCol = getElement('preloader-keyword-col');
 
-const factor = 0.05;
-let progress = 0;
+const keywordEls = Array.from(keywordCol.children) as HTMLElement[];
+const containerRect = keywordCol.getBoundingClientRect();
+const containerHeight = containerRect.height;
 
-const dampedLoop = createTimer({
-	onUpdate: (clock) => {
-		if (clock.deltaTime < 0) return;
-		const heightBar = utils.get(progressBar, 'height', false);
-		const translateKView = utils.get(keywordView, 'y', 'cqh');
-		const translateKCol = utils.get(keywordCol, 'y', 'cqh');
-		utils.set(progressBar, {
-			height: `${utils.damp(heightBar, progress * 100, clock.deltaTime, factor)}%`,
-		});
-		utils.set(keywordView, {
-			y: `${utils.damp(parseFloat(translateKView), progress * 100, clock.deltaTime, factor)}cqh`,
-		});
-		utils.set(keywordCol, {
-			y: `${utils.damp(parseFloat(translateKCol), -progress * 80, clock.deltaTime, factor)}cqh`,
-		});
-	},
-});
+const positions = keywordEls
+	.filter((keyword) => keyword.offsetHeight > 0)
+	.map((keyword) => {
+		const itemRect = keyword.getBoundingClientRect();
+		const relativeTop = itemRect.top - containerRect.top;
+		return (relativeTop / containerHeight) * 100;
+	});
+
+positions.push(100);
+
+const getPosition = (p: number) => {
+	return positions[Math.round(p * (positions.length - 1))];
+};
+
+const duration = 2000;
+const ease = spring({ bounce: 0, duration: 800 });
 const onProgress = (p: number) => {
-	progress = p;
+	waapi.animate(progressBar, {
+		height: `${getPosition(p)}%`,
+		ease: ease,
+		duration: duration,
+	});
+	waapi.animate(keywordView, {
+		y: `${getPosition(p)}cqh`,
+		ease: ease,
+		duration: duration,
+	});
+	waapi.animate(keywordCol, {
+		y: `${-getPosition(p) * 0.8}cqh`,
+		ease: ease,
+		duration: duration,
+		onComplete: () => {
+			console.log('completed animation');
+		},
+	});
 };
 
 const onComplete = () => {
-	console.log('on complete');
+	console.log('completed load');
 };
 
 setupPreloading(onProgress, onComplete, 'data-preloader');
