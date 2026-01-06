@@ -4,39 +4,35 @@ import Preloader from '@comps/Preloader.astro';
 import VideoPlayer from '@react/VideoPlayer';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import testImage from '../assets/inter/exterior/front.jpg';
+import NavBar from '@/components/react/NavBar';
 ---
 
 <LayoutBasic>
-	<Preloader>
-		<VideoPlayer data-preloader client:load src="./video/train.mp4"/>
-		<VideoPlayer data-preloader client:load src="./video/header-entity.mp4"/>
-		<Image
-			data-preloader
-			src="https://images.unsplash.com/photo-1762205907900-1e651d68afd2?q=80&w=1292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-			alt="A bird."
-			width="500"
-			height="400"
-		/>
-		<Image
-			data-preloader
-			src="https://images.unsplash.com/photo-1762564783143-777905df5c85?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-			alt="A bird."
-			width="500"
-			height="400"
-		/>
-		<Image
-			data-preloader
-			src="https://images.unsplash.com/photo-1762912302731-508b4580735f?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-			alt="A bird."
-			width="500"
-			height="400"
-		/>
-		<Image
-			data-preloader
-			src={testImage}
-			alt="A bird."
-			width="500"
-			height="400"
-		/>
-	</Preloader>
+	<NavBar client:load/>
+	<!-- <Preloader> -->
+	<VideoPlayer data-preloader client:load src="./video/train.mp4"/>
+	<VideoPlayer data-preloader client:load src="./video/header-entity.mp4"/>
+	<Image
+		data-preloader
+		src="https://images.unsplash.com/photo-1762205907900-1e651d68afd2?q=80&w=1292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		alt="A bird."
+		width="500"
+		height="400"
+	/>
+	<Image
+		data-preloader
+		src="https://images.unsplash.com/photo-1762564783143-777905df5c85?q=80&w=1286&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		alt="A bird."
+		width="500"
+		height="400"
+	/>
+	<Image
+		data-preloader
+		src="https://images.unsplash.com/photo-1762912302731-508b4580735f?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		alt="A bird."
+		width="500"
+		height="400"
+	/>
+	<Image data-preloader src={testImage} alt="A bird." width="500" height="400"/>
+	<!-- </Preloader> -->
 </LayoutBasic>

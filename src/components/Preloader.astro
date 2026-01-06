@@ -24,12 +24,16 @@ const statusArray = [
 <div data-info="preloader-page-wrapper" class="h-dvh overflow-clip">
 	<div
 		data-info="preloader-element"
-		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-xl p-10"
+		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-lg p-10 relative"
 	>
+		<!-- <div
+			data-info="preloader-ani-gradient"
+			class="loader-gradient absolute bg-linear-to-b from-transparent via-cinnabar-800 to-transparent h-1/3 w-full top-0 -translate-y-full"
+		></div> -->
 		<div data-info="preloader-screen-area" class="w-full h-full flex flex-row">
 			<div
 				data-info="preloader-progress-area"
-				class="flex flex-col w-full h-full"
+				class="flex flex-col w-full h-full z-1"
 			>
 				<div
 					data-info="preloader-keyword-container"
@@ -50,29 +54,30 @@ const statusArray = [
 					</div>
 				</div>
 				<div data-info="preloader-page-name" class="text-mono-500 flex">
-					<div class="flex items-end">w</div>
-					<div
+					<span class="flex items-end">w</span>
+					<span
 						class="wp-segment-wrapper flex items-end overflow-hidden will-change-[width]"
 					>
-						<div class="wp-segment-inner block w-max whitespace-pre">hat </div>
-					</div>
-
-					<div class="flex items-end">p</div>
-					<div
+						<span class="wp-segment-inner block w-max whitespace-pre"
+							>hat&nbsp;
+						</span>
+					</span>
+					<span class="flex items-end">p</span>
+					<span
 						class="wp-segment-wrapper flex items-end overflow-hidden will-change-[width]"
 					>
-						<div class="wp-segment-inner block w-max">hilip</div>
-					</div>
+						<span class="wp-segment-inner block w-max">hilip</span>
+					</span>
 				</div>
 			</div>
 			<div
 				data-info="preloader-progress-bar-container"
-				class="w-px h-full overflow-hidden rounded-md"
+				class="w-px h-full overflow-hidden rounded-md z-1"
 			>
 				<div
 					id="preloader-progress-bar"
 					data-info="preloader-progress-bar"
-					class="bg-mono-50 w-full h-0"
+					class="bg-mono-50 w-full h-lh"
 				></div>
 			</div>
 		</div>
@@ -82,8 +87,8 @@ const statusArray = [
 
 <script>
 import { waapi, spring, createTimeline, get } from 'animejs';
-import { getElement } from '@/utils/getElement';
 import { setupPreloading } from '@/utils/setupPreloading';
+import { getElement } from '@/utils/getElement';
 
 let completedLoad = false;
 
@@ -108,30 +113,40 @@ const getPosition = (p: number) => {
 	return positions[Math.round(p * (positions.length - 1))];
 };
 
-const duration = 2000;
 const ease = spring({ bounce: 0, duration: 800 });
+
+// const animateBackground = () => {
+// 	waapi.animate('.loader-gradient', {
+// 		y: ['0dvh', '200dvh'],
+// 		height: ['100%', '80%'],
+// 		ease: 'linear',
+// 		duration: 800,
+// 		loop: true,
+// 	});
+// };
+// animateBackground();
 
 // wp
 const animateMergeWP = () => {
-	const mergeDuration = 800;
+	const duration = 800;
 	const tl = createTimeline();
 
 	waapi.animate(progressBar, {
 		y: '100%',
 		ease: ease,
-		duration: mergeDuration,
+		duration: duration,
 	});
 
 	const wrapperAnim = waapi.animate('.wp-segment-wrapper', {
 		width: [(el) => get(el, 'width', 'px'), 0],
-		duration: mergeDuration,
+		duration: duration,
 		ease: ease,
 		autoplay: false,
 	});
 
 	const innerAnim = waapi.animate('.wp-segment-inner', {
 		x: ['0%', '-100%'],
-		duration: mergeDuration,
+		duration: duration,
 		ease: ease,
 		autoplay: false,
 	});
@@ -139,7 +154,9 @@ const animateMergeWP = () => {
 	tl.sync(wrapperAnim, 0).sync(innerAnim, 0);
 };
 
+// progress
 const onProgress = (p: number) => {
+	const duration = 2000;
 	waapi.animate(progressBar, {
 		height: `${getPosition(p)}%`,
 		ease: ease,
