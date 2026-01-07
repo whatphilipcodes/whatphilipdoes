@@ -35,7 +35,7 @@ const LegalScope = ({ doc, main, subdomains }: LegalScopeProps) => {
 				</a>
 				) this {doc} is also valid for the following subdomains:
 			</p>
-			<ul className='list-disc ml-5'>
+			<ul className='ml-5 list-disc'>
 				{urls.map((u) => (
 					<li key={u}>
 						<a

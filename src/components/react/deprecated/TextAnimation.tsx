@@ -32,7 +32,7 @@ const TextAnimation = () => {
 
 	return (
 		<div
-			className='text-mono-200 text-8xl leading-29 font-bold h-32'
+			className='h-32 font-bold text-8xl text-mono-200 leading-29'
 			ref={textRef}
 		>
 			what philip does
