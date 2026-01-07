@@ -1,48 +1,44 @@
 ---
 import { MAIL } from 'astro:env/server';
+
 const routes = [
-	{
-		text: 'does',
-		href: '/',
-	},
-	{
-		text: 'built',
-		href: '/built',
-	},
-	{
-		text: 'knows',
-		href: '/knows',
-	},
+	{ text: 'does', href: '/' },
+	{ text: 'built', href: '/built' },
+	{ text: 'knows', href: '/knows' },
 ];
 ---
 
-<nav
-	class="view-disabled fixed bottom-10 left-1/2 z-50 -translate-x-1/2 text-lg"
->
-	<div class="flex h-12 flex-row place-items-center gap-6">
+<nav class="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 text-lg isolate">
+	<div class="flex h-12 flex-row items-center gap-6">
 		<a
-			class="border rounded-lg border-mono-800 bg-mono-950/75 px-5 py-2 text-mono-200 backdrop-blur-md"
+			class="hidden md:block border rounded-lg border-mono-300 dark:border-mono-800 bg-mono-100/75 dark:bg-mono-950/75 px-5 py-2 text-mono-600 dark:text-mono-200 backdrop-blur-md"
 			href="/"
 		>
 			wp
 		</a>
+
 		<div
-			class="flex flex-row gap-6 rounded-lg border border-mono-800 bg-mono-950/75 backdrop-blur-md transition-colors"
+			class="flex flex-row items-center gap-6 rounded-lg border border-mono-300 dark:border-mono-800 bg-mono-100/75 dark:bg-mono-950/75 backdrop-blur-md"
 		>
 			{routes.map((route) => {
-						return (
-							<a
-								href={route.href}
-								class={`flex cursor-pointer flex-row gap-2 rounded-lg py-2  transition-colors first:pl-4 last:pr-4 ${ Astro.url.pathname === route.href ? 'text-mono-200' : 'text-mono-800 hover:text-mono-600'}`}
-							>
-								<span>/</span>
-								<span>{route.text}</span>
-							</a>
-						);
-					})}
+                const isActive = Astro.url.pathname === route.href;
+                return (
+                    <a
+                        href={route.href}
+                        class={`flex cursor-pointer flex-row gap-2 rounded-lg py-2 transition-colors first:pl-4 last:pr-4 
+                        ${isActive 
+                            ? 'text-mono-900 dark:text-mono-100' 
+                            : 'text-mono-500 hover:text-mono-800 dark:text-mono-500 dark:hover:text-mono-200'}`}
+                    >
+                        <span>/</span>
+                        <span>{route.text}</span>
+                    </a>
+                );
+            })}
 		</div>
+
 		<a
-			class="border rounded-lg border-mono-800 hover:text-mono-600 bg-mono-950/75 px-5 py-2 text-mono-800 backdrop-blur-md"
+			class="hidden md:block border rounded-lg border-mono-300 dark:border-mono-800 bg-mono-100/75 dark:bg-mono-950/75 px-5 py-2 text-mono-600 dark:text-mono-200 hover:text-mono-800 dark:hover:text-mono-100 backdrop-blur-md"
 			href={`mailto:${MAIL}`}
 		>
 			contact
