@@ -1,0 +1,11 @@
+---
+import { Image } from 'astro:assets';
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import testImage from '../assets/inter/exterior/front.jpg';
+---
+
+<LayoutBasic>
+	<h1 class="text-4xl text-mono-200">knows page</h1>
+	<section class="h-120"></section>
+	<Image data-preloader src={testImage} alt="A bird." width="500" height="400"/>
+</LayoutBasic>

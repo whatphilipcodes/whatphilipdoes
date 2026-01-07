@@ -1,0 +1,50 @@
+---
+const routes = [
+	{
+		text: 'does',
+		href: '/',
+	},
+	{
+		text: 'built',
+		href: '/built',
+	},
+	{
+		text: 'knows',
+		href: '/knows',
+	},
+];
+---
+
+<nav
+	class="view-disabled fixed bottom-10 left-1/2 z-50 -translate-x-1/2 text-lg"
+>
+	<div class="flex h-12 flex-row place-items-center gap-6">
+		<a
+			class="border rounded-lg border-mono-800 bg-mono-950/75 px-5 py-2 text-mono-200 backdrop-blur-md"
+			href="/"
+		>
+			wp
+		</a>
+		<div
+			class="flex flex-row gap-6 rounded-lg border border-mono-800 bg-mono-950/75 backdrop-blur-md transition-colors"
+		>
+			{routes.map((route) => {
+						return (
+							<a
+								href={route.href}
+								class={`flex cursor-pointer flex-row gap-2 rounded-lg py-2  transition-colors first:pl-4 last:pr-4 ${ Astro.url.pathname === route.href ? 'text-mono-200' : 'text-mono-800 hover:text-mono-600'}`}
+							>
+								<span>/</span>
+								<span>{route.text}</span>
+							</a>
+						);
+					})}
+		</div>
+		<a
+			class="border rounded-lg border-mono-800 hover:text-mono-600 bg-mono-950/75 px-5 py-2 text-mono-800 backdrop-blur-md"
+			href="#contact"
+		>
+			contact
+		</a>
+	</div>
+</nav>
