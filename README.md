@@ -20,16 +20,19 @@ SERVER_PATH_LIVE = "/public_html/main/"
 SERVER_URL_LIVE = "https://your-domain.com"
 SERVER_URL_TEST = "https://test.your-domain.com"
 
-# Contact Info
-CONTACT_FIRSTNAME = "First"
-CONTACT_LASTNAME = "Last"
-CONTACT_STREET = "Street"
-CONTACT_NUMBER = "123"
-CONTACT_ZIP = "45678"
-CONTACT_CITY = "City"
-CONTACT_PHONE = "+0 (0) 12345 678910"
-CONTACT_MAIL = "mail@your-domain.com"
-CONTACT_SITE = "https://your-domain.com"
+# Legal Contact
+LEGAL_FIRSTNAME = "First"
+LEGAL_LASTNAME = "Last"
+LEGAL_STREET = "Street"
+LEGAL_NUMBER = "123"
+LEGAL_ZIP = "45678"
+LEGAL_CITY = "City"
+LEGAL_PHONE = "+0 (0) 12345 678910"
+LEGAL_MAIL = "mail@your-domain.com"
+LEGAL_SITE = "https://your-domain.com"
+
+# Regular Contact
+MAIL = "mail@your-domain.com"
 
 # Domain Info
 MANAGED_SUBDOMAINS = "one,two,three"

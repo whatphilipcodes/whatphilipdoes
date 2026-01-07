@@ -4,7 +4,7 @@ description: Datenschutzerklärung
 draft: false
 ---
 
-import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE, MANAGED_SUBDOMAINS } from 'astro:env/server';
+import { LEGAL_FIRSTNAME, LEGAL_LASTNAME, LEGAL_STREET, LEGAL_NUMBER, LEGAL_ZIP, LEGAL_CITY, LEGAL_PHONE, LEGAL_MAIL, LEGAL_SITE, MANAGED_SUBDOMAINS } from 'astro:env/server';
 import FloatingNotice from '@mdx/FloatingNotice';
 import LegalScope from '@mdx/LegalScopeNotice'
 import LegalContact from '@mdx/LegalContact';
@@ -15,7 +15,7 @@ Because this website is hosted in Germany the following information is given in 
 
 <LegalScope
   doc="privacy notice"
-  main={CONTACT_SITE}
+  main={LEGAL_SITE}
   subdomains={MANAGED_SUBDOMAINS}
 />
 
@@ -82,15 +82,15 @@ Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten 
 Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist:
 
 <LegalContact>
-{`${CONTACT_FIRSTNAME} ${CONTACT_LASTNAME}`}<br/>
-{`${CONTACT_STREET} ${CONTACT_NUMBER}`}<br/>
-{`${CONTACT_ZIP} ${CONTACT_CITY}`}<br/>
+{`${LEGAL_FIRSTNAME} ${LEGAL_LASTNAME}`}<br/>
+{`${LEGAL_STREET} ${LEGAL_NUMBER}`}<br/>
+{`${LEGAL_ZIP} ${LEGAL_CITY}`}<br/>
 
-Tel.: {CONTACT_PHONE}<br/>
-Mail: <a href={`mailto:${CONTACT_MAIL}`}>{CONTACT_MAIL}</a>
+Tel.: {LEGAL_PHONE}<br/>
+Mail: <a href={`mailto:${LEGAL_MAIL}`}>{LEGAL_MAIL}</a>
 </LegalContact>
 
-Website: <a href={CONTACT_SITE}>{CONTACT_SITE}</a>
+Website: <a href={LEGAL_SITE}>{LEGAL_SITE}</a>
 
 
 ## 3. Erfassung von allgemeinen Daten und Informationen

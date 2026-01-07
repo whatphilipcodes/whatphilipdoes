@@ -1,4 +1,5 @@
 ---
+import { MAIL } from 'astro:env/server';
 const routes = [
 	{
 		text: 'does',
@@ -42,7 +43,7 @@ const routes = [
 		</div>
 		<a
 			class="border rounded-lg border-mono-800 hover:text-mono-600 bg-mono-950/75 px-5 py-2 text-mono-800 backdrop-blur-md"
-			href="#contact"
+			href={`mailto:${MAIL}`}
 		>
 			contact
 		</a>

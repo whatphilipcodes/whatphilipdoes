@@ -9,6 +9,7 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"@comps/*": ["src/components/*"],
+			"@assets/*": ["src/assets/*"],
 			"@react/*": ["src/components/react/*"],
 			"@mdx/*": ["src/components/react/mdx/*"]
 		}

@@ -4,7 +4,7 @@ description: Impressum und Haftungsausschluss
 draft: false
 ---
 
-import { CONTACT_FIRSTNAME, CONTACT_LASTNAME, CONTACT_STREET, CONTACT_NUMBER, CONTACT_ZIP, CONTACT_CITY, CONTACT_PHONE, CONTACT_MAIL, CONTACT_SITE, MANAGED_SUBDOMAINS } from 'astro:env/server';
+import { LEGAL_FIRSTNAME, LEGAL_LASTNAME, LEGAL_STREET, LEGAL_NUMBER, LEGAL_ZIP, LEGAL_CITY, LEGAL_PHONE, LEGAL_MAIL, LEGAL_SITE, MANAGED_SUBDOMAINS } from 'astro:env/server';
 import FloatingNotice from '@mdx/FloatingNotice';
 import LegalScope from '@mdx/LegalScopeNotice'
 import LegalContact from '@mdx/LegalContact';
@@ -15,7 +15,7 @@ Because this website is hosted in Germany the following information is given in 
 
 <LegalScope
   doc="imprint"
-  main={CONTACT_SITE}
+  main={LEGAL_SITE}
   subdomains={MANAGED_SUBDOMAINS}
 />
 
@@ -24,12 +24,12 @@ Because this website is hosted in Germany the following information is given in 
 Angaben gem. § 5 TMG:
 
 <LegalContact>
-{`${CONTACT_FIRSTNAME} ${CONTACT_LASTNAME}`}<br/>
-{`${CONTACT_STREET} ${CONTACT_NUMBER}`}<br/>
-{`${CONTACT_ZIP} ${CONTACT_CITY}`}<br/>
+{`${LEGAL_FIRSTNAME} ${LEGAL_LASTNAME}`}<br/>
+{`${LEGAL_STREET} ${LEGAL_NUMBER}`}<br/>
+{`${LEGAL_ZIP} ${LEGAL_CITY}`}<br/>
 
-Tel.: {CONTACT_PHONE}<br/>
-Mail: <a href={`mailto:${CONTACT_MAIL}`}>{CONTACT_MAIL}</a>
+Tel.: {LEGAL_PHONE}<br/>
+Mail: <a href={`mailto:${LEGAL_MAIL}`}>{LEGAL_MAIL}</a>
 </LegalContact>
 
 Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bin ich weder verpflichtet noch bereit.
@@ -37,9 +37,9 @@ Zu einer Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtung
 Redaktionelle Verantwortung:
 
 <LegalContact>
-{`${CONTACT_FIRSTNAME} ${CONTACT_LASTNAME}`}<br/>
-{`${CONTACT_STREET} ${CONTACT_NUMBER}`}<br/>
-{`${CONTACT_ZIP} ${CONTACT_CITY}`}
+{`${LEGAL_FIRSTNAME} ${LEGAL_LASTNAME}`}<br/>
+{`${LEGAL_STREET} ${LEGAL_NUMBER}`}<br/>
+{`${LEGAL_ZIP} ${LEGAL_CITY}`}
 </LegalContact>
 
 # Haftungsausschluss
@@ -62,4 +62,4 @@ Die Nutzung dieser Webseite ist in der Regel ohne Angabe personenbezogener Daten
 Es wird darauf hingewiesen, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Ich behalte mir ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
 
-Eine ausführliche Datenschutzerklärung finden Sie hier: [{CONTACT_SITE}/legal/privacy](/legal/privacy)
+Eine ausführliche Datenschutzerklärung finden Sie hier: [{LEGAL_SITE}/legal/privacy](/legal/privacy)

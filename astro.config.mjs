@@ -46,25 +46,26 @@ export default defineConfig({
 				context: 'server',
 				access: 'secret',
 			}),
-			CONTACT_FIRSTNAME: envField.string({
+			LEGAL_FIRSTNAME: envField.string({
 				context: 'server',
 				access: 'secret',
 			}),
-			CONTACT_LASTNAME: envField.string({
+			LEGAL_LASTNAME: envField.string({
 				context: 'server',
 				access: 'secret',
 			}),
-			CONTACT_STREET: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_NUMBER: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_ZIP: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_CITY: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_PHONE: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_MAIL: envField.string({ context: 'server', access: 'secret' }),
-			CONTACT_SITE: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_STREET: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_NUMBER: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_ZIP: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_CITY: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_PHONE: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_MAIL: envField.string({ context: 'server', access: 'secret' }),
+			LEGAL_SITE: envField.string({ context: 'server', access: 'secret' }),
 			MANAGED_SUBDOMAINS: envField.string({
 				context: 'server',
 				access: 'secret',
 			}),
+			MAIL: envField.string({ context: 'server', access: 'secret' }),
 		},
 	},
 });
