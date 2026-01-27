@@ -8,8 +8,12 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 <LayoutBasic>
 	<!-- <Preloader> -->
-	<VideoPlayer data-preloader client:load src="./video/train.mp4"/>
-	<section class="h-120"></section>
+	<VideoPlayer
+		data-preloader
+		client:load
+		src="./video/train.mp4"
+		className="object-cover h-screen"
+	/>
 	<VideoPlayer data-preloader client:load src="./video/header-entity.mp4"/>
 	<Image
 		data-preloader
@@ -17,6 +21,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		alt="A bird."
 		width="500"
 		height="400"
+		class="w-full"
 	/>
 	<Image
 		data-preloader
@@ -24,6 +29,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		alt="A bird."
 		width="500"
 		height="400"
+		class="w-full"
 	/>
 	<Image
 		data-preloader
@@ -31,7 +37,15 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		alt="A bird."
 		width="500"
 		height="400"
+		class="w-full"
 	/>
-	<Image data-preloader src={testImage} alt="A bird." width="500" height="400"/>
+	<Image
+		data-preloader
+		src={testImage}
+		alt="A bird."
+		width="500"
+		height="400"
+		class="w-full"
+	/>
 	<!-- </Preloader> -->
 </LayoutBasic>
