@@ -29,6 +29,7 @@
 	--font-sans: "Urbanist Variable", sans-serif;
 }
 
+/* creates weird iOS behavior (scroll shift) */
 @utility hide-scrollbar {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
@@ -39,8 +40,16 @@
 
 /* transitions defined in -> ./view-transitions.css */
 
-@utility view-disabled {
-	view-transition-name: no-transition;
+@utility view-nav-logo {
+	view-transition-name: nav-logo;
+}
+
+@utility view-nav-routes {
+	view-transition-name: nav-routes;
+}
+
+@utility view-nav-contact {
+	view-transition-name: nav-contact;
 }
 
 @utility view-main {
