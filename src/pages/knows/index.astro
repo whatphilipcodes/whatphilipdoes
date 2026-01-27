@@ -5,13 +5,15 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 ---
 
 <LayoutBasic>
-	<h1 class="text-4xl text-mono-200">knows page</h1>
-	<Image
-		data-preloader
-		src={testImage}
-		alt="A bird."
-		width="1920"
-		height="1080"
-		class="w-full"
-	/>
+	<div class="w-full h-screen flex flex-col grow-0 overflow-clip">
+		<h1 class="text-4xl text-mono-200 h-full">knows page</h1>
+		<Image
+			data-preloader
+			src={testImage}
+			alt="A bird."
+			width="1920"
+			height="1080"
+			class="w-full h-full"
+		/>
+	</div>
 </LayoutBasic>
