@@ -38,20 +38,17 @@
 	}
 }
 
-/* transitions defined in -> ./view-transitions.css */
+/*
+- transition defined in -> ./view-transitions.css
+- each "island" needs a separate transition name!
+*/
 
 @utility view-nav-logo {
 	view-transition-name: nav-logo;
 }
-
 @utility view-nav-routes {
 	view-transition-name: nav-routes;
 }
-
 @utility view-nav-contact {
 	view-transition-name: nav-contact;
-}
-
-@utility view-main {
-	view-transition-name: main;
 }

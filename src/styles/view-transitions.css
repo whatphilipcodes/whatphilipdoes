@@ -3,27 +3,26 @@
 }
 
 /* transition names defined in -> ./tailwind.css */
-
 ::view-transition-group(nav-logo),
 ::view-transition-group(nav-routes),
 ::view-transition-group(nav-contact) {
-	border-radius: 0.5rem;
+	border-radius: var(--radius-lg);
 	overflow: hidden;
 }
 
-::view-transition-old(main),
-::view-transition-new(main) {
-	animation-duration: 400ms;
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 320ms;
 	mix-blend-mode: normal;
 }
 
-::view-transition-old(main) {
+::view-transition-old(root) {
 	animation-name: fade-out;
 }
 
-::view-transition-new(main) {
+::view-transition-new(root) {
 	animation-name: fade-in;
-	animation-delay: 400ms;
+	animation-delay: 320ms;
 }
 
 @keyframes fade-out {
