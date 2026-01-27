@@ -29,6 +29,14 @@
 	--font-sans: "Urbanist Variable", sans-serif;
 }
 
+@utility hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
 /* transitions defined in -> ./view-transitions.css */
 
 @utility view-disabled {
