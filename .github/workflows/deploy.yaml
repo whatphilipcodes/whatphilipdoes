@@ -1,26 +1,26 @@
 name: continuous deployment
 on:
   workflow_dispatch:
-#   push:
-#     branches:
-#       - main
+  # push:
+  #   branches:
+  #     - main
 jobs:
   build:
     name: build
     environment: production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: corepack enable
       - uses: actions/setup-node@v6
         with:
-          node-version: '24'
-      - run: npm install
-      - run: npm run build
+          node-version: '25'
+      - run: pnpm install
+      - run: pnpm run build
       - name: Upload artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
-          path: ./.output/public
+          path: ./dist
   deploy:
     name: deploy
     needs: build
@@ -28,7 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get latest code
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
+        with:
+          path: ./artifact
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
