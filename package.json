@@ -7,7 +7,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "pnpm exec biome check --write",
+		"style": "biome check --write --unsafe",
 		"stage": "node --env-file=.env ./scripts/deploy-stage.ts"
 	},
 	"dependencies": {
@@ -16,10 +16,10 @@
 		"@astrojs/sitemap": "^3.7.2",
 		"@fontsource-variable/urbanist": "^5.2.7",
 		"@tailwindcss/vite": "^4.3.0",
-		"@types/react": "^19.2.14",
+		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
 		"animejs": "^4.4.1",
-		"astro": "^6.3.3",
+		"astro": "^6.3.7",
 		"react": "^19.2.6",
 		"react-dom": "^19.2.6",
 		"sharp": "^0.34.5",
