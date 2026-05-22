@@ -14,11 +14,11 @@ SERVER_HOST = "www123.your-server.com"
 SERVER_USER = "usernm"
 SERVER_PASSWORD = "serverpassword"
 
-SERVER_PATH_TEST = "/public_html/test/"
+SERVER_PATH_TEST = "/public_html/dev/"
 SERVER_PATH_LIVE = "/public_html/main/"
 
 SERVER_URL_LIVE = "https://your-domain.com"
-SERVER_URL_TEST = "https://test.your-domain.com"
+SERVER_URL_TEST = "https://dev.your-domain.com"
 
 # Legal Contact
 LEGAL_FIRSTNAME = "First"
