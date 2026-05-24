@@ -3,4 +3,5 @@ const getElement = (id: string) => {
 	if (!maybe) throw new Error(`Element not found: ${id}`);
 	return maybe as HTMLElement;
 };
+
 export { getElement };

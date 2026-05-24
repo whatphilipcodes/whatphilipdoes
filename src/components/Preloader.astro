@@ -37,7 +37,7 @@ const statusArray = [
 			>
 				<div
 					data-info="preloader-keyword-container"
-					class="@container-[size] flex flex-col place-content-between relative w-full h-full"
+					class="@container-size flex flex-col place-content-between relative w-full h-full"
 				>
 					<div
 						id="preloader-keyword-view"
@@ -53,7 +53,7 @@ const statusArray = [
 						</div>
 					</div>
 				</div>
-				<div data-info="preloader-page-name" class="text-mono-500 flex">
+				<div class="preloader-page-name text-mono-500 flex">
 					<span class="flex items-end">w</span>
 					<span
 						class="wp-segment-wrapper flex items-end overflow-hidden will-change-[width]"
@@ -86,99 +86,118 @@ const statusArray = [
 </div>
 
 <script>
-import { createTimeline, get, spring, waapi } from 'animejs';
-import { getElement } from '@/utils/getElement';
-import { setupPreloading } from '@/utils/setupPreloading';
+	/*
+				WHY IS THIS NOT A REACT COMPONENT?
+				Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
+				Since this process starts before React is even running on out client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
+				*/
+	import {
+		createTimeline,
+		type DOMTargetsParam,
+		get,
+		spring,
+		waapi,
+	} from 'animejs';
+	import { getElement } from '@/utils/getElement';
+	import { setupPreloading } from '@/utils/setupPreloading';
 
-let completedLoad = false;
+	let completedLoad = false;
 
-const progressBar = getElement('preloader-progress-bar');
-const keywordView = getElement('preloader-keyword-view');
-const keywordCol = getElement('preloader-keyword-col');
+	const progressBar = getElement('preloader-progress-bar');
+	const keywordView = getElement('preloader-keyword-view');
+	const keywordCol = getElement('preloader-keyword-col');
 
-const keywordEls = Array.from(keywordCol.children) as HTMLElement[];
-const containerRect = keywordCol.getBoundingClientRect();
-const containerHeight = containerRect.height;
+	const keywordEls = Array.from(keywordCol.children) as HTMLElement[];
+	const containerRect = keywordCol.getBoundingClientRect();
+	const containerHeight = containerRect.height;
 
-const positions = keywordEls
-	.filter((keyword) => keyword.offsetHeight > 0)
-	.map((keyword) => {
-		const itemRect = keyword.getBoundingClientRect();
-		const relativeTop = itemRect.top - containerRect.top;
-		return (relativeTop / containerHeight) * 100;
-	});
-positions.push(100);
+	const positions = keywordEls
+		.filter((keyword) => keyword.offsetHeight > 0)
+		.map((keyword) => {
+			const itemRect = keyword.getBoundingClientRect();
+			const relativeTop = itemRect.top - containerRect.top;
+			return (relativeTop / containerHeight) * 100;
+		});
+	positions.push(100);
 
-const getPosition = (p: number) => {
-	return positions[Math.round(p * (positions.length - 1))];
-};
+	const getPosition = (p: number) => {
+		return positions[Math.round(p * (positions.length - 1))];
+	};
 
-const ease = spring({ bounce: 0, duration: 800 });
+	const ease = spring({ bounce: 0, duration: 800 });
 
-// const animateBackground = () => {
-// 	waapi.animate('.loader-gradient', {
-// 		y: ['0dvh', '200dvh'],
-// 		height: ['100%', '80%'],
-// 		ease: 'linear',
-// 		duration: 800,
-// 		loop: true,
-// 	});
-// };
-// animateBackground();
+	// const animateBackground = () => {
+	// 	waapi.animate('.loader-gradient', {
+	// 		y: ['0dvh', '200dvh'],
+	// 		height: ['100%', '80%'],
+	// 		ease: 'linear',
+	// 		duration: 800,
+	// 		loop: true,
+	// 	});
+	// };
+	// animateBackground();
 
-// wp
-const animateMergeWP = () => {
-	const duration = 800;
-	const tl = createTimeline();
+	// wp
+	const animateMergeWP = () => {
+		const duration = 800;
+		const tl = createTimeline();
 
-	waapi.animate(progressBar, {
-		y: '100%',
-		ease: ease,
-		duration: duration,
-	});
+		waapi.animate(progressBar, {
+			y: '100%',
+			ease: ease,
+			duration: duration,
+		});
 
-	const wrapperAnim = waapi.animate('.wp-segment-wrapper', {
-		width: [(el) => get(el, 'width', 'px'), 0],
-		duration: duration,
-		ease: ease,
-		autoplay: false,
-	});
+		const wrapperAnim = waapi.animate('.wp-segment-wrapper', {
+			width: [(el: DOMTargetsParam) => get(el, 'width', 'px'), 0],
+			duration: duration,
+			ease: ease,
+			autoplay: false,
+		});
 
-	const innerAnim = waapi.animate('.wp-segment-inner', {
-		x: ['0%', '-100%'],
-		duration: duration,
-		ease: ease,
-		autoplay: false,
-	});
+		const innerAnim = waapi.animate('.wp-segment-inner', {
+			x: ['0%', '100%'],
+			duration: duration,
+			ease: ease,
+			autoplay: false,
+		});
 
-	tl.sync(wrapperAnim, 0).sync(innerAnim, 0);
-};
+		// does not work
+		const posAnim = waapi.animate('.preloader-page-name', {
+			transform: 'translateX(15rem)',
+			duration: duration,
+			ease: ease,
+			autoplay: false,
+		});
 
-// progress
-const onProgress = (p: number) => {
-	const duration = 2000;
-	waapi.animate(progressBar, {
-		height: `${getPosition(p)}%`,
-		ease: ease,
-		duration: duration,
-	});
-	waapi.animate(keywordView, {
-		y: `${getPosition(p)}cqh`,
-		ease: ease,
-		duration: duration,
-	});
-	waapi.animate(keywordCol, {
-		y: `${-getPosition(p) * 0.8}cqh`,
-		ease: ease,
-		duration: duration,
-		onComplete: () => {
-			if (completedLoad) animateMergeWP();
-		},
-	});
-};
+		tl.sync(wrapperAnim, 0).sync(innerAnim, 0).sync(posAnim, 0);
+	};
 
-const onComplete = () => {
-	completedLoad = true;
-};
-setupPreloading(onProgress, onComplete, 'data-preloader');
+	// progress
+	const onProgress = (p: number) => {
+		const duration = 2000;
+		waapi.animate(progressBar, {
+			height: `${getPosition(p)}%`,
+			ease: ease,
+			duration: duration,
+		});
+		waapi.animate(keywordView, {
+			y: `${getPosition(p)}cqh`,
+			ease: ease,
+			duration: duration,
+		});
+		waapi.animate(keywordCol, {
+			y: `${-getPosition(p) * 0.8}cqh`,
+			ease: ease,
+			duration: duration,
+			onComplete: () => {
+				if (completedLoad) animateMergeWP();
+			},
+		});
+	};
+
+	const onComplete = () => {
+		completedLoad = true;
+	};
+	setupPreloading(onProgress, onComplete, 'data-preloader', true);
 </script>

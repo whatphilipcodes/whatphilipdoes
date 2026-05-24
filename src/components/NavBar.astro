@@ -8,24 +8,16 @@ const routes = [
 ];
 ---
 
-<nav class="fixed bottom-10 left-1/2 z-50 -translate-x-1/2 text-lg">
-	<div class="flex h-12 flex-row items-center gap-6">
-		<a
-			class="hidden md:block border rounded-lg border-mono-200 dark:border-mono-900 bg-mono-100/75 dark:bg-mono-950/75 px-5 py-2 text-mono-900 dark:text-mono-100 backdrop-blur-md view-nav-logo"
-			href="/"
-		>
-			wp
-		</a>
-
-		<div
-			class="flex flex-row items-center gap-6 rounded-lg border border-mono-200 dark:border-mono-900 bg-mono-100/75 dark:bg-mono-950/75 backdrop-blur-md view-nav-routes"
-		>
-			{routes.map((route) => {
+<nav
+	class="fixed bottom-2 md:bottom-8 left-1/2 z-50 -translate-x-1/2 text-lg flex flex-row items-center rounded-4xl border-mono-200 dark:border-mono-900 bg-mono-100/50 dark:bg-mono-950/50 backdrop-blur-md h-14 view-nav"
+>
+	<div class="flex h-full">
+		{routes.map((route) => {
                 const isActive = Astro.url.pathname === route.href;
                 return (
                     <a
                         href={route.href}
-                        class={`flex cursor-pointer flex-row gap-2 rounded-lg py-2 transition-colors first:pl-4 last:pr-4 ${isActive 
+                        class={`flex h-full px-2 first:pl-4 cursor-pointer flex-row items-center justify-center gap-1 rounded-4xl transition-colors ${isActive 
                             ? 'text-mono-900 dark:text-mono-100'
                             : 'text-mono-400 hover:text-mono-600 dark:hover:text-mono-200'}`}
                     >
@@ -34,13 +26,12 @@ const routes = [
                     </a>
                 );
             })}
-		</div>
-
-		<a
-			class="hidden md:block border rounded-lg border-mono-200 dark:border-mono-900 bg-mono-100/75 dark:bg-mono-950/75 px-5 py-2 text-mono-900 dark:text-mono-100 hover:text-mono-800 dark:hover:text-mono-100 backdrop-blur-md view-nav-contact"
-			href={`mailto:${MAIL}`}
+	</div>
+	<a class="flex h-full items-center px-2" href="">
+		<div
+			class="rounded-4xl py-1 px-2 text-center border text-mono-200 border-mono-200"
 		>
 			contact
-		</a>
-	</div>
+		</div>
+	</a>
 </nav>

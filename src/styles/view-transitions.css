@@ -3,10 +3,8 @@
 }
 
 /* transition names defined in -> ./tailwind.css */
-::view-transition-group(nav-logo),
-::view-transition-group(nav-routes),
-::view-transition-group(nav-contact) {
-	border-radius: var(--radius-lg);
+::view-transition-group(nav) {
+	border-radius: var(--radius-4xl);
 	overflow: hidden;
 }
 
