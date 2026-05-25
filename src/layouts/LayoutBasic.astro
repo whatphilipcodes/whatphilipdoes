@@ -1,5 +1,6 @@
 ---
-import NavBar from '@/components/NavBar.astro';
+// import NavBar from '@/components/NavBar.astro';
+import PillMenu from '@react/PillMenu';
 import BaseHead from '../components/BaseHead.astro';
 import '../styles/view-transitions.css';
 interface Props {
@@ -19,7 +20,8 @@ const { title, description } = Astro.props;
 		/>
 	</head>
 	<body class="dark:bg-mono-950 bg-mono-100">
-		<NavBar />
+		<!-- <NavBar /> -->
+		<PillMenu pathname={Astro.url.pathname} client:load />
 		<main class="@container/main">
 			<slot />
 		</main>
