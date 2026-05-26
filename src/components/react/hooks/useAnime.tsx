@@ -12,18 +12,19 @@ type AnimeCallback = (self: Scope) => void;
  *
  * @example
  * ```tsx
- * const Example = () => {
- *   const textRef = useRef<HTMLDivElement>(null);
+ * import { waapi } from 'animejs';
+ * * const Example = () => {
+ * const textRef = useRef<HTMLDivElement>(null);
  *
- *   useAnime(textRef, (_self) => {
- *     self.animate('.text', {
- *       translateX: [0, 100],
- *       duration: 1000,
- *       easing: 'easeInOutQuad'
- *     });
- *   });
+ * useAnime(textRef, () => {
+ * waapi.animate('.text', {
+ * translateX: [0, 100],
+ * duration: 1000,
+ * easing: 'easeInOutQuad'
+ * });
+ * });
  *
- *   return <div ref={textRef}><div className="text">Content</div></div>;
+ * return <div ref={textRef}><div className="text">Content</div></div>;
  * }
  * ```
  */
@@ -32,19 +33,28 @@ export const useAnime = (
 	callback: AnimeCallback,
 ): RefObject<Scope | null> => {
 	const scopeRef = useRef<Scope | null>(null);
+	const callbackRef = useRef(callback);
+
+	// Maintain the latest callback reference without triggering re-renders
+	useEffect(() => {
+		callbackRef.current = callback;
+	}, [callback]);
 
 	useEffect(() => {
 		if (!rootRef.current) return;
+
 		scopeRef.current = createScope({ root: rootRef }).add((self) => {
 			if (!self)
 				throw new Error(
 					`Scope could not be created in useAnime hook. 'self' instance of Scope is undefined.`,
 				);
-			callback(self);
+			callbackRef.current(self);
 		});
 
-		return () => scopeRef.current?.revert();
-	}, [rootRef, callback]);
+		return () => {
+			scopeRef.current?.revert();
+		};
+	}, [rootRef]); // Callback removed from dependencies to prevent double playback
 
 	return scopeRef;
 };
