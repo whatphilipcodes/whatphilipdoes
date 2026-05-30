@@ -122,7 +122,8 @@ export const useScroll = (
 				: (target as Window)
 			: (target as HTMLElement);
 
-		if (!activeTarget) throw new Error('Scroll target could not be assigned.');
+		if (!activeTarget)
+			throw new Error('Scroll target resolved to null | undefined.');
 
 		const handleUpdate = (
 			isWindow ? handleWindowUpdate : handleElementUpdate
