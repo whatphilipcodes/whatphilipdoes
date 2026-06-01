@@ -25,10 +25,8 @@ const PillMenu = ({ pathname }: PillMenuProps) => {
 		const content = root.querySelector('.menu-content') as HTMLElement;
 		if (!content) return;
 
-		// Extract accurate target width from unconstrained inner wrapper
 		const targetWidth = `${content.scrollWidth}px`;
 
-		// Entrance animation: Circle to Pill
 		waapi.animate(root, {
 			width: ['56px', targetWidth],
 			duration: 600,
@@ -44,7 +42,6 @@ const PillMenu = ({ pathname }: PillMenuProps) => {
 			})
 			.then(() => {
 				setIsAnimating(false);
-				// Release explicitly bound width to allow scroll listeners to modify inner elements naturally
 				root.style.width = 'auto';
 			});
 	});
@@ -61,8 +58,6 @@ const PillMenu = ({ pathname }: PillMenuProps) => {
 
 		setIsAnimating(true);
 
-		// Lock the dynamic computed width before animating the collapse
-		// This prevents the parent from snapping to 'auto' width abruptly
 		const currentWidth = `${root.offsetWidth}px`;
 		root.style.width = currentWidth;
 
@@ -90,7 +85,7 @@ const PillMenu = ({ pathname }: PillMenuProps) => {
 			className='fixed bottom-2 left-1/2 z-50 flex h-14 -translate-x-1/2 flex-row items-center overflow-hidden rounded-full border border-mono-200 bg-mono-100/50 text-lg backdrop-blur-md md:bottom-8 dark:border-mono-900 dark:bg-mono-950/50'
 			style={{ width: '56px' }}
 		>
-			<div className='menu-content flex h-full w-max items-center opacity-0'>
+			<div className='menu-content flex h-full w-max items-center'>
 				<PillMenuBar
 					pathname={pathname}
 					routes={routes}

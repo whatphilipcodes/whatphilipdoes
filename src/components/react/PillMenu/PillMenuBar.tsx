@@ -6,7 +6,7 @@ type PillMenuBarProps = {
 
 const PillMenuBar = ({ pathname, routes, onNavigate }: PillMenuBarProps) => {
 	return (
-		<div className='flex h-full shrink-0'>
+		<div className='flex h-full'>
 			{routes.map((route) => {
 				const isActive = pathname === route.href;
 				return (
