@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import ContextAnchor from '@react/ContextAnchor';
 // import Preloader from '@comps/Preloader.astro';
 import VideoPlayer from '@react/VideoPlayer';
 import testImage from '@/assets/inter/exterior/front.jpg';
@@ -10,6 +11,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 	<!-- <Preloader> -->
 	<div class="w-dvw h-dvh">
 		<div class="w-full h-1/2 bg-cinnabar-700"></div>
+		<ContextAnchor client:only action="hello" href="world" />
 		<div class="w-full h-1/2 bg-cinnabar-800"></div>
 	</div>
 	<!-- </Preloader> -->

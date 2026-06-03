@@ -35,7 +35,6 @@ export const useAnime = (
 	const scopeRef = useRef<Scope | null>(null);
 	const callbackRef = useRef(callback);
 
-	// Maintain the latest callback reference without triggering re-renders
 	useEffect(() => {
 		callbackRef.current = callback;
 	}, [callback]);
@@ -54,7 +53,7 @@ export const useAnime = (
 		return () => {
 			scopeRef.current?.revert();
 		};
-	}, [rootRef]); // Callback removed from dependencies to prevent double playback
+	}, [rootRef]);
 
 	return scopeRef;
 };

@@ -82,7 +82,7 @@ const PillMenu = ({ pathname }: PillMenuProps) => {
 	return (
 		<nav
 			ref={rootRef}
-			className='fixed bottom-2 left-1/2 z-50 flex h-14 -translate-x-1/2 flex-row items-center overflow-hidden rounded-full border border-mono-200 bg-mono-100/50 text-lg backdrop-blur-md md:bottom-8 dark:border-mono-900 dark:bg-mono-950/50'
+			className='fixed bottom-2 left-1/2 z-50 flex h-14 -translate-x-1/2 flex-row items-center overflow-hidden rounded-full border border-mono-200 bg-mono-100 text-lg md:bottom-8 dark:border-mono-900 dark:bg-mono-950'
 			style={{ width: '56px' }}
 		>
 			<div className='menu-content flex h-full w-max items-center'>

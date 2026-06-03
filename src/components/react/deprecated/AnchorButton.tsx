@@ -10,7 +10,7 @@ const AnchorButton = ({ children, className, ...props }: Props) => {
 		<a
 			{...props}
 			className={twMerge(
-				'flex cursor-pointer flex-row rounded-lg border border-mono-900 bg-mono-950/75 px-5 py-2 text-mono-800 backdrop-blur-md transition-colors hover:text-mono-600',
+				'flex cursor-pointer flex-row rounded-lg border border-mono-900 bg-mono-950/75 px-5 py-2 text-mono-800 transition-colors hover:text-mono-600',
 				className,
 			)}
 		>
