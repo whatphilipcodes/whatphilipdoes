@@ -14,7 +14,8 @@ const PillMenuBar = ({ pathname, routes, onNavigate }: PillMenuBarProps) => {
 						key={route.href}
 						href={route.href}
 						onClick={(e) => onNavigate(e, route.href)}
-						className={`flex h-full cursor-pointer flex-row items-center justify-center gap-1 rounded-full px-2 first:pl-4 last:pr-4 ${
+						// Added relative, z-10, and shrink-0 to force hardware paint layers
+						className={`relative z-10 flex h-full shrink-0 cursor-pointer flex-row items-center justify-center gap-1 rounded-full px-2 first:pl-4 last:pr-4 ${
 							isActive
 								? 'text-mono-900 dark:text-mono-100'
 								: 'text-mono-400 hover:text-mono-600 dark:hover:text-mono-200'
