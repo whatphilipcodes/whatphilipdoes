@@ -6,8 +6,9 @@ export type ActionAnchorProps = {
 	href: string;
 };
 
-const ActionAnchor = ({ action, href }: ActionAnchorProps) => {
+const ActionAnchor = (props: ActionAnchorProps) => {
 	const target = useRef<HTMLDivElement>(null);
+	const propsString = JSON.stringify(props);
 
 	useEffect(() => {
 		if (!target.current) return;
@@ -15,7 +16,10 @@ const ActionAnchor = ({ action, href }: ActionAnchorProps) => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					currentActionStore.set({ action, href });
+					const currentStoreValue = currentActionStore.get();
+					if (JSON.stringify(currentStoreValue) !== propsString) {
+						currentActionStore.set(props);
+					}
 				}
 			},
 			{
@@ -28,7 +32,7 @@ const ActionAnchor = ({ action, href }: ActionAnchorProps) => {
 		return () => {
 			observer.disconnect();
 		};
-	}, [action, href]);
+	}, [props, propsString]);
 
 	return <div ref={target} className='h-0 w-full' aria-hidden='true' />;
 };
