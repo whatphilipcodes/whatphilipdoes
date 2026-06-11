@@ -19,3 +19,49 @@
 		opacity: 1;
 	}
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 320ms;
+	mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+	animation-name: fade-out;
+}
+
+::view-transition-new(root) {
+	animation-name: fade-in;
+	animation-delay: 320ms;
+}
+
+#obs-menu {
+	view-transition-name: nav;
+}
+
+:root {
+	--nav-delay: 250ms; /* Time to wait for the new page/React component to become visible */
+	--nav-fade-duration: 150ms; /* How long the fade out takes */
+}
+
+::view-transition-group(nav) {
+	overflow: hidden;
+	border-radius: var(--radius-4xl);
+	isolation: isolate;
+	animation-duration: calc(var(--nav-delay) + var(--nav-fade-duration));
+}
+
+:root::view-transition-old(nav) {
+	animation-name: fade-out;
+	animation-duration: var(--nav-fade-duration);
+	animation-delay: var(--nav-delay);
+	animation-fill-mode: both;
+	mix-blend-mode: normal;
+	z-index: 2;
+}
+
+:root::view-transition-new(nav) {
+	animation: none;
+	opacity: 0;
+	mix-blend-mode: normal;
+}
