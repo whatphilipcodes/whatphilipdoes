@@ -2,27 +2,6 @@
 	navigation: auto;
 }
 
-/* transition names defined in -> ./tailwind.css */
-::view-transition-group(nav) {
-	border-radius: var(--radius-4xl);
-	overflow: hidden;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-	animation-duration: 320ms;
-	mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-	animation-name: fade-out;
-}
-
-::view-transition-new(root) {
-	animation-name: fade-in;
-	animation-delay: 320ms;
-}
-
 @keyframes fade-out {
 	from {
 		opacity: 1;

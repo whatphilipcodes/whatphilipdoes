@@ -1,7 +1,8 @@
 ---
-import PillMenu from '@react/PillMenu';
+import ObservantMenu from '@react/ObservantMenu';
 import BaseHead from '../components/BaseHead.astro';
 import '../styles/view-transitions.css';
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -19,7 +20,7 @@ const { title, description } = Astro.props;
 		/>
 	</head>
 	<body class="dark:bg-mono-950 bg-mono-100">
-		<PillMenu pathname={Astro.url.pathname} client:only />
+		<ObservantMenu pathname={Astro.url.pathname} client:only="react" />
 		<main class="@container/main">
 			<slot />
 		</main>

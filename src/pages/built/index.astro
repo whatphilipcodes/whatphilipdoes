@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import ContextAnchor from '@react/ContextAnchor';
+import ActionAnchor from '@react/ActionAnchor';
 import testImage from '@/assets/inter/exterior/front.jpg';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 ---
 
 <LayoutBasic>
-	<ContextAnchor action="morning" href="/" client:only />
+	<ActionAnchor action="morning" href="/" client:only />
 	<h1 class="text-4xl text-mono-200">built page</h1>
 	<Image
 		data-preloader
@@ -24,7 +24,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		height="1200"
 		class="w-full"
 	/>
-	<ContextAnchor action="hello" href="/" client:only />
+	<ActionAnchor action="hello" href="/" client:only />
 	<div class="flex flex-row w-full justify-center my-8">
 		<a
 			href="/"

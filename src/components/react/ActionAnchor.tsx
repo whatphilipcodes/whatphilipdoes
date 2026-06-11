@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { currentActionStore } from '@/store/menuStore.ts';
 
-export type ContextAnchorProps = {
+export type ActionAnchorProps = {
 	action: string;
 	href: string;
 };
 
-const ContextAnchor = ({ action, href }: ContextAnchorProps) => {
+const ActionAnchor = ({ action, href }: ActionAnchorProps) => {
 	const target = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -14,10 +15,7 @@ const ContextAnchor = ({ action, href }: ContextAnchorProps) => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					const event = new CustomEvent('onContextAnchor', {
-						detail: { action, href },
-					});
-					window.dispatchEvent(event);
+					currentActionStore.set({ action, href });
 				}
 			},
 			{
@@ -35,4 +33,4 @@ const ContextAnchor = ({ action, href }: ContextAnchorProps) => {
 	return <div ref={target} className='h-0 w-full' aria-hidden='true' />;
 };
 
-export default ContextAnchor;
+export default ActionAnchor;
