@@ -112,14 +112,17 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 				}}
 				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden border border-mono-200 bg-mono-100 dark:border-mono-900 dark:bg-mono-950'
 			>
-				<motion.div
+				<motion.span
 					initial={{ opacity: 0 }}
-					animate={{ opacity: menuState === 'collapsing' ? 1 : 0 }}
+					animate={{
+						opacity:
+							menuState === 'collapsing' || menuState === 'exiting' ? 1 : 0,
+					}}
 					transition={fadeTransition}
-					className='pointer-events-none absolute inset-0 flex items-center justify-center'
+					className='pointer-events-none absolute flex items-center justify-center text-mono-900 dark:text-mono-100'
 				>
-					<div className='h-5 w-5 animate-spin rounded-4xl border-2 border-mono-300 border-t-mono-900 dark:border-mono-700 dark:border-t-mono-100' />
-				</motion.div>
+					wp
+				</motion.span>
 
 				<motion.div
 					initial={{ opacity: 0 }}
