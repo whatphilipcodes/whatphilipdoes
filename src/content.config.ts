@@ -1,19 +1,29 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const baseSchema = z.object({
+	draft: z.boolean(),
 	title: z.string(),
 	description: z.string(),
-	draft: z.boolean(),
 });
 
-const basePattern = '**/*.{md,mdx}';
+const projectSchema = baseSchema.extend({
+	tags: z.array(z.string()),
+});
+
+const basePattern = '**/[^_]*.{md,mdx}';
 
 // --- Collections --- //
 
 const legal = defineCollection({
-	loader: glob({ base: 'src/content/legal', pattern: basePattern }),
+	loader: glob({ base: 'content/legal', pattern: basePattern }),
 	schema: baseSchema,
 });
 
-export const collections = { legal };
+const projects = defineCollection({
+	loader: glob({ base: 'content/projects', pattern: basePattern }),
+	schema: projectSchema,
+});
+
+export const collections = { legal, projects };

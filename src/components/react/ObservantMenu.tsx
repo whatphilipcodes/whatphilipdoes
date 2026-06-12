@@ -110,7 +110,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 				style={{
 					borderRadius: 32,
 				}}
-				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden border border-mono-200 bg-mono-100 dark:border-mono-900 dark:bg-mono-950'
+				className='pointer-events-auto backdrop-blur-sm relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-100/50 dark:bg-mono-950/50'
 			>
 				<motion.span
 					initial={{ opacity: 0 }}
@@ -166,7 +166,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 									onClick={(e) => handleNavigationClick(e, currentAction.href)}
 									className='flex h-full w-max items-center pr-2'
 								>
-									<div className='block w-max whitespace-nowrap rounded-4xl border border-mono-200 px-4 py-2 text-center text-mono-200'>
+									<div className='block w-max whitespace-nowrap rounded-4xl border border-mono-900 px-4 py-2 text-center text-mono-900 dark:border-mono-100 dark:text-mono-100'>
 										{currentAction.action}
 									</div>
 								</a>
