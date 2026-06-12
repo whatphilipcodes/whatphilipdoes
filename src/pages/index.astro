@@ -1,8 +1,15 @@
 ---
-import { Content } from '@content/does.mdx';
+import { getEntry, render } from 'astro:content';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
+
+const page = await getEntry('nav', 'does');
+if (!page)
+	throw new Error(
+		'The requested .mdx files appears to be missing in the content collection',
+	);
+const { Content } = await render(page);
 ---
 
-<LayoutBasic>
+<LayoutBasic {...page.data}>
 	<Content />
 </LayoutBasic>

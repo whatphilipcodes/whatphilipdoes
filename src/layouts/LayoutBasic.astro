@@ -1,23 +1,16 @@
 ---
 import BaseHead from '@comps/BaseHead.astro';
 import ObservantMenu from '@react/ObservantMenu';
-import '@/styles/view-transitions.css';
+import type { HeadProps } from '@/content.config';
 
-interface Props {
-	title?: string;
-	description?: string;
-	created?: string;
-}
-const { title, description } = Astro.props;
+type Props = HeadProps;
+const { title, description, previewImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="hide-scrollbar">
 	<head>
-		<BaseHead
-			title={title ?? "whatphilipdoes"}
-			description={description ?? "personal portfolio website"}
-		/>
+		<BaseHead title={title ?? "whatphilipdoes"} {description} {previewImage} />
 	</head>
 	<body class="dark:bg-mono-950 bg-mono-100">
 		<ObservantMenu pathname={Astro.url.pathname} client:only="react" />

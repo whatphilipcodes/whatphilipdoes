@@ -1,13 +1,10 @@
 ---
-import '../styles/tailwind.css';
-import 'remixicon/fonts/remixicon.css';
+import '@/styles/tailwind.css';
+import '@/styles/view-transitions.css';
+import type { HeadProps } from '@/content.config';
 
-interface Props {
-	title: string;
-	description: string;
-	image?: string;
-}
-const { title, description } = Astro.props;
+type Props = HeadProps;
+const { title, description, previewImage } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -18,23 +15,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta name="generator" content={Astro.generator}>
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL}>
+<link rel="canonical" href={canonicalURL.href}>
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title}>
 <meta name="description" content={description}>
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content={Astro.url}>
+<meta property="og:url" content={Astro.url.href}>
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
-<!-- <meta property='og:image' content={new URL(image, Astro.url)} /> -->
+{previewImage && <meta property="og:image" content={new URL(previewImage, Astro.url).href} />}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content={Astro.url}>
-<meta property="twitter:title" content={title}>
-<meta property="twitter:description" content={description}>
-<!-- <meta property='twitter:image' content={new URL(image, Astro.url)} /> -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content={Astro.url.href}>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+{previewImage && <meta name="twitter:image" content={new URL(previewImage, Astro.url).href} />}
