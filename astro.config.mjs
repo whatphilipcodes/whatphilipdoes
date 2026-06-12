@@ -16,7 +16,6 @@ const { SERVER_URL_LIVE } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
 	site: SERVER_URL_LIVE,
-	// @ts-expect-error - Vite 7 type incompatibility with Tailwind CSS plugin
 	vite: { plugins: [tailwindcss()] },
 	integrations: [
 		react(),

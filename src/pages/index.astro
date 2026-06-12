@@ -1,18 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-import ActionAnchor from '@react/ActionAnchor';
-// import Preloader from '@comps/Preloader.astro';
-import VideoPlayer from '@react/VideoPlayer';
-import testImage from '@/assets/inter/exterior/front.jpg';
+import { Content } from '@content/does.mdx';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 ---
 
 <LayoutBasic>
-	<!-- <Preloader> -->
-	<div class="w-dvw h-dvh">
-		<div class="w-full h-1/2 bg-cinnabar-700"></div>
-		<ActionAnchor client:only action="hello" href="world" />
-		<div class="w-full h-1/2 bg-cinnabar-800"></div>
-	</div>
-	<!-- </Preloader> -->
+	<Content />
 </LayoutBasic>
