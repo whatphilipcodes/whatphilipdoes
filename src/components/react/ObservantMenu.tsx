@@ -110,7 +110,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 				style={{
 					borderRadius: 32,
 				}}
-				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-100/50 backdrop-blur-sm dark:bg-mono-950/50'
+				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-50/50 border border-mono-100 dark:border-mono-900 dark:bg-mono-950/50'
 			>
 				<motion.span
 					initial={{ opacity: 0 }}
@@ -119,7 +119,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 							menuState === 'collapsing' || menuState === 'exiting' ? 1 : 0,
 					}}
 					transition={fadeTransition}
-					className='pointer-events-none absolute flex items-center justify-center text-mono-900 dark:text-mono-100'
+					className='pointer-events-none absolute flex items-center justify-center text-mono-900 dark:text-mono-50'
 				>
 					wp
 				</motion.span>
@@ -140,8 +140,8 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 									onClick={(e) => handleNavigationClick(e, route.href)}
 									className={`relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center gap-1 rounded-4xl px-2 first:pl-4 last:pr-4 ${
 										isActive
-											? 'text-mono-900 dark:text-mono-100'
-											: 'text-mono-400 hover:text-mono-600 dark:hover:text-mono-200'
+											? 'text-mono-950 dark:text-mono-50'
+											: 'text-mono-500 hover:text-mono-800 dark:hover:text-mono-200'
 									}`}
 								>
 									<span>/</span>
@@ -166,7 +166,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 									onClick={(e) => handleNavigationClick(e, currentAction.href)}
 									className='flex h-full w-max items-center pr-2'
 								>
-									<div className='block w-max whitespace-nowrap rounded-4xl border border-mono-900 px-4 py-2 text-center text-mono-900 dark:border-mono-100 dark:text-mono-100'>
+									<div className='block w-max whitespace-nowrap rounded-4xl border border-mono-900 px-4 py-2 text-center text-mono-900 dark:border-mono-100 dark:text-mono-50'>
 										{currentAction.action}
 									</div>
 								</a>

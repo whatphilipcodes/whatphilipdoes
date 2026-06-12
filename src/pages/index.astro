@@ -2,7 +2,7 @@
 import { getEntry, render } from 'astro:content';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
-const page = await getEntry('nav', 'does');
+const page = await getEntry('nav', 'knows');
 if (!page)
 	throw new Error(
 		'The requested .mdx files appears to be missing in the content collection',

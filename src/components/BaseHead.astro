@@ -8,30 +8,32 @@ const { title, description, previewImage } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<!-- Global Metadata -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="generator" content={Astro.generator}>
+<head>
+	<!-- Global Metadata -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<meta name="generator" content={Astro.generator}>
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL.href}>
+	<!-- Canonical URL -->
+	<link rel="canonical" href={canonicalURL.href}>
 
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title}>
-<meta name="description" content={description}>
+	<!-- Primary Meta Tags -->
+	<title>{title}</title>
+	<meta name="title" content={title}>
+	<meta name="description" content={description}>
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content={Astro.url.href}>
-<meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
-{previewImage && <meta property="og:image" content={new URL(previewImage, Astro.url).href} />}
+	<!-- Open Graph -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content={Astro.url.href}>
+	<meta property="og:title" content={title}>
+	<meta property="og:description" content={description}>
+	{previewImage && <meta property="og:image" content={new URL(previewImage, Astro.url).href} />}
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content={Astro.url.href}>
-<meta name="twitter:title" content={title}>
-<meta name="twitter:description" content={description}>
-{previewImage && <meta name="twitter:image" content={new URL(previewImage, Astro.url).href} />}
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content={Astro.url.href}>
+	<meta name="twitter:title" content={title}>
+	<meta name="twitter:description" content={description}>
+	{previewImage && <meta name="twitter:image" content={new URL(previewImage, Astro.url).href} />}
+</head>
