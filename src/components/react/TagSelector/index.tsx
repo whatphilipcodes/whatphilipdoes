@@ -8,7 +8,7 @@ interface TagSelectorProps {
 const TagSelector = ({ active, all }: TagSelectorProps) => {
 	return (
 		<div className='flex flex-row gap-2'>
-			<Tag active={active === 'all'} tag='all' href='/built' />
+			<Tag active={active === 'all'} tag='all' href='/built/' />
 			{all.map((tag) => {
 				return (
 					<Tag

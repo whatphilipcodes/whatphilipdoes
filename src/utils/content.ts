@@ -6,6 +6,12 @@ export const getBuilt = async () => {
 	});
 };
 
+export const getLegal = async () => {
+	return await getCollection('legal', ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+};
+
 export const getTags = async () => {
 	const items = await getBuilt();
 	return items.reduce((acc, val) => {

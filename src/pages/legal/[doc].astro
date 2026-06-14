@@ -1,11 +1,10 @@
 ---
-import { getCollection, render } from 'astro:content';
-import LayoutBasic from '../../layouts/LayoutBasic.astro';
+import { render } from 'astro:content';
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import { getLegal } from '@/utils/content';
 
 export async function getStaticPaths() {
-	const legal = await getCollection('legal', ({ data }) => {
-		return data.draft === false;
-	});
+	const legal = await getLegal();
 	return legal.map((document) => ({
 		params: { doc: document.id },
 		props: { document },
@@ -16,6 +15,6 @@ const { document } = Astro.props;
 const { Content } = await render(document);
 ---
 
-<LayoutBasic>
+<LayoutBasic {...document.data}>
 	<Content />
 </LayoutBasic>

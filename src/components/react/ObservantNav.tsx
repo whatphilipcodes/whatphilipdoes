@@ -4,7 +4,7 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { currentActionStore } from '@/store/menuStore'; // Adjust path
 
-type ObservantMenuProps = {
+type ObservantNavProps = {
 	pathname: string;
 };
 
@@ -22,7 +22,7 @@ const fadeTransition: Transition = {
 
 type MenuState = 'mounting' | 'idle' | 'collapsing' | 'exiting';
 
-const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
+const ObservantNav = ({ pathname }: ObservantNavProps) => {
 	const routes = [
 		{ text: 'does', href: '/' },
 		{ text: 'built', href: '/built/' },
@@ -179,4 +179,4 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 	);
 };
 
-export default ObservantMenu;
+export default ObservantNav;
