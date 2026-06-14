@@ -28,7 +28,7 @@ const statusArray = [
 	>
 		<!-- <div
 			data-info="preloader-ani-gradient"
-			class="loader-gradient absolute bg-linear-to-b from-transparent via-cinnabar-800 to-transparent h-1/3 w-full top-0 -translate-y-full"
+			class="loader-gradient absolute bg-linear-to-b from-transparent via-prim-800 to-transparent h-1/3 w-full top-0 -translate-y-full"
 		></div> -->
 		<div data-info="preloader-screen-area" class="w-full h-full flex flex-row">
 			<div
@@ -87,10 +87,10 @@ const statusArray = [
 
 <script>
 	/*
-												WHY IS THIS NOT A REACT COMPONENT?
-												Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
-												Since this process starts before React is even running on out client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
-												*/
+																WHY IS THIS NOT A REACT COMPONENT?
+																Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
+																Since this process starts before React is even running on out client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
+																*/
 	import {
 		createTimeline,
 		type DOMTargetsParam,

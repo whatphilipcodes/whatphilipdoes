@@ -1,6 +1,5 @@
 ---
 import BaseHead from '@comps/BaseHead.astro';
-import GridMain from '@comps/GridMain.astro';
 import ObservantMenu from '@react/ObservantMenu';
 import type { HeadProps } from '@/content.config';
 
@@ -9,11 +8,14 @@ const { title, description, previewImage } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="hide-scrollbar bg-mono-50 dark:bg-mono-950">
+<html
+	lang="en"
+	class="hide-scrollbar bg-mono-50 dark:bg-mono-950 text-mono-950 dark:text-mono-50"
+>
 	<BaseHead title={title ?? "whatphilipdoes"} {description} {previewImage} />
 	<body>
 		<ObservantMenu pathname={Astro.url.pathname} client:only="react" />
-		<div class="@container/main py-4 md:py-8 lg:py-16">
+		<div class="@container/main p-4 md:p-8 lg:p-16 mx-auto grid max-w-360">
 			<slot />
 		</div>
 	</body>

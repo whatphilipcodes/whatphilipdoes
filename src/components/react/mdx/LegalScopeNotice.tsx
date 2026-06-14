@@ -22,7 +22,7 @@ const LegalScope = ({ doc, main, subdomains }: LegalScopeProps) => {
 	if (urls.length === 0) return null;
 
 	return (
-		<div className='text-cinnabar-500'>
+		<div className='text-prim-500'>
 			<p>
 				Alongside this domain (
 				<a

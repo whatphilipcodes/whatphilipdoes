@@ -1,0 +1,36 @@
+---
+import BuiltList from '@react/BuiltList';
+import TagSelector from '@react/TagSelector';
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import { getTags } from '@/utils/content';
+
+export async function getStaticPaths() {
+	const mapped = await getTags();
+	const all = Array.from(mapped.keys());
+	return Promise.all(
+		all.map(async (tag) => {
+			const built = mapped.get(tag) ?? [];
+			return {
+				params: { tagname: tag },
+				props: {
+					tag,
+					built,
+					all,
+				},
+			};
+		}),
+	);
+}
+
+const { built, tag, all } = Astro.props;
+---
+
+<LayoutBasic
+	title={tag}
+	description={`what philip built tagged with '${tag}''`}
+>
+	<div class="">
+		<TagSelector client:load activeTag={tag} allTags={all} />
+		<BuiltList client:load built={built} />
+	</div>
+</LayoutBasic>

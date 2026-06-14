@@ -110,7 +110,7 @@ const ObservantMenu = ({ pathname }: ObservantMenuProps) => {
 				style={{
 					borderRadius: 32,
 				}}
-				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-50/50 border border-mono-100 dark:border-mono-900 dark:bg-mono-950/50'
+				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden border border-mono-100 bg-mono-50/50 dark:border-mono-900 dark:bg-mono-950/50'
 			>
 				<motion.span
 					initial={{ opacity: 0 }}

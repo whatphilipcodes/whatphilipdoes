@@ -14,17 +14,17 @@
 	--color-mono-900: #1d1d1d;
 	--color-mono-950: #111111;
 
-	--color-cinnabar-50: oklch(0.96 0.02 21.44);
-	--color-cinnabar-100: oklch(0.918 0.04 21.72);
-	--color-cinnabar-200: oklch(0.846 0.082 23.56);
-	--color-cinnabar-300: oklch(0.765 0.135 26.68);
-	--color-cinnabar-400: oklch(0.694 0.192 30.68);
-	--color-cinnabar-500: oklch(0.612 0.211 34.48);
-	--color-cinnabar-600: oklch(0.52 0.179 34.44);
-	--color-cinnabar-700: oklch(0.421 0.145 34.62);
-	--color-cinnabar-800: oklch(0.332 0.115 34.06);
-	--color-cinnabar-900: oklch(0.233 0.08 34.49);
-	--color-cinnabar-950: oklch(0.182 0.064 35.16);
+	--color-prim-50: oklch(0.96 0.02 21.44);
+	--color-prim-100: oklch(0.918 0.04 21.72);
+	--color-prim-200: oklch(0.846 0.082 23.56);
+	--color-prim-300: oklch(0.765 0.135 26.68);
+	--color-prim-400: oklch(0.694 0.192 30.68);
+	--color-prim-500: oklch(0.612 0.211 34.48);
+	--color-prim-600: oklch(0.52 0.179 34.44);
+	--color-prim-700: oklch(0.421 0.145 34.62);
+	--color-prim-800: oklch(0.332 0.115 34.06);
+	--color-prim-900: oklch(0.233 0.08 34.49);
+	--color-prim-950: oklch(0.182 0.064 35.16);
 
 	--font-sans: "Urbanist Variable", sans-serif;
 }

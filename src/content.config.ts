@@ -2,16 +2,16 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const baseSchema = z.object({
+const headSchema = z.object({
 	draft: z.boolean().optional(),
 	title: z.string(),
 	description: z.string(),
 	previewImage: z.string().optional(),
 });
 
-type HeadProps = z.infer<typeof baseSchema>;
+type HeadProps = z.infer<typeof headSchema>;
 
-const projectSchema = baseSchema.extend({
+const projectSchema = headSchema.extend({
 	tags: z.array(z.string()),
 });
 
@@ -21,7 +21,7 @@ const basePattern = '**/[^_]*.{md,mdx}';
 
 const nav = defineCollection({
 	loader: glob({ base: 'content/nav', pattern: basePattern }),
-	schema: baseSchema,
+	schema: headSchema,
 });
 
 const built = defineCollection({
@@ -31,7 +31,7 @@ const built = defineCollection({
 
 const legal = defineCollection({
 	loader: glob({ base: 'content/legal', pattern: basePattern }),
-	schema: baseSchema,
+	schema: headSchema,
 });
 
 export const collections = { nav, built, legal };
