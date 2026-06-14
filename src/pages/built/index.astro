@@ -1,7 +1,17 @@
 ---
+import BuiltList from '@react/BuiltList';
+import TagSelector from '@react/TagSelector';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import { getBuilt, getTags } from '@/utils/content';
+
+const built = await getBuilt();
+const mapped = await getTags();
+const all = Array.from(mapped.keys());
 ---
 
-<LayoutBasic title="built" description="projects philip has built in the past">
-	BUILT PAGE
+<LayoutBasic title="built" description={`what philip has built`}>
+	<div class="">
+		<TagSelector client:load active="all" all={all} />
+		<BuiltList client:load built={built} />
+	</div>
 </LayoutBasic>

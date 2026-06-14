@@ -25,12 +25,9 @@ export async function getStaticPaths() {
 const { built, tag, all } = Astro.props;
 ---
 
-<LayoutBasic
-	title={tag}
-	description={`what philip built tagged with '${tag}''`}
->
+<LayoutBasic title={tag} description={`what philip built tagged with '${tag}'`}>
 	<div class="">
-		<TagSelector client:load activeTag={tag} allTags={all} />
+		<TagSelector client:load active={tag} all={all} />
 		<BuiltList client:load built={built} />
 	</div>
 </LayoutBasic>
