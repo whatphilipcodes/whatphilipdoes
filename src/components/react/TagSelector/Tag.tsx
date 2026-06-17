@@ -6,9 +6,13 @@ interface TagProps {
 }
 
 export default function Tag({ tag, href, active, disabled }: TagProps) {
-	return (
+	return disabled ? (
+		<div
+			className={`rounded-md px-3 ring ${active ? 'text-mono-500 ring-mono-200' : 'ring-mono-800'}}`}
+		></div>
+	) : (
 		<a
-			className={`rounded-md px-3 ring ${active ? 'text-mono-500 ring-mono-200' : 'ring-mono-800'} ${disabled && 'pointer-events-none'}`}
+			className={`rounded-md px-3 ring ${active ? 'text-mono-500 ring-mono-200' : 'ring-mono-800'}}`}
 			href={href}
 		>
 			{tag}
