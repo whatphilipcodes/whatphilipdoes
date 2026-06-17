@@ -4,7 +4,7 @@ import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { currentActionStore } from '@/store/menuStore'; // Adjust path
 
-interface ObservantNavProps {
+interface ObservantMenuProps {
 	pathname: string;
 }
 
@@ -22,7 +22,7 @@ const fadeTransition: Transition = {
 
 type MenuState = 'mounting' | 'idle' | 'collapsing' | 'exiting';
 
-export default function ObservantNav({ pathname }: ObservantNavProps) {
+export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 	const routes = [
 		{ text: 'does', href: '/' },
 		{ text: 'built', href: '/built/' },
@@ -102,7 +102,7 @@ export default function ObservantNav({ pathname }: ObservantNavProps) {
 
 	return (
 		<div className='pointer-events-none fixed inset-x-0 bottom-2 mx-auto flex justify-center md:bottom-8'>
-			<motion.nav
+			<motion.header
 				initial={{ width: 56 }}
 				animate={{ width: menuState === 'idle' ? 'auto' : 56 }}
 				transition={fluidTransition}
@@ -119,12 +119,13 @@ export default function ObservantNav({ pathname }: ObservantNavProps) {
 							menuState === 'collapsing' || menuState === 'exiting' ? 1 : 0,
 					}}
 					transition={fadeTransition}
+					aria-hidden='true'
 					className='pointer-events-none absolute flex items-center justify-center text-mono-900 dark:text-mono-50'
 				>
 					wp
 				</motion.span>
 
-				<motion.div
+				<motion.nav
 					initial={{ opacity: 0 }}
 					animate={{ opacity: menuState === 'idle' ? 1 : 0 }}
 					transition={fadeTransition}
@@ -173,8 +174,8 @@ export default function ObservantNav({ pathname }: ObservantNavProps) {
 							</motion.div>
 						)}
 					</AnimatePresence>
-				</motion.div>
-			</motion.nav>
+				</motion.nav>
+			</motion.header>
 		</div>
 	);
 }

@@ -1,5 +1,5 @@
 ---
-import ObservantNav from '@react/ObservantNav';
+import ObservantMenu from '@react/ObservantMenu';
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import type { HeadProps } from '@/content.config';
@@ -15,7 +15,7 @@ const { title, description, previewImage } = Astro.props;
 >
 	<BaseHead title={title ?? "whatphilipdoes"} {description} {previewImage} />
 	<body class="flex min-h-lvh flex-col">
-		<ObservantNav pathname={Astro.url.pathname} client:only />
+		<ObservantMenu pathname={Astro.url.pathname} client:only />
 		<main class="min-h-full grow">
 			<slot />
 		</main>
