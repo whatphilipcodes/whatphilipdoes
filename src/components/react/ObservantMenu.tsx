@@ -2,7 +2,7 @@ import { useStore } from '@nanostores/react';
 import { useScroll } from '@react/hooks/useScroll';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { currentActionStore } from '@/store/menuStore'; // Adjust path
+import { currentActionStore } from '@/store/menuStore';
 
 interface ObservantMenuProps {
 	pathname: string;
@@ -34,6 +34,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 	const currentAction = useStore(currentActionStore);
 
 	const [actionVisible, setActionVisible] = useState(true);
+	const [actionFocused, setActionFocused] = useState(false);
 	const [menuState, setMenuState] = useState<MenuState>('mounting');
 	const [isExpanded, setIsExpanded] = useState(false);
 
@@ -72,28 +73,32 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 			isLocked.current = false;
 			return;
 		}
-		if (isLocked.current || yArrived.bottom || yArrived.top) return;
+		if (isLocked.current || yArrived.bottom || yArrived.top || actionFocused)
+			return;
 
 		if (yDir.down) {
 			setActionVisible(false);
 		} else if (yDir.up) {
 			setActionVisible(true);
 		}
-	}, [isScrolling, yArrived.bottom, yArrived.top, yDir.down, yDir.up]);
+	}, [
+		isScrolling,
+		yArrived.bottom,
+		yArrived.top,
+		yDir.down,
+		yDir.up,
+		actionFocused,
+	]);
 
 	const handleNavigationClick = (
 		e: React.MouseEvent<HTMLAnchorElement>,
 		href: string,
 	) => {
 		e.preventDefault();
-
 		if (pathname === href) return;
-
 		setMenuState('collapsing');
-
 		setTimeout(() => {
 			setMenuState('exiting');
-
 			setTimeout(() => {
 				window.location.href = href;
 			}, 150);
@@ -125,13 +130,13 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 					wp
 				</motion.span>
 
-				<motion.nav
+				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: menuState === 'idle' ? 1 : 0 }}
 					transition={fadeTransition}
 					className='flex h-full w-max items-center'
 				>
-					<div className='flex h-full'>
+					<nav className='flex h-full'>
 						{routes.map((route) => {
 							const isActive = pathname === route.href;
 							return (
@@ -139,7 +144,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 									key={route.href}
 									href={route.href}
 									onClick={(e) => handleNavigationClick(e, route.href)}
-									className={`relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center gap-1 rounded-4xl px-2 first:pl-4 last:pr-4 ${
+									className={`relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center gap-1 px-2 first:pl-4 last:pr-4 ${
 										isActive
 											? 'text-mono-950 dark:text-mono-50'
 											: 'text-mono-500 hover:text-mono-800 dark:hover:text-mono-200'
@@ -150,7 +155,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 								</a>
 							);
 						})}
-					</div>
+					</nav>
 
 					<AnimatePresence mode='wait'>
 						{currentAction && actionVisible && isExpanded && (
@@ -161,10 +166,11 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 								exit={{ width: 0, opacity: 0 }}
 								transition={fluidTransition}
 								className='h-full'
+								onFocus={() => setActionFocused(true)}
+								onBlur={() => setActionFocused(false)}
 							>
 								<a
 									href={currentAction.href}
-									onClick={(e) => handleNavigationClick(e, currentAction.href)}
 									className='flex h-full w-max items-center pr-2'
 								>
 									<div className='block w-max whitespace-nowrap rounded-4xl px-4 py-2 text-center text-mono-900 ring ring-mono-900 dark:text-mono-50 dark:ring-mono-100'>
@@ -174,7 +180,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 							</motion.div>
 						)}
 					</AnimatePresence>
-				</motion.nav>
+				</motion.div>
 			</motion.header>
 		</div>
 	);
