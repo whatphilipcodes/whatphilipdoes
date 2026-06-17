@@ -1,9 +1,7 @@
-type LegalContactProps = {
+interface LegalContactProps {
 	children: React.ReactNode;
-};
+}
 
-const LegalContact = ({ children }: LegalContactProps) => {
+export default function LegalContact({ children }: LegalContactProps) {
 	return <div className='text-prim-500'>{children}</div>;
-};
-
-export default LegalContact;
+}

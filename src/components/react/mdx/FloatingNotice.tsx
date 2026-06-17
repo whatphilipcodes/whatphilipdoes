@@ -1,9 +1,7 @@
-type FloatingNoticeProps = {
+interface FloatingNoticeProps {
 	children: React.ReactNode;
-};
+}
 
-const FloatingNotice = ({ children }: FloatingNoticeProps) => {
+export default function FloatingNotice({ children }: FloatingNoticeProps) {
 	return <div>{children}</div>;
-};
-
-export default FloatingNotice;
+}

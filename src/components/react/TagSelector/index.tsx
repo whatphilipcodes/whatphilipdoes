@@ -5,7 +5,7 @@ interface TagSelectorProps {
 	all: string[];
 }
 
-const TagSelector = ({ active, all }: TagSelectorProps) => {
+export default function TagSelector({ active, all }: TagSelectorProps) {
 	return (
 		<div className='flex flex-row gap-2'>
 			<Tag active={active === 'all'} tag='all' href='/built/' />
@@ -21,6 +21,4 @@ const TagSelector = ({ active, all }: TagSelectorProps) => {
 			})}
 		</div>
 	);
-};
-
-export default TagSelector;
+}

@@ -5,7 +5,7 @@ interface TagProps {
 	disabled?: boolean;
 }
 
-const Tag = ({ tag, href, active, disabled }: TagProps) => {
+export default function Tag({ tag, href, active, disabled }: TagProps) {
 	return (
 		<a
 			className={`rounded-md px-3 ring ${active ? 'text-mono-500 ring-mono-200' : 'ring-mono-800'} ${disabled && 'pointer-events-none'}`}
@@ -14,6 +14,4 @@ const Tag = ({ tag, href, active, disabled }: TagProps) => {
 			{tag}
 		</a>
 	);
-};
-
-export default Tag;
+}

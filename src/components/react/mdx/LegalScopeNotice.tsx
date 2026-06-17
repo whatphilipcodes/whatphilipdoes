@@ -1,10 +1,10 @@
-type LegalScopeProps = {
+interface LegalScopeProps {
 	doc: string;
 	main: string;
 	subdomains: string;
-};
+}
 
-const LegalScope = ({ doc, main, subdomains }: LegalScopeProps) => {
+export default function LegalScope({ doc, main, subdomains }: LegalScopeProps) {
 	const subList = (subdomains || '')
 		.split(',')
 		.map((s) => s.trim())
@@ -51,6 +51,4 @@ const LegalScope = ({ doc, main, subdomains }: LegalScopeProps) => {
 			</ul>
 		</div>
 	);
-};
-
-export default LegalScope;
+}

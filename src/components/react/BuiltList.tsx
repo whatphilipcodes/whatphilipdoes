@@ -5,7 +5,7 @@ interface BuiltListProps {
 	built: CollectionEntry<'built'>[];
 }
 
-const BuiltList = ({ built }: BuiltListProps) => {
+export default function BuiltList({ built }: BuiltListProps) {
 	return (
 		<div className='mt-2 flex flex-col gap-2'>
 			{built.map((item) => (
@@ -31,6 +31,4 @@ const BuiltList = ({ built }: BuiltListProps) => {
 			))}
 		</div>
 	);
-};
-
-export default BuiltList;
+}

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { currentActionStore } from '@/store/menuStore.ts';
 
-export type ActionAnchorProps = {
+export interface ActionAnchorProps {
 	action: string;
 	href: string;
-};
+}
 
-const ActionAnchor = (props: ActionAnchorProps) => {
+export default function ActionAnchor(props: ActionAnchorProps) {
 	const target = useRef<HTMLDivElement>(null);
 	const propsString = JSON.stringify(props);
 
@@ -35,6 +35,4 @@ const ActionAnchor = (props: ActionAnchorProps) => {
 	}, [props, propsString]);
 
 	return <div ref={target} className='h-0 w-full' aria-hidden='true' />;
-};
-
-export default ActionAnchor;
+}

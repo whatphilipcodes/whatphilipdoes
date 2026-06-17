@@ -38,10 +38,10 @@ const initialState: UseScrollReturn = {
 	yDir: { up: false, down: false },
 };
 
-export const useScroll = (
+export function useScroll(
 	target: HTMLElement | SVGElement | Window | Document | null,
 	options: UseScrollOptions = {},
-): UseScrollReturn => {
+): UseScrollReturn {
 	const { tolerance = 1, debounceDelay = 150 } = options;
 	const [scrollState, setScrollState] = useState<UseScrollReturn>(initialState);
 	const frameRef = useRef<number | null>(null);
@@ -192,4 +192,4 @@ export const useScroll = (
 	}, [target, tolerance, debounceDelay]);
 
 	return scrollState;
-};
+}

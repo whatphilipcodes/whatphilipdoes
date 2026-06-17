@@ -1,19 +1,22 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-export const getBuilt = async () => {
-	return await getCollection('built', ({ data }) => {
+export function getBuilt(): Promise<CollectionEntry<'built'>[]> {
+	return getCollection('built', ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
-};
+}
 
-export const getLegal = async () => {
-	return await getCollection('legal', ({ data }) => {
+export function getLegal(): Promise<CollectionEntry<'legal'>[]> {
+	return getCollection('legal', ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
-};
+}
 
-export const getTags = async () => {
+export async function getTags(): Promise<
+	Map<string, CollectionEntry<'built'>[]>
+> {
 	const items = await getBuilt();
+
 	return items.reduce((acc, val) => {
 		for (const tag of val.data.tags) {
 			const current = acc.get(tag);
@@ -21,4 +24,4 @@ export const getTags = async () => {
 		}
 		return acc;
 	}, new Map<string, CollectionEntry<'built'>[]>());
-};
+}
