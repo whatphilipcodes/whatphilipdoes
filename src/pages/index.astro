@@ -1,5 +1,6 @@
 ---
 import { getEntry, render } from 'astro:content';
+import Preloader from '@/components/Preloader.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 const page = await getEntry('nav', 'does');
@@ -11,5 +12,7 @@ const { Content } = await render(page);
 ---
 
 <LayoutBasic {...page.data}>
+	<!-- <Preloader> -->
 	<Content />
+	<!-- </Preloader> -->
 </LayoutBasic>

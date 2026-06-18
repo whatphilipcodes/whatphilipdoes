@@ -17,7 +17,6 @@ const statusArray = [
 	{ txt: 'fixes', cls: 'hidden md:block' },
 	{ txt: 'develops', cls: 'hidden md:block' },
 	{ txt: 'ships', cls: '' },
-	// { txt: 'does', cls: '' }, -> this should be the end state
 ];
 ---
 
@@ -26,10 +25,6 @@ const statusArray = [
 		data-info="preloader-element"
 		class="flex justify-center h-dvh text-mono-50 bg-mono-950 text-lg p-10 relative"
 	>
-		<!-- <div
-			data-info="preloader-ani-gradient"
-			class="loader-gradient absolute bg-linear-to-b from-transparent via-prim-800 to-transparent h-1/3 w-full top-0 -translate-y-full"
-		></div> -->
 		<div data-info="preloader-screen-area" class="w-full h-full flex flex-row">
 			<div
 				data-info="preloader-progress-area"
@@ -87,25 +82,19 @@ const statusArray = [
 
 <script>
 	/*
-																						WHY IS THIS NOT A REACT COMPONENT?
-																						Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
-																						Since this process starts before React is even running on out client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
-																						*/
-	import {
-		createTimeline,
-		type DOMTargetsParam,
-		get,
-		spring,
-		waapi,
-	} from 'animejs';
-	import { getElement } from '@/utils/getElement';
+					    WHY IS THIS NOT A REACT COMPONENT?
+					    Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
+					    Since this process starts before React is even running on the client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
+					    */
+	import { animate } from 'motion';
+	import { getElement } from '@/utils/helpers';
 	import { setupPreloading } from '@/utils/setupPreloading';
 
 	let completedLoad = false;
 
-	const progressBar = getElement('preloader-progress-bar');
-	const keywordView = getElement('preloader-keyword-view');
-	const keywordCol = getElement('preloader-keyword-col');
+	const progressBar = getElement('preloader-progress-bar') as HTMLElement;
+	const keywordView = getElement('preloader-keyword-view') as HTMLElement;
+	const keywordCol = getElement('preloader-keyword-col') as HTMLElement;
 
 	const keywordEls = Array.from(keywordCol.children) as HTMLElement[];
 	const containerRect = keywordCol.getBoundingClientRect();
@@ -124,80 +113,44 @@ const statusArray = [
 		return positions[Math.round(p * (positions.length - 1))];
 	};
 
-	const ease = spring({ bounce: 0, duration: 800 });
-
-	// const animateBackground = () => {
-	// 	waapi.animate('.loader-gradient', {
-	// 		y: ['0dvh', '200dvh'],
-	// 		height: ['100%', '80%'],
-	// 		ease: 'linear',
-	// 		duration: 800,
-	// 		loop: true,
-	// 	});
-	// };
-	// animateBackground();
+	const easeConfig = { type: 'spring' as const, bounce: 0, duration: 0.8 };
 
 	// wp
 	const animateMergeWP = () => {
-		const duration = 800;
-		const tl = createTimeline();
-
-		waapi.animate(progressBar, {
-			y: '100%',
-			ease: ease,
-			duration: duration,
-		});
-
-		const wrapperAnim = waapi.animate('.wp-segment-wrapper', {
-			width: [(el: DOMTargetsParam) => get(el, 'width', 'px'), 0],
-			duration: duration,
-			ease: ease,
-			autoplay: false,
-		});
-
-		const innerAnim = waapi.animate('.wp-segment-inner', {
-			x: ['0%', '100%'],
-			duration: duration,
-			ease: ease,
-			autoplay: false,
-		});
-
-		// does not work
-		const posAnim = waapi.animate('.preloader-page-name', {
-			transform: 'translateX(15rem)',
-			duration: duration,
-			ease: ease,
-			autoplay: false,
-		});
-
-		tl.sync(wrapperAnim, 0).sync(innerAnim, 0).sync(posAnim, 0);
+		animate([
+			[progressBar, { y: '100%' }, { at: 0, ...easeConfig }],
+			['.wp-segment-wrapper', { width: [null, 0] }, { at: 0, ...easeConfig }],
+			['.wp-segment-inner', { x: ['0%', '100%'] }, { at: 0, ...easeConfig }],
+			['.preloader-page-name', { x: '15rem' }, { at: 0, ...easeConfig }],
+		]);
 	};
 
 	// progress
 	const onProgress = (p: number) => {
-		const duration = 2000;
-		waapi.animate(progressBar, {
-			height: `${getPosition(p)}%`,
-			ease: ease,
-			duration: duration,
-		});
-		waapi.animate(keywordView, {
-			y: `${getPosition(p)}cqh`,
-			ease: ease,
-			duration: duration,
-		});
-		waapi.animate(keywordCol, {
-			y: `${-getPosition(p) * 0.8}cqh`,
-			ease: ease,
-			duration: duration,
-			onComplete: () => {
-				if (completedLoad) animateMergeWP();
+		const progressEase = { type: 'spring' as const, bounce: 0, duration: 2 };
+
+		const currentPos = getPosition(p);
+		const keywordYOffset = -(currentPos * 0.8);
+
+		animate(progressBar, { height: `${currentPos}%` }, progressEase);
+
+		animate(keywordView, { y: `${currentPos}cqh` }, progressEase);
+
+		animate(
+			keywordCol,
+			{ y: `${keywordYOffset}cqh` },
+			{
+				...progressEase,
+				onComplete: () => {
+					if (completedLoad) animateMergeWP();
+				},
 			},
-		});
+		);
 	};
 
 	const onComplete = () => {
 		completedLoad = true;
 	};
+
 	setupPreloading(onProgress, onComplete, 'data-preloader', true);
 </script>
