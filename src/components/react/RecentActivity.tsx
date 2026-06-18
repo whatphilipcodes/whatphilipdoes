@@ -1,5 +1,4 @@
-import useFetch from '@react/hooks/useFetch';
-import { useEffect } from 'react';
+import { useCachedFetch } from '@react/hooks/useCachedFetch';
 
 interface RecentActivityProps {
 	username: string;
@@ -17,6 +16,14 @@ interface GitHubEvent {
 	payload: unknown;
 }
 
+const getGitHubResetTime = (response: Response): number | null => {
+	const resetHeader = response.headers.get('x-ratelimit-reset');
+	if (resetHeader) {
+		return parseInt(resetHeader, 10) * 1000;
+	}
+	return null;
+};
+
 function CommitMessage({
 	fullRepoName,
 	sha,
@@ -25,48 +32,45 @@ function CommitMessage({
 	sha: string;
 }) {
 	const url = `https://api.github.com/repos/${fullRepoName}/commits/${sha}`;
+	const cacheKey = `commit_${sha}`;
 
-	const { data, loading, error } = useFetch<{ commit: { message: string } }>(
-		url,
-		{ method: 'GET', headers: { 'Content-Type': 'application/json' } },
-	);
+	const { data, loading, error } = useCachedFetch<{
+		commit: { message: string };
+	}>(url, cacheKey, 86400000);
 
-	if (loading)
+	if (loading && !data)
 		return (
 			<span>
 				{' '}
 				- <em>Loading message...</em>
 			</span>
 		);
-	if (error || !data) return null;
 
-	const firstLine = data.commit.message.split('\n')[0];
+	if (error && !data) return null;
+
+	const firstLine = data?.commit.message.split('\n')[0];
 	return <span className='text-mono-500'>{firstLine}</span>;
 }
 
 export default function RecentActivity({ username }: RecentActivityProps) {
 	const url = `https://api.github.com/users/${username}/events/public`;
+	const cacheKey = `github_events_${username}`;
 
-	const { data, loading, error } = useFetch<GitHubEvent[]>(
+	const { data, loading, error } = useCachedFetch<GitHubEvent[]>(
 		url,
-		{ method: 'GET', headers: { 'Content-Type': 'application/json' } },
-		60000,
+		cacheKey,
+		10000,
+		{ getResetTimeMs: getGitHubResetTime },
 	);
 
-	useEffect(() => {
-		if (error) {
-			console.error('Fetch Error:', error);
-		}
-	}, [error]);
-
-	if (error) return <div>Failed to load activity.</div>;
+	if (error && !data) return <div>Failed to load activity.</div>;
 	if (loading && !data) return <div>Loading...</div>;
 	if (!data || data.length === 0) return <div>No recent activity found.</div>;
 
 	const recentActivities = data.slice(0, 3);
 
 	return (
-		<ul className='flex flex-col gap-4 py-4'>
+		<ul className='mask-[linear-gradient(to_bottom,black_33%,transparent_100%)] flex flex-col gap-4 py-4'>
 			{recentActivities.map((event) => {
 				const { message, url, commitSha, fullRepoName } =
 					parseGitHubEvent(event);
@@ -75,9 +79,14 @@ export default function RecentActivity({ username }: RecentActivityProps) {
 				return (
 					<li
 						key={event.id}
-						className='rounded-md p-4 ring ring-mono-200 dark:ring-mono-900'
+						className='rounded-md border border-mono-200 dark:border-mono-900'
 					>
-						<a href={url} target='_blank' rel='noopener noreferrer'>
+						<a
+							href={url}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='block p-4'
+						>
 							<div className='text-mono-500'>{timeAgo}</div>
 							<div className='flex flex-row gap-4'>
 								{message}
@@ -100,9 +109,13 @@ function getTimeAgo(dateString: string): string {
 
 	if (minutes < 2) return `now`;
 	if (minutes < 60) return `${minutes} minutes ago`;
+
 	const hours = Math.floor(minutes / 60);
+	if (hours === 1) return '1 hour ago';
 	if (hours < 24) return `${hours} hours ago`;
+
 	const days = Math.floor(hours / 24);
+	if (days === 1) return '1 day ago';
 	return `${days} days ago`;
 }
 
