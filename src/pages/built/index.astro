@@ -9,7 +9,7 @@ const mapped = await getTags();
 const all = Array.from(mapped.keys());
 ---
 
-<LayoutBasic title="built" description={`what philip has built.`}>
+<LayoutBasic title="whatphilipbuilt" description={`what philip has built.`}>
 	<TagSelector client:load active="all" all={all} />
 	<BuiltList client:load built={built} />
 </LayoutBasic>

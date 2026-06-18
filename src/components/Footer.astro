@@ -1,26 +1,19 @@
 ---
-import { SERVER_URL_LIVE } from 'astro:env/server';
-import GridMain from '@react/GridMain';
-import SpacingSides from '@react/SpacingSides';
-
 const today = new Date();
-
-interface Props {
-	className?: string;
-}
-const { className } = Astro.props;
 ---
 
-<footer
-	class={`${className} h-48 w-full items-center border-t border-mono-600`}
->
-	<SpacingSides>
-		<GridMain>
-			<div>made in berlin</div>
-			<div>&copy;</div>
-			<div class="font-mono">{today.getFullYear()}</div>
+<div class="grid-main border-t border-mono-600">
+	<footer
+		class="flex flex-row flex-wrap gap-4 py-4 md:py-8 justify-center h-32 md:h-42 w-full text-mono-400 dark:text-mono-600"
+	>
+		<div class="flex flex-row gap-4 h-fit">
+			<span>made in berlin</span>
+			<span>&copy;</span>
+			<span>{today.getFullYear()}</span>
+		</div>
+		<div class="flex flex-row gap-4 h-fit">
 			<a href={'/legal/imprint'}>imprint</a>
 			<a href={'/legal/privacy'}>privacy</a>
-		</GridMain>
-	</SpacingSides>
-</footer>
+		</div>
+	</footer>
+</div>

@@ -1,9 +1,10 @@
 import { useStore } from '@nanostores/react';
+import AnchorButton from '@react/AnchorButton';
 import { useScroll } from '@react/hooks/useScroll';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { currentActionStore } from '@/store/menuStore';
-import AnchorButton from '@react/AnchorButton';
+
 interface ObservantMenuProps {
 	pathname: string;
 }
@@ -106,7 +107,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 	};
 
 	return (
-		<div className='pointer-events-none fixed inset-x-0 bottom-2 mx-auto flex justify-center md:bottom-8'>
+		<div className='pointer-events-none fixed inset-x-0 bottom-4 mx-auto flex justify-center md:bottom-8'>
 			<motion.header
 				initial={{ width: 56 }}
 				animate={{ width: menuState === 'idle' ? 'auto' : 56 }}
@@ -144,10 +145,10 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 									key={route.href}
 									href={route.href}
 									onClick={(e) => handleNavigationClick(e, route.href)}
-									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 first:pl-4 last:pr-4 focus:outline-none transition-colors ${
+									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 transition-colors first:pl-4 last:pr-4 focus:outline-none ${
 										isActive
 											? 'text-mono-950 dark:text-mono-50'
-											: 'text-mono-400 dark:text-mono-600 hover:text-mono-800 dark:hover:text-mono-200'
+											: 'text-mono-400 hover:text-mono-800 dark:text-mono-600 dark:hover:text-mono-200'
 									}`}
 								>
 									<span className='group-focus-visible:accessible flex items-center gap-1 rounded-4xl group-focus-visible:outline-offset-10'>

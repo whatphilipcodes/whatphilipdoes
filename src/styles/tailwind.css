@@ -39,6 +39,25 @@
 	}
 }
 
+/* horizontal spacing */
+.grid-main {
+	@apply grid content-start [--gutter:--spacing(4)] md:[--gutter:--spacing(8)] lg:[--gutter:--spacing(16)];
+	grid-template-columns:
+		[full-bleed-start] minmax(var(--gutter), 1fr)
+		[main-start] minmax(0, 64rem) [main-end]
+		minmax(var(--gutter), 1fr) [full-bleed-end];
+}
+
+.grid-main > *,
+.grid-main > astro-island > * {
+	@apply col-[main];
+}
+
+@utility full-bleed {
+	grid-column: full-bleed;
+	width: 100%;
+}
+
 /* separated bc of group based styling */
 @utility accessible {
 	@apply outline-2 outline-prim-500 outline-offset-2 transition-none;
@@ -52,5 +71,10 @@
 
 	*:focus:not(:focus-visible) {
 		outline: none;
+	}
+
+	/* base elements (markdown) */
+	a {
+		@apply text-mono-900 dark:text-mono-50;
 	}
 }
