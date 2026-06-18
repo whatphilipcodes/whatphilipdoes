@@ -2,17 +2,18 @@
 @import "tailwindcss";
 
 @theme {
-	--color-mono-50: #f1f1f1;
-	--color-mono-100: #e5e5e5;
-	--color-mono-200: #c9c9c9;
-	--color-mono-300: #b0b0b0;
-	--color-mono-400: #989898;
-	--color-mono-500: #808080;
-	--color-mono-600: #666666;
-	--color-mono-700: #4b4b4b;
-	--color-mono-800: #323232;
-	--color-mono-900: #1d1d1d;
-	--color-mono-950: #111111;
+	/* cloned neutral in case this will be changed */
+	--color-mono-50: oklch(98.5% 0 0);
+	--color-mono-100: oklch(97% 0 0);
+	--color-mono-200: oklch(92.2% 0 0);
+	--color-mono-300: oklch(87% 0 0);
+	--color-mono-400: oklch(70.8% 0 0);
+	--color-mono-500: oklch(55.6% 0 0);
+	--color-mono-600: oklch(43.9% 0 0);
+	--color-mono-700: oklch(37.1% 0 0);
+	--color-mono-800: oklch(26.9% 0 0);
+	--color-mono-900: oklch(20.5% 0 0);
+	--color-mono-950: oklch(14.5% 0 0);
 
 	--color-prim-50: oklch(0.96 0.02 21.44);
 	--color-prim-100: oklch(0.918 0.04 21.72);
@@ -35,5 +36,21 @@
 	scrollbar-width: none;
 	&::-webkit-scrollbar {
 		display: none;
+	}
+}
+
+/* separated bc of group based styling */
+@utility accessible {
+	@apply outline-2 outline-prim-500 outline-offset-2;
+}
+
+@layer base {
+	/* accessibility override */
+	*:focus-visible {
+		@apply accessible;
+	}
+
+	*:focus:not(:focus-visible) {
+		outline: none;
 	}
 }

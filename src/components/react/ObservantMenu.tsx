@@ -144,14 +144,16 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 									key={route.href}
 									href={route.href}
 									onClick={(e) => handleNavigationClick(e, route.href)}
-									className={`relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center gap-1 px-2 first:pl-4 last:pr-4 ${
+									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 first:pl-4 last:pr-4 focus:outline-none ${
 										isActive
 											? 'text-mono-950 dark:text-mono-50'
 											: 'text-mono-500 hover:text-mono-800 dark:hover:text-mono-200'
 									}`}
 								>
-									<span>/</span>
-									<span>{route.text}</span>
+									<span className='group-focus-visible:accessible flex items-center gap-1 rounded-4xl group-focus-visible:outline-offset-10'>
+										<span>/</span>
+										<span>{route.text}</span>
+									</span>
 								</a>
 							);
 						})}
@@ -171,9 +173,9 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 							>
 								<a
 									href={currentAction.href}
-									className='flex h-full w-max items-center pr-2'
+									className='group flex h-full w-max items-center pr-2 pl-px focus:outline-none'
 								>
-									<div className='block w-max whitespace-nowrap rounded-4xl px-4 py-2 text-center text-mono-900 ring ring-mono-900 dark:text-mono-50 dark:ring-mono-100'>
+									<div className='group-focus-visible:accessible block w-max whitespace-nowrap rounded-4xl px-4 py-2 text-center text-mono-900 ring ring-mono-900 dark:text-mono-50 dark:ring-mono-100'>
 										{currentAction.action}
 									</div>
 								</a>
