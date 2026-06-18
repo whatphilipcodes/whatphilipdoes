@@ -41,7 +41,7 @@
 
 /* separated bc of group based styling */
 @utility accessible {
-	@apply outline-2 outline-prim-500 outline-offset-2;
+	@apply outline-2 outline-prim-500 outline-offset-2 transition-none;
 }
 
 @layer base {

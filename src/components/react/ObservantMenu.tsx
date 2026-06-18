@@ -3,7 +3,7 @@ import { useScroll } from '@react/hooks/useScroll';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { currentActionStore } from '@/store/menuStore';
-
+import AnchorButton from '@react/AnchorButton';
 interface ObservantMenuProps {
 	pathname: string;
 }
@@ -115,7 +115,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 				style={{
 					borderRadius: 32,
 				}}
-				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-50/50 ring ring-mono-100 dark:bg-mono-950/50 dark:ring-mono-900'
+				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden ring ring-mono-200 dark:ring-mono-900'
 			>
 				<motion.span
 					initial={{ opacity: 0 }}
@@ -125,7 +125,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 					}}
 					transition={fadeTransition}
 					aria-hidden='true'
-					className='pointer-events-none absolute flex items-center justify-center text-mono-900 dark:text-mono-50'
+					className='pointer-events-none absolute flex items-center justify-center text-mono-950 dark:text-mono-50'
 				>
 					wp
 				</motion.span>
@@ -144,10 +144,10 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 									key={route.href}
 									href={route.href}
 									onClick={(e) => handleNavigationClick(e, route.href)}
-									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 first:pl-4 last:pr-4 focus:outline-none ${
+									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 first:pl-4 last:pr-4 focus:outline-none transition-colors ${
 										isActive
 											? 'text-mono-950 dark:text-mono-50'
-											: 'text-mono-500 hover:text-mono-800 dark:hover:text-mono-200'
+											: 'text-mono-400 dark:text-mono-600 hover:text-mono-800 dark:hover:text-mono-200'
 									}`}
 								>
 									<span className='group-focus-visible:accessible flex items-center gap-1 rounded-4xl group-focus-visible:outline-offset-10'>
@@ -171,14 +171,10 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 								onFocus={() => setActionFocused(true)}
 								onBlur={() => setActionFocused(false)}
 							>
-								<a
+								<AnchorButton
+									text={currentAction.action}
 									href={currentAction.href}
-									className='group flex h-full w-max items-center pr-2 pl-px focus:outline-none'
-								>
-									<div className='group-focus-visible:accessible block w-max whitespace-nowrap rounded-4xl px-4 py-2 text-center text-mono-900 ring ring-mono-900 dark:text-mono-50 dark:ring-mono-100'>
-										{currentAction.action}
-									</div>
-								</a>
+								/>
 							</motion.div>
 						)}
 					</AnimatePresence>
