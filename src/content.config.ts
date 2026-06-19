@@ -12,6 +12,7 @@ const headSchema = z.object({
 export type HeadProps = z.infer<typeof headSchema>;
 
 const projectSchema = headSchema.extend({
+	previewImage: z.string(),
 	tags: z.array(z.string()),
 	start: z.coerce.date(),
 	end: z.coerce.date().optional(),

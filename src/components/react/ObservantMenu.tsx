@@ -107,7 +107,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 	};
 
 	return (
-		<div className='pointer-events-none fixed inset-x-0 bottom-4 mx-auto flex justify-center md:bottom-8'>
+		<div className='pointer-events-none fixed inset-x-0 bottom-4 z-50 mx-auto flex justify-center md:bottom-8'>
 			<motion.header
 				initial={{ width: 56 }}
 				animate={{ width: menuState === 'idle' ? 'auto' : 56 }}
@@ -116,7 +116,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 				style={{
 					borderRadius: 32,
 				}}
-				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden ring ring-mono-200 dark:ring-mono-900'
+				className='pointer-events-auto relative flex h-14 min-w-14 items-center justify-center overflow-hidden bg-mono-50 ring ring-mono-200 dark:bg-mono-950 dark:ring-mono-900'
 			>
 				<motion.span
 					initial={{ opacity: 0 }}

@@ -1,4 +1,5 @@
 ---
+import ImageValid from '@/components/ImageValid.astro';
 import { getBuilt } from '@/utils/content';
 
 interface Props {
@@ -10,11 +11,10 @@ const { id } = Astro.props;
 const builtProjects = await getBuilt();
 const project = builtProjects.find((p) => p.id === id);
 
-console.log(builtProjects);
-
 if (!project) throw new Error(`The highlighted project "${id}" was not found.`);
 ---
 
 <article>
 	{project.data.title}
+	<ImageValid src={project.data.previewImage} alt={project.data.description} />
 </article>
