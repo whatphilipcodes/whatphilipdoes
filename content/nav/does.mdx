@@ -4,12 +4,19 @@ description: what philip does currently
 ---
 import ActionAnchor from '@react/ActionAnchor'
 import RecentActivity from '@react/RecentActivity'
+import CardProjectHighlight from '@react/CardProjectHighlight'
+import TagsHighlight from '@/components/TagsHighlight.astro'
 
-# does
 <ActionAnchor action='contact' href='mailto:hello@whatphilipdoes.com' client:only />
-Hello from DOES page
+
+<TagsHighlight />
+
+> Designing and implementing digital experiences. Focused on machine learning and web technologies. Obsessed with knowledge gaining and organizing, thus developing [knoto](https://knoto.whatphilipdoes.com/).
+
+Currently enrolled in [Creative Technologies (MA) at Filmuniversity KONRAD WOLF](https://www.filmuniversitaet.de/studium/studienangebot/masterstudiengaenge/creative-technologies) in Babelsberg, Germany. He is also working as a student assistant for [Prof. Dr. Lena Gieseke](https://de.wikipedia.org/wiki/Lena_Gieseke), mainly supporting the development of the [Kaspar 2028](https://kaspar.digital/) project.
+
+
+<CardProjectHighlight  client:load/>
+
+See latest activity
 <RecentActivity username='whatphilipcodes' client:only />
-
-# Lorem Ipsum Dolor Sit amet ma ha asdasd orem Ipsum Dolor Sit amet ma ha asdasd orem Ipsum Dolor Sit amet ma ha asdasd 
-
-Say hello 
