@@ -5,7 +5,7 @@ interface AnchorButtonProps {
 	className?: string | undefined;
 }
 
-export default function AchorButton({ text, className }: AnchorButtonProps) {
+export default function AnchorButton({ text, className }: AnchorButtonProps) {
 	return (
 		<div
 			className={cx(

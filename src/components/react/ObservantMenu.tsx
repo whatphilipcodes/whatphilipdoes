@@ -145,7 +145,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 									key={route.href}
 									href={route.href}
 									onClick={(e) => handleNavigationClick(e, route.href)}
-									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 transition-colors first:pl-4 last:pr-4 focus:outline-none ${
+									className={`group relative flex h-full shrink-0 cursor-pointer flex-row items-center justify-center px-2 transition-colors first:pl-4 last:pr-4 focus-visible:outline-none ${
 										isActive
 											? 'text-mono-950 dark:text-mono-50'
 											: 'text-mono-400 hover:text-mono-800 dark:text-mono-600 dark:hover:text-mono-200'
@@ -174,7 +174,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 							>
 								<a
 									className={
-										'group flex h-full w-max items-center pr-2 pl-px focus:outline-none'
+										'group flex h-full w-max items-center pr-2 pl-px focus-visible:outline-none'
 									}
 									href={currentAction.href}
 								>
