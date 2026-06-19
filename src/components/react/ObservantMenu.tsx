@@ -172,10 +172,14 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 								onFocus={() => setActionFocused(true)}
 								onBlur={() => setActionFocused(false)}
 							>
-								<AnchorButton
-									text={currentAction.action}
+								<a
+									className={
+										'group flex h-full w-max items-center pr-2 pl-px focus:outline-none'
+									}
 									href={currentAction.href}
-								/>
+								>
+									<AnchorButton text={currentAction.action} />
+								</a>
 							</motion.div>
 						)}
 					</AnimatePresence>

@@ -74,7 +74,7 @@
 	}
 
 	/* base elements (markdown) */
-	a {
+	/* a {
 		@apply text-mono-900 dark:text-mono-50;
-	}
+	} */
 }

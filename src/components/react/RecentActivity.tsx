@@ -1,4 +1,6 @@
+import AnchorButton from '@react/AnchorButton';
 import { useCachedFetch } from '@react/hooks/useCachedFetch';
+import { useEffect, useState } from 'react';
 
 interface RecentActivityProps {
 	username: string;
@@ -16,6 +18,14 @@ interface GitHubEvent {
 	payload: unknown;
 }
 
+interface EnrichedActivity {
+	id: string;
+	created_at: string;
+	message: string;
+	url: string;
+	commitMessage?: string;
+}
+
 const getGitHubResetTime = (response: Response): number | null => {
 	const resetHeader = response.headers.get('x-ratelimit-reset');
 	if (resetHeader) {
@@ -24,81 +34,152 @@ const getGitHubResetTime = (response: Response): number | null => {
 	return null;
 };
 
-function CommitMessage({
-	fullRepoName,
-	sha,
-}: {
-	fullRepoName: string;
-	sha: string;
-}) {
-	const url = `https://api.github.com/repos/${fullRepoName}/commits/${sha}`;
-	const cacheKey = `commit_${sha}`;
-
-	const { data, loading, error } = useCachedFetch<{
-		commit: { message: string };
-	}>(url, cacheKey, 86400000);
-
-	if (loading && !data)
-		return (
-			<span>
-				{' '}
-				- <em>Loading message...</em>
-			</span>
-		);
-
-	if (error && !data) return null;
-
-	const firstLine = data?.commit.message.split('\n')[0];
-	return <span className='text-mono-500'>{firstLine}</span>;
-}
-
 export default function RecentActivity({ username }: RecentActivityProps) {
 	const url = `https://api.github.com/users/${username}/events/public`;
 	const cacheKey = `github_events_${username}`;
 
-	const { data, loading, error } = useCachedFetch<GitHubEvent[]>(
+	const { data: events, error } = useCachedFetch<GitHubEvent[]>(
 		url,
 		cacheKey,
 		10000,
 		{ getResetTimeMs: getGitHubResetTime },
 	);
 
-	if (error && !data) return <div>Failed to load activity.</div>;
-	if (loading && !data) return <div>Loading...</div>;
-	if (!data || data.length === 0) return <div>No recent activity found.</div>;
+	console.log(events);
 
-	const recentActivities = data.slice(0, 3);
+	const [isLoading, setIsLoading] = useState(true);
+	const [activities, setActivities] = useState<EnrichedActivity[]>([]);
+
+	useEffect(() => {
+		let isMounted = true;
+
+		const processEvents = async () => {
+			if (!events) {
+				if (error && isMounted) setIsLoading(false);
+				return;
+			}
+
+			if (events.length === 0) {
+				if (isMounted) {
+					setActivities([]);
+					setIsLoading(false);
+				}
+				return;
+			}
+
+			const recentActivities = events.slice(0, 3);
+
+			const enriched = await Promise.all(
+				recentActivities.map(async (event) => {
+					const { message, url, commitSha, fullRepoName } =
+						parseGitHubEvent(event);
+					let commitMessage: string | undefined;
+
+					if (commitSha && fullRepoName) {
+						const commitCacheKey = `commit_${commitSha}`;
+						const cached = localStorage.getItem(commitCacheKey);
+						let requiresFetch = true;
+
+						if (cached) {
+							try {
+								const parsedCache = JSON.parse(cached);
+								if (Date.now() - parsedCache.timestamp < 86400000) {
+									commitMessage =
+										parsedCache.payload.commit.message.split('\n')[0];
+									requiresFetch = false;
+								}
+							} catch {
+								localStorage.removeItem(commitCacheKey);
+							}
+						}
+
+						if (requiresFetch) {
+							try {
+								const commitUrl = `https://api.github.com/repos/${fullRepoName}/commits/${commitSha}`;
+								const response = await fetch(commitUrl);
+								if (response.ok) {
+									const result = await response.json();
+									localStorage.setItem(
+										commitCacheKey,
+										JSON.stringify({
+											timestamp: Date.now(),
+											payload: result,
+										}),
+									);
+									commitMessage = result.commit.message.split('\n')[0];
+								}
+							} catch {}
+						}
+					}
+
+					return {
+						id: event.id,
+						created_at: event.created_at,
+						message,
+						url,
+						commitMessage,
+					};
+				}),
+			);
+
+			if (isMounted) {
+				setActivities(enriched);
+				setIsLoading(false);
+			}
+		};
+
+		processEvents();
+
+		return () => {
+			isMounted = false;
+		};
+	}, [events, error]);
+
+	if (isLoading) return <div>Loading...</div>;
+	if (error && activities.length === 0)
+		return <div>Failed to load activity.</div>;
+	if (activities.length === 0) return <div>No recent activity found.</div>;
 
 	return (
-		<ul className='mask-[linear-gradient(to_bottom,black_33%,transparent_100%)] flex flex-col gap-4 py-4'>
-			{recentActivities.map((event) => {
-				const { message, url, commitSha, fullRepoName } =
-					parseGitHubEvent(event);
-				const timeAgo = getTimeAgo(event.created_at);
-
-				return (
+		<div className='relative mb-4 py-4'>
+			<ul className='mask-[linear-gradient(to_bottom,black_50%,transparent_98%)] mask-bottom mask-size-[100%_200%] hover:mask-top flex flex-col gap-4 transition-color duration-300'>
+				{activities.map((activity) => (
 					<li
-						key={event.id}
-						className='rounded-md border border-mono-200 dark:border-mono-900'
+						key={activity.id}
+						className='m-px rounded-md ring ring-mono-200 transition-colors hover:bg-mono-200 hover:ring-transparent dark:ring-mono-900 dark:hover:bg-mono-900'
 					>
 						<a
-							href={url}
+							href={activity.url}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='block p-4'
+							className='flex flex-col gap-2 px-4 py-3'
 						>
-							<div className='text-mono-500'>{timeAgo}</div>
-							<div className='flex flex-row gap-4'>
-								{message}
-								{commitSha && fullRepoName && (
-									<CommitMessage fullRepoName={fullRepoName} sha={commitSha} />
-								)}
+							<div className='flex flex-row flex-wrap gap-x-2 text-mono-500'>
+								<span>{getTimeAgo(activity.created_at)}</span>
+								<span>/</span>
+								<span>{activity.message}</span>
 							</div>
+							{activity.commitMessage && (
+								<div>
+									<span>{activity.commitMessage}</span>
+								</div>
+							)}
 						</a>
 					</li>
-				);
-			})}
-		</ul>
+				))}
+			</ul>
+			<a
+				href='https://github.com/whatphilipcodes'
+				target='_blank'
+				rel='noopener noreferrer'
+				className='absolute bottom-0 left-1/2 -translate-x-1/2'
+			>
+				<AnchorButton
+					className='bg-mono-50 dark:bg-mono-950'
+					text='open github'
+				/>
+			</a>
+		</div>
 	);
 }
 
@@ -107,7 +188,7 @@ function getTimeAgo(dateString: string): string {
 	const past = new Date(dateString);
 	const minutes = Math.floor((now.getTime() - past.getTime()) / 1000 / 60);
 
-	if (minutes < 2) return `now`;
+	if (minutes < 5) return `now`;
 	if (minutes < 60) return `${minutes} minutes ago`;
 
 	const hours = Math.floor(minutes / 60);
