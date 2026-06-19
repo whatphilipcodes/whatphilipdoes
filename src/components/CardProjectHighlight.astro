@@ -1,5 +1,5 @@
 ---
-import ImageValid from '@/components/ImageValid.astro';
+import { Image } from 'astro:assets';
 import { getBuilt } from '@/utils/content';
 
 interface Props {
@@ -16,5 +16,5 @@ if (!project) throw new Error(`The highlighted project "${id}" was not found.`);
 
 <article>
 	{project.data.title}
-	<ImageValid src={project.data.previewImage} alt={project.data.description} />
+	<Image src={project.data.previewImage} alt={project.data.description} />
 </article>

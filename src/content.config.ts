@@ -1,22 +1,25 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, type SchemaContext } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const headSchema = z.object({
-	draft: z.boolean().optional(),
-	title: z.string(),
-	description: z.string(),
-	previewImage: z.string().optional(),
-});
+// 1. Schema Factories
+const headSchema = (context: SchemaContext) =>
+	z.object({
+		draft: z.boolean().optional(),
+		title: z.string(),
+		description: z.string(),
+		previewImage: context.image().optional(),
+	});
 
-export type HeadProps = z.infer<typeof headSchema>;
+export type HeadProps = z.infer<ReturnType<typeof headSchema>>;
 
-const projectSchema = headSchema.extend({
-	previewImage: z.string(),
-	tags: z.array(z.string()),
-	start: z.coerce.date(),
-	end: z.coerce.date().optional(),
-});
+const projectSchema = (context: SchemaContext) =>
+	headSchema(context).extend({
+		previewImage: context.image(),
+		tags: z.array(z.string()),
+		start: z.coerce.date(),
+		end: z.coerce.date().optional(),
+	});
 
 const basePattern = '**/[^_]*.{md,mdx}';
 
