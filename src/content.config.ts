@@ -9,10 +9,12 @@ const headSchema = z.object({
 	previewImage: z.string().optional(),
 });
 
-type HeadProps = z.infer<typeof headSchema>;
+export type HeadProps = z.infer<typeof headSchema>;
 
 const projectSchema = headSchema.extend({
 	tags: z.array(z.string()),
+	start: z.coerce.date(),
+	end: z.coerce.date().optional(),
 });
 
 const basePattern = '**/[^_]*.{md,mdx}';
@@ -35,4 +37,3 @@ const legal = defineCollection({
 });
 
 export const collections = { nav, built, legal };
-export type { HeadProps };

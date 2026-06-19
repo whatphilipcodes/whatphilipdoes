@@ -1,0 +1,20 @@
+---
+import { getBuilt } from '@/utils/content';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+
+const builtProjects = await getBuilt();
+const project = builtProjects.find((p) => p.id === id);
+
+console.log(builtProjects);
+
+if (!project) throw new Error(`The highlighted project "${id}" was not found.`);
+---
+
+<article>
+	{project.data.title}
+</article>

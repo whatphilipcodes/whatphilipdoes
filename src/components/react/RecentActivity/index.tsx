@@ -55,7 +55,7 @@ export default function RecentActivity({ username }: RecentActivityProps) {
 										<span className='shrink-0'>/</span>
 										<span className='truncate'>{activity.message}</span>
 									</div>
-									<div className='truncate text-mono-50'>
+									<div className='truncate text-mono-950 dark:text-mono-50'>
 										{activity.detail || '\u00A0'}
 									</div>
 								</a>
