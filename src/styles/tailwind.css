@@ -48,14 +48,13 @@
 		minmax(var(--gutter), 1fr) [full-bleed-end];
 }
 
-.grid-main > *,
-.grid-main > astro-island > * {
-	@apply col-[main];
+.grid-main > *:not(.full-bleed),
+.grid-main > astro-island > *:not(.full-bleed) {
+	grid-column: main;
 }
 
 @utility full-bleed {
 	grid-column: full-bleed;
-	width: 100%;
 }
 
 /* separated bc of group based styling */

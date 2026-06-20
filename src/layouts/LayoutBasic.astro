@@ -16,7 +16,7 @@ const { title, description, previewImage } = Astro.props;
 	<BaseHead title={title ?? "whatphilipdoes"} {description} {previewImage} />
 	<body class="flex min-h-dvh flex-col">
 		<ObservantMenu pathname={Astro.url.pathname} client:only />
-		<main class="grid-main content-start min-h-full grow py-4 md:py-8 lg:py-16">
+		<main class="grid-main min-h-full grow py-4 md:py-8 lg:py-16">
 			<slot />
 		</main>
 		<Footer />
