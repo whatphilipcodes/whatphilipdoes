@@ -1,3 +1,7 @@
 {
-	"cSpell.words": ["knoto", "oklch", "whatphilipcodes", "whatphilipdoes"]
+	"cSpell.words": ["knoto", "oklch", "whatphilipcodes", "whatphilipdoes"],
+	"tailwindCSS.experimental.classRegex": [
+		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"],
+		"cva\\((?:[^|]*\\|\\|\\s*)?['\"]([^'\"]*)['\"]"
+	]
 }

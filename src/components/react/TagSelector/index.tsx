@@ -7,7 +7,7 @@ interface TagSelectorProps {
 
 export default function TagSelector({ active, all }: TagSelectorProps) {
 	return (
-		<div className='flex flex-row gap-2'>
+		<div className='flex flex-row flex-wrap gap-2'>
 			<Tag active={active === 'all'} tag='all' href='/built/' />
 			{all.map((tag) => {
 				return (
