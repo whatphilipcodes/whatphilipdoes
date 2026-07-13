@@ -15,6 +15,7 @@
 		"@astrojs/react": "^6.0.1",
 		"@astrojs/sitemap": "^3.7.3",
 		"@fontsource-variable/urbanist": "^5.2.7",
+		"@fontsource/space-mono": "^5.2.9",
 		"@nanostores/react": "^1.1.0",
 		"@tailwindcss/vite": "^4.3.2",
 		"@types/react": "^19.2.17",

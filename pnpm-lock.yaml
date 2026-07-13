@@ -20,6 +20,9 @@ importers:
       '@fontsource-variable/urbanist':
         specifier: ^5.2.7
         version: 5.2.7
+      '@fontsource/space-mono':
+        specifier: ^5.2.9
+        version: 5.2.9
       '@nanostores/react':
         specifier: ^1.1.0
         version: 1.1.0(nanostores@1.4.0)(react@19.2.7)
@@ -622,6 +625,9 @@ packages:
 
   '@fontsource-variable/urbanist@5.2.7':
     resolution: {integrity: sha512-OYeUoBQhwm3pbXG5yUxq1omO9H64Dx1eKxldKYOztrf+8GFG1vu3FP/zZpmFOwtgsPj2h6JYHX9VVWopSxvOyQ==}
+
+  '@fontsource/space-mono@5.2.9':
+    resolution: {integrity: sha512-b61faFOHEISQ/pD25G+cfGY9o/WW6lRv6hBQQfpWvEJ4y1V+S4gmth95EVyBE2VL3qDYHeVQ8nBzrplzdXTDDg==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -3279,6 +3285,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/urbanist@5.2.7': {}
+
+  '@fontsource/space-mono@5.2.9': {}
 
   '@img/colour@1.1.0': {}
 

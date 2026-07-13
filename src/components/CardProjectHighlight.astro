@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import Tag from '@react/TagSelector/Tag';
 import { getBuilt } from '@/utils/content';
 
 interface Props {
@@ -14,7 +15,26 @@ const project = builtProjects.find((p) => p.id === id);
 if (!project) throw new Error(`The highlighted project "${id}" was not found.`);
 ---
 
-<article>
-	<Image src={project.data.previewImage} alt={project.data.description} />
-	{project.data.title}
+<article
+	class="full-bleed md:main-column flex flex-col md:flex-row gap-4 w-full my-4 group hover:bg-mono-900 transition-colors duration-300"
+>
+	<div class="overflow-clip md:w-3/4 h-full">
+		<Image
+			class="h-128 object-cover transition-transform group-hover:scale-[102%] duration-800"
+			src={project.data.previewImage}
+			alt={project.data.description}
+		/>
+	</div>
+	<div class="flex flex-col h-full gap-2 p-4">
+		<div class="">{project.data.title}</div>
+		<div class="text-mono-500">{project.data.description}</div>
+		<div class="w-fit flex flex-row flex-wrap gap-2">
+			{project.data.tags.map((tag) => {
+			return <Tag {tag} href='#' disabled />
+		})}
+		</div>
+		<div class="mt-auto self-end">
+			{project.data.end?.getFullYear() ?? project.data.start.getFullYear()}
+		</div>
+	</div>
 </article>
