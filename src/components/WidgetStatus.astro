@@ -1,0 +1,160 @@
+---
+import { z } from 'astro/zod';
+
+const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+
+const propsSchema = z.object({
+	timezone: z.string().refine(
+		(val) => {
+			try {
+				new Intl.DateTimeFormat('en-US', { timeZone: val });
+				return true;
+			} catch {
+				return false;
+			}
+		},
+		{ message: 'Invalid IANA timezone' },
+	),
+	location: z.string().min(1),
+	timeStart: z.string().regex(timeRegex, 'Must be HH:MM:SS'),
+	timeEnd: z.string().regex(timeRegex, 'Must be HH:MM:SS'),
+	holiday: z.coerce.date().optional(),
+});
+
+const props = propsSchema.safeParse(Astro.props);
+
+if (!props.success) {
+	throw new Error(`WidgetStatus validation failed: ${props.error.message}`);
+}
+
+const config = props.data;
+---
+
+<widget-status data-config={JSON.stringify(config)}>
+	<div class="flex w-fit flex-row flex-wrap gap-2 md:gap-4 font-mono">
+		<div class="flex items-center gap-2 rounded-md border border-mono-900 px-2">
+			<span>{config.location}</span>
+		</div>
+		<div class="flex items-center gap-2 rounded-md border border-mono-900 px-2">
+			<span id="widget-status-date">1997-08-30</span>
+			<span id="widget-status-time">14:30:00</span>
+		</div>
+		<div class="flex items-center gap-2 rounded-md border border-mono-900 px-2">
+			<svg
+				id="widget-status-icon"
+				class="h-3 w-3 fill-current text-mono-500"
+				viewBox="0 0 100 100"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<title>status-icon</title>
+				<circle cx="50" cy="50" r="36" />
+			</svg>
+			<span id="widget-status-text">loading</span>
+		</div>
+	</div>
+</widget-status>
+
+<script>
+	import { DateTime } from 'luxon';
+	import { getElement } from '@/utils/helpers';
+
+	class WidgetStatus extends HTMLElement {
+		private intervalId: number | undefined;
+
+		connectedCallback() {
+			const configData = this.dataset.config;
+			if (!configData) return;
+
+			const config = JSON.parse(configData);
+
+			const dateEl = getElement('widget-status-date') as HTMLSpanElement;
+			const timeEl = getElement('widget-status-time') as HTMLSpanElement;
+			const textEl = getElement('widget-status-text') as HTMLSpanElement;
+			const iconEl = getElement(
+				'widget-status-icon',
+			) as unknown as SVGSVGElement;
+
+			const updateStatus = () => {
+				const now = DateTime.now()
+					.setZone(config.timezone)
+					.set({ millisecond: 0 });
+				const currentTimeString = now.toFormat('HH:mm:ss');
+
+				timeEl.textContent = currentTimeString;
+				dateEl.textContent = now.toFormat('yyyy-MM-dd');
+
+				let isOnline = false;
+				let status = '';
+
+				const [startHour, startMinute, startSecond] = config.timeStart
+					.split(':')
+					.map(Number);
+
+				const holidayDate = config.holiday
+					? DateTime.fromISO(config.holiday).setZone(config.timezone).set({
+							hour: startHour,
+							minute: startMinute,
+							second: startSecond,
+							millisecond: 0,
+						})
+					: null;
+
+				if (holidayDate && holidayDate > now) {
+					isOnline = false;
+					status = `will return ${holidayDate.toRelative({ base: now })}`;
+				} else {
+					const dayOfWeek = now.weekday;
+
+					let nextOpen = now.set({
+						hour: startHour,
+						minute: startMinute,
+						second: startSecond,
+						millisecond: 0,
+					});
+
+					if (
+						dayOfWeek <= 5 &&
+						currentTimeString >= config.timeStart &&
+						currentTimeString <= config.timeEnd
+					) {
+						isOnline = true;
+						status = 'available';
+					} else {
+						isOnline = false;
+
+						if (dayOfWeek === 6 || dayOfWeek === 7) {
+							const daysUntilMonday = dayOfWeek === 6 ? 2 : 1;
+							nextOpen = nextOpen.plus({ days: daysUntilMonday });
+						} else if (currentTimeString > config.timeEnd) {
+							const daysToAdd = dayOfWeek === 5 ? 3 : 1;
+							nextOpen = nextOpen.plus({ days: daysToAdd });
+						}
+
+						status = `will return ${nextOpen.toRelative({ base: now })}`;
+					}
+				}
+
+				textEl.textContent = status;
+
+				if (isOnline) {
+					iconEl.classList.remove('text-mono-500');
+					iconEl.classList.add('text-prim-500');
+				} else {
+					iconEl.classList.remove('text-prim-500');
+					iconEl.classList.add('text-mono-500');
+				}
+			};
+
+			updateStatus();
+			this.intervalId = window.setInterval(updateStatus, 1000);
+		}
+
+		disconnectedCallback() {
+			if (this.intervalId) {
+				clearInterval(this.intervalId);
+			}
+		}
+	}
+
+	customElements.define('widget-status', WidgetStatus);
+</script>

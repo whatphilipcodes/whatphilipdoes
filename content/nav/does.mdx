@@ -4,13 +4,13 @@ description: what philip does currently
 ---
 import ActionAnchor from '@react/ActionAnchor'
 import RecentActivity from '@react/RecentActivity'
-import WidgetStatus from '@/components/react/WidgetStatus'
+import WidgetStatus from '@/components/WidgetStatus.astro'
 import CardProjectHighlight from '@/components/CardProjectHighlight.astro'
 import Tagline from '@/components/Tagline.astro'
 
 <ActionAnchor action='contact' href='mailto:hello@whatphilipdoes.com' client:only />
 
-<WidgetStatus timezone="Europe/Berlin" location="berlin" timeStart="10:00:00" timeEnd="18:00:00" holiday='2026-07-17' client:only />
+<WidgetStatus timezone="Europe/Berlin" location="Berlin" timeStart="10:00:00" timeEnd="18:00:00" holiday="2026-07-15" />
 
 <Tagline>
 Designing and implementing digital interactions.
