@@ -76,6 +76,7 @@ const config = props.data;
 
 			const updateStatus = () => {
 				const now = DateTime.now()
+					.setLocale('en-US')
 					.setZone(config.timezone)
 					.set({ millisecond: 0 });
 				const currentTimeString = now.toFormat('HH:mm:ss');
