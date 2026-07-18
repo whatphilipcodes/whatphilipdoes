@@ -1,4 +1,49 @@
 ---
-//
+import { Image } from 'astro:assets';
+import Tag from '@react/TagSelector/Tag';
+import { getBuilt } from '@/utils/content';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+
+const builtProjects = await getBuilt();
+const project = builtProjects.find((p) => p.id === id);
+
+if (!project) throw new Error(`The project "${id}" was not found.`);
 ---
 
+<article
+	class="relative h-144 full-bleed md:main-column flex flex-col md:flex-row gap-4 w-full my-4 group hover:bg-mono-900 transition-colors duration-300"
+>
+	<div class="overflow-clip md:w-3/4 h-full">
+		<Image
+			class="h-full object-cover transition-transform group-hover:scale-[102%] duration-800"
+			src={project.data.previewImage}
+			alt={project.data.description}
+		/>
+	</div>
+	<div class="flex flex-col gap-2 p-4">
+		<h3 class="text-lg font-semibold">
+			<a
+				href={`/built/${project.id}`}
+				class="after:absolute after:inset-0 focus:outline-none"
+			>
+				{project.data.title}
+			</a>
+		</h3>
+
+		<div class="text-mono-500">{project.data.description}</div>
+		<div class="w-fit flex flex-row flex-wrap gap-2">
+			{project.data.tags.map((tag) => {
+                return <Tag tag={tag} href={`built/tags/${tag}/`} disabled />
+            })}
+		</div>
+
+		<div class="mt-auto self-end">
+			{project.data.end?.getFullYear() ?? 'ongoing'}
+		</div>
+	</div>
+</article>

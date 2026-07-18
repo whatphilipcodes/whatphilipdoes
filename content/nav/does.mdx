@@ -5,23 +5,26 @@ description: what philip does currently
 import ActionAnchor from '@react/ActionAnchor'
 import RecentActivity from '@react/RecentActivity'
 import WidgetStatus from '@/components/WidgetStatus.astro'
-import CardProjectHighlight from '@/components/CardProjectHighlight.astro'
+import CardProject from '@/components/CardProject.astro'
 import Tagline from '@/components/Tagline.astro'
+import TaglineHighlight from '@/components/TaglineHighlight.astro'
 
 <ActionAnchor action='contact' href='mailto:hello@whatphilipdoes.com' client:only />
 
 <WidgetStatus timezone="Europe/Berlin" location="Berlin" timeStart="10:00:00" timeEnd="18:00:00" />
 
 <Tagline>
-Designing and implementing digital interactions.
+Designing and implementing <TaglineHighlight>digital interactions</TaglineHighlight>.
 Focused on machine learning and web technologies.
 </Tagline>
 
-Obsessed with knowledge gaining and organizing, Philip is developing [knoto](https://knoto.whatphilipdoes.com/).
+Obsessed with [Personal knowledge management](https://en.wikipedia.org/wiki/Personal_knowledge_management), Philip is developing [Knoto](https://knoto.whatphilipdoes.com/).
 
-<CardProjectHighlight id='knoto' />
+<CardProject id='knoto' />
 
 Currently enrolled in [Creative Technologies (MA) at Filmuniversity KONRAD WOLF](https://www.filmuniversitaet.de/studium/studienangebot/masterstudiengaenge/creative-technologies) in Babelsberg, Germany, he is also working as a student assistant for [Prof. Dr. Lena Gieseke](https://de.wikipedia.org/wiki/Lena_Gieseke), mainly supporting the development of the [Kaspar 2028](https://kaspar.digital/) project.
+
+Checkout the full résumé if you are interested in what Philip [/knows](/knows/).
 
 See latest activity
 <RecentActivity username='whatphilipcodes' client:only />
