@@ -1,5 +1,6 @@
 ---
 import { getEntry, render } from 'astro:content';
+import ContentStyled from '@/components/markdown/ContentStyled.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 const page = await getEntry('nav', 'knows');
@@ -11,5 +12,5 @@ const { Content } = await render(page);
 ---
 
 <LayoutBasic {...page.data}>
-	<Content />
+	<ContentStyled {Content} />
 </LayoutBasic>

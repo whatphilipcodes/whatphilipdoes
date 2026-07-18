@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import ContentStyled from '@/components/markdown/ContentStyled.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import { getLegal } from '@/utils/content';
 
@@ -16,5 +17,5 @@ const { Content } = await render(document);
 ---
 
 <LayoutBasic {...document.data}>
-	<Content />
+	<ContentStyled {Content} />
 </LayoutBasic>

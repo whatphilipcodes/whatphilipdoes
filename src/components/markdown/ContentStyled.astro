@@ -1,0 +1,18 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import Anchor from '@/components/markdown/Anchor.astro';
+import Paragraph from '@/components/markdown/Paragraph.astro';
+
+interface Props {
+	Content: AstroComponentFactory;
+}
+
+const { Content } = Astro.props;
+
+const replacements = {
+	a: Anchor,
+	p: Paragraph,
+};
+---
+
+<Content components={replacements} />

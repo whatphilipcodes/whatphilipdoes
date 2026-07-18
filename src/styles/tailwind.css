@@ -76,13 +76,4 @@
 	*:focus:not(:focus-visible) {
 		outline: none;
 	}
-
-	/* base elements (markdown) */
-	a {
-		@apply text-mono-900 dark:text-mono-50;
-	}
-
-	p {
-		@apply py-2;
-	}
 }

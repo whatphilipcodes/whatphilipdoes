@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'p'>;
+
+const { ...props } = Astro.props;
+---
+
+<p class="py-2" {...props}>
+	<slot />
+</p>
