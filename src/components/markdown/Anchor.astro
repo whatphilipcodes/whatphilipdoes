@@ -8,7 +8,7 @@ const { href, ...props } = Astro.props;
 
 <!-- biome-ignore lint/a11y/useAnchorContent: content comes from markdown and will be accessible -->
 <a
-	class="underline decoration-transparent text-mono-950 hover:decoration-mono-950 dark:text-mono-50 dark:hover:decoration-mono-50 duration-300 transition-colors"
+	class="underline underline-offset-3 decoration-transparent text-mono-950 hover:decoration-mono-950 dark:text-mono-50 dark:hover:decoration-mono-50 duration-300 transition-colors"
 	href={href}
 	{...props}
 >

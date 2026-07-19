@@ -82,10 +82,10 @@ const statusArray = [
 
 <script>
 	/*
-																								    WHY IS THIS NOT A REACT COMPONENT?
-																								    Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
-																								    Since this process starts before React is even running on the client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
-																								    */
+																									    WHY IS THIS NOT A REACT COMPONENT?
+																									    Using the setupPreloading.ts util we are tracking manually declared asset files that need to be loaded in order to display the landing page.
+																									    Since this process starts before React is even running on the client device, we need JS that executes as quickly as possible. With this script tag we start to run as early is possible.
+																									    */
 	import { animate } from 'motion';
 	import { getElement } from '@/utils/helpers';
 	import { setupPreloading } from '@/utils/setupPreloading';

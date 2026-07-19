@@ -1,10 +1,16 @@
 ---
 const today = new Date();
+const links: { txt: string; href: string }[] = [
+	{ txt: 'imprint', href: '/legal/imprint' },
+	{ txt: 'privacy', href: '/legal/privacy' },
+	{ txt: 'cookies', href: '/legal/cookies' },
+	{ txt: 'setup', href: '/legal/setup' },
+];
 ---
 
 <div class="grid-main border-t border-mono-600">
 	<footer
-		class="flex flex-row flex-wrap gap-4 py-4 md:py-8 justify-center h-32 md:h-42 w-full text-mono-400 dark:text-mono-600"
+		class="flex flex-row flex-wrap gap-4 py-4 md:py-8 justify-center content-start h-44 md:h-42 w-full text-mono-400 dark:text-mono-600"
 	>
 		<div class="flex flex-row gap-4 h-fit">
 			<span>whatphilipdoes</span>
@@ -12,16 +18,12 @@ const today = new Date();
 			<span>{today.getFullYear()}</span>
 		</div>
 		<div class="flex flex-row gap-4 h-fit">
-			<a
-				class="text-mono-400 dark:text-mono-600 hover:text-mono-950 dark:hover:text-mono-50 transition-colors duration-300"
-				href={'/legal/imprint'}
-				>imprint</a
-			>
-			<a
-				class="text-mono-400 dark:text-mono-600 hover:text-mono-950 dark:hover:text-mono-50 transition-colors duration-300"
-				href={'/legal/privacy'}
-				>privacy</a
-			>
+			{links.map((link) => {
+			return (<a
+				class="text-mono-400 transition-colors duration-300 hover:text-mono-950 dark:text-mono-600 dark:hover:text-mono-50"
+				href={link.href}
+				>{link.txt}</a>)
+			})}
 		</div>
 	</footer>
 </div>
