@@ -3,7 +3,7 @@ import AnchorButton from '@react/AnchorButton';
 import { useScroll } from '@react/hooks/useScroll';
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { currentActionStore } from '@/store/menuStore';
+import { $currentActionStore } from '@/store/menuStore';
 
 interface ObservantMenuProps {
 	pathname: string;
@@ -32,7 +32,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 
 	const { yDir, yArrived, isScrolling } = useScroll(window);
 
-	const currentAction = useStore(currentActionStore);
+	const currentAction = useStore($currentActionStore);
 
 	const [actionVisible, setActionVisible] = useState(true);
 	const [actionFocused, setActionFocused] = useState(false);
@@ -63,7 +63,7 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 	}, [isScrolling]);
 
 	useEffect(() => {
-		if (currentAction) {
+		if (currentAction.action && currentAction.href) {
 			setActionVisible(true);
 			if (isScrollingRef.current) isLocked.current = true;
 		}
@@ -161,27 +161,30 @@ export default function ObservantMenu({ pathname }: ObservantMenuProps) {
 					</nav>
 
 					<AnimatePresence mode='wait'>
-						{currentAction && actionVisible && isExpanded && (
-							<motion.div
-								key={`${currentAction.href}-${currentAction.action}`}
-								initial={{ width: 0, opacity: 0 }}
-								animate={{ width: 'auto', opacity: 1 }}
-								exit={{ width: 0, opacity: 0 }}
-								transition={fluidTransition}
-								className='h-full'
-								onFocus={() => setActionFocused(true)}
-								onBlur={() => setActionFocused(false)}
-							>
-								<a
-									className={
-										'group flex h-full w-max items-center pr-2 pl-px focus-visible:outline-none'
-									}
-									href={currentAction.href}
+						{currentAction.action &&
+							currentAction.href &&
+							actionVisible &&
+							isExpanded && (
+								<motion.div
+									key={`${currentAction.href}-${currentAction.action}`}
+									initial={{ width: 0, opacity: 0 }}
+									animate={{ width: 'auto', opacity: 1 }}
+									exit={{ width: 0, opacity: 0 }}
+									transition={fluidTransition}
+									className='h-full'
+									onFocus={() => setActionFocused(true)}
+									onBlur={() => setActionFocused(false)}
 								>
-									<AnchorButton text={currentAction.action} />
-								</a>
-							</motion.div>
-						)}
+									<a
+										className={
+											'group flex h-full w-max items-center pr-2 pl-px focus-visible:outline-none'
+										}
+										href={currentAction.href}
+									>
+										<AnchorButton text={currentAction.action} />
+									</a>
+								</motion.div>
+							)}
 					</AnimatePresence>
 				</motion.div>
 			</motion.header>

@@ -1,6 +1,6 @@
-// src/store/menuStore.ts (adjust path to your preference)
+import type { ActionAnchorProps } from '@react/ActionAnchor';
+import { atom, map } from 'nanostores';
 
-import type { ActionAnchorProps } from '@react/ActionAnchor'; // Adjust path
-import { atom } from 'nanostores';
-
-export const currentActionStore = atom<ActionAnchorProps | null>(null);
+export const $currentActionStore = map<Partial<ActionAnchorProps>>({});
+export const $locale = atom<'en-GB' | 'de-DE'>('en-GB');
+export const $theme = atom<'dark' | 'light'>('dark');

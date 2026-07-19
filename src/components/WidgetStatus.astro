@@ -56,6 +56,7 @@ const config = props.data;
 
 <script>
 	import { DateTime } from 'luxon';
+	import { $locale } from '@/store/menuStore';
 	import { getElement } from '@/utils/helpers';
 
 	class WidgetStatus extends HTMLElement {
@@ -74,9 +75,11 @@ const config = props.data;
 				'widget-status-icon',
 			) as unknown as SVGSVGElement;
 
+			const currentLocale = $locale.get();
+
 			const updateStatus = () => {
 				const now = DateTime.now()
-					.setLocale('en-US')
+					.setLocale(currentLocale)
 					.setZone(config.timezone)
 					.set({ millisecond: 0 });
 				const currentTimeString = now.toFormat('HH:mm:ss');

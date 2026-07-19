@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import { $locale } from '@/store/menuStore';
 import type { GitHubEvent } from './types';
 
 export const getGitHubResetTime = (response: Response): number | null => {
@@ -10,7 +11,8 @@ export const getGitHubResetTime = (response: Response): number | null => {
 };
 
 export function getTimeAgo(dateString: string): string {
-	const date = DateTime.fromISO(dateString).setLocale('en-US');
+	const currentLocale = $locale.get();
+	const date = DateTime.fromISO(dateString).setLocale(currentLocale);
 	return date.isValid && DateTime.now().diff(date, 'minutes').minutes < 2
 		? 'now'
 		: (date.toRelative() ?? '');
