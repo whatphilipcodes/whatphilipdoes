@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import type { GitHubEvent } from './types';
 
 export const getGitHubResetTime = (response: Response): number | null => {
@@ -9,20 +10,10 @@ export const getGitHubResetTime = (response: Response): number | null => {
 };
 
 export function getTimeAgo(dateString: string): string {
-	const now = new Date();
-	const past = new Date(dateString);
-	const minutes = Math.floor((now.getTime() - past.getTime()) / 1000 / 60);
-
-	if (minutes < 2) return `now`;
-	if (minutes < 60) return `${minutes} minutes ago`;
-
-	const hours = Math.floor(minutes / 60);
-	if (hours === 1) return '1 hour ago';
-	if (hours < 24) return `${hours} hours ago`;
-
-	const days = Math.floor(hours / 24);
-	if (days === 1) return '1 day ago';
-	return `${days} days ago`;
+	const date = DateTime.fromISO(dateString).setLocale('en-US');
+	return date.isValid && DateTime.now().diff(date, 'minutes').minutes < 2
+		? 'now'
+		: (date.toRelative() ?? '');
 }
 
 export function parseGitHubEvent(event: GitHubEvent) {
