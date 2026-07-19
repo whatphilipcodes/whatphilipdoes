@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Tag from '@react/TagSelector/Tag';
 import { getBuilt } from '@/utils/content';
+import AnchorButton from '@react/AnchorButton';
 
 interface Props {
 	id: string;
@@ -16,11 +17,13 @@ if (!project) throw new Error(`The project "${id}" was not found.`);
 ---
 
 <article
-	class="overflow-clip rounded-lg relative h-144 full-bleed md:main-column flex flex-col md:flex-row gap-4 w-full my-4 group hover:bg-mono-900 transition-colors duration-300"
+	class="overflow-clip border border-transparent rounded-lg relative h-144 full-bleed md:main-column flex flex-col md:flex-row gap-4 w-full my-4 group hover:border-mono-800 transition-colors duration-300"
 >
-	<div class="overflow-clip md:w-3/4 h-full">
+	<div
+		class="overflow-clip rounded-lg md:w-3/4 h-full transition-transform group-hover:scale-[96%] duration-800"
+	>
 		<Image
-			class="h-full object-cover transition-transform group-hover:scale-[102%] duration-800"
+			class="h-full object-cover transition-transform group-hover:scale-[108%] duration-800"
 			src={project.data.previewImage}
 			alt={project.data.description}
 		/>
@@ -45,5 +48,7 @@ if (!project) throw new Error(`The project "${id}" was not found.`);
 		<div class="mt-auto self-end">
 			{project.data.end?.getFullYear() ?? 'ongoing'}
 		</div>
+
+		<AnchorButton client:load text="click to open" />
 	</div>
 </article>
