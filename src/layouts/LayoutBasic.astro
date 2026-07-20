@@ -25,8 +25,9 @@ const { title, description, previewImage } = Astro.props;
 </html>
 
 <script>
-	import { getElement } from '@/utils/helpers';
 	import { $locale } from '@/store/menuStore';
+	import { getElement } from '@/utils/helpers';
+
 	const currentLocale = $locale.get();
 	const doc = getElement('html');
 </script>
