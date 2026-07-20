@@ -10,8 +10,9 @@ const { title, description, previewImage } = Astro.props;
 
 <!doctype html>
 <html
+	id="html"
 	lang="en"
-	class="hide-scrollbar bg-mono-50 text-mono-600 dark:bg-neutral-950 dark:text-mono-400"
+	class="hyphens-auto hide-scrollbar bg-mono-50 text-mono-600 dark:bg-neutral-950 dark:text-mono-400"
 >
 	<BaseHead title={title ?? "whatphilipdoes"} {description} {previewImage} />
 	<body class="flex min-h-dvh flex-col">
@@ -22,3 +23,10 @@ const { title, description, previewImage } = Astro.props;
 		<Footer />
 	</body>
 </html>
+
+<script>
+	import { getElement } from '@/utils/helpers';
+	import { $locale } from '@/store/menuStore';
+	const currentLocale = $locale.get();
+	const doc = getElement('html');
+</script>

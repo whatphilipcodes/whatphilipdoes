@@ -4,28 +4,43 @@ import type { HTMLAttributes } from 'astro/types';
 type Props = HTMLAttributes<'a'>;
 
 const { href, ...props } = Astro.props;
+
+const isValid = Boolean(href);
+let isExternal = false;
+
+if (isValid) {
+	try {
+		const url = href instanceof URL ? href : new URL(String(href), Astro.url);
+		isExternal = url.hostname !== Astro.url.hostname;
+	} catch {}
+}
 ---
 
 <a
-	class="inline-flex items-baseline underline underline-offset-3 decoration-transparent text-mono-950 hover:decoration-mono-950 dark:text-mono-50 dark:hover:decoration-mono-50 duration-300 transition-colors"
+	class="group text-mono-950 dark:text-mono-50 duration-300 transition-colors"
 	href={href}
 	{...props}
 >
-	<span><slot /></span>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="18"
-		height="18"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		class="shrink-0 self-center"
-	>
-		<title>link icon</title>
-		<path d="M7 7h10v10" />
-		<path d="M7 17 17 7" />
-	</svg>
+	{isValid && !isExternal && "/\u00A0"}
+	<span
+		class="underline underline-offset-3 decoration-transparent group-hover:decoration-mono-950 dark:group-hover:decoration-mono-50 duration-300 transition-colors"
+		><slot /></span
+	>{isValid && isExternal && (
+            <span class="whitespace-nowrap">{"\u2060"}<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="relative top-[1.5px] inline shrink-0 p-0.5 align-text-top"
+            >
+                <title>link icon</title>
+                <path d="M1 1h10v10" />
+                <path d="M1 11 11 1" />
+            </svg></span>
+        )}
 </a>

@@ -28,7 +28,7 @@
 	--color-prim-950: oklch(0.196 0.068 35.22);
 
 	--font-sans: "Urbanist Variable", sans-serif;
-	--font-mono: "Geist Mono Variable", monospace;
+	--font-mono: "Space Mono", monospace;
 }
 
 /* creates weird iOS behavior (scroll shift) */
